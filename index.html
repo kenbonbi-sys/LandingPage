@@ -1,0 +1,2882 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Learning Hub landing page" />
+    <title>Learning Hub — Học lập trình như chơi game</title>
+    <meta name="theme-color" content="#123F70" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Learning Hub — Học lập trình như chơi game" />
+    <meta
+      property="og:description"
+      content="250+ giờ bài học lập trình tương tác, miễn phí. Nhận XP, mở huy hiệu, hoàn thành quest."
+    />
+    <link rel="icon" type="image/png" href="image/icon/learninghub_favicon.png" />
+    <style>
+      @font-face {
+        font-family: "MoMo Trust Display";
+        src: url("font/MoMoTrustDisplay.otf") format("opentype");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "MoMo Trust Sans";
+        src: url("font/MoMoTrustSans-Light.otf") format("opentype");
+        font-style: normal;
+        font-weight: 300;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "MoMo Trust Sans";
+        src: url("font/MoMoTrustSans-Regular.otf") format("opentype");
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: "MoMo Trust Sans";
+        src: url("font/MoMoTrustSans-Medium.otf") format("opentype");
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+      }
+      :root {
+        --navy: #11193b;
+        --ink: #171b34;
+        --blue: #4d61ee;
+        --yellow: #ffc98f;
+        --white: #fff;
+        --muted: #666b82;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font-family: "MoMo Trust Sans", Arial, Helvetica, sans-serif;
+        font-synthesis: none;
+      }
+      h1,
+      h2 {
+        font-family: "MoMo Trust Display", "MoMo Trust Sans", Arial, sans-serif;
+        font-weight: 400;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button,
+      a {
+        transition: 0.2s ease;
+      }
+      button {
+        font: inherit;
+      }
+      .section {
+        max-width: 1180px;
+        margin: auto;
+        padding: 110px 28px;
+      }
+      .eyebrow {
+        margin: 0 0 12px;
+        font-weight: 900;
+        font-size: 13px;
+        letter-spacing: 0.18em;
+      }
+      .blue-text {
+        color: var(--blue);
+      }
+      .nav-wrap {
+        height: 76px;
+        display: flex;
+        align-items: center;
+        gap: 34px;
+        padding: 0 max(28px, calc((100vw - 1180px) / 2));
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid #ececf3;
+        backdrop-filter: blur(12px);
+      }
+      .logo {
+        font-size: 27px;
+        font-weight: 900;
+        letter-spacing: -1.7px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .logo-mark {
+        width: 32px;
+        height: 32px;
+        border-radius: 50% 50% 48% 52%/45% 45% 55% 55%;
+        display: grid;
+        place-items: center;
+        background: var(--yellow);
+        border: 2px solid var(--ink);
+        font-size: 18px;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+      .nav-links {
+        display: flex;
+        gap: 27px;
+        margin: auto;
+      }
+      .nav-links a {
+        font-size: 14px;
+        font-weight: 700;
+      }
+      .nav-links a:hover {
+        color: var(--blue);
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        padding: 15px 25px;
+        border-radius: 9px;
+        font-weight: 900;
+        border: 2px solid var(--ink);
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+      .button:hover {
+        transform: translate(2px, 2px);
+        box-shadow: 2px 2px 0 var(--ink);
+      }
+      .button.small {
+        padding: 10px 17px;
+        box-shadow: 3px 3px 0 #ffc98f;
+      }
+      .button.dark {
+        background: var(--navy);
+        color: #fff;
+      }
+      .button.yellow {
+        background: var(--yellow);
+        color: var(--ink);
+      }
+      .button.outline {
+        background: #fff;
+        margin: 42px auto 0;
+        display: flex;
+        width: max-content;
+      }
+      .menu-button {
+        display: none;
+        border: 0;
+        background: none;
+        font-size: 26px;
+      }
+      .hero {
+        min-height: 720px;
+        background: #0c1332;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        padding: 70px max(28px, calc((100vw - 1180px) / 2)) 110px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero:after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: linear-gradient(
+          90deg,
+          rgba(10, 17, 48, 0.84) 0%,
+          rgba(10, 17, 48, 0.71) 34%,
+          rgba(10, 17, 48, 0.35) 64%,
+          rgba(10, 17, 48, 0.22) 100%
+        );
+      }
+      .hero-copy {
+        position: relative;
+        z-index: 2;
+        width: min(570px, 55%);
+      }
+      .hero h1 {
+        font-size: 66px;
+        line-height: 0.92;
+        letter-spacing: -4px;
+        margin: 0 0 28px;
+        max-width: 650px;
+      }
+      .hero h1 span {
+        color: var(--yellow);
+      }
+      .hero-sub {
+        font-size: 20px;
+        line-height: 1.6;
+        max-width: 520px;
+        color: #f0f2ff;
+        margin-bottom: 34px;
+      }
+      .hero-sub span {
+        color: var(--yellow);
+      }
+      .supported {
+        margin-top: 45px;
+        display: flex;
+        gap: 22px;
+        align-items: center;
+        flex-wrap: wrap;
+        color: #c3c9e8;
+      }
+      .supported span {
+        font-size: 10px;
+        letter-spacing: 0.16em;
+      }
+      .supported b {
+        font-size: 13px;
+        color: #fff;
+      }
+      .hero-video-wrap {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background: #0c1332;
+      }
+      .hero-video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background: #0c1332;
+        pointer-events: none;
+      }
+      .hero-video::-webkit-media-controls,
+      .hero-video::-webkit-media-controls-panel,
+      .hero-video::-webkit-media-controls-overlay-play-button,
+      .hero-video::-webkit-media-controls-picture-in-picture-button,
+      .hero-video::-webkit-media-controls-start-playback-button {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      .wave {
+        position: absolute;
+        z-index: 3;
+        left: -3%;
+        right: -3%;
+        height: 72px;
+        bottom: -38px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .section-heading {
+        text-align: center;
+        max-width: 760px;
+        margin: 0 auto 42px;
+      }
+      .section-heading h2,
+      .stats h2,
+      .club h2,
+      .final-cta h2 {
+        font-size: 43px;
+        line-height: 1.12;
+        letter-spacing: -2px;
+        margin: 0 0 18px;
+      }
+      .section-heading > p:last-child {
+        color: var(--muted);
+        font-size: 17px;
+      }
+      .filters {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 34px;
+      }
+      .filters button {
+        border: 1.5px solid #d7d9e8;
+        background: #fff;
+        border-radius: 30px;
+        padding: 10px 17px;
+        font-size: 13px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .filters button.active,
+      .filters button:hover {
+        background: var(--navy);
+        color: #fff;
+        border-color: var(--navy);
+      }
+      .course-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        min-height: 460px;
+      }
+      .course-card {
+        border: 2px solid var(--ink);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 5px 5px 0 var(--ink);
+        background: #fff;
+        transition: 0.2s;
+      }
+      .course-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 7px 10px 0 var(--ink);
+      }
+      .course-art {
+        height: 185px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border-bottom: 2px solid var(--ink);
+      }
+      .course-art span {
+        font-size: 77px;
+        z-index: 2;
+        filter: drop-shadow(5px 7px 0 rgba(17, 25, 59, 0.22));
+      }
+      .course-art i {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border: 3px solid rgba(255, 255, 255, 0.45);
+        border-radius: 50%;
+      }
+      .course-art i:nth-of-type(2) {
+        width: 250px;
+        height: 250px;
+      }
+      .course-art i:nth-of-type(3) {
+        width: 320px;
+        height: 320px;
+      }
+      .course-art.yellow {
+        background: #ff9064;
+      }
+      .course-art.blue {
+        background: #4b9ae8;
+      }
+      .course-art.pink {
+        background: #ef73a5;
+      }
+      .course-art.purple {
+        background: #826fd6;
+      }
+      .course-art.green {
+        background: #62b68b;
+      }
+      .course-art.orange {
+        background: #ff9064;
+      }
+      .course-content {
+        padding: 20px;
+      }
+      .card-type {
+        font-size: 10px;
+        letter-spacing: 0.14em;
+        font-weight: 900;
+        color: var(--blue);
+      }
+      .course-content h3 {
+        font-size: 24px;
+        margin: 7px 0 10px;
+      }
+      .course-content p {
+        height: 66px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.65;
+      }
+      .card-foot {
+        border-top: 1px solid #e5e6ee;
+        padding-top: 15px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+      }
+      .card-foot b {
+        color: var(--blue);
+      }
+      .card-foot span {
+        font-weight: 800;
+      }
+      .stats {
+        background: var(--yellow);
+        border-block: 3px solid var(--ink);
+        padding: 75px 28px;
+        text-align: center;
+      }
+      .stats h2 {
+        font-size: 36px;
+      }
+      .stat-grid {
+        max-width: 900px;
+        margin: 42px auto 0;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .stat-grid div {
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid #ff9064;
+      }
+      .stat-grid div:last-child {
+        border: 0;
+      }
+      .stat-grid b {
+        font-size: 42px;
+        letter-spacing: -2px;
+      }
+      .stat-grid span {
+        font-size: 12px;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        margin-top: 4px;
+      }
+      .features {
+        padding-top: 50px;
+      }
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 90px;
+        align-items: center;
+        padding: 85px 0;
+        border-bottom: 1px solid #e6e6ef;
+      }
+      .feature-row.reverse .feature-copy {
+        order: 2;
+      }
+      .feature-copy {
+        position: relative;
+        padding: 20px;
+      }
+      .feature-copy .num {
+        font-size: 120px;
+        font-weight: 900;
+        color: #f1f1f6;
+        position: absolute;
+        top: -52px;
+        left: 0;
+        z-index: -1;
+      }
+      .feature-copy h2 {
+        font-size: 42px;
+        letter-spacing: -2px;
+        margin: 0 0 20px;
+      }
+      .feature-copy > p:not(.eyebrow) {
+        color: var(--muted);
+        font-size: 17px;
+        line-height: 1.75;
+      }
+      .feature-copy a {
+        color: var(--blue);
+        font-weight: 900;
+        display: inline-block;
+        margin-top: 15px;
+      }
+      .feature-visual {
+        min-height: 410px;
+        border: 3px solid var(--ink);
+        border-radius: 18px;
+        box-shadow: 9px 9px 0 var(--ink);
+        position: relative;
+        overflow: hidden;
+      }
+      .quest-visual {
+        background: #7184e3;
+      }
+      .level {
+        position: absolute;
+        left: 28px;
+        right: 28px;
+        top: 26px;
+        background: #fff;
+        border: 3px solid var(--ink);
+        border-radius: 8px;
+        padding: 14px 18px;
+        font-weight: 900;
+      }
+      .level b {
+        float: right;
+        color: var(--blue);
+      }
+      .avatar {
+        font-size: 155px;
+        position: absolute;
+        left: 50%;
+        bottom: 65px;
+        transform: translateX(-50%);
+        filter: drop-shadow(8px 8px 0 #35438c);
+      }
+      .badge-row {
+        display: flex;
+        gap: 10px;
+        position: absolute;
+        bottom: 22px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .badge-row span {
+        background: #fff;
+        border: 2px solid var(--ink);
+        border-radius: 50%;
+        padding: 10px;
+      }
+      .editor-visual {
+        background: #202849;
+        color: #dfe4ff;
+      }
+      .editor-top {
+        height: 45px;
+        background: #11172e;
+        border-bottom: 2px solid #080c1a;
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 0 15px;
+      }
+      .editor-top i {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        background: #ff9064;
+      }
+      .editor-top i:nth-child(2) {
+        background: #ffc98f;
+      }
+      .editor-top i:nth-child(3) {
+        background: #65cf80;
+      }
+      .editor-top span {
+        margin-left: 15px;
+        font: 12px monospace;
+        color: #96a0d1;
+      }
+      .editor-visual pre {
+        font: 17px/1.8 monospace;
+        padding: 55px 38px;
+      }
+      .editor-visual em {
+        color: #d987e7;
+      }
+      .editor-visual span {
+        color: #6ed7cf;
+      }
+      .editor-visual u {
+        color: #ffc98f;
+        text-decoration: none;
+      }
+      .editor-visual b {
+        color: #8fa7ff;
+      }
+      .run {
+        position: absolute;
+        right: 22px;
+        bottom: 20px;
+        background: #68d388;
+        color: #0c3218;
+        border: 2px solid #0c3218;
+        border-radius: 6px;
+        padding: 10px 18px;
+        font-weight: 900;
+        font-size: 12px;
+      }
+      .game-visual {
+        background: #7bbbe8;
+        padding: 60px 45px;
+      }
+      .game-title {
+        text-align: center;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        margin-bottom: 24px;
+      }
+      .game-board {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        border: 3px solid #17243a;
+      }
+      .game-board i {
+        aspect-ratio: 1;
+        background: #cce7f4;
+        border: 1px solid #779ab0;
+        display: grid;
+        place-items: center;
+        font-style: normal;
+        color: #3e6aaa;
+        font-weight: 900;
+      }
+      .game-board i:nth-child(3n) {
+        background: #a8d3e7;
+      }
+      .player {
+        position: absolute;
+        font-size: 52px;
+        bottom: 8px;
+        right: 10px;
+      }
+      .club {
+        background: var(--navy);
+        color: #fff;
+        padding: 105px max(28px, calc((100vw - 1180px) / 2));
+        position: relative;
+        overflow: hidden;
+      }
+      .club:before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border: 2px solid #7982c8;
+        border-radius: 50%;
+        right: -250px;
+        top: -250px;
+        box-shadow:
+          0 0 0 60px #1b2556,
+          0 0 0 62px #7982c8;
+      }
+      .club-head {
+        text-align: center;
+        max-width: 650px;
+        margin: auto;
+        position: relative;
+      }
+      .club-head h2 {
+        font-size: 52px;
+      }
+      .club-head h2 span {
+        color: var(--yellow);
+      }
+      .club-head > p:not(.eyebrow) {
+        color: #bac0e3;
+        font-size: 17px;
+      }
+      .club-head .button {
+        margin-top: 20px;
+      }
+      .benefit-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-top: 70px;
+        position: relative;
+      }
+      .benefit-grid article {
+        border: 1px solid #485287;
+        background: #1b2553;
+        border-radius: 15px;
+        padding: 25px;
+      }
+      .benefit-grid article > span {
+        font-size: 32px;
+      }
+      .benefit-grid h3 {
+        font-size: 17px;
+        margin: 15px 0 8px;
+      }
+      .benefit-grid p {
+        color: #afb6dc;
+        font-size: 13px;
+        line-height: 1.6;
+        margin: 0;
+      }
+      .story-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .story-grid article {
+        border: 2px solid var(--ink);
+        border-radius: 15px;
+        padding: 28px;
+        box-shadow: 5px 5px 0 var(--ink);
+        background: #fff;
+      }
+      .story-grid article.featured {
+        background: #fff2e1;
+        transform: translateY(-12px);
+      }
+      .portrait {
+        width: 65px;
+        height: 65px;
+        border-radius: 50%;
+        background: var(--blue);
+        color: #fff;
+        border: 3px solid var(--ink);
+        display: grid;
+        place-items: center;
+        font-size: 19px;
+        font-weight: 900;
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+      .story-grid h3 {
+        margin: 18px 0 4px;
+      }
+      .story-grid b {
+        font-size: 12px;
+        color: var(--blue);
+      }
+      .story-grid p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+        min-height: 145px;
+      }
+      .story-grid a {
+        font-size: 13px;
+        font-weight: 900;
+        color: var(--blue);
+      }
+      .final-cta {
+        background: #6e7fe0;
+        min-height: 370px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 65px;
+        padding: 60px 25px;
+        border-top: 3px solid var(--ink);
+      }
+      .final-cta h2 {
+        font-size: 50px;
+      }
+      .cta-character {
+        font-size: 115px;
+        filter: drop-shadow(7px 8px 0 #303d8e);
+        transform: rotate(-4deg);
+      }
+      .cta-character:last-child {
+        transform: rotate(5deg);
+      }
+      footer {
+        background: #0b112c;
+        color: #fff;
+        padding: 70px max(28px, calc((100vw - 1180px) / 2)) 25px;
+      }
+      .logo.light .logo-mark {
+        color: var(--ink);
+      }
+      .footer-main {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 40px;
+      }
+      .footer-main > div {
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+      }
+      .footer-main p,
+      .footer-main a {
+        color: #aeb4d5;
+        font-size: 13px;
+      }
+      .footer-main b {
+        font-size: 11px;
+        letter-spacing: 0.13em;
+        margin-bottom: 6px;
+      }
+      .footer-main a:hover {
+        color: var(--yellow);
+      }
+      .footer-bottom {
+        border-top: 1px solid #2a3154;
+        margin-top: 55px;
+        padding-top: 22px;
+        display: flex;
+        justify-content: space-between;
+        color: #7f86aa;
+        font-size: 11px;
+      }
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 75px;
+          left: 0;
+          right: 0;
+          background: #fff;
+          padding: 24px;
+          flex-direction: column;
+          border-bottom: 1px solid #ddd;
+        }
+        .nav-links.open {
+          display: flex;
+        }
+        .menu-button {
+          display: block;
+          margin-left: auto;
+        }
+        .nav-cta {
+          display: none;
+        }
+        .hero {
+          padding-top: 80px;
+        }
+        .hero h1 {
+          font-size: 53px;
+        }
+        .hero-copy {
+          width: min(610px, 78%);
+        }
+        .hero:after {
+          background: linear-gradient(
+            90deg,
+            rgba(10, 17, 48, 0.82) 0%,
+            rgba(10, 17, 48, 0.6) 58%,
+            rgba(10, 17, 48, 0.36) 100%
+          );
+        }
+        .course-grid,
+        .benefit-grid,
+        .story-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .feature-row {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+        .feature-row.reverse .feature-copy {
+          order: 0;
+        }
+        .feature-visual {
+          max-width: 620px;
+          width: 100%;
+          margin: auto;
+        }
+        .final-cta {
+          gap: 20px;
+        }
+        .cta-character {
+          font-size: 75px;
+        }
+        .footer-main {
+          grid-template-columns: 2fr 1fr 1fr;
+        }
+      }
+      @media (max-width: 620px) {
+        .section {
+          padding: 80px 20px;
+        }
+        .hero {
+          padding-inline: 20px;
+          min-height: 680px;
+        }
+        .hero-copy {
+          width: 100%;
+        }
+        .hero:after {
+          background: rgba(10, 17, 48, 0.62);
+        }
+        .hero h1 {
+          font-size: 42px;
+          letter-spacing: -2.5px;
+        }
+        .hero-sub {
+          font-size: 17px;
+        }
+        .section-heading h2,
+        .feature-copy h2,
+        .club-head h2,
+        .final-cta h2 {
+          font-size: 34px;
+        }
+        .course-grid,
+        .benefit-grid,
+        .story-grid {
+          grid-template-columns: 1fr;
+        }
+        .stat-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 28px;
+        }
+        .stat-grid div:nth-child(2) {
+          border: 0;
+        }
+        .feature-row {
+          padding: 60px 0;
+        }
+        .feature-visual {
+          min-height: 350px;
+        }
+        .game-visual {
+          padding: 55px 25px;
+        }
+        .story-grid article.featured {
+          transform: none;
+        }
+        .final-cta {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .cta-character:last-child {
+          display: none;
+        }
+        .footer-main {
+          grid-template-columns: 1fr 1fr;
+        }
+        .footer-main > div:first-child {
+          grid-column: 1/-1;
+        }
+        .footer-bottom {
+          flex-direction: column;
+          gap: 10px;
+        }
+      }
+
+      /* Learning Hub theme */
+      :root {
+        --learning-blue: #1c66bb;
+        --learning-blue-deep: #123f70;
+        --learning-blue-pale: #ddecf9;
+        --learning-orange: #ff5d38;
+        --learning-pink: #f3a6bb;
+        --learning-neutral: #e8e3da;
+        --learning-cream: #faf8f4;
+        --navy: var(--learning-blue);
+        --ink: #173b62;
+        --blue: var(--learning-blue);
+        --yellow: var(--learning-orange);
+        --muted: #667588;
+      }
+      body {
+        background: var(--learning-cream);
+      }
+      .nav-wrap {
+        background: rgba(250, 248, 244, 0.95);
+        border-bottom-color: #d9e4ef;
+      }
+      .logo-mark {
+        background: var(--learning-orange);
+        border-color: var(--ink);
+        box-shadow: 3px 3px 0 var(--ink);
+      }
+      .nav-links a:hover {
+        color: var(--learning-orange);
+      }
+      .button.small {
+        box-shadow: 3px 3px 0 var(--learning-orange);
+      }
+      .button.dark {
+        background: var(--learning-blue-deep);
+      }
+      .button.yellow {
+        background: var(--learning-orange);
+        border-color: var(--learning-orange);
+        box-shadow: 4px 4px 0 var(--learning-blue-deep);
+        color: #fff;
+      }
+      .button.outline {
+        background: var(--learning-cream);
+        border-color: var(--learning-blue);
+        box-shadow: 4px 4px 0 var(--learning-blue);
+      }
+      .logo {
+        gap: 0;
+      }
+      .logo img {
+        display: block;
+        width: 116px;
+        height: 65px;
+        object-fit: contain;
+      }
+      .logo.light {
+        width: max-content;
+        padding: 3px 7px;
+        background: #fff;
+        border-radius: 8px;
+      }
+      .footer-main .logo {
+        height: 58px;
+        align-items: flex-start;
+      }
+      .nav-wrap {
+        height: 132px;
+      }
+      .nav-wrap .logo img {
+        width: 232px;
+        height: 130px;
+      }
+      @media (max-width: 900px) {
+        .nav-links {
+          top: 132px;
+        }
+      }
+      .hero {
+        background: var(--learning-blue-deep);
+      }
+      .hero:after {
+        background: linear-gradient(
+          90deg,
+          rgba(18, 63, 112, 0.91) 0%,
+          rgba(18, 63, 112, 0.76) 35%,
+          rgba(18, 63, 112, 0.36) 67%,
+          rgba(18, 63, 112, 0.2) 100%
+        );
+      }
+      .hero h1 span {
+        color: var(--learning-orange);
+      }
+      .hero-sub span {
+        color: var(--learning-orange);
+      }
+      .hero-video-wrap {
+        background: var(--learning-blue-deep);
+      }
+      .filters button.active,
+      .filters button:hover {
+        background: var(--learning-blue);
+        border-color: var(--learning-blue);
+      }
+      .course-card {
+        border-color: var(--learning-blue-deep);
+        box-shadow: 5px 5px 0 var(--learning-blue-deep);
+      }
+      .course-card:hover {
+        box-shadow: 7px 10px 0 var(--learning-blue-deep);
+      }
+      .course-art {
+        border-color: var(--learning-blue-deep);
+      }
+      .course-art.yellow {
+        background: var(--learning-neutral);
+      }
+      .course-art.blue {
+        background: var(--learning-blue);
+      }
+      .course-art.pink {
+        background: var(--learning-pink);
+      }
+      .course-art.purple {
+        background: var(--learning-blue-pale);
+      }
+      .course-art.green {
+        background: #d5ddd7;
+      }
+      .course-art.orange {
+        background: var(--learning-orange);
+      }
+      .card-type,
+      .card-foot b {
+        color: var(--learning-blue);
+      }
+      .stats {
+        background: var(--learning-orange);
+        border-color: var(--learning-blue-deep);
+        color: #fff;
+      }
+      .stat-grid div {
+        border-color: rgba(255, 255, 255, 0.38);
+      }
+      .feature-visual {
+        border-color: var(--learning-blue-deep);
+        box-shadow: 9px 9px 0 var(--learning-blue-deep);
+      }
+      .quest-visual {
+        background: var(--learning-blue);
+      }
+      .avatar {
+        filter: drop-shadow(8px 8px 0 #0e4e96);
+      }
+      .editor-visual {
+        background: var(--learning-blue-deep);
+      }
+      .editor-top {
+        background: #0f3157;
+        border-bottom-color: #09213e;
+      }
+      .editor-top i:nth-child(1) {
+        background: var(--learning-pink);
+      }
+      .editor-top i:nth-child(2) {
+        background: var(--learning-orange);
+      }
+      .editor-top i:nth-child(3) {
+        background: #8bc9b0;
+      }
+      .editor-visual em {
+        color: var(--learning-pink);
+      }
+      .editor-visual span {
+        color: #aee0eb;
+      }
+      .editor-visual u {
+        color: #ffc98f;
+      }
+      .editor-visual b {
+        color: #a8cdf4;
+      }
+      .run {
+        background: var(--learning-orange);
+        border-color: var(--learning-orange);
+        color: #fff;
+      }
+      .game-visual {
+        background: var(--learning-neutral);
+      }
+      .game-board {
+        border-color: var(--learning-blue-deep);
+      }
+      .game-board i {
+        background: #f7f3ed;
+        border-color: #c4d4e5;
+        color: var(--learning-blue);
+      }
+      .game-board i:nth-child(3n) {
+        background: var(--learning-blue-pale);
+      }
+      .club {
+        background: var(--learning-blue);
+      }
+      .club:before {
+        border-color: #a4caed;
+        box-shadow:
+          0 0 0 60px #16589f,
+          0 0 0 62px #a4caed;
+      }
+      .club-head h2 span {
+        color: var(--learning-orange);
+      }
+      .club-head .button {
+        box-shadow: 4px 4px 0 var(--learning-blue-deep);
+      }
+      .benefit-grid article {
+        border-color: #87b8e8;
+        background: #16589f;
+      }
+      .benefit-grid p {
+        color: #e0edf9;
+      }
+      .story-grid article {
+        border-color: var(--learning-blue-deep);
+        box-shadow: 5px 5px 0 var(--learning-blue-deep);
+        background: #fff;
+      }
+      .story-grid article.featured {
+        background: #fff2e1;
+      }
+      .portrait {
+        background: var(--learning-orange);
+        border-color: var(--learning-blue-deep);
+        box-shadow: 3px 3px 0 var(--learning-blue-deep);
+      }
+      .story-grid b,
+      .story-grid a {
+        color: var(--learning-blue);
+      }
+      .final-cta {
+        background: var(--learning-orange);
+        border-color: var(--learning-blue-deep);
+      }
+      footer {
+        background: var(--learning-blue-deep);
+      }
+      .footer-main p,
+      .footer-main a {
+        color: #d9eaf8;
+      }
+      .footer-main a:hover {
+        color: #fff2e1;
+      }
+      .footer-bottom {
+        border-color: #376eaa;
+        color: #bdd6ed;
+      }
+      @media (max-width: 900px) {
+        .hero:after {
+          background: linear-gradient(
+            90deg,
+            rgba(18, 63, 112, 0.86) 0%,
+            rgba(18, 63, 112, 0.64) 58%,
+            rgba(18, 63, 112, 0.35) 100%
+          );
+        }
+      }
+      @media (max-width: 620px) {
+        .hero:after {
+          background: rgba(18, 63, 112, 0.66);
+        }
+      }
+
+      /* Learning Hub asset library */
+      .course-icon {
+        position: relative;
+        z-index: 2;
+        display: block;
+        width: 126px;
+        height: 126px;
+        object-fit: contain;
+        image-rendering: pixelated;
+      }
+      .pixel-button {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        height: auto;
+        padding: 8px 16px 12px;
+        border: 0;
+        border-radius: 0;
+        outline: 0;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+        cursor: pointer;
+        font-family: "MoMo Trust Display", "MoMo Trust Sans", system-ui, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.03rem;
+        line-height: 1.4;
+        white-space: nowrap;
+        transition: filter 150ms;
+      }
+      .button.pixel-button {
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+      .nav-cta {
+        font-size: 12px;
+      }
+      .pixel-button .rcb-before,
+      .pixel-button .rcb-after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 10px 16px;
+        clip-path: polygon(
+          4px 0,
+          4px 2px,
+          2px 2px,
+          2px 4px,
+          0 4px,
+          0 calc(100% - 4px),
+          2px calc(100% - 4px),
+          2px calc(100% - 2px),
+          4px calc(100% - 2px),
+          4px 100%,
+          calc(100% - 4px) 100%,
+          calc(100% - 4px) calc(100% - 2px),
+          calc(100% - 2px) calc(100% - 2px),
+          calc(100% - 2px) calc(100% - 4px),
+          100% calc(100% - 4px),
+          100% 4px,
+          calc(100% - 2px) 4px,
+          calc(100% - 2px) 2px,
+          calc(100% - 4px) 2px,
+          calc(100% - 4px) 0
+        );
+        box-sizing: border-box;
+      }
+      .pixel-button .rcb-before {
+        inset: 0 0 8px;
+        background: var(--learning-orange);
+        z-index: 1;
+        transition:
+          transform 0.1s,
+          background 0.1s;
+      }
+      .pixel-button .rcb-after {
+        inset: 4px 0 0;
+        background: #97290f;
+        z-index: 0;
+      }
+      .pixel-button .rcb-content {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        user-select: none;
+        text-align: center;
+        transition: transform 0.1s;
+      }
+      .pixel-button .rcb-content b {
+        font-size: 17px;
+        line-height: 1;
+      }
+      .pixel-button:hover {
+        filter: brightness(1.12);
+        transform: none;
+        box-shadow: none;
+      }
+      .pixel-button:active .rcb-before,
+      .pixel-button:active .rcb-content {
+        transform: translateY(8px);
+      }
+      .pixel-button:focus-visible {
+        outline: 3px solid var(--learning-blue);
+        outline-offset: 3px;
+      }
+      .button.pixel-button.outline {
+        display: flex;
+        width: max-content;
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+      .filters button {
+        border: 0;
+        border-radius: 0;
+        background: #f7f3ed;
+        color: var(--learning-blue-deep);
+        box-shadow: 0 4px 0 #c8d7e4;
+        clip-path: polygon(
+          4px 0,
+          4px 2px,
+          2px 2px,
+          2px 4px,
+          0 4px,
+          0 calc(100% - 4px),
+          2px calc(100% - 4px),
+          2px calc(100% - 2px),
+          4px calc(100% - 2px),
+          4px 100%,
+          calc(100% - 4px) 100%,
+          calc(100% - 4px) calc(100% - 2px),
+          calc(100% - 2px) calc(100% - 2px),
+          calc(100% - 2px) calc(100% - 4px),
+          100% calc(100% - 4px),
+          100% 4px,
+          calc(100% - 2px) 4px,
+          calc(100% - 2px) 2px,
+          calc(100% - 4px) 2px,
+          calc(100% - 4px) 0
+        );
+      }
+      .filters button.active,
+      .filters button:hover {
+        background: var(--learning-blue);
+        color: #fff;
+        border: 0;
+        box-shadow: 0 4px 0 var(--learning-blue-deep);
+      }
+      @media (max-width: 900px) {
+        .menu-button {
+          padding: 7px 10px 10px;
+          border: 0;
+          border-radius: 0;
+          background: var(--learning-blue);
+          color: #fff;
+          box-shadow: 0 4px 0 var(--learning-blue-deep);
+          clip-path: polygon(
+            4px 0,
+            4px 2px,
+            2px 2px,
+            2px 4px,
+            0 4px,
+            0 calc(100% - 4px),
+            2px calc(100% - 4px),
+            2px calc(100% - 2px),
+            4px calc(100% - 2px),
+            4px 100%,
+            calc(100% - 4px) 100%,
+            calc(100% - 4px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 2px),
+            calc(100% - 2px) calc(100% - 4px),
+            100% calc(100% - 4px),
+            100% 4px,
+            calc(100% - 2px) 4px,
+            calc(100% - 2px) 2px,
+            calc(100% - 4px) 2px,
+            calc(100% - 4px) 0
+          );
+        }
+      }
+      .hero-reward {
+        display: inline-block;
+        vertical-align: middle;
+        width: 58px;
+        height: 58px;
+        object-fit: contain;
+        image-rendering: pixelated;
+        margin-left: 18px;
+      }
+      .feature-mascot,
+      .editor-mascot,
+      .game-mascot {
+        position: absolute;
+        display: block;
+        object-fit: contain;
+        z-index: 2;
+      }
+      .quest-mascot {
+        width: 238px;
+        height: 238px;
+        left: 50%;
+        bottom: 34px;
+        transform: translateX(-50%);
+      }
+      .editor-mascot {
+        width: 140px;
+        height: 140px;
+        right: 20px;
+        bottom: 25px;
+      }
+      .game-mascot {
+        width: 122px;
+        height: 122px;
+        right: 9px;
+        bottom: 6px;
+      }
+      .portrait {
+        overflow: hidden;
+        padding: 0;
+        background: #fff;
+      }
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        padding: 3px;
+      }
+      .cta-character.mascot-image {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+      }
+      @media (max-width: 620px) {
+        .course-icon {
+          width: 108px;
+          height: 108px;
+        }
+        .hero-reward {
+          width: 48px;
+          height: 48px;
+        }
+        .quest-mascot {
+          width: 205px;
+          height: 205px;
+        }
+        .editor-mascot {
+          width: 110px;
+          height: 110px;
+        }
+        .game-mascot {
+          width: 100px;
+          height: 100px;
+        }
+        .cta-character.mascot-image {
+          width: 112px;
+          height: 112px;
+        }
+        .final-cta .cta-character.mascot-image:last-child {
+          display: none;
+        }
+      }
+      /* ============================================================
+   PIXEL PASS — everything below tightens the page onto a strict
+   4px pixel grid: no rounded corners, no blur, no eased motion.
+   ============================================================ */
+
+      :root {
+        --u: 4px; /* one pixel unit — every offset is a multiple */
+        --edge: var(--learning-blue-deep);
+        --step: 120ms; /* snap duration */
+        --z-nav: 50;
+        --z-overlay: 60;
+
+        /* One accent, three jobs. The theme mapped the old yellow onto a single
+     mid orange, which left white-on-orange at 3.9:1 and orange-on-navy at
+     2.7:1 — both under WCAG AA. Splitting it by context fixes that without
+     touching the brand hue. */
+        --orange-ink: #ff5d38; /* surfaces that carry white text  (4.95:1) */
+        --orange-lift: #ff9064; /* orange text on the dark sections (5.12:1) */
+        --orange-press: #97290f; /* the layer beneath a pressed button       */
+        --muted: #5e6d80; /* body grey, was #667588 at 4.43:1         */
+      }
+
+      /* orange surfaces under white text */
+      .stats,
+      .final-cta,
+      .run,
+      .pixel-button .rcb-before {
+        background: var(--orange-ink);
+      }
+      .pixel-button .rcb-after {
+        background: var(--orange-press);
+      }
+      .pixel-button:hover .rcb-before {
+        background: #ff9064;
+      }
+      .run,
+      .final-cta {
+        border-color: var(--orange-ink);
+      }
+      .button.yellow {
+        background: var(--orange-ink);
+        border-color: var(--orange-ink);
+      }
+      .button.pixel-button.yellow {
+        background: transparent;
+      }
+      footer {
+        border-top-color: var(--orange-ink);
+      }
+
+      /* orange text on the dark sections */
+      .hero h1 span,
+      .hero-sub span,
+      .club-head h2 span {
+        color: var(--orange-lift);
+      }
+      .nav-links a:hover {
+        color: var(--orange-ink);
+      }
+      .club-head > p:not(.eyebrow) {
+        color: #e0edf9;
+      } /* was #bac0e3 at 3.20:1 */
+
+      /* ---- 1. Kill every soft edge the old neo-brutalist layer left behind ---- */
+      .course-card,
+      .feature-visual,
+      .benefit-grid article,
+      .story-grid article,
+      .level,
+      .run,
+      .badge-row span,
+      .editor-top i,
+      .course-art i,
+      .portrait,
+      .logo-mark,
+      .logo.light,
+      .button,
+      .game-board,
+      .game-board i,
+      .wave {
+        border-radius: 0;
+      }
+      .nav-wrap {
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+      }
+      img {
+        image-rendering: pixelated;
+      }
+      .logo img {
+        image-rendering: auto;
+      } /* the brand mark is vector-drawn, keep it smooth */
+
+      /* ---- 2. Pixel frame: four hard offsets draw a border whose corners are
+          notched out — the authentic sprite-box silhouette, and unlike
+          clip-path it neither clips children nor eats the drop shadow. ---- */
+      .px-frame {
+        border: 0;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge),
+          calc(var(--u) * 2) calc(var(--u) * 2) 0 0 var(--edge);
+      }
+      .px-frame.flat {
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+
+      .course-card,
+      .story-grid article {
+        border: 0;
+        background: #fff;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+        transition:
+          transform var(--step) ease,
+          box-shadow var(--step) ease;
+      }
+      .course-card:hover,
+      .course-card:focus-within {
+        transform: none;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+      .story-grid article {
+        background: #fff;
+      }
+      .story-grid article.featured {
+        background: #fff2e1;
+      }
+
+      .feature-visual {
+        border: 0;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+      .benefit-grid article {
+        border: 0;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 #6fa8df,
+          0 var(--u) 0 0 #6fa8df,
+          calc(-1 * var(--u)) 0 0 0 #6fa8df,
+          var(--u) 0 0 0 #6fa8df;
+        transition:
+          transform var(--step) ease,
+          background var(--step) ease;
+      }
+      .benefit-grid article:hover {
+        transform: translateY(calc(var(--u) * -1));
+        background: #1b62ae;
+      }
+
+      /* ---- 3. Dither ramps replace gradients and the elliptical wave ---------- */
+      .wave {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 24px;
+        background: none;
+        background-image:
+          conic-gradient(var(--learning-cream) 0 25%, transparent 0 100%),
+          repeating-conic-gradient(var(--learning-cream) 0 25%, transparent 0 50%),
+          linear-gradient(var(--learning-cream), var(--learning-cream));
+        background-size:
+          8px 8px,
+          8px 8px,
+          100% 8px;
+        background-position:
+          0 0,
+          0 8px,
+          0 16px;
+        background-repeat: repeat-x;
+      }
+      /* CRT scanlines over the hero footage */
+      .hero-video-wrap::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: repeating-linear-gradient(rgba(9, 33, 62, 0.3) 0 2px, transparent 2px 4px);
+      }
+      /* the copy side stays legible; the art side stays readable as footage */
+      .hero:after {
+        background: linear-gradient(
+          90deg,
+          rgba(18, 63, 112, 0.9) 0%,
+          rgba(18, 63, 112, 0.74) 35%,
+          rgba(18, 63, 112, 0.34) 67%,
+          rgba(18, 63, 112, 0.18) 100%
+        );
+      }
+
+      /* ---- 4. Navigation ------------------------------------------------------ */
+      .nav-wrap {
+        height: 88px;
+        background: var(--learning-cream);
+        border-bottom: var(--u) solid var(--edge);
+        z-index: var(--z-nav);
+      }
+      .nav-wrap .logo img,
+      .logo img {
+        width: 52px;
+        height: 52px;
+        object-fit: contain;
+      }
+      .logo {
+        gap: 12px;
+        align-items: center;
+      }
+      .wordmark {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        font-family: "MoMo Trust Display", "MoMo Trust Sans", sans-serif;
+      }
+      .wordmark b {
+        font-size: 20px;
+        letter-spacing: -0.5px;
+        color: var(--edge);
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .wordmark span {
+        font-size: 9px;
+        letter-spacing: 0.28em;
+        font-weight: 900;
+        color: var(--orange-ink);
+        margin-top: 4px;
+        white-space: nowrap;
+      }
+      .nav-links a {
+        position: relative;
+        padding: 6px 2px;
+        transition: color var(--step) ease;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: var(--u);
+        background: var(--orange-ink);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform var(--step) ease;
+      }
+      .nav-links a:hover::after,
+      .nav-links a[aria-current="true"]::after {
+        transform: scaleX(1);
+      }
+      .footer-main .logo {
+        height: auto;
+      }
+      .footer-main .logo img {
+        width: 48px;
+        height: 48px;
+      }
+      .logo.light {
+        background: none;
+        padding: 0;
+      }
+      .footer-main .wordmark b {
+        color: #fff;
+      }
+      .footer-main .wordmark span {
+        color: var(--orange-lift);
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          top: 88px;
+          border-bottom: var(--u) solid var(--edge);
+          gap: 0;
+        }
+        .nav-links a {
+          padding: 12px 0;
+        }
+        .nav-wrap .logo img {
+          width: 44px;
+          height: 44px;
+        }
+        .wordmark b {
+          font-size: 17px;
+        }
+        /* the Vietnamese tagline runs longer than "QUEST FOR CODE" did — tighten
+     tracking so it still reads as one line in the cramped mobile nav */
+        .nav-wrap .wordmark span {
+          font-size: 7px;
+          letter-spacing: 0.08em;
+        }
+      }
+      @media (max-width: 480px) {
+        /* still too long for a one-row phone nav; the logo carries the brand */
+        .nav-wrap .wordmark span {
+          display: none;
+        }
+      }
+
+      /* ---- 5. Buttons: press on the grid, snap in steps ----------------------- */
+      .pixel-button {
+        transition: filter var(--step) ease;
+      }
+      .pixel-button .rcb-before,
+      .pixel-button .rcb-content {
+        transition:
+          transform var(--step) ease,
+          background var(--step) ease;
+      }
+      .pixel-button:active .rcb-before,
+      .pixel-button:active .rcb-content {
+        transform: translateY(calc(var(--u) * 2));
+      }
+      .filters button {
+        transition:
+          transform var(--step) ease,
+          box-shadow var(--step) ease,
+          background var(--step) ease,
+          color var(--step) ease;
+      }
+      .filters button:active {
+        transform: translateY(var(--u));
+        box-shadow: 0 0 0 #c8d7e4;
+      }
+
+      /* Keyboard focus is a hard pixel ring — never a soft glow */
+      a:focus-visible,
+      button:focus-visible {
+        outline: var(--u) solid var(--orange-ink);
+        outline-offset: var(--u);
+      }
+      .skip-link {
+        position: absolute;
+        left: var(--u);
+        top: calc(var(--u) * -20);
+        z-index: var(--z-overlay);
+        background: var(--orange-ink);
+        color: #fff;
+        font-weight: 900;
+        font-size: 13px;
+        padding: 12px 18px;
+        letter-spacing: 0.1em;
+        transition: top var(--step) ease;
+      }
+      .skip-link:focus {
+        top: var(--u);
+      }
+
+      /* ---- 6. Course cards ---------------------------------------------------- */
+      .course-card {
+        display: flex;
+        flex-direction: column;
+      }
+      .course-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+      .course-content p {
+        height: auto;
+        min-height: 66px;
+        margin-bottom: 18px;
+      }
+      .card-foot {
+        margin-top: auto;
+        border-top: 2px solid #dde5ee;
+        padding-top: 15px;
+      }
+      .course-art {
+        border-bottom: var(--u) solid var(--edge);
+        background-image: repeating-conic-gradient(rgba(255, 255, 255, 0.16) 0 25%, transparent 0 50%);
+        background-size: 8px 8px;
+      }
+      /* concentric rings become notched pixel squares */
+      .course-art i {
+        width: 150px;
+        height: 150px;
+        border: 0;
+        border-radius: 0;
+        box-shadow:
+          0 -3px 0 0 rgba(255, 255, 255, 0.42),
+          0 3px 0 0 rgba(255, 255, 255, 0.42),
+          -3px 0 0 0 rgba(255, 255, 255, 0.42),
+          3px 0 0 0 rgba(255, 255, 255, 0.42);
+      }
+      .course-art i:nth-of-type(2) {
+        width: 222px;
+        height: 222px;
+      }
+      .course-art i:nth-of-type(3) {
+        width: 294px;
+        height: 294px;
+      }
+      .course-icon {
+        transition: transform var(--step) ease;
+      }
+      .course-card:hover .course-icon {
+        transform: translateY(calc(var(--u) * -1));
+      }
+      .card-type {
+        display: inline-block;
+        letter-spacing: 0.18em;
+      }
+
+      /* ---- 7. Quest panel: real XP bar instead of a bare label ---------------- */
+      .level {
+        border: 0;
+        left: 24px;
+        right: 24px;
+        top: 24px;
+        padding: 12px 16px;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+      .xp-bar {
+        position: absolute;
+        left: 24px;
+        right: 24px;
+        top: 92px;
+        height: 24px;
+        background: #0e4e96;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+      .xp-bar span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--learning-orange);
+        background-image: repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.28) 0 4px, transparent 4px 16px);
+      }
+      .xp-bar[data-filled="true"] span {
+        width: 68%;
+        transition: width 1.2s ease;
+      }
+      .badge-row span {
+        border: 0;
+        padding: 8px;
+        background: #fff;
+        font-size: 15px;
+        line-height: 1;
+        box-shadow:
+          0 -3px 0 0 var(--edge),
+          0 3px 0 0 var(--edge),
+          -3px 0 0 0 var(--edge),
+          3px 0 0 0 var(--edge);
+      }
+
+      /* ---- 8. Editor panel: gutter + blinking block caret --------------------- */
+      .editor-top {
+        height: 44px;
+        border-bottom: var(--u) solid #09213e;
+      }
+      .editor-top i {
+        width: 12px;
+        height: 12px;
+        border-radius: 0;
+      }
+      .editor-visual pre {
+        font:
+          16px/1.9 ui-monospace,
+          "Cascadia Mono",
+          Consolas,
+          "Courier New",
+          monospace;
+        padding: 48px 34px;
+        margin: 0;
+      }
+      .editor-visual code {
+        position: relative;
+      }
+      .caret {
+        display: inline-block;
+        width: 9px;
+        height: 17px;
+        background: var(--learning-orange);
+        vertical-align: -3px;
+        margin-left: 2px;
+        animation: caret 1s ease infinite;
+      }
+      @keyframes caret {
+        0%,
+        50% {
+          opacity: 1;
+        }
+        50.01%,
+        100% {
+          opacity: 0;
+        }
+      }
+      /* the mascot used to sit on top of RUN and swallow it — stack them instead */
+      .editor-mascot {
+        bottom: 68px;
+        right: 16px;
+      }
+      .run {
+        border: 0;
+        right: 20px;
+        bottom: 20px;
+        z-index: 3;
+        box-shadow: 0 calc(var(--u) * 2) 0 0 #97290f;
+        transition: transform var(--step) ease;
+      }
+      .editor-visual:hover .run {
+        transform: translateY(calc(var(--u) * 2));
+        box-shadow: 0 0 0 #97290f;
+      }
+
+      /* ---- 9. Minesweeper: proper raised/sunken bevels ------------------------ */
+      .game-board {
+        border: 0;
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+      .game-board i {
+        border: 0;
+        font-size: 13px;
+        box-shadow:
+          inset 3px 3px 0 rgba(255, 255, 255, 0.85),
+          inset -3px -3px 0 rgba(23, 59, 98, 0.22);
+        transition: box-shadow var(--step) ease;
+      }
+      .game-board i:hover {
+        box-shadow:
+          inset 3px 3px 0 rgba(23, 59, 98, 0.16),
+          inset -3px -3px 0 rgba(255, 255, 255, 0.5);
+      }
+
+      /* ---- 10. Stats ---------------------------------------------------------- */
+      .stats {
+        border-block: var(--u) solid var(--edge);
+      }
+      .stat-grid b {
+        font-variant-numeric: tabular-nums;
+        font-feature-settings: "tnum";
+      }
+      .stat-grid div {
+        border-right-width: var(--u);
+        padding: 0 12px;
+      }
+
+      /* ---- 11. Portraits: three distinct foxes, framed on the grid ------------ */
+      .portrait {
+        width: 72px;
+        height: 72px;
+        border: 0;
+        padding: 0;
+        background: var(--learning-blue-pale);
+        box-shadow:
+          0 calc(-1 * var(--u)) 0 0 var(--edge),
+          0 var(--u) 0 0 var(--edge),
+          calc(-1 * var(--u)) 0 0 0 var(--edge),
+          var(--u) 0 0 0 var(--edge);
+      }
+      .portrait img {
+        padding: 4px;
+        object-fit: contain;
+      }
+      .story-grid article.featured .portrait {
+        background: #fff2e1;
+      }
+
+      /* ---- 12. Club decor: the giant circle becomes a pixel starfield --------- */
+      .club:before {
+        border-radius: 0;
+        border: 0;
+        width: 260px;
+        height: 260px;
+        right: -60px;
+        top: -60px;
+        background-image: repeating-conic-gradient(rgba(164, 202, 237, 0.3) 0 25%, transparent 0 50%);
+        background-size: 12px 12px;
+        box-shadow: none;
+      }
+      .club-head h2 span {
+        display: inline-block;
+        animation: twinkle 1.6s ease infinite;
+      }
+      @keyframes twinkle {
+        0% {
+          transform: scale(1);
+        }
+        33% {
+          transform: scale(0.72);
+        }
+        66% {
+          transform: scale(1.14);
+        }
+      }
+
+      /* ---- 13. Mascots idle like two-frame sprites ----------------------------
+   The bob keyframes write `transform`, so any mascot that relied on
+   translateX(-50%) to centre has to be edge-anchored instead. Anchoring the
+   fox right also frees the bottom-left corner for the badge row, which the
+   238px sprite used to cover completely. */
+      .quest-mascot {
+        left: auto;
+        right: 20px;
+        bottom: 20px;
+        transform: none;
+        animation: bob 1.6s ease infinite;
+      }
+      .badge-row {
+        left: 24px;
+        bottom: 24px;
+        transform: none;
+      }
+      .game-mascot {
+        animation: bob 1.9s ease infinite;
+      }
+      .hero-reward {
+        animation: bob 1.2s ease infinite;
+      }
+      .cta-character.mascot-image {
+        animation: bob 2.1s ease infinite;
+      }
+      .final-cta .cta-character.mascot-image:last-child {
+        animation-delay: 0.6s;
+      }
+      @keyframes bob {
+        0%,
+        49% {
+          transform: translateY(0);
+        }
+        50%,
+        100% {
+          transform: translateY(calc(var(--u) * -1));
+        }
+      }
+      .cta-character.mascot-image {
+        transform: none;
+      }
+
+      /* pixel star field sprinkled across the hero */
+      .star {
+        position: absolute;
+        width: var(--u);
+        height: var(--u);
+        background: #ffc98f;
+        z-index: 2;
+        animation: blink 2.4s ease infinite;
+      }
+      .star.lg {
+        width: 8px;
+        height: 8px;
+        background: #fff;
+      }
+      @keyframes blink {
+        0%,
+        60% {
+          opacity: 1;
+        }
+        61%,
+        100% {
+          opacity: 0.15;
+        }
+      }
+
+      /* ---- 14. Section rhythm & headings -------------------------------------- */
+      .section-heading h2,
+      .feature-copy h2,
+      .club-head h2,
+      .final-cta h2,
+      .stats h2 {
+        text-wrap: balance;
+      }
+      .section-heading > p:last-child,
+      .feature-copy > p:not(.eyebrow) {
+        max-width: 62ch;
+      }
+      .feature-copy .num {
+        font-variant-numeric: tabular-nums;
+        color: #e7edf4;
+        -webkit-text-stroke: 2px #d3e0ec;
+      }
+      .feature-row {
+        border-bottom: 2px solid #dce5ee;
+      }
+      .feature-row:last-child {
+        border-bottom: 0;
+      }
+      .eyebrow {
+        font-variant-numeric: tabular-nums;
+      }
+
+      /* ---- 15. Reveal on scroll — three hard frames, never a fade ------------- */
+      .reveal {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      .reveal.in {
+        opacity: 1;
+        transform: none;
+        transition:
+          opacity 240ms ease,
+          transform 240ms ease;
+      }
+
+      /* ---- 16. Chrome --------------------------------------------------------- */
+      ::selection {
+        background: var(--learning-orange);
+        color: #fff;
+      }
+      * {
+        scrollbar-color: var(--learning-blue) var(--learning-neutral);
+      }
+      ::-webkit-scrollbar {
+        width: 14px;
+        height: 14px;
+      }
+      ::-webkit-scrollbar-track {
+        background: var(--learning-neutral);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--learning-blue);
+        border: 3px solid var(--learning-neutral);
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--learning-blue-deep);
+      }
+      footer {
+        border-top: var(--u) solid var(--learning-orange);
+      }
+      .footer-bottom {
+        border-top-width: 2px;
+      }
+
+      @media (max-width: 620px) {
+        .course-art i {
+          width: 120px;
+          height: 120px;
+        }
+        .course-art i:nth-of-type(2) {
+          width: 176px;
+          height: 176px;
+        }
+        .course-art i:nth-of-type(3) {
+          width: 232px;
+          height: 232px;
+        }
+        .xp-bar {
+          top: 84px;
+        }
+        .portrait {
+          width: 64px;
+          height: 64px;
+        }
+        /* the panel drops to ~335px wide, so the badges move up out of the
+     sprite's corner rather than sitting behind it */
+        .badge-row {
+          top: 132px;
+          bottom: auto;
+          left: 24px;
+        }
+        .quest-mascot {
+          width: 160px;
+          height: 160px;
+        }
+      }
+
+      /* Respect the reader's motion preference — pixel or not. */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+          scroll-behavior: auto !important;
+        }
+        .reveal {
+          opacity: 1;
+          transform: none;
+        }
+        .xp-bar[data-filled="true"] span {
+          width: 68%;
+        }
+      }
+
+      body {
+        cursor:
+          url("image/icon/cursor-default.svg")
+            0 0,
+          auto;
+      }
+      a,
+      button,
+      summary,
+      [role="button"],
+      .game-board i {
+        cursor:
+          url("image/icon/cursor-pointer.svg")
+            6 0,
+          pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#courses">Bỏ qua tới nội dung</a>
+    <main>
+      <nav class="nav-wrap">
+        <a class="logo" href="#top" aria-label="Learning Hub home"
+          ><img
+            src="image/logo/nav-icon.png"
+            alt=""
+            width="52"
+            height="52"
+          /><span class="wordmark"><b>Learning Hub</b><span>HỌC ĐÚNG - LÀM CHUẨN</span></span></a
+        >
+        <button
+          class="menu-button"
+          type="button"
+          aria-label="Mở menu"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+        >
+          ☰
+        </button>
+        <div class="nav-links" id="primary-nav">
+          <a href="#courses">Learn</a><a href="#features">Practice</a><a href="#features">Build</a
+          ><a href="#community">Community</a><a href="#club">Pricing</a>
+        </div>
+        <button class="nes-pointer nav-cta pixel-button" type="button" lang="vi">
+          <span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
+          ><span class="rcb-content">BẮT ĐẦU HÀNH TRÌNH <b>→</b></span>
+        </button>
+      </nav>
+
+      <section class="hero" id="top">
+        <div class="hero-video-wrap" aria-hidden="true">
+          <video
+            class="hero-video"
+            src="https://static.momocdn.net/app/media/cio/047d6e0c9e2d436499f4ed94e17cd834.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            disablepictureinpicture
+            disableremoteplayback
+            controlslist="nodownload noplaybackrate nofullscreen"
+          ></video>
+        </div>
+        <div class="hero-copy">
+          <p class="eyebrow">THE FUN WAY TO LEARN</p>
+          <h1>START YOUR<br /><span>CODING ADVENTURE</span></h1>
+          <p class="hero-sub">The most fun and beginner-friendly way to learn to code. <span>⋆˙⟡</span></p>
+          <a class="button pixel-button yellow" href="#courses"
+            ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
+            ><span class="rcb-content">Get started <b>→</b></span></a
+          ><img
+            class="hero-reward"
+            src="image/asset/hero-reward.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <div class="supported"><span>SUPPORTED BY</span><b>Y Combinator</b><b>GitHub</b><b>Google</b></div>
+        </div>
+        <div class="wave"></div>
+      </section>
+
+      <section class="courses section" id="courses">
+        <div class="section-heading">
+          <p class="eyebrow blue-text">PICK YOUR QUEST</p>
+          <h2>Explore 250+ hours of free<br />interactive coding lessons</h2>
+          <p>Handcrafted by industry experts and educators for curious beginners.</p>
+        </div>
+        <div class="filters" role="group" aria-label="Filter courses">
+          <button class="active" data-filter="All">All</button><button data-filter="Popular">Popular</button
+          ><button data-filter="Web Development">Web Development</button
+          ><button data-filter="Data Science">Data Science</button><button data-filter="AI">AI</button>
+        </div>
+        <div class="course-grid">
+          <article class="course-card" data-category="Popular" data-popular="true">
+            <div class="course-art yellow">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-python.png"
+                alt=""
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">COURSE</span>
+              <h3>Python</h3>
+              <p>
+                Learn programming fundamentals, variables, control flow, and loops with the world’s most versatile
+                language.
+              </p>
+              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Web Development" data-popular="true">
+            <div class="course-art blue">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-html.png"
+                alt=""
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">COURSE</span>
+              <h3>HTML</h3>
+              <p>Create your first website with HTML, the building blocks of the web.</p>
+              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Web Development" data-popular="true">
+            <div class="course-art pink">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-css.png"
+                alt=""
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">COURSE</span>
+              <h3>CSS</h3>
+              <p>Style your pages with colors, fonts, layouts, animations, and more.</p>
+              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Web Development" data-popular="true">
+            <div class="course-art purple">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-javascript.png"
+                alt=""
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">COURSE</span>
+              <h3>JavaScript</h3>
+              <p>Build interactive web apps with variables, loops, functions, and events.</p>
+              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Data Science" data-popular="false">
+            <div class="course-art green">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-sql.png"
+                alt=""
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">COURSE</span>
+              <h3>SQL</h3>
+              <p>Query, manage, and analyze data like a pro with database fundamentals.</p>
+              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="AI" data-popular="false">
+            <div class="course-art orange">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-github-copilot.png"
+                alt=""
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">COURSE</span>
+              <h3>GitHub Copilot</h3>
+              <p>Use your AI pair programmer to write code faster and with less effort.</p>
+              <div class="card-foot"><b>INTERMEDIATE</b><span>Start quest →</span></div>
+            </div>
+          </article>
+        </div>
+        <a class="button pixel-button outline" href="#features"
+          ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
+          ><span class="rcb-content">Explore All Courses <span>→</span></span></a
+        >
+      </section>
+
+      <section class="stats" id="community">
+        <h2>Join over a million learners on a journey<br />through the world of programming</h2>
+        <div class="stat-grid">
+          <div><b>2m+</b><span>Learners</span></div>
+          <div><b>190+</b><span>Countries</span></div>
+          <div><b>8m+</b><span>Exercises</span></div>
+          <div><b>170k+</b><span>Builds</span></div>
+        </div>
+      </section>
+
+      <section class="features section" id="features">
+        <article class="feature-row">
+          <div class="feature-copy">
+            <span class="num" aria-hidden="true">01</span>
+            <p class="eyebrow blue-text">LEARN</p>
+            <h2>Level up your learning</h2>
+            <p>
+              Create your character, gain XP, and collect badges as you learn Python, HTML, JavaScript, and more. Every
+              lesson feels like completing your next quest.
+            </p>
+            <a href="#courses">Explore courses →</a>
+          </div>
+          <div class="feature-visual quest-visual">
+            <div class="level">LEVEL 12 <b>8,420 XP</b></div>
+            <div class="xp-bar" role="img" aria-label="Tiến độ lên cấp 13: 68 phần trăm"><span></span></div>
+            <img
+              class="feature-mascot quest-mascot"
+              src="image/asset/mascot-quest.png"
+              alt=""
+            />
+            <div class="badge-row"><span>⭐</span><span>🔥</span><span>🏆</span></div>
+          </div>
+        </article>
+        <article class="feature-row reverse">
+          <div class="feature-copy">
+            <span class="num" aria-hidden="true">02</span>
+            <p class="eyebrow blue-text">PRACTICE</p>
+            <h2>Practice your coding chops</h2>
+            <p>
+              Sharpen your skills with bite-sized coding challenges. Test what you’ve learned in practice for beginners
+              and advanced learners alike.
+            </p>
+            <a href="#courses">Try a challenge →</a>
+          </div>
+          <div class="feature-visual editor-visual">
+            <div class="editor-top"><i></i><i></i><i></i><span>challenge.py</span></div>
+            <pre><code><em>def</em> greet(name):
+  <span>return</span> f'Hello, {name}!'
+
+<b>print</b>(greet(<u>'coder'</u>))<span class="caret" aria-hidden="true"></span></code></pre>
+            <img
+              class="editor-mascot"
+              src="image/asset/mascot-editor.png"
+              alt=""
+            />
+            <div class="run">▶ RUN</div>
+          </div>
+        </article>
+        <article class="feature-row">
+          <div class="feature-copy">
+            <span class="num" aria-hidden="true">03</span>
+            <p class="eyebrow blue-text">BUILD</p>
+            <h2>Build an awesome portfolio</h2>
+            <p>
+              Create interactive websites, games, mobile apps, and data visualizations in an on-platform code editor—no
+              setup required.
+            </p>
+            <a href="#courses">Start a build →</a>
+          </div>
+          <div class="feature-visual game-visual">
+            <div class="game-title">MINESWEEPERS</div>
+            <div class="game-board">
+              <i></i><i></i><i>1</i><i></i><i></i><i></i><i></i><i></i><i></i><i>💣</i><i></i><i></i><i></i><i></i
+              ><i></i><i>1</i><i></i><i></i><i></i><i></i><i>💣</i><i></i><i></i><i></i><i></i><i></i><i>1</i><i></i
+              ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <img
+              class="game-mascot"
+              src="image/asset/mascot-game.png"
+              alt=""
+            />
+          </div>
+        </article>
+      </section>
+
+      <section class="club" id="club">
+        <div class="club-head">
+          <p class="eyebrow">GO FURTHER</p>
+          <h2>Join the Club <span>✦</span></h2>
+          <p>Unlock every course, keep your streak alive, and learn alongside the whole club.</p>
+          <a class="button pixel-button yellow" href="#club-benefits"
+            ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
+            ><span class="rcb-content">Join Club now →</span></a
+          >
+        </div>
+        <div class="benefit-grid" id="club-benefits">
+          <article>
+            <span>📚</span>
+            <h3>Complete access to Courses</h3>
+            <p>Unlock every course, including advanced paths and new releases.</p>
+          </article>
+          <article>
+            <span>🎓</span>
+            <h3>Course Certificates</h3>
+            <p>Earn certificates of completion for your growing portfolio.</p>
+          </article>
+          <article>
+            <span>💬</span>
+            <h3>Code Mentors</h3>
+            <p>Get personalized feedback and on-demand help from mentors.</p>
+          </article>
+          <article>
+            <span>✨</span>
+            <h3>Unlimited AI help</h3>
+            <p>Ask Lumi to debug, brainstorm, and personalize your practice.</p>
+          </article>
+          <article>
+            <span>🛠️</span>
+            <h3>Unlimited Builds</h3>
+            <p>Code, test, and host your creations right inside Learning Hub.</p>
+          </article>
+          <article>
+            <span>🎮</span>
+            <h3>Club-exclusive events</h3>
+            <p>Join game nights, workshops, challenges, and community meetups.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="stories section">
+        <div class="section-heading">
+          <p class="eyebrow blue-text">REAL PEOPLE, REAL WINS</p>
+          <h2>Success stories from our learners</h2>
+        </div>
+        <div class="story-grid">
+          <article>
+            <div class="portrait">
+              <img
+                src="image/asset/story-alan.png"
+                alt="Alan Geirnaert, minh hoạ cáo pixel đang ngủ"
+                width="72"
+                height="72"
+              />
+            </div>
+            <h3>Alan Geirnaert 🇫🇷</h3>
+            <b>Fullstack Developer at App’Ines</b>
+            <p>
+              “Five months after completing every course exercise and code challenge, I landed a real internship and was
+              accepted into a Master’s program.”
+            </p>
+            <a href="#top">Read their story →</a>
+          </article>
+          <article class="featured">
+            <div class="portrait">
+              <img
+                src="image/asset/story-moses.png"
+                alt="Moses James, minh hoạ cáo pixel mặc yếm"
+                width="72"
+                height="72"
+              />
+            </div>
+            <h3>Moses James 🇺🇸</h3>
+            <b>Software Developer at Deloitte</b>
+            <p>“Learning Hub reignited my passion for coding and gave me a community that feels like home.”</p>
+            <a href="#top">Read their story →</a>
+          </article>
+          <article>
+            <div class="portrait">
+              <img
+                src="image/asset/story-anjali.png"
+                alt="Anjali Sharma, minh hoạ cáo pixel mặc váy hoa"
+                width="72"
+                height="72"
+              />
+            </div>
+            <h3>Anjali Sharma 🇮🇳</h3>
+            <b>Fullstack Developer at Noida</b>
+            <p>
+              “I fell in love with the playful learning experience, amazing community, and mentors who encouraged me.”
+            </p>
+            <a href="#top">Read their story →</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="final-cta">
+        <img
+          class="cta-character mascot-image"
+          src="image/asset/mascot-cta-1.png"
+          alt=""
+        />
+        <div>
+          <p class="eyebrow">YOUR NEXT QUEST AWAITS</p>
+          <h2>Ready to start coding?</h2>
+          <a class="button pixel-button yellow" href="#courses"
+            ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
+            ><span class="rcb-content">Start Learning for Free →</span></a
+          >
+        </div>
+        <img
+          class="cta-character mascot-image"
+          src="image/asset/mascot-cta-2.png"
+          alt=""
+        />
+      </section>
+      <footer>
+        <div class="footer-main">
+          <div>
+            <a class="logo light" href="#top" aria-label="Learning Hub home"
+              ><img
+                src="image/logo/logo-footer.png"
+                alt=""
+                width="48"
+                height="48"
+              /><span class="wordmark"><b>Learning Hub</b><span>HỌC ĐÚNG - LÀM CHUẨN</span></span></a
+            >
+            <p>Made with ♥ for curious beginners</p>
+          </div>
+          <div>
+            <b>COMPANY</b><a href="#top">About</a><a href="#top">Blog</a><a href="#community">Community</a
+            ><a href="#club">Pricing</a>
+          </div>
+          <div>
+            <b>PRACTICE</b><a href="#features">Challenges</a><a href="#features">Projects</a
+            ><a href="#features">#30NitesOfCode</a>
+          </div>
+          <div>
+            <b>LEARN</b><a href="#courses">Python</a><a href="#courses">HTML & CSS</a><a href="#courses">JavaScript</a
+            ><a href="#courses">SQL</a>
+          </div>
+        </div>
+        <div class="footer-bottom"><span>© 2026 Learning Hub</span><span>Terms · Privacy Policy</span></div>
+      </footer>
+    </main>
+    <script>
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* ---- navigation ---------------------------------------------------- */
+      const nav = document.querySelector(".nav-links");
+      const menuButton = document.querySelector(".menu-button");
+      const setMenu = (open) => {
+        nav.classList.toggle("open", open);
+        menuButton.setAttribute("aria-expanded", String(open));
+      };
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.addEventListener("click", () => setMenu(!nav.classList.contains("open")));
+      nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenu(false)));
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") setMenu(false);
+      });
+      document
+        .querySelector(".nav-cta")
+        .addEventListener("click", () =>
+          document.querySelector("#courses").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }),
+        );
+
+      /* ---- course filters ------------------------------------------------ */
+      const cards = [...document.querySelectorAll(".course-card")];
+      document.querySelectorAll(".filters button").forEach((button) => {
+        button.setAttribute("aria-pressed", String(button.classList.contains("active")));
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          document.querySelectorAll(".filters button").forEach((item) => {
+            const on = item === button;
+            item.classList.toggle("active", on);
+            item.setAttribute("aria-pressed", String(on));
+          });
+          cards.forEach((card) => {
+            card.hidden = !(
+              filter === "All" ||
+              (filter === "Popular" && card.dataset.popular === "true") ||
+              card.dataset.category === filter
+            );
+          });
+        });
+      });
+
+      /* ---- pixel star field over the hero -------------------------------- */
+      const hero = document.querySelector(".hero");
+      if (hero) {
+        // fixed offsets so the layout is identical on every load
+        const stars = [
+          [8, 14, 1],
+          [17, 9, 0],
+          [26, 31, 0],
+          [35, 12, 1],
+          [44, 24, 0],
+          [58, 8, 0],
+          [67, 33, 1],
+          [74, 17, 0],
+          [83, 27, 0],
+          [91, 11, 1],
+          [63, 58, 0],
+          [79, 68, 0],
+          [88, 47, 1],
+          [71, 84, 0],
+          [95, 76, 0],
+        ];
+        const layer = document.createElement("div");
+        layer.setAttribute("aria-hidden", "true");
+        layer.style.cssText = "position:absolute;inset:0;z-index:2;pointer-events:none";
+        stars.forEach(([x, y, big], i) => {
+          const star = document.createElement("i");
+          star.className = big ? "star lg" : "star";
+          star.style.left = x + "%";
+          star.style.top = y + "%";
+          star.style.animationDelay = (i % 5) * 0.4 + "s";
+          layer.appendChild(star);
+        });
+        hero.appendChild(layer);
+      }
+
+      /* ---- reveal on scroll, stat counters, XP bar ------------------------ */
+      const targets = document.querySelectorAll(
+        ".course-card, .benefit-grid article, .story-grid article, .feature-row, .stat-grid div",
+      );
+      targets.forEach((el) => el.classList.add("reveal"));
+
+      const countUp = (el) => {
+        const original = el.textContent.trim();
+        const match = original.match(/^([\d.]+)(.*)$/);
+        if (!match) return;
+        const target = parseFloat(match[1]);
+        const suffix = match[2];
+        // "2m+" would spend most of the roll reading "0m+", so small targets
+        // count in tenths and snap back to the authored string at the end.
+        const decimals = target < 20 ? 1 : 0;
+        const frames = 18;
+        let frame = 0;
+        const tick = () => {
+          frame += 1;
+          if (frame >= frames) {
+            el.textContent = original;
+            return;
+          }
+          el.textContent = (target * (frame / frames)).toFixed(decimals) + suffix;
+          setTimeout(tick, 45);
+        };
+        tick();
+      };
+
+      if ("IntersectionObserver" in window && !reduceMotion) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target;
+              const siblings = [...el.parentElement.children].filter((n) => n.classList.contains("reveal"));
+              el.style.transitionDelay = Math.min(siblings.indexOf(el), 5) * 70 + "ms";
+              el.classList.add("in");
+              const stat = el.querySelector(":scope > b");
+              if (stat && !stat.dataset.counted) {
+                stat.dataset.counted = "1";
+                countUp(stat);
+              }
+              observer.unobserve(el);
+            });
+          },
+          { rootMargin: "0px 0px -12% 0px", threshold: 0.15 },
+        );
+        targets.forEach((el) => observer.observe(el));
+
+        const xp = document.querySelector(".xp-bar");
+        if (xp) {
+          const xpObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                xp.dataset.filled = "true";
+                xpObserver.unobserve(xp);
+              });
+            },
+            { threshold: 0.4 },
+          );
+          xpObserver.observe(xp);
+        }
+      } else {
+        targets.forEach((el) => el.classList.add("in"));
+        const xp = document.querySelector(".xp-bar");
+        if (xp) xp.dataset.filled = "true";
+      }
+
+      /* ---- mark the section you are currently in -------------------------- */
+      const navLinks = [...document.querySelectorAll(".nav-links a")];
+      const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+      if ("IntersectionObserver" in window && sections.length) {
+        const spy = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              navLinks.forEach((link) =>
+                link.setAttribute("aria-current", String(link.getAttribute("href") === "#" + entry.target.id)),
+              );
+            });
+          },
+          { rootMargin: "-45% 0px -50% 0px" },
+        );
+        sections.forEach((section) => spy.observe(section));
+      }
+    </script>
+  </body>
+</html>
