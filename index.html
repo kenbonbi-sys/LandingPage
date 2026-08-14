@@ -421,6 +421,59 @@
       .stats h2 {
         font-size: 36px;
       }
+      .stats-video-wrap {
+        position: relative;
+        max-width: 720px;
+        margin: 32px auto 0;
+        overflow: hidden;
+        background: #0c1332;
+      }
+      .stats-video {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+      .stats-video::-webkit-media-controls-start-playback-button,
+      .stats-video::-webkit-media-controls-overlay-play-button {
+        display: none !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+      }
+      .video-play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 84px;
+        height: 84px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.45));
+        transition: transform var(--step) ease;
+      }
+      .video-play-btn:hover {
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      .video-play-btn:active {
+        transform: translate(-50%, -50%) scale(0.94);
+      }
+      .video-play-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        shape-rendering: crispEdges;
+      }
+      .video-play-btn.is-hidden {
+        display: none;
+      }
       .stat-grid {
         max-width: 900px;
         margin: 42px auto 0;
@@ -498,6 +551,7 @@
       }
       .quest-visual {
         background: #7184e3;
+        overflow: visible;
       }
       .level {
         position: absolute;
@@ -535,6 +589,22 @@
         border: 2px solid var(--ink);
         border-radius: 50%;
         padding: 10px;
+      }
+      .quest-badge {
+        position: absolute;
+        z-index: 5;
+        width: 105px;
+        height: 105px;
+        pointer-events: none;
+        filter: drop-shadow(0 5px 7px rgba(9, 33, 62, 0.35));
+      }
+      .quest-badge-exp {
+        left: -22px;
+        bottom: -22px;
+      }
+      .quest-badge-trophy {
+        right: -22px;
+        bottom: -22px;
       }
       .editor-visual {
         background: #202849;
@@ -1077,12 +1147,12 @@
         color: var(--learning-blue);
       }
       .stats {
-        background: var(--learning-orange);
+        background: #fff;
         border-color: var(--learning-blue-deep);
-        color: #fff;
+        color: var(--learning-blue-deep);
       }
       .stat-grid div {
-        border-color: rgba(255, 255, 255, 0.38);
+        border-color: rgba(18, 63, 112, 0.22);
       }
       .feature-visual {
         border-color: var(--learning-blue-deep);
@@ -1504,7 +1574,6 @@
       }
 
       /* orange surfaces under white text */
-      .stats,
       .final-cta,
       .run,
       .pixel-button .rcb-before {
@@ -2109,7 +2178,7 @@
       }
       .badge-row {
         left: 24px;
-        bottom: 24px;
+        bottom: 96px;
         transform: none;
       }
       .game-mascot {
@@ -2262,6 +2331,20 @@
         .quest-mascot {
           width: 160px;
           height: 160px;
+        }
+        /* the section padding drops to 20px here, so the corner badges pull in
+     to stay inside it — otherwise they push the page sideways */
+        .quest-badge {
+          width: 78px;
+          height: 78px;
+        }
+        .quest-badge-exp {
+          left: -14px;
+          bottom: -14px;
+        }
+        .quest-badge-trophy {
+          right: -14px;
+          bottom: -14px;
         }
       }
 
@@ -2480,6 +2563,29 @@
 
       <section class="stats" id="community">
         <h2>Join over a million learners on a journey<br />through the world of programming</h2>
+        <div class="stats-video-wrap px-frame flat">
+          <video
+            class="stats-video"
+            playsinline
+            preload="metadata"
+            controls
+            controlslist="nodownload noplaybackrate"
+          >
+            <source src="https://static.momocdn.net/app/media/cio/OnboardingV2.mp4" type="video/mp4" />
+            <source src="image/video/OnboardingV2.mp4" type="video/mp4" />
+          </video>
+          <button class="video-play-btn" type="button" aria-label="Phát video">
+            <svg class="video-play-icon" viewBox="0 0 16 16" aria-hidden="true">
+              <path
+                fill="#fff"
+                fill-rule="evenodd"
+                d="M5,0 L5,1 L3,1 L3,2 L2,2 L2,3 L1,3 L1,5 L0,5 L0,11 L1,11 L1,13 L2,13 L2,14 L3,14 L3,15 L5,15 L5,16 L11,16 L11,15 L13,15 L13,14 L14,14 L14,13 L15,13 L15,11 L16,11 L16,5 L15,5 L15,3 L14,3 L14,2 L13,2 L13,1 L11,1 L11,0 Z
+                   M6,2 L6,3 L4,3 L4,4 L3,4 L3,6 L2,6 L2,10 L3,10 L3,12 L4,12 L4,13 L6,13 L6,14 L10,14 L10,13 L12,13 L12,12 L13,12 L13,10 L14,10 L14,6 L13,6 L13,4 L12,4 L12,3 L10,3 L10,2 Z
+                   M6,4 L6,12 L7,12 L7,11 L8,11 L8,10 L9,10 L9,9 L11,9 L11,8.5 L13,8.5 L13,7.5 L11,7.5 L11,7 L9,7 L9,6 L8,6 L8,5 L7,5 L7,4 Z"
+              />
+            </svg>
+          </button>
+        </div>
         <div class="stat-grid">
           <div><b>2m+</b><span>Learners</span></div>
           <div><b>190+</b><span>Countries</span></div>
@@ -2508,7 +2614,19 @@
               src="image/asset/mascot-quest.png"
               alt=""
             />
-            <div class="badge-row"><span>⭐</span><span>🔥</span><span>🏆</span></div>
+            <img
+              class="quest-badge quest-badge-exp"
+              src="https://static.momocdn.net/app/icon/CIO-Buddy/exp.svg"
+              onerror="this.onerror=null;this.src='image/asset/exp.svg'"
+              alt="XP"
+            />
+            <img
+              class="quest-badge quest-badge-trophy"
+              src="https://static.momocdn.net/app/icon/CIO-Buddy/trophy.svg"
+              onerror="this.onerror=null;this.src='image/asset/trophy.svg'"
+              alt="Trophy"
+            />
+            <div class="badge-row"><span>🔥</span></div>
           </div>
         </article>
         <article class="feature-row reverse">
@@ -2733,6 +2851,15 @@
         .addEventListener("click", () =>
           document.querySelector("#courses").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" }),
         );
+
+      /* ---- stats video play button ---------------------------------------- */
+      const statsVideo = document.querySelector(".stats-video");
+      const statsPlayBtn = document.querySelector(".video-play-btn");
+      if (statsVideo && statsPlayBtn) {
+        statsPlayBtn.addEventListener("click", () => statsVideo.play());
+        statsVideo.addEventListener("play", () => statsPlayBtn.classList.add("is-hidden"));
+        statsVideo.addEventListener("pause", () => statsPlayBtn.classList.remove("is-hidden"));
+      }
 
       /* ---- course filters ------------------------------------------------ */
       const cards = [...document.querySelectorAll(".course-card")];
