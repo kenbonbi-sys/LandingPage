@@ -3,14 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Learning Hub landing page" />
-    <title>Learning Hub — Học lập trình như chơi game</title>
+    <meta
+      name="description"
+      content="Learning Hub — nơi học kiến thức nghiên cứu của CIO Research, MoMo. Desk Research, định tính, định lượng: bài ngắn mỗi ngày, luyện phỏng vấn với AI, nhận XP và huy hiệu."
+    />
+    <title>Learning Hub — Học nghiên cứu như chơi game</title>
     <meta name="theme-color" content="#123F70" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Learning Hub — Học lập trình như chơi game" />
+    <meta property="og:title" content="Learning Hub — Học nghiên cứu như chơi game" />
     <meta
       property="og:description"
-      content="250+ giờ bài học lập trình tương tác, miễn phí. Nhận XP, mở huy hiệu, hoàn thành quest."
+      content="3 vùng đất · 18 module · 75 bài học về nghiên cứu người dùng. Học ngắn mỗi ngày, luyện phỏng vấn với AI, nhận XP và huy hiệu."
     />
     <link rel="icon" type="image/png" href="image/icon/learninghub_favicon.png" />
     <style>
@@ -2079,7 +2082,7 @@
         box-shadow: 0 0 0 #97290f;
       }
 
-      /* ---- 9. Minesweeper: proper raised/sunken bevels ------------------------ */
+      /* ---- 9. Journey map: proper raised/sunken tile bevels ------------------- */
       .game-board {
         border: 0;
         box-shadow:
@@ -2389,7 +2392,7 @@
     <a class="skip-link" href="#courses">Bỏ qua tới nội dung</a>
     <main>
       <nav class="nav-wrap">
-        <a class="logo" href="#top" aria-label="Learning Hub home"
+        <a class="logo" href="#top" aria-label="Learning Hub trang chủ"
           ><img
             src="image/logo/nav-icon.png"
             alt=""
@@ -2407,8 +2410,8 @@
           ☰
         </button>
         <div class="nav-links" id="primary-nav">
-          <a href="#courses">Learn</a><a href="#features">Practice</a><a href="#features">Build</a
-          ><a href="#community">Community</a><a href="#club">Pricing</a>
+          <a href="#courses">Khóa học</a><a href="#features">Luyện tập</a><a href="#features">Lộ trình</a
+          ><a href="#community">Xếp hạng</a><a href="#club">Phần thưởng</a>
         </div>
         <button class="nes-pointer nav-cta pixel-button" type="button" lang="vi">
           <span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
@@ -2432,137 +2435,142 @@
           ></video>
         </div>
         <div class="hero-copy">
-          <p class="eyebrow">THE FUN WAY TO LEARN</p>
-          <h1>START YOUR<br /><span>CODING ADVENTURE</span></h1>
-          <p class="hero-sub">The most fun and beginner-friendly way to learn to code. <span>⋆˙⟡</span></p>
+          <p class="eyebrow">HỌC NGHIÊN CỨU THEO CÁCH VUI HƠN</p>
+          <h1>BẮT ĐẦU HÀNH TRÌNH<br /><span>RESEARCH SPECIALIST</span></h1>
+          <p class="hero-sub">
+            Cách dễ vào nhất để học nghiên cứu người dùng — làm cho người MoMo mới bắt đầu. <span>⋆˙⟡</span>
+          </p>
           <a class="button pixel-button yellow" href="#courses"
             ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
-            ><span class="rcb-content">Get started <b>→</b></span></a
+            ><span class="rcb-content">Bắt đầu học <b>→</b></span></a
           ><img
             class="hero-reward"
             src="image/asset/hero-reward.png"
             alt=""
             aria-hidden="true"
           />
-          <div class="supported"><span>SUPPORTED BY</span><b>Y Combinator</b><b>GitHub</b><b>Google</b></div>
+          <div class="supported"><span>NỘI DUNG BIÊN SOẠN BỞI</span><b>CIO Research</b><b>MoMo</b></div>
         </div>
         <div class="wave"></div>
       </section>
 
       <section class="courses section" id="courses">
         <div class="section-heading">
-          <p class="eyebrow blue-text">PICK YOUR QUEST</p>
-          <h2>Explore 250+ hours of free<br />interactive coding lessons</h2>
-          <p>Handcrafted by industry experts and educators for curious beginners.</p>
+          <p class="eyebrow blue-text">CHỌN VÙNG ĐẤT CỦA BẠN</p>
+          <h2>18 module về nghiên cứu,<br />học ngắn từng bài một</h2>
+          <p>Do team CIO Research của MoMo biên soạn, từ người làm nghề thật cho người mới vào nghề.</p>
         </div>
-        <div class="filters" role="group" aria-label="Filter courses">
-          <button class="active" data-filter="All">All</button><button data-filter="Popular">Popular</button
-          ><button data-filter="Web Development">Web Development</button
-          ><button data-filter="Data Science">Data Science</button><button data-filter="AI">AI</button>
+        <div class="filters" role="group" aria-label="Lọc khóa học">
+          <button class="active" data-filter="All">Tất cả</button><button data-filter="Popular">Phổ biến</button
+          ><button data-filter="Desk">Desk Research</button><button data-filter="Quali">Định tính</button
+          ><button data-filter="Quanti">Định lượng</button><button data-filter="AI">AI</button>
         </div>
         <div class="course-grid">
-          <article class="course-card" data-category="Popular" data-popular="true">
-            <div class="course-art yellow">
-              <img
-                class="course-icon"
-                src="image/asset/course-icon-python.png"
-                alt=""
-              /><i></i><i></i><i></i>
-            </div>
-            <div class="course-content">
-              <span class="card-type">COURSE</span>
-              <h3>Python</h3>
-              <p>
-                Learn programming fundamentals, variables, control flow, and loops with the world’s most versatile
-                language.
-              </p>
-              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
-            </div>
-          </article>
-          <article class="course-card" data-category="Web Development" data-popular="true">
-            <div class="course-art blue">
-              <img
-                class="course-icon"
-                src="image/asset/course-icon-html.png"
-                alt=""
-              /><i></i><i></i><i></i>
-            </div>
-            <div class="course-content">
-              <span class="card-type">COURSE</span>
-              <h3>HTML</h3>
-              <p>Create your first website with HTML, the building blocks of the web.</p>
-              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
-            </div>
-          </article>
-          <article class="course-card" data-category="Web Development" data-popular="true">
-            <div class="course-art pink">
-              <img
-                class="course-icon"
-                src="image/asset/course-icon-css.png"
-                alt=""
-              /><i></i><i></i><i></i>
-            </div>
-            <div class="course-content">
-              <span class="card-type">COURSE</span>
-              <h3>CSS</h3>
-              <p>Style your pages with colors, fonts, layouts, animations, and more.</p>
-              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
-            </div>
-          </article>
-          <article class="course-card" data-category="Web Development" data-popular="true">
-            <div class="course-art purple">
-              <img
-                class="course-icon"
-                src="image/asset/course-icon-javascript.png"
-                alt=""
-              /><i></i><i></i><i></i>
-            </div>
-            <div class="course-content">
-              <span class="card-type">COURSE</span>
-              <h3>JavaScript</h3>
-              <p>Build interactive web apps with variables, loops, functions, and events.</p>
-              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
-            </div>
-          </article>
-          <article class="course-card" data-category="Data Science" data-popular="false">
+          <article class="course-card" data-category="Desk" data-popular="true">
             <div class="course-art green">
               <img
                 class="course-icon"
-                src="image/asset/course-icon-sql.png"
+                src="image/asset/course-icon-desk.svg"
                 alt=""
+                loading="lazy"
               /><i></i><i></i><i></i>
             </div>
             <div class="course-content">
-              <span class="card-type">COURSE</span>
-              <h3>SQL</h3>
-              <p>Query, manage, and analyze data like a pro with database fundamentals.</p>
-              <div class="card-foot"><b>BEGINNER</b><span>Start quest →</span></div>
+              <span class="card-type">VÙNG ĐẤT · 4 MODULE</span>
+              <h3>Nghiên cứu tại bàn</h3>
+              <p>Khai thác dữ liệu sẵn có để trả lời nhanh câu hỏi nghiên cứu đầu tiên: chọn nguồn theo tier, cross-check số liệu, đánh giá độ tin cậy bằng CRAAP.</p>
+              <div class="card-foot"><b>CƠ BẢN</b><span>Vào học →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Quali" data-popular="true">
+            <div class="course-art pink">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-quali.svg"
+                alt=""
+                loading="lazy"
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">VÙNG ĐẤT · 8 MODULE</span>
+              <h3>Phương pháp định tính</h3>
+              <p>Hiểu sâu lý do và hành vi người dùng qua phỏng vấn, quan sát thực tế. UT, FGD, IDI hay Ethnography — biết chọn đúng phương pháp cho từng đề bài.</p>
+              <div class="card-foot"><b>CƠ BẢN</b><span>Vào học →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Quanti" data-popular="true">
+            <div class="course-art blue">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-quanti.svg"
+                alt=""
+                loading="lazy"
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">VÙNG ĐẤT · 6 MODULE</span>
+              <h3>Phương pháp định lượng</h3>
+              <p>Đo lường quy mô, xu hướng và kiểm định giả thuyết bằng số liệu — từ chọn mẫu, bảng câu hỏi tới sig test và kết luận.</p>
+              <div class="card-foot"><b>NÂNG CAO</b><span>Vào học →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Quali" data-popular="true">
+            <div class="course-art purple">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-ut.svg"
+                alt=""
+                loading="lazy"
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">MODULE · 11 BÀI</span>
+              <h3>User Testing (UT)</h3>
+              <p>Khi nào bắt buộc UT, chuẩn bị request và segment, soạn Task List, hỏi để user nói thật, viết report với completion rate và SUS.</p>
+              <div class="card-foot"><b>TRUNG BÌNH</b><span>Vào học →</span></div>
+            </div>
+          </article>
+          <article class="course-card" data-category="Quanti" data-popular="false">
+            <div class="course-art yellow">
+              <img
+                class="course-icon"
+                src="image/asset/course-icon-survey.svg"
+                alt=""
+                loading="lazy"
+              /><i></i><i></i><i></i>
+            </div>
+            <div class="course-content">
+              <span class="card-type">MODULE · 3 BÀI</span>
+              <h3>Thiết kế bảng câu hỏi</h3>
+              <p>Dựng khung bảng hỏi 3 phần, viết câu hỏi và đáp án đạt 8 quy tắc của CIO, chọn tiêu chí test tên và tagline.</p>
+              <div class="card-foot"><b>TRUNG BÌNH</b><span>Vào học →</span></div>
             </div>
           </article>
           <article class="course-card" data-category="AI" data-popular="false">
             <div class="course-art orange">
               <img
                 class="course-icon"
-                src="image/asset/course-icon-github-copilot.png"
+                src="image/asset/course-icon-ai.svg"
                 alt=""
+                loading="lazy"
               /><i></i><i></i><i></i>
             </div>
             <div class="course-content">
-              <span class="card-type">COURSE</span>
-              <h3>GitHub Copilot</h3>
-              <p>Use your AI pair programmer to write code faster and with less effort.</p>
-              <div class="card-foot"><b>INTERMEDIATE</b><span>Start quest →</span></div>
+              <span class="card-type">MODULE · 3 BÀI</span>
+              <h3>Nghiên cứu cùng AI</h3>
+              <p>Vì sao GenAI có thể bịa, cách kiểm chứng nguồn và đặt câu hỏi phản biện, chọn đúng AI tool và viết prompt theo 2 style.</p>
+              <div class="card-foot"><b>TRUNG BÌNH</b><span>Vào học →</span></div>
             </div>
           </article>
         </div>
         <a class="button pixel-button outline" href="#features"
           ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
-          ><span class="rcb-content">Explore All Courses <span>→</span></span></a
+          ><span class="rcb-content">Xem tất cả khóa học <span>→</span></span></a
         >
       </section>
 
       <section class="stats" id="community">
-        <h2>Join over a million learners on a journey<br />through the world of programming</h2>
+        <h2>Cùng đồng đội MoMo đi qua ba vùng đất<br />của nghề nghiên cứu</h2>
         <div class="stats-video-wrap px-frame flat">
           <video
             class="stats-video"
@@ -2587,10 +2595,10 @@
           </button>
         </div>
         <div class="stat-grid">
-          <div><b>2m+</b><span>Learners</span></div>
-          <div><b>190+</b><span>Countries</span></div>
-          <div><b>8m+</b><span>Exercises</span></div>
-          <div><b>170k+</b><span>Builds</span></div>
+          <div><b>3</b><span>Vùng đất</span></div>
+          <div><b>18</b><span>Module</span></div>
+          <div><b>75</b><span>Bài học</span></div>
+          <div><b>6</b><span>Bài luyện với AI</span></div>
         </div>
       </section>
 
@@ -2598,13 +2606,13 @@
         <article class="feature-row">
           <div class="feature-copy">
             <span class="num" aria-hidden="true">01</span>
-            <p class="eyebrow blue-text">LEARN</p>
-            <h2>Level up your learning</h2>
+            <p class="eyebrow blue-text">HỌC</p>
+            <h2>Học ngắn mỗi ngày, có thưởng</h2>
             <p>
-              Create your character, gain XP, and collect badges as you learn Python, HTML, JavaScript, and more. Every
-              lesson feels like completing your next quest.
+              Mỗi bài chỉ vài phút — video, quiz hoặc bài đọc. Xong bài là nhận XP và KN, giữ chuỗi ngày học để leo
+              hạng từ Bronze lên Ruby.
             </p>
-            <a href="#courses">Explore courses →</a>
+            <a href="#courses">Xem khóa học →</a>
           </div>
           <div class="feature-visual quest-visual">
             <div class="level">LEVEL 12 <b>8,420 XP</b></div>
@@ -2624,7 +2632,7 @@
               class="quest-badge quest-badge-trophy"
               src="https://static.momocdn.net/app/icon/CIO-Buddy/trophy.svg"
               onerror="this.onerror=null;this.src='image/asset/trophy.svg'"
-              alt="Trophy"
+              alt="Cúp"
             />
             <div class="badge-row"><span>🔥</span></div>
           </div>
@@ -2632,45 +2640,49 @@
         <article class="feature-row reverse">
           <div class="feature-copy">
             <span class="num" aria-hidden="true">02</span>
-            <p class="eyebrow blue-text">PRACTICE</p>
-            <h2>Practice your coding chops</h2>
+            <p class="eyebrow blue-text">LUYỆN TẬP</p>
+            <h2>Luyện phỏng vấn với AI</h2>
             <p>
-              Sharpen your skills with bite-sized coding challenges. Test what you’ve learned in practice for beginners
-              and advanced learners alike.
+              Bạn đóng vai người phỏng vấn, AI đóng vai người tham gia. Mỗi bài chỉ 3-6 lượt, luyện đúng một kỹ năng
+              và nhận phản hồi ngay sau khi kết thúc.
             </p>
-            <a href="#courses">Try a challenge →</a>
+            <a href="#courses">Vào AI Playground →</a>
           </div>
           <div class="feature-visual editor-visual">
-            <div class="editor-top"><i></i><i></i><i></i><span>challenge.py</span></div>
-            <pre><code><em>def</em> greet(name):
-  <span>return</span> f'Hello, {name}!'
+            <div class="editor-top"><i></i><i></i><i></i><span>discussion-guide.md</span></div>
+            <pre><code><em># Discussion Guide</em>
 
-<b>print</b>(greet(<u>'coder'</u>))<span class="caret" aria-hidden="true"></span></code></pre>
+<span>## Warm-up</span>
+  Anh/chị dùng ví điện tử từ khi nào?
+
+<span>## Đào sâu</span>
+  <b>Kể lại lần gần nhất</b> anh/chị rút tiền?
+  <u>→ Vì sao lúc đó lại chọn cách này?</u><span class="caret" aria-hidden="true"></span></code></pre>
             <img
               class="editor-mascot"
               src="image/asset/mascot-editor.png"
               alt=""
             />
-            <div class="run">▶ RUN</div>
+            <div class="run">▶ LUYỆN</div>
           </div>
         </article>
         <article class="feature-row">
           <div class="feature-copy">
             <span class="num" aria-hidden="true">03</span>
-            <p class="eyebrow blue-text">BUILD</p>
-            <h2>Build an awesome portfolio</h2>
+            <p class="eyebrow blue-text">LỘ TRÌNH</p>
+            <h2>Lộ trình riêng do AI thiết kế</h2>
             <p>
-              Create interactive websites, games, mobile apps, and data visualizations in an on-platform code editor—no
-              setup required.
+              AI Navigator hỏi bạn vài câu về mục tiêu và thời gian rảnh, rồi dựng Journey Map riêng: học gì trước,
+              học gì sau, mốc nào cần đạt.
             </p>
-            <a href="#courses">Start a build →</a>
+            <a href="#courses">Tạo lộ trình →</a>
           </div>
           <div class="feature-visual game-visual">
-            <div class="game-title">MINESWEEPERS</div>
+            <div class="game-title">JOURNEY MAP</div>
             <div class="game-board">
-              <i></i><i></i><i>1</i><i></i><i></i><i></i><i></i><i></i><i></i><i>💣</i><i></i><i></i><i></i><i></i
-              ><i></i><i>1</i><i></i><i></i><i></i><i></i><i>💣</i><i></i><i></i><i></i><i></i><i></i><i>1</i><i></i
-              ><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              <i>✓</i><i>✓</i><i>✓</i><i>★</i><i></i><i></i><i></i><i></i><i></i><i>✓</i><i></i><i></i><i></i><i></i
+              ><i>✓</i><i>✓</i><i>📍</i><i></i><i></i><i></i><i>🔒</i><i></i><i></i><i></i><i></i><i></i><i>🔒</i
+              ><i></i><i></i><i></i><i></i><i></i><i>★</i><i></i><i></i><i></i>
             </div>
             <img
               class="game-mascot"
@@ -2683,100 +2695,107 @@
 
       <section class="club" id="club">
         <div class="club-head">
-          <p class="eyebrow">GO FURTHER</p>
-          <h2>Join the Club <span>✦</span></h2>
-          <p>Unlock every course, keep your streak alive, and learn alongside the whole club.</p>
+          <p class="eyebrow">KHÔNG CHỈ CÓ BÀI HỌC</p>
+          <h2>Học có thưởng <span>✦</span></h2>
+          <p>Làm nhiệm vụ, giữ chuỗi ngày học, đổi Xu lấy quà và leo hạng cùng cả team.</p>
           <a class="button pixel-button yellow" href="#club-benefits"
             ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
-            ><span class="rcb-content">Join Club now →</span></a
+            ><span class="rcb-content">Xem phần thưởng →</span></a
           >
         </div>
         <div class="benefit-grid" id="club-benefits">
           <article>
-            <span>📚</span>
-            <h3>Complete access to Courses</h3>
-            <p>Unlock every course, including advanced paths and new releases.</p>
+            <span>🎯</span>
+            <h3>Nhiệm vụ hằng ngày</h3>
+            <p>Hoàn thành 1 bài, ghi điểm tuyệt đối, giữ streak — mỗi nhiệm vụ trả XP, KN và Xu.</p>
           </article>
           <article>
-            <span>🎓</span>
-            <h3>Course Certificates</h3>
-            <p>Earn certificates of completion for your growing portfolio.</p>
+            <span>🔥</span>
+            <h3>Chuỗi ngày học</h3>
+            <p>Học mỗi ngày để giữ streak. Hôm nào bận thì dùng Bình nước giữ chuỗi để không mất.</p>
           </article>
           <article>
-            <span>💬</span>
-            <h3>Code Mentors</h3>
-            <p>Get personalized feedback and on-demand help from mentors.</p>
+            <span>🏆</span>
+            <h3>Bảng xếp hạng</h3>
+            <p>Leo từ Bronze lên Ruby theo KN, đua với đồng đội và cả squad theo từng tuần.</p>
           </article>
           <article>
-            <span>✨</span>
-            <h3>Unlimited AI help</h3>
-            <p>Ask Lumi to debug, brainstorm, and personalize your practice.</p>
-          </article>
-          <article>
-            <span>🛠️</span>
-            <h3>Unlimited Builds</h3>
-            <p>Code, test, and host your creations right inside Learning Hub.</p>
+            <span>🛒</span>
+            <h3>Cửa hàng</h3>
+            <p>Đổi Xu kiếm được lấy vật phẩm hỗ trợ việc học, ví dụ Bình nước giữ chuỗi.</p>
           </article>
           <article>
             <span>🎮</span>
-            <h3>Club-exclusive events</h3>
-            <p>Join game nights, workshops, challenges, and community meetups.</p>
+            <h3>Khu giải trí</h3>
+            <p>Dùng Xu chơi ở khu Giải trí, mở rương và đổi quà thật khi trúng.</p>
+          </article>
+          <article>
+            <span>🎖️</span>
+            <h3>Huy hiệu &amp; thành tích</h3>
+            <p>Mở huy hiệu khi đạt mốc học tập, hiện ngay trên trang cá nhân của bạn.</p>
           </article>
         </div>
       </section>
 
       <section class="stories section">
         <div class="section-heading">
-          <p class="eyebrow blue-text">REAL PEOPLE, REAL WINS</p>
-          <h2>Success stories from our learners</h2>
+          <p class="eyebrow blue-text">HỌC XONG LÀM ĐƯỢC GÌ</p>
+          <h2>Ba vùng đất, ba năng lực mang về chỗ làm</h2>
         </div>
         <div class="story-grid">
           <article>
             <div class="portrait">
               <img
-                src="image/asset/story-alan.png"
-                alt="Alan Geirnaert, minh hoạ cáo pixel đang ngủ"
+                src="image/asset/course-icon-desk.svg"
+                alt=""
                 width="72"
                 height="72"
+                loading="lazy"
               />
             </div>
-            <h3>Alan Geirnaert 🇫🇷</h3>
-            <b>Fullstack Developer at App’Ines</b>
+            <h3>Nghiên cứu tại bàn 📚</h3>
+            <b>4 module · 14 bài</b>
             <p>
-              “Five months after completing every course exercise and code challenge, I landed a real internship and was
-              accepted into a Master’s program.”
+              “Nhận đề bài là biết bóc thành Problem - Objective - Subject, tìm nguồn theo tier, cross-check số liệu
+              lệch nhau và nói rõ được giới hạn của dữ liệu mình dùng.”
             </p>
-            <a href="#top">Read their story →</a>
+            <a href="#courses">Xem vùng đất →</a>
           </article>
           <article class="featured">
             <div class="portrait">
               <img
-                src="image/asset/story-moses.png"
-                alt="Moses James, minh hoạ cáo pixel mặc yếm"
+                src="image/asset/course-icon-quali.svg"
+                alt=""
                 width="72"
                 height="72"
+                loading="lazy"
               />
             </div>
-            <h3>Moses James 🇺🇸</h3>
-            <b>Software Developer at Deloitte</b>
-            <p>“Learning Hub reignited my passion for coding and gave me a community that feels like home.”</p>
-            <a href="#top">Read their story →</a>
+            <h3>Phương pháp định tính 🎙️</h3>
+            <b>8 module · 38 bài</b>
+            <p>
+              “Chọn được giữa UT, FGD, IDI và Ethnography; viết Discussion Guide 3 phần; hỏi mở, đào sâu và giữ trung
+              lập để user nói thật.”
+            </p>
+            <a href="#courses">Xem vùng đất →</a>
           </article>
           <article>
             <div class="portrait">
               <img
-                src="image/asset/story-anjali.png"
-                alt="Anjali Sharma, minh hoạ cáo pixel mặc váy hoa"
+                src="image/asset/course-icon-quanti.svg"
+                alt=""
                 width="72"
                 height="72"
+                loading="lazy"
               />
             </div>
-            <h3>Anjali Sharma 🇮🇳</h3>
-            <b>Fullstack Developer at Noida</b>
+            <h3>Phương pháp định lượng 📊</h3>
+            <b>6 module · 23 bài</b>
             <p>
-              “I fell in love with the playful learning experience, amazing community, and mentors who encouraged me.”
+              “Tính được sample size, dựng bảng câu hỏi đạt 8 quy tắc CIO, clean data 3 lớp, chạy sig test và đọc kết
+              quả để ra kết luận.”
             </p>
-            <a href="#top">Read their story →</a>
+            <a href="#courses">Xem vùng đất →</a>
           </article>
         </div>
       </section>
@@ -2788,11 +2807,11 @@
           alt=""
         />
         <div>
-          <p class="eyebrow">YOUR NEXT QUEST AWAITS</p>
-          <h2>Ready to start coding?</h2>
+          <p class="eyebrow">VÙNG ĐẤT ĐẦU TIÊN ĐANG CHỜ</p>
+          <h2>Sẵn sàng cho bài học đầu tiên?</h2>
           <a class="button pixel-button yellow" href="#courses"
             ><span class="rcb-before" aria-hidden="true"></span><span class="rcb-after" aria-hidden="true"></span
-            ><span class="rcb-content">Start Learning for Free →</span></a
+            ><span class="rcb-content">Bắt đầu học miễn phí →</span></a
           >
         </div>
         <img
@@ -2804,7 +2823,7 @@
       <footer>
         <div class="footer-main">
           <div>
-            <a class="logo light" href="#top" aria-label="Learning Hub home"
+            <a class="logo light" href="#top" aria-label="Learning Hub trang chủ"
               ><img
                 src="image/logo/logo-footer.png"
                 alt=""
@@ -2812,22 +2831,24 @@
                 height="48"
               /><span class="wordmark"><b>Learning Hub</b><span>HỌC ĐÚNG - LÀM CHUẨN</span></span></a
             >
-            <p>Made with ♥ for curious beginners</p>
+            <p>Do team CIO Research làm cho người MoMo ♥</p>
           </div>
           <div>
-            <b>COMPANY</b><a href="#top">About</a><a href="#top">Blog</a><a href="#community">Community</a
-            ><a href="#club">Pricing</a>
+            <b>LEARNING HUB</b><a href="#top">Giới thiệu</a><a href="#features">Lộ trình cá nhân</a
+            ><a href="#community">Bảng xếp hạng</a><a href="#club">Phần thưởng</a>
           </div>
           <div>
-            <b>PRACTICE</b><a href="#features">Challenges</a><a href="#features">Projects</a
-            ><a href="#features">#30NitesOfCode</a>
+            <b>LUYỆN TẬP</b><a href="#features">AI Playground</a><a href="#club">Nhiệm vụ</a
+            ><a href="#club">Khu giải trí</a>
           </div>
           <div>
-            <b>LEARN</b><a href="#courses">Python</a><a href="#courses">HTML & CSS</a><a href="#courses">JavaScript</a
-            ><a href="#courses">SQL</a>
+            <b>HỌC</b><a href="#courses">Nghiên cứu tại bàn</a><a href="#courses">Định tính</a
+            ><a href="#courses">Định lượng</a><a href="#courses">User Testing</a>
           </div>
         </div>
-        <div class="footer-bottom"><span>© 2026 Learning Hub</span><span>Terms · Privacy Policy</span></div>
+        <div class="footer-bottom">
+          <span>© 2026 Learning Hub · CIO Research, MoMo</span><span>Điều khoản · Chính sách bảo mật</span>
+        </div>
       </footer>
     </main>
     <script>
