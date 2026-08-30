@@ -72,6 +72,11 @@ summary::-webkit-details-marker{display:none}
 }
 [data-lh-filterscroll]{scrollbar-width:none;-ms-overflow-style:none}
 [data-lh-filterscroll]::-webkit-scrollbar{display:none}
+/* man hep: section FAQ cao gap doi ma anh trai het be ngang chi con mot dai
+   mong o day, hien ra dot ngot. Phong anh len va keo dai doan chuyen mau. */
+@media (max-width:820px){
+  #faq{background:linear-gradient(180deg,rgba(18,63,112,0) calc(100% - 56px),#123F70 100%),linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC 58%,rgba(252,248,236,.80) 72%,rgba(252,248,236,.30) 88%,rgba(252,248,236,0) 98%),url('assets/img/faq-desert.webp') 50% 100% / 200% auto no-repeat,#FCF8EC !important}
+}
 </style>
 </helmet>
 
@@ -84,7 +89,7 @@ summary::-webkit-details-marker{display:none}
     <img src="assets/img/nav-logo-full.svg" alt="Learning Hub — Học đúng, làm chuẩn" style="height:46px;width:auto;object-fit:contain" />
   </a>
   <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0">
-    <a href="#courses" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">BẮT ĐẦU <b style="font-size:15px">→</b></span></a>
+    <a href="#courses" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">BẮT ĐẦU <b style="font-size:18px;line-height:1">›</b></span></a>
   </div>
 </nav>
 
@@ -111,7 +116,7 @@ summary::-webkit-details-marker{display:none}
       <h1 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(40px,5.6vw,72px);line-height:.96;letter-spacing:-.03em;margin:0 0 22px;text-wrap:balance">BẮT ĐẦU HÀNH TRÌNH<br /><span style="color:#FF9064">RESEARCH SPECIALIST</span></h1>
       <p style="font-size:clamp(16px,1.5vw,20px);line-height:1.65;max-width:540px;color:#EAF2FB;margin:0 0 30px;text-wrap:pretty">Cách dễ vào nhất để học nghiên cứu người dùng — làm cho người MoMo mới bắt đầu.</p>
       <div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-bottom:38px">
-        <a href="#courses" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:10.5px 14px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:19px">→</b></span></a>
+        <a href="#courses" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:10.5px 14px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:23px;line-height:1">›</b></span></a>
       </div>
       <div style="display:flex;gap:10px;flex-wrap:wrap">
         <span style="display:inline-block;background:#4F1F13;clip-path:var(--clipCi);padding:2px">
@@ -134,9 +139,9 @@ summary::-webkit-details-marker{display:none}
 </section>
 
 <section id="courses" data-screen-label="Khóa học" style="background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%)">
-  <div style="padding:clamp(23px,3vw,37px) max(20px,calc((100vw - 1240px) / 2))">
+  <div style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2))">
     <div style="text-align:center;max-width:780px;margin:0 auto 36px">
-      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">18 module về nghiên cứu,<br />học ngắn từng bài một</h2>
+      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">18 module về nghiên cứu,<br />học ngắn từng bài một</h2>
       <p style="font-size:17px;line-height:1.7;color:#6E5F4E;margin:0;text-wrap:pretty">Do team CIO Research của MoMo biên soạn, từ người làm nghề thật cho người mới vào nghề.</p>
     </div>
 
@@ -149,116 +154,110 @@ summary::-webkit-details-marker{display:none}
   </div>
   <span aria-hidden="true" style="width:3px;height:30px;flex-shrink:0;background:#EDE3C7"></span>
   <div data-lh-filterscroll role="group" aria-label="Lọc khóa học" style="display:flex;gap:10px;overflow-x:auto;flex:1;min-width:0;padding:4px 2px;scroll-behavior:smooth">
-    <button data-lh-filter="All" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#FFFFFF;background:#1C66BB;border:none;padding:9px 16px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;filter:var(--btnsm);transition:transform 50ms steps(2),filter 50ms steps(2)" style-active="transform:translate(3px,3px);filter:var(--bd)">Tất cả</button>
-    <button data-lh-filter="Popular" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:none;padding:9px 16px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;filter:var(--btnsm);transition:transform 50ms steps(2),filter 50ms steps(2)" style-active="transform:translate(3px,3px);filter:var(--bd)">Phổ biến</button>
-    <button data-lh-filter="Desk" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:none;padding:9px 16px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;filter:var(--btnsm);transition:transform 50ms steps(2),filter 50ms steps(2)" style-active="transform:translate(3px,3px);filter:var(--bd)">Desk Research</button>
-    <button data-lh-filter="Quali" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:none;padding:9px 16px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;filter:var(--btnsm);transition:transform 50ms steps(2),filter 50ms steps(2)" style-active="transform:translate(3px,3px);filter:var(--bd)">Định tính</button>
-    <button data-lh-filter="Quanti" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:none;padding:9px 16px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;filter:var(--btnsm);transition:transform 50ms steps(2),filter 50ms steps(2)" style-active="transform:translate(3px,3px);filter:var(--bd)">Định lượng</button>
-    <button data-lh-filter="AI" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:none;padding:9px 16px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;filter:var(--btnsm);transition:transform 50ms steps(2),filter 50ms steps(2)" style-active="transform:translate(3px,3px);filter:var(--bd)">AI</button>
+    <button data-lh-filter="All" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#FFFFFF;background:#1C66BB;border:2px solid #4F1F13;padding:7px 14px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;transition:background 120ms">Tất cả</button>
+    <button data-lh-filter="Popular" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:2px solid #4F1F13;padding:7px 14px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;transition:background 120ms">Phổ biến</button>
+    <button data-lh-filter="Desk" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:2px solid #4F1F13;padding:7px 14px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;transition:background 120ms">Desk Research</button>
+    <button data-lh-filter="Quali" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:2px solid #4F1F13;padding:7px 14px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;transition:background 120ms">Định tính</button>
+    <button data-lh-filter="Quanti" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:2px solid #4F1F13;padding:7px 14px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;transition:background 120ms">Định lượng</button>
+    <button data-lh-filter="AI" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;background:#FFFFFF;border:2px solid #4F1F13;padding:7px 14px;flex-shrink:0;white-space:nowrap;cursor:pointer;border-radius:999px;transition:background 120ms">AI</button>
   </div>
   <button data-lh-filternext type="button" aria-label="Cuộn thêm bộ lọc" style="flex-shrink:0;background:#4F1F13;border-radius:999px;padding:2px;border:none;cursor:pointer;visibility:hidden"><span style="display:grid;place-items:center;width:34px;height:34px;background:#FFFFFF;border-radius:999px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4F1F13" stroke-width="3" stroke-linecap="square" shape-rendering="crispEdges" aria-hidden="true"><polyline points="8 4 17 12 8 20"></polyline></svg></span></button>
 </div>
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
 
-      <article data-lh-card="Desk" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Desk" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
         <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#EBF8DE;border-bottom:4px solid #4F1F13">
+          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#EBF8DE;border-bottom:2px solid #4F1F13">
             <img src="assets/img/land-desk.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
             <span style="position:absolute;top:12px;left:12px;display:inline-block;background:#2A460E;clip-path:var(--clipCi);padding:2px;filter:drop-shadow(2px 2px 0 #2A1F17)"><span style="display:inline-flex;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;line-height:1;white-space:nowrap;clip-path:var(--clipSi);background:#467317;color:#fff">Desk</span></span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:20px;margin:0 0 8px;line-height:1.15">Phương pháp<br /><span style="white-space:nowrap;color:#467317">Nghiên cứu tại bàn</span></h3>
             <p style="color:#6E5F4E;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Khai thác dữ liệu sẵn có để trả lời nhanh câu hỏi nghiên cứu đầu tiên: chọn nguồn theo tier, cross-check số liệu, đánh giá độ tin cậy bằng CRAAP.</p>
-            <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.08em;color:#123F70">CƠ BẢN</b>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;color:#4F1F13">Vào học →</span>
-            </div>
+            <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="rgba(255,255,255,.32)"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>CƠ BẢN</span>
+                          </div>
           </div>
         </div>
       </article>
 
-      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
         <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FCDAEA;border-bottom:4px solid #4F1F13">
+          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FCDAEA;border-bottom:2px solid #4F1F13">
             <img src="assets/img/land-quali.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
             <span style="position:absolute;top:12px;left:12px;display:inline-block;background:#7A0A3D;clip-path:var(--clipCi);padding:2px;filter:drop-shadow(2px 2px 0 #2A1F17)"><span style="display:inline-flex;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;line-height:1;white-space:nowrap;clip-path:var(--clipSi);background:#C91065;color:#fff">Định tính</span></span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:20px;margin:0 0 8px;line-height:1.15">Phương pháp<br /><span style="white-space:nowrap;color:#C91065">Nghiên cứu định tính</span></h3>
             <p style="color:#6E5F4E;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Hiểu sâu lý do và hành vi người dùng qua phỏng vấn, quan sát thực tế. UT, FGD, IDI hay Ethnography — biết chọn đúng phương pháp cho từng đề bài.</p>
-            <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.08em;color:#97290F">CƠ BẢN</b>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;color:#4F1F13">Vào học →</span>
-            </div>
+            <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="rgba(255,255,255,.32)"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>CƠ BẢN</span>
+                          </div>
           </div>
         </div>
       </article>
 
-      <article data-lh-card="Quanti" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quanti" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
         <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#DDECF9;border-bottom:4px solid #4F1F13">
+          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#DDECF9;border-bottom:2px solid #4F1F13">
             <img src="assets/img/land-quanti.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
             <span style="position:absolute;top:12px;left:12px;display:inline-block;background:#123F70;clip-path:var(--clipCi);padding:2px;filter:drop-shadow(2px 2px 0 #2A1F17)"><span style="display:inline-flex;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;line-height:1;white-space:nowrap;clip-path:var(--clipSi);background:#1C66BB;color:#fff">Định lượng</span></span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:20px;margin:0 0 8px;line-height:1.15">Phương pháp<br /><span style="white-space:nowrap;color:#1C66BB">Nghiên cứu định lượng</span></h3>
             <p style="color:#6E5F4E;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Đo lường quy mô, xu hướng và kiểm định giả thuyết bằng số liệu — từ chọn mẫu, bảng câu hỏi tới sig test và kết luận.</p>
-            <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.08em;color:#123F70">NÂNG CAO</b>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;color:#4F1F13">Vào học →</span>
-            </div>
+            <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="#FFFFFF"/></svg>NÂNG CAO</span>
+                          </div>
           </div>
         </div>
       </article>
 
-      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
         <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FCDAEA;border-bottom:4px solid #4F1F13">
+          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FCDAEA;border-bottom:2px solid #4F1F13">
             <img src="assets/img/land-quali.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
             <span style="position:absolute;top:12px;left:12px;display:inline-block;background:#7A0A3D;clip-path:var(--clipCi);padding:2px;filter:drop-shadow(2px 2px 0 #2A1F17)"><span style="display:inline-flex;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;line-height:1;white-space:nowrap;clip-path:var(--clipSi);background:#C91065;color:#fff">Module</span></span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:20px;margin:0 0 8px;line-height:1.15">User Testing (UT)</h3>
             <p style="color:#6E5F4E;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Khi nào bắt buộc UT, chuẩn bị request và segment, soạn Task List, hỏi để user nói thật, viết report với completion rate và SUS.</p>
-            <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.08em;color:#97290F">TRUNG BÌNH</b>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;color:#4F1F13">Vào học →</span>
-            </div>
+            <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>TRUNG BÌNH</span>
+                          </div>
           </div>
         </div>
       </article>
 
-      <article data-lh-card="Quanti" data-lh-pop="0" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quanti" data-lh-pop="0" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
         <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#DDECF9;border-bottom:4px solid #4F1F13">
+          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#DDECF9;border-bottom:2px solid #4F1F13">
             <img src="assets/img/land-quanti.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
             <span style="position:absolute;top:12px;left:12px;display:inline-block;background:#123F70;clip-path:var(--clipCi);padding:2px;filter:drop-shadow(2px 2px 0 #2A1F17)"><span style="display:inline-flex;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;line-height:1;white-space:nowrap;clip-path:var(--clipSi);background:#1C66BB;color:#fff">Module</span></span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:20px;margin:0 0 8px;line-height:1.15">Thiết kế bảng câu hỏi</h3>
             <p style="color:#6E5F4E;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Dựng khung bảng hỏi 3 phần, viết câu hỏi và đáp án đạt 8 quy tắc của CIO, chọn tiêu chí test tên và tagline.</p>
-            <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.08em;color:#123F70">TRUNG BÌNH</b>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;color:#4F1F13">Vào học →</span>
-            </div>
+            <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>TRUNG BÌNH</span>
+                          </div>
           </div>
         </div>
       </article>
 
-      <article data-lh-card="AI" data-lh-pop="0" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="AI" data-lh-pop="0" data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
         <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
-          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FFE8D6;border-bottom:4px solid #4F1F13">
+          <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FFE8D6;border-bottom:2px solid #4F1F13">
             <img src="assets/img/land-desk.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
             <span style="position:absolute;top:12px;left:12px;display:inline-block;background:#97290F;clip-path:var(--clipCi);padding:2px;filter:drop-shadow(2px 2px 0 #2A1F17)"><span style="display:inline-flex;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;line-height:1;white-space:nowrap;clip-path:var(--clipSi);background:#FF5D38;color:#fff">AI</span></span>
           </div>
           <div style="padding:16px;display:flex;flex-direction:column;flex:1">
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:20px;margin:0 0 8px;line-height:1.15">Nghiên cứu cùng AI</h3>
             <p style="color:#6E5F4E;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Vì sao GenAI có thể bịa, cách kiểm chứng nguồn và đặt câu hỏi phản biện, chọn đúng AI tool và viết prompt theo 2 style.</p>
-            <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.08em;color:#97290F">TRUNG BÌNH</b>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;color:#4F1F13">Vào học →</span>
-            </div>
+            <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
+              <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>TRUNG BÌNH</span>
+                          </div>
           </div>
         </div>
       </article>
@@ -271,10 +270,10 @@ summary::-webkit-details-marker{display:none}
   </div>
 </section>
 
-<section id="video" data-screen-label="Video" style="padding:clamp(23px,3vw,37px) max(20px,calc((100vw - 1240px) / 2));text-align:center">
-  <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,40px);line-height:1.1;letter-spacing:-.02em;margin:0 auto 30px;max-width:760px;text-wrap:balance">Cùng đồng đội MoMo đi qua ba vùng đất của nghề nghiên cứu</h2>
+<section id="video" data-screen-label="Video" style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2));text-align:center">
+  <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);line-height:1.1;letter-spacing:-.02em;margin:0 auto 30px;max-width:760px;text-wrap:balance">Cùng đồng đội MoMo đi qua ba vùng đất của nghề nghiên cứu</h2>
 
-  <div style="max-width:760px;margin:0 auto;position:relative;background:#123F70;border-radius:18px;overflow:hidden">
+  <div style="margin:0 auto;position:relative;background:#123F70;border-radius:18px;overflow:hidden">
       <video data-lh-video="1" poster="assets/img/video-poster.jpg" playsinline="playsinline" preload="metadata" controls="controls" style="display:block;width:100%;height:auto;aspect-ratio:16 / 9;object-fit:cover">
         <source src="https://static.momocdn.net/app/media/cio/OnboardingV2.mp4" type="video/mp4" />
       </video>
@@ -283,37 +282,33 @@ summary::-webkit-details-marker{display:none}
       </button>
   </div>
 
-  <div style="max-width:940px;margin:44px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px">
-    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 12px">
-      <img src="assets/icon/explore-map-icon.svg" alt="" style="width:30px;height:30px" />
-      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(32px,3.4vw,42px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums">3</b>
-      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.05em;color:#6E5F4E">VÙNG ĐẤT</span>
+  <div style="margin:44px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:2px">
+    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:7.2px;padding:21.6px 14.4px">
+      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38.4px,4.08vw,50.4px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#467317">3</b>
+      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;color:#6E5F4E">VÙNG ĐẤT</span>
     </div>
-    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 12px">
-      <img src="assets/icon/piece.svg" alt="" style="width:30px;height:30px" />
-      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(32px,3.4vw,42px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums">18</b>
-      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.05em;color:#6E5F4E">MODULE</span>
+    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:7.2px;padding:21.6px 14.4px">
+      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38.4px,4.08vw,50.4px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#1C66BB">18</b>
+      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;color:#6E5F4E">MODULE</span>
     </div>
-    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 12px">
-      <img src="assets/icon/quest.svg" alt="" style="width:30px;height:30px" />
-      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(32px,3.4vw,42px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums">75</b>
-      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.05em;color:#6E5F4E">BÀI HỌC</span>
+    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:7.2px;padding:21.6px 14.4px">
+      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38.4px,4.08vw,50.4px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#FF5D38">75</b>
+      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;color:#6E5F4E">BÀI HỌC</span>
     </div>
-    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 12px">
-      <img src="assets/icon/sparkles.svg" alt="" style="width:30px;height:30px" />
-      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(32px,3.4vw,42px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums">6</b>
-      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.05em;color:#6E5F4E">BÀI LUYỆN AI</span>
+    <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:7.2px;padding:21.6px 14.4px">
+      <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38.4px,4.08vw,50.4px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#C91065">6</b>
+      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;color:#6E5F4E">BÀI LUYỆN AI</span>
     </div>
   </div>
 </section>
 
 <section id="features" data-screen-label="Luyện tập" style="background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%)">
-  <div style="padding:clamp(23px,3vw,37px) max(20px,calc((100vw - 1240px) / 2))">
+  <div style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2))">
 
     <article data-lh-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(32px,4vw,56px) 0">
       <div style="position:relative;min-width:0">
         <div style="position:relative;z-index:1">
-          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Học ngắn, có thưởng</h2>
+          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Học ngắn, có thưởng</h2>
           <p style="color:#6E5F4E;font-size:17px;line-height:1.75;font-weight:600;margin:0;max-width:52ch;text-wrap:pretty">Mỗi bài chỉ vài phút — video, quiz hoặc bài đọc. Xong bài là nhận XP và KN, giữ chuỗi ngày học để leo hạng từ Bronze lên Ruby.</p>
         </div>
       </div>
@@ -446,7 +441,7 @@ summary::-webkit-details-marker{display:none}
       </div>
       <div style="position:relative;min-width:0;order:2">
         <div style="position:relative;z-index:1">
-          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Luyện phỏng vấn với AI</h2>
+          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Luyện phỏng vấn với AI</h2>
           <p style="color:#6E5F4E;font-size:17px;line-height:1.75;font-weight:600;margin:0;max-width:52ch;text-wrap:pretty">Bạn đóng vai người phỏng vấn, AI đóng vai người tham gia. Mỗi bài chỉ 3–6 lượt, luyện đúng một kỹ năng và nhận phản hồi ngay sau khi kết thúc.</p>
         </div>
       </div>
@@ -456,7 +451,7 @@ summary::-webkit-details-marker{display:none}
     <article data-lh-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(32px,4vw,56px) 0">
       <div style="position:relative;min-width:0">
         <div style="position:relative;z-index:1">
-          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Bài đọc ngắn, vào thẳng việc</h2>
+          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Bài đọc ngắn, vào thẳng việc</h2>
           <p style="color:#6E5F4E;font-size:17px;line-height:1.75;font-weight:600;margin:0;max-width:52ch;text-wrap:pretty">Không lý thuyết dài dòng. Mỗi bài đọc 2 phút, gói đúng một khung tư duy bạn dùng được ngay trong việc thật — đọc xong là cộng KN.</p>
         </div>
       </div>
@@ -496,65 +491,35 @@ summary::-webkit-details-marker{display:none}
         <div data-lh-avatarcard="1" style="display:flex;border-radius:18px;overflow:hidden;min-height:400px">
 
           <div data-lh-avatarpreview="1" style="flex:0 0 44%;background:#FCE9A8;display:grid;place-items:center;padding:20px">
-            <img src="assets/img/fox-plain.png" alt="" style="width:100%;max-width:174px;object-fit:contain" />
+            <!-- san khau xep lop: JS bom cac <img> layer vao day -->
+            <div data-lh-stage="main" style="position:relative;width:100%;max-width:174px;aspect-ratio:72 / 79.92"></div>
           </div>
 
           <div style="flex:1;min-width:0;background:#FDF7E8;padding:18px 16px;display:flex;flex-direction:column;gap:14px">
-            <div style="display:flex;flex-wrap:wrap;gap:7px">
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Skin</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Cảm xúc</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#FF3D9A;border-radius:999px;padding:5px 11px;color:#FFFFFF">Mũ</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Kính</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Cổ</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Tay</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Giày</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;background:#F1EFDD;border-radius:999px;padding:5px 11px;color:#6E5F4E">Áo đấu</span>
-            </div>
+            <div data-lh-avtabs="1" role="tablist" aria-label="Nhóm phụ kiện" style="display:flex;flex-wrap:wrap;gap:7px"></div>
 
             <div style="height:2px;background:#EDE3C7"></div>
 
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px">
-              <div style="background:#FFF1F6;border:2px solid #FF3D9A;border-radius:11px;padding:12px 5px;text-align:center">
-                <img src="assets/img/fox-plain.png" alt="" style="width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 6px" />
-                <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10.5px;color:#6E5F4E">Không có</span>
-              </div>
-              <div style="background:#FFFFFF;border:2px solid #EDE3C7;border-radius:11px;padding:12px 5px;text-align:center">
-                <img src="assets/img/fox-hat-nonla.png" alt="" style="width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 6px" />
-                <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10.5px;color:#6E5F4E">Nón Lá</span>
-              </div>
-              <div style="background:#FFFFFF;border:2px solid #EDE3C7;border-radius:11px;padding:12px 5px;text-align:center">
-                <img src="assets/img/fox-hat-wc.png" alt="" style="width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 6px" />
-                <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10.5px;color:#6E5F4E">Nón World Cup</span>
-              </div>
-              <div style="background:#FFFFFF;border:2px solid #EDE3C7;border-radius:11px;padding:12px 5px;text-align:center">
-                <img src="assets/img/fox-skin-pink.png" alt="" style="width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 6px" />
-                <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10.5px;color:#6E5F4E">Skin Hồng</span>
-              </div>
-              <div style="background:#FFFFFF;border:2px solid #EDE3C7;border-radius:11px;padding:12px 5px;text-align:center">
-                <img src="assets/img/fox-emo-wink.png" alt="" style="width:56px;height:56px;object-fit:contain;display:block;margin:0 auto 6px" />
-                <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10.5px;color:#6E5F4E">Nháy Mắt</span>
-              </div>
-              <div style="background:#F1EFDD;border:2px solid #EDE3C7;border-radius:11px;padding:12px 5px;text-align:center;opacity:.65">
-                <span style="display:grid;place-items:center;width:56px;height:56px;margin:0 auto 6px;font-size:26px;color:#9A8B77">?</span>
-                <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10.5px;color:#9A8B77">Sắp mở</span>
-              </div>
-            </div>
+            <!-- gioi han 2 hang roi cuon: tab "Ao dau" co 11 o, khong chan thi
+                 no keo cao ca section len so voi cac tab khac -->
+            <div data-lh-avgrid="1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;align-content:start;overflow-y:auto;scrollbar-width:thin"></div>
 
             <!-- can trai: goc phai duoi la cho cua cao mac do dung de -->
             <div style="display:flex;gap:8px;margin-top:auto">
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;background:#EDE3C7;color:#6E5F4E;border-radius:8px;padding:8px 15px">Đặt lại</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;background:#1C66BB;color:#FFFFFF;border-radius:8px;padding:8px 15px">Xong</span>
+              <button data-lh-avreset="1" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;background:#EDE3C7;color:#6E5F4E;border:none;border-radius:8px;padding:8px 15px;cursor:pointer;transition:background 120ms" style-hover="background:#E0D4B4">Đặt lại</button>
+              <button data-lh-avdone="1" type="button" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;background:#1C66BB;color:#FFFFFF;border:none;border-radius:8px;padding:8px 15px;cursor:pointer;transition:background 120ms" style-hover="background:#155396">Xong</button>
             </div>
           </div>
         </div>
 
         <img data-lh-item="cap" src="assets/img/item-cap.png" alt="" style="position:absolute;left:-14px;bottom:16px;width:134px;z-index:2;object-fit:contain;transform:rotate(-9deg)" />
         <img data-lh-item="scarf" src="assets/img/item-scarf.png" alt="" style="position:absolute;left:130px;bottom:8px;width:118px;z-index:2;object-fit:contain" />
-        <img data-lh-dressed="1" src="assets/img/mascot-cta-2.png" alt="" style="position:absolute;right:-64px;bottom:0;width:189px;z-index:3;object-fit:contain" />
+        <!-- cao dung o goc phai mac dung bo do dang chon -->
+        <div data-lh-stage="mini" style="position:absolute;right:-64px;bottom:0;width:189px;aspect-ratio:72 / 79.92;z-index:3"></div>
       </div>
       <div style="position:relative;min-width:0;order:2">
         <div style="position:relative;z-index:1">
-          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(28px,3.2vw,40px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Học xong thì được đổi đồ</h2>
+          <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);letter-spacing:-.02em;margin:0 0 16px;line-height:1.1;text-wrap:balance">Học xong thì được đổi đồ</h2>
           <p style="color:#6E5F4E;font-size:17px;line-height:1.75;font-weight:600;margin:0;max-width:52ch;text-wrap:pretty">Xu kiếm được từ bài học đem đi mở rương, sưu tầm mũ, kính, khăn và áo đấu. Avatar của bạn hiện luôn trên bảng xếp hạng — nên ai cũng thấy.</p>
         </div>
       </div>
@@ -565,7 +530,7 @@ summary::-webkit-details-marker{display:none}
 <section id="club" data-screen-label="Phần thưởng" style="position:relative;background:linear-gradient(180deg,#FDF7E8 0,#123F70 clamp(26px,3.4vw,46px),#123F70 calc(100% - clamp(26px,3.4vw,46px)),#FDF7E8 100%);color:#fff;overflow:hidden">
   <div style="position:relative;padding:clamp(46px,5.75vw,74px) max(20px,calc((100vw - 1240px) / 2))">
     <div style="text-align:center;max-width:680px;margin:0 auto 56px">
-      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(32px,4.2vw,52px);line-height:1.06;letter-spacing:-.02em;margin:0 0 43px;text-wrap:balance">Học có thưởng</h2>
+      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38.4px,5.04vw,62.4px);line-height:1.06;letter-spacing:-.02em;margin:0 0 43px;text-wrap:balance">Học có thưởng</h2>
       <p style="color:#DDECF9;font-size:17px;line-height:1.7;margin:0;text-wrap:pretty">Làm nhiệm vụ, giữ chuỗi ngày học, đổi Xu lấy quà và leo hạng cùng cả team.</p>
     </div>
 
@@ -608,9 +573,9 @@ summary::-webkit-details-marker{display:none}
   </div>
 </section>
 
-<section id="outcomes" data-screen-label="Học xong làm được gì" style="padding:clamp(23px,3vw,37px) max(20px,calc((100vw - 1240px) / 2))">
+<section id="outcomes" data-screen-label="Học xong làm được gì" style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2))">
   <div style="text-align:center;max-width:800px;margin:0 auto 44px">
-    <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Học xong mỗi vùng đất, bạn làm được gì?</h2>
+    <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Học xong mỗi vùng đất, bạn làm được gì?</h2>
     <p style="font-size:17px;line-height:1.7;color:#6E5F4E;margin:0;text-wrap:pretty">Không phải "hiểu khái niệm". Là những việc cụ thể bạn mang về bàn làm việc ngay tuần sau.</p>
   </div>
 
@@ -630,7 +595,7 @@ summary::-webkit-details-marker{display:none}
           <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#6E5F4E"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#467317">✓</span>Xếp hạng nguồn theo tier và cross-check số liệu lệch</li>
           <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#6E5F4E"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#467317">✓</span>Chấm độ tin cậy bằng CRAAP và nói rõ giới hạn dữ liệu</li>
         </ul>
-        <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px"><a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#467317" style-hover="color:#FF5D38">Xem vùng đất →</a></div>
+        <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px"><a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#467317" style-hover="color:#FF5D38">Xem vùng đất ›</a></div>
       </div>
     </article>
 
@@ -648,7 +613,7 @@ summary::-webkit-details-marker{display:none}
           <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#6E5F4E"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#C91065">✓</span>Viết Discussion Guide 3 phần chạy được ngay</li>
           <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#6E5F4E"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#C91065">✓</span>Hỏi mở, đào sâu và giữ trung lập để user nói thật</li>
         </ul>
-        <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px"><a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#C91065" style-hover="color:#FF5D38">Xem vùng đất →</a></div>
+        <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px"><a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#C91065" style-hover="color:#FF5D38">Xem vùng đất ›</a></div>
       </div>
     </article>
 
@@ -666,27 +631,28 @@ summary::-webkit-details-marker{display:none}
           <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#6E5F4E"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#1C66BB">✓</span>Clean data 3 lớp trước khi phân tích</li>
           <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#6E5F4E"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#1C66BB">✓</span>Chạy sig test và đọc kết quả để ra kết luận</li>
         </ul>
-        <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px"><a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#1C66BB" style-hover="color:#FF5D38">Xem vùng đất →</a></div>
+        <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px"><a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#1C66BB" style-hover="color:#FF5D38">Xem vùng đất ›</a></div>
       </div>
     </article>
   </div>
 </section>
 
 
-<section id="stories" data-screen-label="Câu chuyện" style="position:relative;background:linear-gradient(180deg,#FDF7E8 0,#0B2545 clamp(26px,3.4vw,46px),#0B2545 calc(100% - clamp(26px,3.4vw,46px)),#FDF7E8 100%);color:#fff;overflow:hidden">
+<section id="stories" data-screen-label="Câu chuyện" style="position:relative;background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%);color:#4F1F13;overflow:hidden">
   <div style="position:relative;padding:clamp(46px,5.75vw,74px) max(20px,calc((100vw - 1240px) / 2))">
-    <div style="text-align:center;max-width:720px;margin:0 auto 48px">
-      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(28px,3.6vw,44px);line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap">Chuyện của MoMoers đã học
-        <svg viewBox="0 0 11 10" aria-hidden="true" style="width:32px;height:29px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#FF3D6B" d="M1,1h3v1h1v1h1v-1h1v-1h3v1h1v4h-1v1h-1v1h-1v1h-1v1h-2v-1h-1v-1h-1v-1h-1v-1h-1v-4h1z"></path><path fill="#FF8FA8" d="M2,2h1v1h-1z"></path></svg>
-      </h2>
-      <p style="color:#A8CDF4;font-size:16.5px;line-height:1.7;margin:0;text-wrap:pretty">Không phải review 5 sao. Là việc thật họ làm được sau khi học xong một vùng đất.</p>
+    <div style="text-align:center;max-width:720px;margin:0 auto 72px">
+      <!-- trai tim de inline trong dong chu: neu de flex item rieng thi khi tieu
+           de xuong dong no bi day han xuong mot dong moi -->
+      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,4.32vw,52.8px);line-height:1.1;letter-spacing:-.02em;margin:0;text-wrap:balance">Chuyện của MoMoers đã học<svg viewBox="0 0 11 10" aria-hidden="true" style="width:32px;height:29px;display:inline-block;vertical-align:middle;margin-left:12px;shape-rendering:crispEdges"><path fill="#FF3D6B" d="M1,1h3v1h1v1h1v-1h1v-1h3v1h1v4h-1v1h-1v1h-1v1h-1v1h-2v-1h-1v-1h-1v-1h-1v-1h-1v-4h1z"></path><path fill="#FF8FA8" d="M2,2h1v1h-1z"></path></svg></h2>
     </div>
 
-    <div data-lh-stories="1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.2vw,26px);align-items:stretch">
-      <article data-lh-reveal="1" style="background:#6FA8DF;clip-path:var(--clipC);padding:2px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
+    <!-- kho the bam theo Codedex: rong toi da 335px, cao toi thieu 666px (ti le
+         ~0.50) va vung anh chiem ~44% chieu cao -->
+    <div data-lh-stories="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,335px));justify-content:center;gap:clamp(18px,2.2vw,26px);align-items:stretch">
+      <article data-lh-reveal="1" style="background:#6FA8DF;clip-path:var(--clipC);padding:2px 2px 6px;min-height:666px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
         <div style="background:#0F3157;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
-          <div style="background:#F4ECD6;display:grid;place-items:center;padding:20px;min-height:176px">
-            <img src="assets/img/story-1.png" alt="" style="max-width:132px;max-height:136px;width:auto;height:auto;object-fit:contain" />
+          <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
+            <img src="assets/img/story-1.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
           </div>
           <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -704,10 +670,10 @@ summary::-webkit-details-marker{display:none}
           </div>
         </div>
       </article>
-      <article data-lh-reveal="1" style="background:#6FA8DF;clip-path:var(--clipC);padding:2px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
+      <article data-lh-reveal="1" style="background:#6FA8DF;clip-path:var(--clipC);padding:2px 2px 6px;min-height:666px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
         <div style="background:#0F3157;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
-          <div style="background:#F4ECD6;display:grid;place-items:center;padding:20px;min-height:176px">
-            <img src="assets/img/story-2.png" alt="" style="max-width:132px;max-height:136px;width:auto;height:auto;object-fit:contain" />
+          <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
+            <img src="assets/img/story-2.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
           </div>
           <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -725,10 +691,10 @@ summary::-webkit-details-marker{display:none}
           </div>
         </div>
       </article>
-      <article data-lh-reveal="1" style="background:#6FA8DF;clip-path:var(--clipC);padding:2px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
+      <article data-lh-reveal="1" style="background:#6FA8DF;clip-path:var(--clipC);padding:2px 2px 6px;min-height:666px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
         <div style="background:#0F3157;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
-          <div style="background:#F4ECD6;display:grid;place-items:center;padding:20px;min-height:176px">
-            <img src="assets/img/story-3.png" alt="" style="max-width:132px;max-height:136px;width:auto;height:auto;object-fit:contain" />
+          <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
+            <img src="assets/img/story-3.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
           </div>
           <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
             <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
@@ -751,10 +717,12 @@ summary::-webkit-details-marker{display:none}
 </section>
 
 <sc-if value="{{ showFaq }}" hint-placeholder-val="{{ true }}">
-<section id="faq" data-screen-label="FAQ" style="background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%)">
-  <div style="padding:clamp(23px,3vw,37px) max(20px,calc((100vw - 1240px) / 2));display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
+<!-- nen sa mac hien dan tu duoi len: lop gradient kem phu kin phia tren roi
+     nhat dan ve trong suot o day, nen mep tren van noi lien voi section truoc -->
+<section id="faq" data-screen-label="FAQ" style="background:linear-gradient(180deg,rgba(18,63,112,0) calc(100% - 64px),#123F70 100%),linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC 46%,rgba(252,248,236,.84) 61%,rgba(252,248,236,.34) 80%,rgba(252,248,236,0) 96%),url('assets/img/faq-desert.webp') 50% 100% / 100% auto no-repeat,#FCF8EC">
+  <div data-lh-faqgrid="1" style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2)) clamp(48px,6vw,86px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(32px,5vw,64px);align-items:start">
     <div>
-      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(30px,3.6vw,46px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance">Câu hỏi hay gặp</h2>
+      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 16px;text-wrap:balance">Câu hỏi hay gặp</h2>
       <p style="font-size:16px;line-height:1.7;color:#6E5F4E;margin:0 0 24px;max-width:44ch;text-wrap:pretty">Chưa thấy câu của bạn? Nhắn cho team CIO Research trên Slack, tụi mình trả lời trong ngày.</p>
       <img src="assets/pose/questioning.svg" alt="" style="width:110px;height:110px;animation:lh-bob2 3s ease-in-out infinite" />
     </div>
@@ -786,27 +754,30 @@ summary::-webkit-details-marker{display:none}
       </details>
     </div>
   </div>
-</section>
-</sc-if>
 
-<section data-screen-label="CTA cuối" style="background:linear-gradient(180deg,#FDF7E8 0,#FF5D38 clamp(24px,3.2vw,42px),#FF5D38 calc(100% - clamp(22px,3vw,38px)),#123F70 100%);color:#fff;position:relative;overflow:hidden">
-  <div style="position:relative;padding:clamp(46px,5.75vw,74px) max(20px,calc((100vw - 1240px) / 2));display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,60px);flex-wrap:wrap;text-align:center">
-    <img src="assets/img/mascot-cta-1.png" alt="" style="width:clamp(96px,11vw,150px);height:clamp(96px,11vw,150px);object-fit:contain;animation:lh-bob 2.1s ease infinite" />
+  <!-- CTA cuoi nam luon tren canh sa mac: tieu de co nen cam de doc duoc tren
+       nen anh nhieu chi tiet -->
+  <div data-lh-faqcta="1" style="position:relative;padding:0 max(20px,calc((100vw - 1240px) / 2)) clamp(56px,7vw,110px);display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,44px);flex-wrap:wrap;text-align:center">
+    <img src="assets/img/mascot-cta-2.png" alt="" style="width:clamp(120px,13vw,186px);height:clamp(120px,13vw,186px);object-fit:contain;flex-shrink:0;animation:lh-bob 2.1s ease infinite" />
     <div>
-      <div style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.05em;color:#FFE0D5;margin-bottom:16px">VÙNG ĐẤT ĐẦU TIÊN ĐANG CHỜ</div>
-      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(30px,4vw,50px);line-height:1.06;letter-spacing:-.02em;margin:0 0 24px;text-wrap:balance">Sẵn sàng cho bài học đầu tiên?</h2>
-      <a href="#courses" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#4F1F13;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:17px;color:#4F1F13;background:#FFFFFF;padding:15px 28px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#F4ECD6" style-active="transform:translateY(4px);background:#EDE3C7"><img src="assets/icon/insert-coin.svg" alt="" style="width:22px;height:22px" />Bắt đầu học miễn phí</span></a>
+      <h2 style="display:inline-block;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(30px,4vw,50px);line-height:1.12;letter-spacing:-.02em;margin:0 0 20px;color:#FFFFFF;background:#FF5D38;clip-path:var(--clipCi);padding:10px 20px;text-wrap:balance"><span data-lh-type="Sẵn sàng cho bài học đầu tiên?">Sẵn sàng cho bài học đầu tiên?</span><span data-lh-typecaret="1" aria-hidden="true" style="display:inline-block;width:.09em;height:.78em;background:#FFFFFF;vertical-align:-.04em;margin-left:.12em;animation:lh-blink 1s steps(1) infinite"></span></h2>
+      <div>
+        <a href="#courses" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:15px 28px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:23px;line-height:1">›</b></span></a>
+      </div>
     </div>
-    <img src="assets/img/mascot-cta-2.png" alt="" style="width:clamp(96px,11vw,150px);height:clamp(96px,11vw,150px);object-fit:contain;animation:lh-bob 2.1s ease .6s infinite" />
   </div>
 </section>
+</sc-if>
 
 <footer data-screen-label="Footer" style="background:#123F70;color:#fff">
   <div style="padding:clamp(48px,6vw,70px) max(20px,calc((100vw - 1240px) / 2)) 24px">
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px">
       <div style="display:flex;flex-direction:column;gap:14px">
         <a href="#top" aria-label="Learning Hub trang chủ" style="display:flex;align-items:center;gap:11px;color:#fff;width:max-content">
-          <img src="assets/img/logo-footer.png" alt="" width="48" height="48" style="width:48px;height:48px;object-fit:contain;image-rendering:auto" />
+          <!-- dung dung con cao cua nav, con phan chu dat bang text trang: ban
+               wordmark cua nav co chu mau den, phu filter cho sang thi ca con
+               cao bi bet thanh mot khoi trang -->
+          <img src="assets/img/nav-logo-icon.svg" alt="" width="46" height="46" style="width:46px;height:46px;object-fit:contain;flex-shrink:0" />
           <span style="display:flex;flex-direction:column;line-height:1;font-family:'MoMo Trusts Display',system-ui,sans-serif">
             <b style="font-size:19px;font-weight:800;letter-spacing:-.4px;color:#fff">Learning Hub</b>
             <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;color:#FF9064;margin-top:6px">HỌC ĐÚNG · LÀM CHUẨN</span>
@@ -928,6 +899,274 @@ class Component extends DCLogic {
       }), 2600);
     }
 
+    // tieu de CTA cuoi: go tung chu khi cuon toi, con tro nhap nhay giu lai
+    const typeEl = root.querySelector('[data-lh-type]');
+    if (typeEl) {
+      const full = typeEl.getAttribute('data-lh-type') || '';
+      const band = typeEl.closest('h2');
+      // do san chieu cao dong chu day du roi ghim lai: neu de trong, luc go het
+      // chu xuong hai dong thi ca cai nut ben duoi bi day giat xuong
+      const lockBand = () => {
+        if (!band) return;
+        const keep = typeEl.textContent;
+        band.style.minHeight = '';
+        typeEl.textContent = full;
+        const h = band.getBoundingClientRect().height;
+        typeEl.textContent = keep;
+        band.style.minHeight = h + 'px';
+      };
+      if (band) { typeEl.textContent = full; lockBand(); }
+      // do lai khi font tai xong va khi doi be ngang, ly do giong khung chat
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockBand).catch(() => {});
+      let bandT = 0;
+      window.addEventListener('resize', () => { clearTimeout(bandT); bandT = setTimeout(lockBand, 180); });
+      if (reduce) {
+        typeEl.textContent = full;
+      } else {
+        typeEl.textContent = '';
+        let started = false;
+        const typeRun = () => {
+          if (started) return;
+          started = true;
+          let k = 0;
+          const tick = () => {
+            k += 1;
+            typeEl.textContent = full.slice(0, k);
+            // cham lai o dau cach va dau cau cho giong nhip go that
+            if (k < full.length) setTimeout(tick, /[ ,.?]/.test(full[k - 1]) ? 90 : 42);
+          };
+          setTimeout(tick, 200);
+        };
+        // bam theo scroll thay vi IntersectionObserver: observer khong dang tin
+        // trong khung xem truoc cua trinh thiet ke, ma neu dat timer du phong
+        // thi chu go xong tu truoc khi nguoi dung cuon toi
+        const target = band || typeEl;
+        const onScrollType = () => {
+          const r = target.getBoundingClientRect();
+          if (r.top < window.innerHeight * .85 && r.bottom > 0) {
+            typeRun();
+            window.removeEventListener('scroll', onScrollType);
+          }
+        };
+        window.addEventListener('scroll', onScrollType, { passive: true });
+        onScrollType();
+      }
+    }
+
+    // tuy bien avatar: xep lop pose + phu kien
+    //
+    // Moi file SVG phu kien duoc tac gia xuat o muc zoom rieng, khong khop san
+    // voi con cao. He so fit ben duoi lay tu chinh ma tran transform trong cap
+    // file "<mon do>.svg" / "fox-with<mon do>.svg" cua tac giao, nen vi tri deo
+    // dung y ban ghep san. Rieng nhom cam tay va vong co thi cap file ghep dung
+    // tu the cao khac nen phai canh tay theo tu the ngoi cua bo pose nay.
+    //
+    // fit = { s: ti le, tx/ty: doi vi tri theo chieu rong san khau }
+    // sq  = file dung khung vuong 810x810 (nhom ao dau), con lai la 72x79.92
+    const AV_CATS = [
+      { key: 'pose',   label: 'Cảm xúc', z: 0, required: true },
+      { key: 'outfit', label: 'Áo đấu',  z: 1 },
+      { key: 'shoe',   label: 'Giày',    z: 2 },
+      { key: 'neck',   label: 'Cổ',      z: 3 },
+      { key: 'hat',    label: 'Mũ',      z: 4 },
+      { key: 'eye',    label: 'Kính',    z: 5 },
+      { key: 'hand',   label: 'Tay',     z: 6 },
+    ];
+    const AV_ITEMS = {
+      pose: [
+        { id: 'cuoi', label: 'Cười' },
+        { id: 'gian', label: 'Giận' },
+        { id: 'khoc', label: 'Khóc' },
+        { id: 'ac',   label: 'Nham hiểm' },
+      ],
+      hat: [
+        { id: 'nonla',      label: 'Nón lá',        m: [0.515384, 0, 0, 0.515384], tx: 24.1126, ty: -6.0572 },
+        { id: 'nonbaohiem', label: 'Nón bảo hiểm',  m: [0.409691, 0, 0, 0.409691], tx: 28.5212, ty: -2.1779 },
+        { id: 'cap',        label: 'Nón lưỡi trai', m: [0.395833, 0, 0, 0.395833], tx: 30.6758, ty: -3.9902 },
+      ],
+      eye: [
+        { id: 'glasses', label: 'Kính râm', m: [0.748299, 0, 0, 0.748299], tx: 12.4398, ty:  8.5047 },
+        { id: 'kinhcan', label: 'Kính cận', m: [0.726495, 0, 0, 0.726495], tx: 13.9561, ty:  9.4605 },
+        { id: 'kinhlup', label: 'Kính lúp', m: [0.276363, 0, 0, 0.276363], tx: 51.6015, ty: 31.3415 },
+      ],
+      neck: [
+        { id: 'khanchoang',   label: 'Khăn choàng', m: [0.369230, 0, 0, 0.369230], tx: 31.4484, ty: 54.2105 },
+        { id: 'khanwc',       label: 'Khăn WC',     m: [0.458333, 0, 0, 0.458333], tx: 26.6389, ty: 49.9812 },
+        { id: 'aochoangxanh', label: 'Khăn xanh',   m: [0.469513, 0, 0, 0.469513], tx: 31.9000, ty: 44.0877 },
+        // vong co gom hai nua doi xung duoc tac gia doi cho rieng tung nua khi
+        // ghep, mot phep bien doi chung khong tai tao duoc -> canh tay o co
+        { id: 'necklace',     label: 'Vòng cổ',     m: [0.361039, 0, 0, 0.361039], tx: 32.0203, ty: 37.9448 },
+      ],
+      hand: [
+        { id: 'banh',   label: 'Bánh',    m: [0.202898, 0, 0, 0.202898],                    tx: 11.8269, ty: 62.8614 },
+        { id: 'banhmi', label: 'Bánh mì', m: [-0.046828, -0.23648, -0.23648, 0.046828],     tx: 33.8061, ty: 80.0269 },
+        { id: 'cup',    label: 'Ly nước', m: [0.275032, -0.097091, 0.097091, 0.275032],     tx:  0.6295, ty: 62.0594 },
+        { id: 'quatmo', label: 'Quạt mo', m: [0.262235, -0.282451, 0.282451, 0.262235],     tx: -11.0292, ty: 70.3254 },
+        { id: 'radar',  label: 'Radar',   m: [0.285744, -0.171644, 0.171644, 0.285744],     tx: -3.0093, ty: 64.6125 },
+      ],
+      shoe: [
+        { id: 'sneaker',     label: 'Giày thể thao', m: [0.437500, 0, 0, 0.437500], tx: 25.9777, ty: 65.2750 },
+        { id: 'pinksneaker', label: 'Giày hồng',     m: [0.385416, 0, 0, 0.385416], tx: 27.2999, ty: 66.6340 },
+      ],
+      outfit: [
+        { id: 'vietnam',   label: 'Việt Nam',    sq: 1, s: 0.524580, tx: 0.230810, ty: 0.545560 },
+        { id: 'brazil',    label: 'Brazil',      sq: 1, s: 0.478942, tx: 0.248839, ty: 0.579760 },
+        { id: 'argentina', label: 'Argentina',   sq: 1, s: 0.515152, tx: 0.232939, ty: 0.540074 },
+        { id: 'belgium',   label: 'Bỉ',          sq: 1, s: 0.529110, tx: 0.235495, ty: 0.547485 },
+        { id: 'england',   label: 'Anh',         sq: 1, s: 0.536287, tx: 0.221081, ty: 0.542460 },
+        { id: 'france',    label: 'Pháp',        sq: 1, s: 0.518042, tx: 0.230711, ty: 0.537461 },
+        { id: 'norway',    label: 'Na Uy',       sq: 1, s: 0.476217, tx: 0.254417, ty: 0.541429 },
+        { id: 'portugal',  label: 'Bồ Đào Nha',  sq: 1, s: 0.458216, tx: 0.262794, ty: 0.586737 },
+        { id: 'spain',     label: 'Tây Ban Nha', sq: 1, s: 0.481024, tx: 0.250619, ty: 0.562022 },
+        { id: 'swit',      label: 'Thụy Sĩ',     sq: 1, s: 0.534815, tx: 0.216521, ty: 0.527529 },
+      ],
+    };
+    // Con cao trong bo file ao dau la mot ban ve khac, than rong hon bo pose
+    // khoang 6-10%, nen ao mac vao bi lech. Bang duoi canh khung ao dau ve
+    // dung than tung tu the: do be ngang than ngang tam nguc roi khop lai.
+    const AV_POSEFIT = {
+      cuoi: { a: 0.94514, bx: 0.02525, by: -0.02223 },
+      gian: { a: 0.91521, bx: 0.04122, by:  0.00201 },
+      khoc: { a: 0.90773, bx: 0.04001, by:  0.00140 },
+      ac:   { a: 0.91272, bx: 0.04998, by:  0.00403 },
+    };
+    const avTabs = root.querySelector('[data-lh-avtabs]');
+    const avGrid = root.querySelector('[data-lh-avgrid]');
+    if (avTabs && avGrid) {
+      const stages = [...root.querySelectorAll('[data-lh-stage]')];
+      const worn = { pose: 'cuoi' };
+      let avTab = 'hat';
+
+      const src = (cat, id) => 'assets/avatar/' + cat + '/' + id + '.svg';
+      // khung vuong doi chieu theo chieu rong, khung 72x79.92 cao hon nen ty
+      // phai quy ve % chieu cao cua chinh anh (72/79.92 = 0.9009)
+      const layerCss = (it) => {
+        if (!it) return '';
+        if (it.sq) {
+          // ao dau: don phep canh khung theo tu the dang mac truoc khi ve.
+          // tx/ty o day la ti le be ngang khung, anh vuong nen ca hai deu quy
+          // ve be ngang.
+          const p = AV_POSEFIT[worn.pose] || AV_POSEFIT.cuoi;
+          const s = p.a * it.s, tx = p.a * it.tx + p.bx, ty = p.a * it.ty + p.by;
+          return 'transform-origin:0 0;transform:translate(' + (tx * 100).toFixed(4) + '%,'
+            + (ty * 100).toFixed(4) + '%) scale(' + s.toFixed(6) + ')';
+        }
+        // phu kien: ma tran day du (co ca xoay/lat) lay tu chinh file ghep cua
+        // tac gia; tx theo % be ngang, ty theo % chieu cao cua chinh anh
+        return 'transform-origin:0 0;transform:translate(' + it.tx + '%,' + it.ty + '%) '
+          + 'matrix(' + it.m.join(',') + ',0,0)';
+      };
+
+      const paintStage = (stage) => {
+        stage.innerHTML = '';
+        AV_CATS.forEach((cat) => {
+          const id = worn[cat.key];
+          if (!id) return;
+          const it = (AV_ITEMS[cat.key] || []).find((o) => o.id === id);
+          if (!it) return;
+          const img = document.createElement('img');
+          img.src = src(cat.key, id);
+          img.alt = '';
+          img.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:auto;'
+            + 'z-index:' + cat.z + ';pointer-events:none;' + layerCss(cat.key === 'pose' ? null : it);
+          stage.appendChild(img);
+        });
+      };
+      const paintAll = () => stages.forEach(paintStage);
+
+      // anh nho trong luoi chon: cung la mot san khau thu nho, cao + mon do
+      const thumb = (cat, it) => {
+        const box = document.createElement('span');
+        box.style.cssText = 'position:relative;display:block;width:56px;height:62px;margin:0 auto 6px';
+        const base = document.createElement('img');
+        base.src = src('pose', worn.pose || 'cuoi');
+        base.alt = '';
+        base.loading = 'lazy';
+        base.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:auto';
+        box.appendChild(base);
+        if (it) {
+          const over = document.createElement('img');
+          over.src = src(cat, it.id);
+          over.alt = '';
+          over.loading = 'lazy';
+          over.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:auto;'
+            + (cat === 'pose' ? '' : layerCss(it));
+          if (cat === 'pose') over.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:auto';
+          box.appendChild(over);
+        }
+        return box;
+      };
+
+      const paintTabs = () => {
+        avTabs.innerHTML = '';
+        AV_CATS.forEach((cat) => {
+          const on = cat.key === avTab;
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('role', 'tab');
+          b.setAttribute('aria-selected', on ? 'true' : 'false');
+          b.textContent = cat.label;
+          b.style.cssText = "font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;"
+            + 'font-size:11px;border:none;border-radius:999px;padding:5px 11px;cursor:pointer;'
+            + 'transition:background 120ms;background:' + (on ? '#FF3D9A' : '#F1EFDD')
+            + ';color:' + (on ? '#FFFFFF' : '#6E5F4E');
+          b.addEventListener('click', () => { avTab = cat.key; paintTabs(); paintGrid(); });
+          avTabs.appendChild(b);
+        });
+      };
+
+      const paintGrid = () => {
+        avGrid.innerHTML = '';
+        const cat = AV_CATS.find((c) => c.key === avTab);
+        const list = AV_ITEMS[avTab] || [];
+        list.forEach((it) => {
+          const on = worn[avTab] === it.id;
+          const cell = document.createElement('button');
+          cell.type = 'button';
+          cell.setAttribute('aria-pressed', on ? 'true' : 'false');
+          // nhom bat buoc (cam xuc) luon phai co mot lua chon nen khong go duoc
+          cell.title = on && !cat.required ? 'Bấm lần nữa để cởi ra' : '';
+          cell.style.cssText = 'background:' + (on ? '#FFF1F6' : '#FFFFFF')
+            + ';border:2px solid ' + (on ? '#FF3D9A' : '#EDE3C7')
+            + ';border-radius:11px;padding:12px 5px;text-align:center;cursor:pointer;'
+            + 'display:block;width:100%;transition:border-color 120ms,background 120ms';
+          cell.appendChild(thumb(avTab, it));
+          const cap = document.createElement('span');
+          cap.textContent = it.label;
+          cap.style.cssText = "font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;"
+            + 'font-size:10.5px;color:#6E5F4E;display:block;line-height:1.25';
+          cell.appendChild(cap);
+          cell.addEventListener('click', () => {
+            // bam lai mon dang mac thi coi ra, tru nhom bat buoc
+            if (worn[avTab] === it.id) { if (cat.required) return; delete worn[avTab]; }
+            else worn[avTab] = it.id;
+            paintAll();
+            paintGrid();
+          });
+          avGrid.appendChild(cell);
+        });
+        // chot tran o dung 2 hang o, do tu o thuc te de con dung khi doi co chu
+        const first = avGrid.firstElementChild;
+        if (first) avGrid.style.maxHeight = (first.offsetHeight * 2 + 9) + 'px';
+        avGrid.scrollTop = 0;
+      };
+
+      const resetBtn = root.querySelector('[data-lh-avreset]');
+      if (resetBtn) resetBtn.addEventListener('click', () => {
+        Object.keys(worn).forEach((k) => delete worn[k]);
+        worn.pose = 'cuoi';
+        paintAll(); paintGrid();
+      });
+      const doneBtn = root.querySelector('[data-lh-avdone]');
+      if (doneBtn) doneBtn.addEventListener('click', () => {
+        const old = doneBtn.textContent;
+        doneBtn.textContent = 'Đã lưu ✓';
+        setTimeout(() => { doneBtn.textContent = old; }, 1200);
+      });
+
+      paintTabs(); paintGrid(); paintAll();
+    }
+
     // course filters + text search
     const cards = [...root.querySelectorAll('[data-lh-card]')];
     const btns = [...root.querySelectorAll('[data-lh-filter]')];
@@ -1028,6 +1267,42 @@ class Component extends DCLogic {
       // nho display goc de an bang display:none (opacity:0 van chiem cho, de lai
       // mot khoang trong bang dung cac tin nhan chua toi luot)
       msgs.forEach((m) => { if (!m.dataset.lhDisp) m.dataset.lhDisp = getComputedStyle(m).display; });
+      // Ghim san chieu cao luc du tin nhan. An bang display:none lam khung chat
+      // cao dan theo tung tin, keo con cao dung o goc duoi (bottom:0) tut xuong
+      // theo. Do truoc roi giu cho, cao se dung yen mot cho.
+      const lockHeight = () => {
+        if (getComputedStyle(thread).position === 'absolute') return;
+        const keepMsg = msgs.map((m) => m.getAttribute('style') || '');
+        const keepTxt = msgs.map((m) => { const s = partsOf(m).say; return s ? s.textContent : null; });
+        const keepAsk = ask ? (ask.getAttribute('style') || '') : null;
+        // do trong trang thai an di: neu do lai giua chung hoi thoai, viec bay
+        // tam ca ba tin nhan ra se loe len mot nhip
+        thread.style.visibility = 'hidden';
+        thread.style.minHeight = '';
+        msgs.forEach((m) => {
+          m.style.display = m.dataset.lhDisp || '';
+          m.style.opacity = '0';
+          const s = partsOf(m).say;
+          if (s) s.textContent = s.getAttribute('data-lh-say') || '';
+        });
+        if (ask) ask.style.display = 'flex';
+        const h = thread.getBoundingClientRect().height;
+        msgs.forEach((m, i) => {
+          m.setAttribute('style', keepMsg[i]);
+          const s = partsOf(m).say;
+          if (s && keepTxt[i] !== null) s.textContent = keepTxt[i];
+        });
+        if (ask) ask.setAttribute('style', keepAsk);
+        thread.style.minHeight = h + 'px';
+        thread.style.visibility = '';
+      };
+      lockHeight();
+      // font rieng tai xong sau khi mount: chu doi metric nen bong bong cao len
+      // qua muc vua ghim, khung lai no ra. Do lai mot lan nua cho chac.
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockHeight).catch(() => {});
+      // doi be ngang thi chu xuong dong khac di, so do cu khong con dung
+      let lockT = 0;
+      window.addEventListener('resize', () => { clearTimeout(lockT); lockT = setTimeout(lockHeight, 180); });
       const reveal = (m) => { m.style.display = m.dataset.lhDisp || ''; m.style.opacity = '1'; };
       const reset = () => {
         clear();
