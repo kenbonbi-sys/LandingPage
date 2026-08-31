@@ -70,6 +70,43 @@ summary::-webkit-details-marker{display:none}
   nav>div:first-of-type a{font-size:13px!important;padding:4px 0!important;border-bottom-width:3px!important}
   nav>div:last-of-type{margin-left:auto!important}
 }
+/* Hover vao the tren ke: nghieng sang mot ben va flip tron mot vong quanh
+   truc doc. Flip khong lam hop bao to ra (chi thu hep ngang) nen khong bi
+   clip-path cua khung ke cat — khac han xoay 2D. Mat truoc la trang dau (bia),
+   mat sau la trang cuoi cua chinh bo do; neu khong co mat sau thi nua vong
+   giua se thay bia bi lon guong. Vong flip ket o 360deg (trung moc dau) nen
+   bo hover khong bi giat. */
+@keyframes lh-fcflip{from{transform:rotateY(0deg)}to{transform:rotateY(360deg)}}
+/* Sprite cao 7 khung. Phai chay bang px chu khong duoc dung %:
+   background-position theo % tinh ra P x (be rong khung - be rong anh), voi
+   anh rong gap 7 lan thi -600% ra +36 lan be rong khung — lech hoan toan.
+   Nen be rong mot khung duoc giu o bien --fw va nhan len bang calc(). */
+@keyframes lh-fcfox{from{background-position:0 0}to{background-position:calc(var(--fw) * -7) 0}}
+[data-lh-fcdeck]:hover [data-lh-fctilt],[data-lh-fcdeck]:focus-visible [data-lh-fctilt]{transform:translateY(-8px) rotate(-8deg)}
+[data-lh-fcdeck]:hover [data-lh-fcflip],[data-lh-fcdeck]:focus-visible [data-lh-fcflip]{animation:lh-fcflip 900ms cubic-bezier(.36,.06,.24,1)}
+@media (prefers-reduced-motion:reduce){
+  [data-lh-fcdeck]:hover [data-lh-fcflip],[data-lh-fcdeck]:focus-visible [data-lh-fcflip]{animation:none}
+  [data-lh-fctilt]{transition:none}
+}
+/* Ten bo the tren ke: hover thi mau thuong hieu quet tu trai sang lap day chu.
+   Ban sao chu nam o ::after (content:attr(data-txt)) nen chi animate clip-path,
+   khong ve lai chu -> chay muot o 60fps. */
+[data-lh-fcfill]{position:relative;display:inline-block}
+[data-lh-fcfill]::after{content:attr(data-txt);position:absolute;inset:0;color:var(--fcfill);clip-path:inset(0 100% 0 0);transition:clip-path 460ms cubic-bezier(.22,.68,.24,1);pointer-events:none}
+[data-lh-fcdeck]:hover [data-lh-fcfill]::after,[data-lh-fcdeck]:focus-visible [data-lh-fcfill]::after{clip-path:inset(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){[data-lh-fcfill]::after{transition:none}}
+/* Hai con cao rinh chi la trang tri. Duoi 1240px thi bo di: khung ke rong toi
+   1060px nen le hai ben khong con du cho cho con cao ben phai cho ra, de lai se
+   bi overflow-x:clip cat mat nua nguoi. Khi cao hien thi noi them khoang tren
+   cho cao khoi de len doan mo ta. */
+@media (max-width:1279px){ [data-lh-fcpeek]{display:none!important} }
+@media (min-width:1280px){ [data-lh-fchead]{margin-bottom:180px!important} }
+/* ke flashcard: 4 the mot hang -> 2x2 -> 1 cot. O 1 cot thi thanh ke am 10px
+   moi ben khong con thanh ke nao de noi vao, keo lai cho khop mep the */
+@media (max-width:520px){
+  [data-lh-fcgroup]{grid-template-columns:1fr!important}
+  [data-lh-fcgroup] button>span:nth-child(2){margin-left:0!important;margin-right:0!important}
+}
 [data-lh-filterscroll]{scrollbar-width:none;-ms-overflow-style:none}
 [data-lh-filterscroll]::-webkit-scrollbar{display:none}
 /* man hep: section FAQ cao gap doi ma anh trai het be ngang chi con mot dai
@@ -637,6 +674,195 @@ summary::-webkit-details-marker{display:none}
   </div>
 </section>
 
+<!-- Bi kip flashcard: bia va hai mat the deu la WebP raster hoa san tu PDF
+     (tools/export-flashcard-webp.js), khong co PDF.js o runtime. Trinh doc chi
+     giu dung mot the trong DOM nen mot luc chi mot lop 3D duoc compositing. -->
+<section id="flashcards" data-screen-label="Bí kíp flashcard" style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2)) clamp(54px,5.5vw,78px)">
+  <div data-lh-fchead="1" style="text-align:center;max-width:800px;margin:0 auto 40px">
+    <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Bí kíp Research của CIO</h2>
+    <p style="font-size:17px;line-height:1.7;color:#6E5F4E;margin:0;text-wrap:pretty">35 tấm thẻ hai mặt rút gọn cả bốn vùng đất. Mặt trước là câu hỏi, mặt sau là cách làm — lật vài phút lúc chờ họp là nhớ.</p>
+  </div>
+
+  <div data-lh-reveal="1" data-lh-fcshelfwrap="1" style="position:relative;max-width:1060px;margin:0 auto">
+    <img data-lh-fcpeek="top" src="assets/img/fox-peek-top.webp" width="424" height="336" alt="" decoding="async" loading="lazy" style="position:absolute;left:clamp(14px,3%,44px);bottom:calc(100% - 35px);width:clamp(150px,19.5%,215px);height:auto;z-index:2;pointer-events:none;image-rendering:pixelated" />
+    <img data-lh-fcpeek="right" src="assets/img/fox-peek-right.webp" width="248" height="364" alt="" decoding="async" loading="lazy" style="position:absolute;left:calc(100% - 20px);bottom:9px;width:min(clamp(96px,13%,140px),calc((100vw - 1060px) / 2 + 12px));height:auto;z-index:2;pointer-events:none;image-rendering:pixelated" />
+    <div style="background:#4F1F13;clip-path:var(--clip);padding:4px;filter:drop-shadow(6px 6px 0 #2A1F17)">
+    <div style="background:#F4ECD6;clip-path:var(--clipPi);padding:clamp(24px,3.2vw,38px) clamp(18px,3vw,32px) clamp(18px,2.6vw,28px)">
+      <!-- moi nhom 2 the co mot thanh ke rieng, mep am 10px dung bang khoang
+           cach luoi nen bon thanh noi lien thanh mot ke duy nhat tren desktop -->
+      <div data-lh-fcshelf="1" style="display:grid;gap:34px 20px;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr))">
+
+        <div data-lh-fcgroup="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+          <button type="button" data-lh-fcdeck="0" aria-label="Mở bộ Mảnh 1&amp;2, 5 thẻ" style="appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column" style-focus-visible="outline:3px solid #FF5D38;outline-offset:6px">
+            <span data-lh-fctilt="1" style="display:block;width:100%;transition:transform 340ms cubic-bezier(.22,.72,.24,1);will-change:transform">
+              <!-- chong giay phia sau nam o day nen no dung yen, chi to tren cung flip -->
+              <span data-lh-fcstack="1" style="position:relative;display:block;width:100%;aspect-ratio:320 / 457;perspective:1100px" style-before="content:'';position:absolute;top:7px;right:-8px;bottom:-8px;left:7px;background:#DCCFAE;clip-path:var(--clipCi)" style-after="content:'';position:absolute;top:3.5px;right:-4px;bottom:-4px;left:3.5px;background:#EDE3C7;clip-path:var(--clipCi)">
+                <!-- khong dat clip-path o day: clip-path ep transform-style ve flat, mat sau se mat -->
+                <span data-lh-fcflip="1" style="position:relative;z-index:1;display:block;width:100%;height:100%;transform-style:preserve-3d">
+                  <span style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(.5px)">
+                    <img src="assets/flashcard/m1/cover.webp" data-lh-fccover="m1" data-lh-fchires="assets/flashcard/m1/cover-lg.webp" width="320" height="457" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                  <span aria-hidden="true" style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg) translateZ(.5px)">
+                    <img src="assets/flashcard/m1/card-05-back.webp" data-lh-fchires="assets/flashcard/m1/card-05-back-lg.webp" width="640" height="914" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                </span>
+              </span>
+            </span>
+            <span aria-hidden="true" style="height:12px;margin:16px -10px 0;background:#BB9066;border-top:2px solid #D8A87C;border-bottom:4px solid #8D6641"></span>
+            <span style="display:block;padding-top:13px;text-align:center">
+              <span data-lh-fcfill="1" data-txt="Mảnh 1&amp;2" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:17px;line-height:1.2;color:#4F1F13;--fcfill:#FF5D38">Mảnh 1&amp;2</span>
+            </span>
+          </button>
+
+          <button type="button" data-lh-fcdeck="1" aria-label="Mở bộ Mảnh 3, 16 thẻ" style="appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column" style-focus-visible="outline:3px solid #1C66BB;outline-offset:6px">
+            <span data-lh-fctilt="1" style="display:block;width:100%;transition:transform 340ms cubic-bezier(.22,.72,.24,1);will-change:transform">
+              <!-- chong giay phia sau nam o day nen no dung yen, chi to tren cung flip -->
+              <span data-lh-fcstack="1" style="position:relative;display:block;width:100%;aspect-ratio:320 / 457;perspective:1100px" style-before="content:'';position:absolute;top:7px;right:-8px;bottom:-8px;left:7px;background:#DCCFAE;clip-path:var(--clipCi)" style-after="content:'';position:absolute;top:3.5px;right:-4px;bottom:-4px;left:3.5px;background:#EDE3C7;clip-path:var(--clipCi)">
+                <!-- khong dat clip-path o day: clip-path ep transform-style ve flat, mat sau se mat -->
+                <span data-lh-fcflip="1" style="position:relative;z-index:1;display:block;width:100%;height:100%;transform-style:preserve-3d">
+                  <span style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(.5px)">
+                    <img src="assets/flashcard/m2/cover.webp" data-lh-fccover="m2" data-lh-fchires="assets/flashcard/m2/cover-lg.webp" width="320" height="457" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                  <span aria-hidden="true" style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg) translateZ(.5px)">
+                    <img src="assets/flashcard/m2/card-16-back.webp" data-lh-fchires="assets/flashcard/m2/card-16-back-lg.webp" width="640" height="914" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                </span>
+              </span>
+            </span>
+            <span aria-hidden="true" style="height:12px;margin:16px -10px 0;background:#BB9066;border-top:2px solid #D8A87C;border-bottom:4px solid #8D6641"></span>
+            <span style="display:block;padding-top:13px;text-align:center">
+              <span data-lh-fcfill="1" data-txt="Mảnh 3" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:17px;line-height:1.2;color:#4F1F13;--fcfill:#1C66BB">Mảnh 3</span>
+            </span>
+          </button>
+        </div>
+
+        <div data-lh-fcgroup="1" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px">
+          <button type="button" data-lh-fcdeck="2" aria-label="Mở bộ Mảnh 4, 7 thẻ" style="appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column" style-focus-visible="outline:3px solid #C91065;outline-offset:6px">
+            <span data-lh-fctilt="1" style="display:block;width:100%;transition:transform 340ms cubic-bezier(.22,.72,.24,1);will-change:transform">
+              <!-- chong giay phia sau nam o day nen no dung yen, chi to tren cung flip -->
+              <span data-lh-fcstack="1" style="position:relative;display:block;width:100%;aspect-ratio:320 / 457;perspective:1100px" style-before="content:'';position:absolute;top:7px;right:-8px;bottom:-8px;left:7px;background:#DCCFAE;clip-path:var(--clipCi)" style-after="content:'';position:absolute;top:3.5px;right:-4px;bottom:-4px;left:3.5px;background:#EDE3C7;clip-path:var(--clipCi)">
+                <!-- khong dat clip-path o day: clip-path ep transform-style ve flat, mat sau se mat -->
+                <span data-lh-fcflip="1" style="position:relative;z-index:1;display:block;width:100%;height:100%;transform-style:preserve-3d">
+                  <span style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(.5px)">
+                    <img src="assets/flashcard/m3/cover.webp" data-lh-fccover="m3" data-lh-fchires="assets/flashcard/m3/cover-lg.webp" width="320" height="457" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                  <span aria-hidden="true" style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg) translateZ(.5px)">
+                    <img src="assets/flashcard/m3/card-07-back.webp" data-lh-fchires="assets/flashcard/m3/card-07-back-lg.webp" width="640" height="914" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                </span>
+              </span>
+            </span>
+            <span aria-hidden="true" style="height:12px;margin:16px -10px 0;background:#BB9066;border-top:2px solid #D8A87C;border-bottom:4px solid #8D6641"></span>
+            <span style="display:block;padding-top:13px;text-align:center">
+              <span data-lh-fcfill="1" data-txt="Mảnh 4" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:17px;line-height:1.2;color:#4F1F13;--fcfill:#C91065">Mảnh 4</span>
+            </span>
+          </button>
+
+          <button type="button" data-lh-fcdeck="3" aria-label="Mở bộ Mảnh 5, 7 thẻ" style="appearance:none;-webkit-appearance:none;background:none;border:0;margin:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:flex;flex-direction:column" style-focus-visible="outline:3px solid #467317;outline-offset:6px">
+            <span data-lh-fctilt="1" style="display:block;width:100%;transition:transform 340ms cubic-bezier(.22,.72,.24,1);will-change:transform">
+              <!-- chong giay phia sau nam o day nen no dung yen, chi to tren cung flip -->
+              <span data-lh-fcstack="1" style="position:relative;display:block;width:100%;aspect-ratio:320 / 457;perspective:1100px" style-before="content:'';position:absolute;top:7px;right:-8px;bottom:-8px;left:7px;background:#DCCFAE;clip-path:var(--clipCi)" style-after="content:'';position:absolute;top:3.5px;right:-4px;bottom:-4px;left:3.5px;background:#EDE3C7;clip-path:var(--clipCi)">
+                <!-- khong dat clip-path o day: clip-path ep transform-style ve flat, mat sau se mat -->
+                <span data-lh-fcflip="1" style="position:relative;z-index:1;display:block;width:100%;height:100%;transform-style:preserve-3d">
+                  <span style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(.5px)">
+                    <img src="assets/flashcard/m4/cover.webp" data-lh-fccover="m4" data-lh-fchires="assets/flashcard/m4/cover-lg.webp" width="320" height="457" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                  <span aria-hidden="true" style="position:absolute;inset:0;background:#4F1F13;clip-path:var(--clipC);padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg) translateZ(.5px)">
+                    <img src="assets/flashcard/m4/card-07-back.webp" data-lh-fchires="assets/flashcard/m4/card-07-back-lg.webp" width="640" height="914" alt="" decoding="async" loading="lazy" style="width:100%;height:100%;object-fit:cover;clip-path:var(--clipCi);background:#EDE3C7;image-rendering:auto;display:block" />
+                  </span>
+                </span>
+              </span>
+            </span>
+            <span aria-hidden="true" style="height:12px;margin:16px -10px 0;background:#BB9066;border-top:2px solid #D8A87C;border-bottom:4px solid #8D6641"></span>
+            <span style="display:block;padding-top:13px;text-align:center">
+              <span data-lh-fcfill="1" data-txt="Mảnh 5" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:17px;line-height:1.2;color:#4F1F13;--fcfill:#467317">Mảnh 5</span>
+            </span>
+          </button>
+        </div>
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trinh doc de ngoai khung ke: khung ke co filter:drop-shadow, ma filter
+       bien phan tu thanh containing block nen position:fixed ben trong se bam
+       theo khung thay vi viewport. -->
+  <div data-lh-fcreader="1" role="dialog" aria-modal="true" aria-label="Trình đọc sách bí kíp" style="display:none;position:fixed;inset:0;z-index:80;flex-direction:column;background:#F4ECD6;color:#4F1F13;font-family:'MoMo Trusts Sans',system-ui,sans-serif">
+    <div data-lh-fcchrome="1" style="display:flex;align-items:center;gap:10px;padding:12px clamp(10px,3vw,20px);border-bottom:3px solid #DCCFAE">
+      <button type="button" data-lh-fcclose="1" style="flex:none;display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8"><b style="font-size:17px;line-height:1">‹</b>Đóng</span>
+      </button>
+      <div style="flex:1;min-width:0;text-align:center">
+        <div data-lh-fctitle="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:16px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nền tảng</div>
+        <div data-lh-fcstatus="1" aria-live="polite" style="margin-top:4px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">01 / 05 · Mặt trước</div>
+      </div>
+      <button type="button" data-lh-fctocopen="1" style="flex:none;display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8">Mục lục</span>
+      </button>
+    </div>
+
+    <div data-lh-fcstage="1" style="position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:clamp(12px,2.4vw,22px)">
+      <!-- Cuon sach: hai trang canh nhau, gay o giua. To lat nam de len tren,
+           ban le dat dung o gay nen no queo tu phai sang trai khi sang trang. -->
+      <div data-lh-fcbook="1" role="group" aria-label="Trang sách" tabindex="0" style="position:relative;width:0;height:0;opacity:0;transition:opacity 130ms linear,transform 320ms cubic-bezier(.22,.68,.24,1);perspective:2200px;touch-action:pan-y;cursor:grab" style-focus-visible="outline:3px solid #FF5D38;outline-offset:8px">
+        <div data-lh-fcpage="left" style="position:absolute;top:0;left:0;width:50%;height:100%;background:#4F1F13;padding:3px 1.5px 3px 3px">
+          <img data-lh-fcimg="left" alt="" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:left center;background:#FDF7E8;image-rendering:auto;display:block" />
+        </div>
+        <div data-lh-fcpage="right" style="position:absolute;top:0;left:50%;width:50%;height:100%;background:#4F1F13;padding:3px 3px 3px 1.5px">
+          <img data-lh-fcimg="right" alt="" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:right center;background:#FDF7E8;image-rendering:auto;display:block" />
+        </div>
+        <!-- to dang lat: goc quay o gay, huong lat do JS dat lai moi luot -->
+        <div data-lh-fcturn="1" style="display:none;position:absolute;top:0;width:50%;height:100%;transform-style:preserve-3d;will-change:transform;z-index:3">
+          <div data-lh-fcturnface="front" style="position:absolute;inset:0;background:#4F1F13;padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:translateZ(.4px)">
+            <img data-lh-fcturnimg="front" alt="" decoding="async" style="width:100%;height:100%;object-fit:cover;background:#FDF7E8;image-rendering:auto;display:block" />
+          </div>
+          <div data-lh-fcturnface="back" style="position:absolute;inset:0;background:#4F1F13;padding:3px;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg) translateZ(.4px)">
+            <img data-lh-fcturnimg="back" alt="" decoding="async" style="width:100%;height:100%;object-fit:cover;background:#FDF7E8;image-rendering:auto;display:block" />
+          </div>
+        </div>
+        <!-- bong o gay cho hai trang trong nhu mot cuon sach mo -->
+        <div aria-hidden="true" style="position:absolute;top:0;bottom:0;left:50%;width:26px;transform:translateX(-13px);z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(42,31,23,0) 0,rgba(42,31,23,.22) 45%,rgba(42,31,23,.3) 50%,rgba(42,31,23,.22) 55%,rgba(42,31,23,0) 100%)"></div>
+      </div>
+      <!-- Con cao chi xuat hien khi to dang xem chi co mot trang: luc do nua
+           khung con lai bo trong, cao dung vao do noi mot cau cho do trong. -->
+      <div data-lh-fcfox="1" style="display:none;position:absolute;right:clamp(10px,2.6vw,34px);top:50%;transform:translateY(-50%);z-index:1;align-items:flex-end;gap:clamp(6px,1.2vw,12px);pointer-events:none">
+        <div data-lh-fcfoxbubble="1" style="position:relative;flex:0 1 clamp(150px,17vw,232px);min-width:0;margin-bottom:clamp(24px,3vw,40px);background:#4F1F13;clip-path:var(--clipC);padding:2px;filter:drop-shadow(4px 4px 0 rgba(42,31,23,.2))">
+          <div style="background:#FFFFFF;clip-path:var(--clipCi);padding:clamp(9px,1.2vw,13px) clamp(11px,1.4vw,16px);font-size:clamp(12px,1.05vw,13.5px);line-height:1.5;color:#4F1F13;text-wrap:pretty">Vẫn còn đó, cố đọc cho hết để tu luyện thành chính quả nè</div>
+        </div>
+        <span data-lh-fcfoxsprite="1" aria-hidden="true" style="--fw:clamp(96px,10vw,144px);width:var(--fw);height:var(--fw);flex-shrink:0;background-image:url('assets/motion/fox-talk.svg');background-size:calc(var(--fw) * 7) var(--fw);background-repeat:no-repeat;background-position:0 0;animation:lh-fcfox .56s steps(7) infinite"></span>
+      </div>
+    </div>
+
+    <div data-lh-fcchrome="1" style="display:flex;align-items:center;justify-content:center;gap:clamp(8px,2vw,18px);padding:0 clamp(10px,3vw,20px) max(18px,env(safe-area-inset-bottom));flex-wrap:wrap">
+      <button type="button" data-lh-fcprev="1" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8"><b style="font-size:17px;line-height:1">‹</b>Trang trước</span>
+      </button>
+      <p style="margin:0;min-width:132px;text-align:center;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">Kéo trang để lật</p>
+      <button type="button" data-lh-fcnext="1" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
+        <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8">Trang sau<b style="font-size:17px;line-height:1">›</b></span>
+      </button>
+    </div>
+
+    <div data-lh-fctoc="1" style="display:none;position:absolute;inset:0;z-index:2;align-items:center;justify-content:center;padding:clamp(12px,3vw,26px);background:rgba(42,31,23,.58)">
+      <div data-lh-fctocpanel="1" role="dialog" aria-label="Mục lục bộ thẻ" tabindex="-1" style="width:100%;max-width:880px;background:#4F1F13;clip-path:var(--clip);padding:4px;filter:drop-shadow(6px 6px 0 #2A1F17)">
+        <div style="display:flex;flex-wrap:wrap;gap:clamp(14px,2.5vw,24px);max-height:calc(86dvh - 8px);overflow:auto;background:#FFFFFF;clip-path:var(--clipPi);padding:clamp(16px,2.5vw,24px);color:#4F1F13">
+          <img data-lh-fctocimg="1" width="1024" height="1463" alt="Trang mục lục của bộ thẻ" decoding="async" style="width:min(250px,100%);height:auto;aspect-ratio:1024 / 1463;object-fit:contain;background:#EDE3C7;clip-path:var(--clipCi);image-rendering:auto;display:block" />
+          <div style="flex:1;min-width:236px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+              <h3 style="margin:0;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:18px">Mục lục</h3>
+              <button type="button" data-lh-fctocclose="1" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
+                <span style="display:inline-flex;align-items:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#4F1F13;background:#F4ECD6;clip-path:var(--clipCi);padding:11px 14px;white-space:nowrap;transition:background 120ms" style-hover="background:#EDE3C7">Đóng</span>
+              </button>
+            </div>
+            <div data-lh-fclist="1" style="display:flex;flex-direction:column;gap:2px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <section id="stories" data-screen-label="Câu chuyện" style="position:relative;background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%);color:#4F1F13;overflow:hidden">
   <div style="position:relative;padding:clamp(46px,5.75vw,74px) max(20px,calc((100vw - 1240px) / 2))">
@@ -659,13 +885,13 @@ summary::-webkit-details-marker{display:none}
               <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#FF9064">Ngọc Trâm</b>
               <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#0F3157;background:#FF9064;padding:2px 6px;clip-path:var(--clipSi)">PAYMENT</span>
             </div>
-            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#A8CDF4">
+            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">
               <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#A8CDF4" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
               Product Design · Squad Payment
             </div>
             <p style="color:#DDECF9;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Trước đây có câu hỏi gì về user là mình đi nhờ team Research. Học hết vùng <b>Định tính</b>, mình tự viết Discussion Guide và chạy 5 buổi phỏng vấn cho tính năng mới.</p>
             <div style="margin-top:auto;padding-top:18px">
-              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#0F3157;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#DDECF9">Đọc chuyện của Trâm <b>›</b></span></a>
+              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#0F3157;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#FDF7E8">Đọc chuyện của Trâm <b>›</b></span></a>
             </div>
           </div>
         </div>
@@ -680,13 +906,13 @@ summary::-webkit-details-marker{display:none}
               <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#8FD4E8">Minh Quân</b>
               <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#0F3157;background:#8FD4E8;padding:2px 6px;clip-path:var(--clipSi)">MERCHANT</span>
             </div>
-            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#A8CDF4">
+            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">
               <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#A8CDF4" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
               Growth · Squad Merchant
             </div>
             <p style="color:#DDECF9;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Bài <b>Desk Research</b> dạy mình tách đề bài theo P-O-S. Giờ nhận brief từ sếp là biết ngay cần tìm gì, tìm cho ai — khỏi mò Google cả buổi rồi vẫn lạc đề.</p>
             <div style="margin-top:auto;padding-top:18px">
-              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#0F3157;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#DDECF9">Đọc chuyện của Quân <b>›</b></span></a>
+              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#0F3157;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#FDF7E8">Đọc chuyện của Quân <b>›</b></span></a>
             </div>
           </div>
         </div>
@@ -701,13 +927,13 @@ summary::-webkit-details-marker{display:none}
               <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#FFC98F">Thu Hà</b>
               <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#0F3157;background:#FFC98F;padding:2px 6px;clip-path:var(--clipSi)">CIO</span>
             </div>
-            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#A8CDF4">
+            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">
               <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#A8CDF4" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
               Data Analyst · Squad CIO
             </div>
             <p style="color:#DDECF9;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Phần <b>Định lượng</b> giúp mình chốt sample size có căn cứ chứ không đoán. Lần gần nhất mình bảo vệ được con số trước cả hội đồng mà không bị vặn.</p>
             <div style="margin-top:auto;padding-top:18px">
-              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#0F3157;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#DDECF9">Đọc chuyện của Hà <b>›</b></span></a>
+              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#0F3157;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#FDF7E8">Đọc chuyện của Hà <b>›</b></span></a>
             </div>
           </div>
         </div>
@@ -803,6 +1029,7 @@ summary::-webkit-details-marker{display:none}
         <a href="#courses" style="color:#DDECF9;font-size:13.5px" style-hover="color:#FF9064">Định tính</a>
         <a href="#courses" style="color:#DDECF9;font-size:13.5px" style-hover="color:#FF9064">Định lượng</a>
         <a href="#courses" style="color:#DDECF9;font-size:13.5px" style-hover="color:#FF9064">User Testing</a>
+        <a href="#flashcards" style="color:#DDECF9;font-size:13.5px" style-hover="color:#FF9064">Bí kíp Flashcard</a>
       </div>
     </div>
     <div style="border-top:3px solid #376EAA;margin-top:48px;padding-top:20px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:#BDD6ED;font-size:11.5px">
@@ -1411,6 +1638,735 @@ class Component extends DCLogic {
         start();
       }
     });
+
+    // ---------- Bi kip: ke sach + trinh doc dang sach ----------
+    //
+    // Anh trang la WebP raster hoa san tu PDF bang tools/export-flashcard-webp.js,
+    // khong co PDF.js o runtime.
+    //
+    // PDF goc tron hai kho trang: 992.25x1417.5 (mot trang) va 1984.5x1417.5
+    // (dung gap doi = mot spread hai trang da dan san). Cac trang kho doi luon
+    // di thanh cap lien tiep va luon bat dau o so trang le.
+    //
+    // Sach doc nhu ban in that: to dau tien chi hien mot mat (bia), tu lan lat
+    // sau moi lan mo ra hai trang. Trang chan nam ben trai, trang le nam ben
+    // phai — dung nhu anh chup cuon that: [muc luc | tieu de bai 1].
+    const FC_SETS = [
+      { id: 'm1', title: 'Mảnh 1&2', accent: '#FF5D38', land: [1, 2, 3], labels: [
+        'Bốn giai đoạn của một research',
+        'Vai trò của research trong vòng đời sản phẩm',
+        'CIO — champion of customer voice',
+        'Tool: CIO Second Brain',
+        'Tool: Feedback Loop'
+      ] },
+      { id: 'm2', title: 'Mảnh 3', accent: '#1C66BB', land: [5, 8, 14, 15], labels: [
+        'Khi nào nên dùng nghiên cứu định lượng',
+        'Bốn bước thực hiện nghiên cứu định lượng',
+        'Tips xác định mục tiêu nghiên cứu',
+        'Issue tree — ba cấp độ giả thuyết',
+        'Ví dụ xác định nội dung và đối tượng',
+        'Cách tính số mẫu (sample size)',
+        'Sai số và cách báo cáo kết quả',
+        'Tips thiết kế bảng câu hỏi',
+        'Câu hỏi trung lập, nhất quán',
+        'Tìm ý cho câu trả lời theo 4P',
+        'Làm sạch dữ liệu',
+        'Phân tích dữ liệu',
+        'Cách kiểm định dữ liệu',
+        'Variable types',
+        'Phân phối dữ liệu và thống kê mô tả',
+        'Phân phối chuẩn'
+      ] },
+      { id: 'm3', title: 'Mảnh 4', accent: '#C91065', land: [5], labels: [
+        'Khi nào nên áp dụng qualitative',
+        'Khi cần khám phá và test concept sớm',
+        'Hiểu bối cảnh thực tế, mẫu nhỏ vẫn đủ',
+        'Trước khi nghiên cứu: chọn đúng phương pháp',
+        'Trong buổi phỏng vấn: Ask – Probe – Confirm',
+        'Sau khi nghiên cứu: tổng hợp insight',
+        'Tips riêng cho từng phương pháp'
+      ] },
+      { id: 'm4', title: 'Mảnh 5', accent: '#467317', land: [5], labels: [
+        'Khi nào nên áp dụng desk research',
+        'Phạm vi: Problem – Objective – Subject',
+        'Tìm kiếm và chọn lọc nguồn UI/UX',
+        'Benchmark product và business model',
+        'Đánh giá, xác thực nguồn thông tin',
+        'Dùng AI hỗ trợ: prompt market analysis',
+        'Prompt phân tích đối thủ'
+      ] }
+    ];
+    const FC_RATIO = 992.25 / 1417.5;            // ti le mot trang don
+    const FC_CHROME = 190;                        // thanh tren + thanh dieu khien
+    const FC_POS_KEY = 'cio-flashcards:leaf';
+
+    // Dung danh sach trang tuyen tinh roi gop thanh cac to (leaf).
+    // face = { small, large, pos } — pos cat nua trai/phai cua anh kho doi.
+    // Nhung trang kho doi khong dong nhat: co trang dung ca hai nua (mot
+    // spread thuc), co trang chi ve o mot nua con nua kia de trang — do la mot
+    // trang don ma nguoi thiet ke xuat tren khung spread. FC_HALF ghi lai ket
+    // qua do do lech chuan tung nua anh (nua de trang co stddev bang 0), khoa
+    // theo so trang PDF. Trang kho doi khong co trong bang thi dung ca hai nua.
+    const FC_HALF = { m1: { 3: 'right', 5: 'right' }, m2: { 31: 'right' }, m3: {}, m4: {} };
+
+    // Gop trang thanh to (leaf). To dau chi mot mat (bia), tu to sau moi to hai
+    // trang. Con tro chay tuan tu trai -> phai; mot spread thuc doi tron mot to
+    // moi, con trang "chi nua phai" bat buoc phai roi vao o ben phai — nen truoc
+    // no co the phai chen mot nua trang de trang, dung nhu ban in that.
+    const FC = FC_SETS.map((s) => {
+      const dir = 'assets/flashcard/' + s.id + '/';
+      const half = FC_HALF[s.id] || {};
+      const raw = [
+        { small: dir + 'cover.webp', large: dir + 'cover-lg.webp', wide: false },
+        { small: dir + 'toc.webp', large: dir + 'toc.webp', wide: false }
+      ];
+      s.labels.forEach((label, i) => {
+        const n = String(i + 1).padStart(2, '0');
+        const wide = s.land.indexOf(i + 1) !== -1;
+        raw.push({ small: dir + 'card-' + n + '-front.webp', large: dir + 'card-' + n + '-front-lg.webp', wide: wide });
+        raw.push({ small: dir + 'card-' + n + '-back.webp', large: dir + 'card-' + n + '-back-lg.webp', wide: wide });
+      });
+
+      const face = (pg, pos) => ({ small: pg.small, large: pg.large, pos: pos });
+      const leaves = [{ left: null, right: face(raw[0], '50% 50%') }];
+      const leafOfPage = [0, 0];                        // 1-based
+      let li = 1, slot = 'left';                        // con tro o to 1, o ben trai
+      const at = (i) => (leaves[i] || (leaves[i] = { left: null, right: null }));
+      const nextLeaf = () => { li += 1; slot = 'left'; };
+
+      for (let n = 2; n <= raw.length; n++) {
+        const pg = raw[n - 1];
+        const side = pg.wide ? (half[n] || 'both') : 'any';
+        if (side === 'both') {
+          // spread thuc: chiem tron mot to, nua trai/phai cat tu cung mot anh
+          if (slot === 'right') nextLeaf();
+          at(li).left = face(pg, '0% 50%');
+          at(li).right = face(pg, '100% 50%');
+          leafOfPage[n] = li;
+          nextLeaf();
+        } else if (side === 'right') {
+          if (slot === 'right') { at(li).right = face(pg, '100% 50%'); }
+          else { at(li).right = face(pg, '100% 50%'); }   // o trai bo trong
+          leafOfPage[n] = li;
+          nextLeaf();
+        } else if (side === 'left') {
+          if (slot === 'right') nextLeaf();
+          at(li).left = face(pg, '0% 50%');
+          leafOfPage[n] = li;
+          slot = 'right';
+        } else if (slot === 'left') {
+          at(li).left = face(pg, '50% 50%');
+          leafOfPage[n] = li;
+          slot = 'right';
+        } else {
+          at(li).right = face(pg, '50% 50%');
+          leafOfPage[n] = li;
+          nextLeaf();
+        }
+      }
+      while (leaves.length && !leaves[leaves.length - 1].left && !leaves[leaves.length - 1].right) leaves.pop();
+
+      return {
+        title: s.title,
+        accent: s.accent,
+        leaves: leaves,
+        // tieu de bai k nam o trang PDF 2k+1
+        tocLeaf: s.labels.map((_, i) => leafOfPage[2 * i + 3] || 0),
+        labels: s.labels
+      };
+    });
+
+    const fcReader = root.querySelector('[data-lh-fcreader]');
+    if (fcReader) {
+      const fcq = (sel) => fcReader.querySelector(sel);
+      const fcBook = fcq('[data-lh-fcbook]');
+      const fcPageL = fcq('[data-lh-fcpage="left"]');
+      const fcPageR = fcq('[data-lh-fcpage="right"]');
+      const fcImgL = fcq('[data-lh-fcimg="left"]');
+      const fcImgR = fcq('[data-lh-fcimg="right"]');
+      const fcTurn = fcq('[data-lh-fcturn]');
+      const fcTurnF = fcq('[data-lh-fcturnface="front"]');
+      const fcTurnB = fcq('[data-lh-fcturnface="back"]');
+      const fcTurnImgF = fcq('[data-lh-fcturnimg="front"]');
+      const fcTurnImgB = fcq('[data-lh-fcturnimg="back"]');
+      const fcTitle = fcq('[data-lh-fctitle]');
+      const fcStatus = fcq('[data-lh-fcstatus]');
+      const fcPrev = fcq('[data-lh-fcprev]');
+      const fcNext = fcq('[data-lh-fcnext]');
+      const fcTocBox = fcq('[data-lh-fctoc]');
+      const fcTocPanel = fcq('[data-lh-fctocpanel]');
+      const fcTocImg = fcq('[data-lh-fctocimg]');
+      const fcList = fcq('[data-lh-fclist]');
+      const fcStage = fcq('[data-lh-fcstage]');
+      const fcFox = fcq('[data-lh-fcfox]');
+      const fcChrome = [...fcReader.querySelectorAll('[data-lh-fcchrome]')];
+
+      const fc = { open: false, set: 0, leaf: 0, toc: false };
+      const fcPos = [0, 0, 0, 0];
+      let fcOpener = null, fcPrevOverflow = '', fcPrevPadRight = '';
+      let fcPageW = 0, fcPageH = 0, fcBusy = false, fcIntroT = [];
+      let fcDrag = null, fcAhead = [], fcTo = null, fcClosing = false;
+
+      const fcPad = (n) => String(n).padStart(2, '0');
+      const fcAnimated = () => !reduce && this.props.motion !== 'off';
+      const FC_TURN_MS = 620;
+      const FC_EASE = 'cubic-bezier(.28,.06,.2,1)';
+
+      try {
+        const raw = sessionStorage.getItem(FC_POS_KEY);
+        if (raw) {
+          const saved = JSON.parse(raw);
+          if (Array.isArray(saved)) saved.forEach((v, i) => { if (typeof v === 'number') fcPos[i] = v; });
+        }
+      } catch (e) { /* sessionStorage bi chan */ }
+
+      const fcSet = () => FC[fc.set];
+      const fcLeafAt = (i) => fcSet().leaves[i] || null;
+
+      // Chon ban nho hay ban net theo be rong hien thi that x DPR: mot request
+      // duy nhat cho moi mat trang, khong de srcset doan.
+      const fcSrc = (face) => {
+        if (!face) return '';
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        return fcPageW * dpr > 660 ? face.large : face.small;
+      };
+
+      // mode 'paper': mat khong co anh van hien ra nhu mot to giay trang, dung
+      // cho hai mat cua to dang lat de nua vong dau khong bi trong khong
+      const fcPaint = (pane, img, face, mode) => {
+        if (!face) {
+          img.removeAttribute('src');
+          pane.style.display = mode === 'paper' ? 'block' : 'none';
+          img.style.display = mode === 'paper' ? 'block' : 'none';
+          return;
+        }
+        pane.style.display = 'block';
+        img.style.display = 'block';
+        img.style.objectPosition = face.pos;
+        const src = fcSrc(face);
+        if (img.getAttribute('src') !== src) img.src = src;
+      };
+
+      // Do khung sach cho vua san khau; to lat luon bang dung mot nua sach
+      const fcMeasure = () => {
+        const st = fcStage.getBoundingClientRect();
+        if (!st.width || !st.height) return;
+        const availW = st.width * .97, availH = st.height * .97;
+        let w = Math.min(availW / 2, availH * FC_RATIO);
+        fcPageW = Math.max(80, w);
+        fcPageH = fcPageW / FC_RATIO;
+        fcBook.style.width = (fcPageW * 2) + 'px';
+        fcBook.style.height = fcPageH + 'px';
+      };
+
+      // To nao chi co mot mat (bia, to cuoi, hoac to ke mot spread kho doi) thi
+      // keo ca cuon sang nua trang de chinh trang do nam giua man hinh.
+      // Nua phai nam o +P/2 so voi tam -> phai keo -25% be rong cuon, va nguoc lai.
+      const fcShift = (i) => {
+        const lf = fcLeafAt(i);
+        if (!lf) return 'translateX(0)';
+        if (!lf.left) return 'translateX(-25%)';
+        if (!lf.right) return 'translateX(25%)';
+        return 'translateX(0)';
+      };
+
+      const fcPreload = (i) => {
+        fcAhead = [];
+        [i - 1, i + 1].forEach((k) => {
+          const lf = fcLeafAt(k);
+          if (!lf) return;
+          [lf.left, lf.right].forEach((f) => {
+            if (!f) return;
+            const im = new Image();
+            im.decoding = 'async';
+            im.src = fcSrc(f);
+            fcAhead.push(im);
+          });
+        });
+      };
+
+      // To chi co mot mat -> nua khung con lai bo trong, cho con cao vao do.
+      // Tru to bia: no cung chi co mot mat nhung dang la trang mo dau, chua co
+      // gi de "co doc cho het".
+      const fcFoxSync = (force) => {
+        const lf = fcLeafAt(fc.leaf);
+        const single = !!lf && fc.leaf > 0 && (!lf.left || !lf.right);
+        fcFox.style.display = (single && force !== false) ? 'flex' : 'none';
+      };
+
+      const fcSync = () => {
+        const set = fcSet();
+        const lf = fcLeafAt(fc.leaf);
+        fcTitle.textContent = set.title;
+        fcStatus.textContent = 'Trang ' + fcPad(fc.leaf + 1) + ' / ' + fcPad(set.leaves.length);
+        fcBook.setAttribute('aria-label', 'Sách ' + set.title + ', trang ' + (fc.leaf + 1) + ' trên ' + set.leaves.length);
+        fcPaint(fcPageL, fcImgL, lf && lf.left);
+        fcPaint(fcPageR, fcImgR, lf && lf.right);
+        fcBook.style.transform = fcShift(fc.leaf);
+        const first = fc.leaf === 0, last = fc.leaf === set.leaves.length - 1;
+        fcPrev.disabled = first;
+        fcPrev.style.opacity = first ? '.45' : '1';
+        fcPrev.style.cursor = first ? 'default' : 'pointer';
+        fcNext.disabled = last;
+        fcNext.style.opacity = last ? '.45' : '1';
+        fcNext.style.cursor = last ? 'default' : 'pointer';
+        fcBook.style.cursor = (first && last) ? 'default' : 'grab';
+        fcFoxSync();
+      };
+
+      /* ---------- lat trang ----------
+         Tien: to nam nua phai, ban le o gay (canh trai cua no), quay 0 -> -180
+         nen mep phai queo tu PHAI SANG TRAI roi up xuong nua trai — dung chieu
+         sang trang cua mot cuon sach.
+         Lui: to nam nua trai, ban le o canh phai, quay 180 -> 0. */
+      const fcArm = (dir, toIdx) => {
+        const from = fcLeafAt(fc.leaf);
+        const ti = toIdx === undefined ? fc.leaf + dir : toIdx;
+        const to = fcLeafAt(ti);
+        if (!from || !to || ti === fc.leaf) return false;
+        fcTo = ti;
+        if (dir > 0) {
+          fcTurn.style.left = '50%';
+          fcTurn.style.transformOrigin = '0% 50%';
+          fcPaint(fcTurnF, fcTurnImgF, from.right, 'paper');
+          fcPaint(fcTurnB, fcTurnImgB, to.left, 'paper');
+          fcTurnB.style.transform = 'rotateY(180deg) translateZ(.4px)';
+          fcPaint(fcPageL, fcImgL, from.left);
+          fcPaint(fcPageR, fcImgR, to.right);
+        } else {
+          fcTurn.style.left = '0';
+          fcTurn.style.transformOrigin = '100% 50%';
+          fcPaint(fcTurnF, fcTurnImgF, from.left, 'paper');
+          fcPaint(fcTurnB, fcTurnImgB, to.right, 'paper');
+          fcTurnB.style.transform = 'rotateY(180deg) translateZ(.4px)';
+          fcPaint(fcPageL, fcImgL, to.left);
+          fcPaint(fcPageR, fcImgR, from.right);
+        }
+        fcTurn.style.transition = 'none';
+        fcTurn.style.transform = 'rotateY(0deg)';
+        fcTurn.style.display = 'block';
+        return true;
+      };
+
+      const fcAngle = (dir, t) => (dir > 0 ? -180 * t : 180 * t);
+
+      const fcSettle = (dir, done) => {
+        if (done && fcTo !== null) fc.leaf = fcTo;
+        fcTo = null;
+        fcTurn.style.display = 'none';
+        fcTurn.style.transition = 'none';
+        fcTurn.style.transform = 'rotateY(0deg)';
+        fcSync();
+        fcPos[fc.set] = fc.leaf;
+        try { sessionStorage.setItem(FC_POS_KEY, JSON.stringify(fcPos)); } catch (e) { /* bo qua */ }
+        fcPreload(fc.leaf);
+        fcBusy = false;
+      };
+
+      // Chay not quang duong con lai tu goc hien tai (dung cho ca tha tay va bam nut)
+      const fcRun = (dir, fromT, done) => {
+        const target = done ? 1 : 0;
+        const ms = Math.max(120, Math.round(FC_TURN_MS * Math.abs(target - fromT)));
+        if (!fcAnimated()) { fcSettle(dir, done); return; }
+        void fcTurn.offsetWidth;
+        fcTurn.style.transition = 'transform ' + ms + 'ms ' + FC_EASE;
+        fcTurn.style.transform = 'rotateY(' + fcAngle(dir, target) + 'deg)';
+        if (done) {
+          fcBook.style.transition = 'opacity 130ms linear,transform ' + ms + 'ms ' + FC_EASE;
+          fcBook.style.transform = fcShift(fcTo === null ? fc.leaf : fcTo);
+        }
+        fcIntroT.push(setTimeout(() => fcSettle(dir, done), ms + 30));
+      };
+
+      const fcStep = (dir, to) => {
+        if (fcBusy || !fcArm(dir, to)) return;
+        fcBusy = true;
+        fcRun(dir, 0, true);
+      };
+
+      const fcGoLeaf = (i) => {
+        const set = fcSet();
+        const n = Math.max(0, Math.min(i, set.leaves.length - 1));
+        if (fcBusy || n === fc.leaf) return;
+        // nhay xa cung lat dung mot nhip, dich den la to can toi
+        fcStep(n > fc.leaf ? 1 : -1, n);
+      };
+
+      /* ---------- keo bang con tro: giu chuot la dang cam mot trang ---------- */
+
+      // Van toc do tren mot cua so ~120ms chu khong tren mot cap su kien: hai
+      // pointermove roi vao cung mot mili giay se cho ra van toc vo cung lon va
+      // lam trang tu sang du nguoi dung chi nhich tay.
+      const fcVel = (d) => {
+        const h = d.hist;
+        if (h.length < 2) return 0;
+        const a = h[0], b = h[h.length - 1];
+        const dt = b.t - a.t;
+        if (dt < 20) return 0;
+        // chi tinh phan van toc di dung chieu dang lat
+        return Math.max(0, (d.dir > 0 ? a.x - b.x : b.x - a.x)) / dt;
+      };
+
+      const fcDragEnd = (e) => {
+        if (!fcDrag) return;
+        const d = fcDrag;
+        fcDrag = null;
+        fcBook.style.cursor = 'grab';
+        window.removeEventListener('pointermove', fcDragMove);
+        window.removeEventListener('pointerup', fcDragEnd);
+        window.removeEventListener('pointercancel', fcDragEnd);
+        const moved = Math.abs(d.lastX - d.startX);
+        // Bam ma khong keo: to lat chua kip len khung (nguong 4px), nen chay
+        // thang mot luot lat day du thay vi bo qua.
+        if (!d.armed) {
+          fcBusy = false;
+          if (moved < 6) fcStep(d.dir);
+          return;
+        }
+        const done = moved < 6 ? true : (d.t > .3 || fcVel(d) > .55);
+        fcRun(d.dir, d.t, done);
+      };
+
+      const fcDragMove = (e) => {
+        if (!fcDrag) return;
+        const d = fcDrag;
+        const now = e.clientX;
+        d.lastX = now;
+        d.hist.push({ x: now, t: e.timeStamp });
+        while (d.hist.length > 2 && e.timeStamp - d.hist[0].t > 120) d.hist.shift();
+        if (!d.armed) {
+          if (Math.abs(now - d.startX) < 4) return;
+          if (!fcArm(d.dir)) { fcDrag = null; fcBusy = false; return; }
+          d.armed = true;
+        }
+        // keo sang trai = sang trang; keo sang phai = lat nguoc lai
+        const raw = (d.dir > 0 ? d.startX - now : now - d.startX) / Math.max(1, fcPageW);
+        d.t = Math.max(0, Math.min(1, raw));
+        fcTurn.style.transition = 'none';
+        fcTurn.style.transform = 'rotateY(' + fcAngle(d.dir, d.t) + 'deg)';
+      };
+
+      const fcDragStart = (e) => {
+        if (fcBusy || fc.toc || e.button > 0) return;
+        const r = fcBook.getBoundingClientRect();
+        const set = fcSet();
+        // nam nua phai = sang trang, nua trai = lat nguoc lai
+        let dir = e.clientX >= r.left + r.width / 2 ? 1 : -1;
+        // To giua co the thieu mot nua (truoc/sau mot spread kho doi), nhung
+        // van di duoc ca hai chieu — chi to dau va to cuoi moi bi kep lai.
+        if (fc.leaf <= 0) dir = 1;
+        if (fc.leaf >= set.leaves.length - 1) dir = -1;
+        if (dir > 0 && fc.leaf >= set.leaves.length - 1) return;
+        if (dir < 0 && fc.leaf <= 0) return;
+        fcBusy = true;
+        fcDrag = { dir: dir, startX: e.clientX, lastX: e.clientX, t: 0, armed: false, hist: [{ x: e.clientX, t: e.timeStamp }] };
+        fcBook.style.cursor = 'grabbing';
+        window.addEventListener('pointermove', fcDragMove);
+        window.addEventListener('pointerup', fcDragEnd);
+        window.addEventListener('pointercancel', fcDragEnd);
+      };
+
+      /* ---------- mo bo sach: bia bay vao giua roi tu lat trang dau ---------- */
+      const FC_FLY_MS = 400;
+      const fcFly = document.createElement('div');
+      fcFly.style.cssText = 'display:none;position:absolute;inset:0;z-index:5;pointer-events:none';
+      const fcFlyPos = document.createElement('div');
+      fcFlyPos.style.cssText = 'position:absolute;left:0;top:0;transform-origin:0 0;background:#4F1F13;padding:3px';
+      const fcFlyImg = document.createElement('img');
+      fcFlyImg.alt = '';
+      fcFlyImg.decoding = 'async';
+      fcFlyImg.style.cssText = 'width:100%;height:100%;object-fit:cover;background:#FDF7E8;image-rendering:auto;display:block';
+      fcFlyPos.appendChild(fcFlyImg);
+      fcFly.appendChild(fcFlyPos);
+      fcReader.appendChild(fcFly);
+
+      const fcClearIntro = () => { fcIntroT.forEach(clearTimeout); fcIntroT = []; };
+
+      const fcRestChrome = () => {
+        fcClosing = false;
+        fcFly.style.display = 'none';
+        fcFlyImg.removeAttribute('src');
+        fcReader.style.transition = 'none';
+        fcReader.style.background = '#F4ECD6';
+        fcChrome.forEach((el) => { el.style.transition = 'none'; el.style.opacity = '1'; });
+      };
+
+      const fcIntro = (btn) => {
+        const img = btn && btn.querySelector('[data-lh-fccover]');
+        const wrap = img && img.parentElement;
+        const s = wrap && wrap.getBoundingClientRect();
+        const br = fcBook.getBoundingClientRect();
+        if (!s || !s.width || !br.width) return false;
+
+        // dich den = dung o trang bia dang nam (nua phai cua khung sach)
+        const tx = br.left + br.width / 2;
+        const ty = br.top;
+        fcFlyImg.src = fcSrc(fcLeafAt(0).right);
+        fcFlyPos.style.width = fcPageW + 'px';
+        fcFlyPos.style.height = fcPageH + 'px';
+        fcFlyPos.style.transition = 'none';
+        fcFlyPos.style.transform = 'translate(' + s.left + 'px,' + s.top + 'px) scale(' + (s.width / fcPageW) + ')';
+        fcFly.style.display = 'block';
+        fcBook.style.opacity = '0';
+        fcReader.style.transition = 'none';
+        fcReader.style.background = 'rgba(244,236,214,0)';
+        fcChrome.forEach((el) => { el.style.transition = 'none'; el.style.opacity = '0'; });
+
+        // Chot moc dau bang mot lan reflow ep buoc roi doi sang moc cuoi ngay
+        // trong cung mot luot script. Khong dung requestAnimationFrame: tab bi
+        // an thi rAF khong chay, ma setTimeout ben duoi van chay, nen trinh doc
+        // se ket o trang thai nen trong suot.
+        void fcFlyPos.offsetWidth;
+        fcFlyPos.style.transition = 'transform ' + FC_FLY_MS + 'ms cubic-bezier(.22,.68,.24,1)';
+        fcFlyPos.style.transform = 'translate(' + tx + 'px,' + ty + 'px) scale(1)';
+        fcReader.style.transition = 'background-color ' + FC_FLY_MS + 'ms ease';
+        fcReader.style.background = '#F4ECD6';
+        fcChrome.forEach((el) => {
+          el.style.transition = 'opacity 240ms ease ' + Math.round(FC_FLY_MS * .45) + 'ms';
+          el.style.opacity = '1';
+        });
+
+        fcFoxSync(false);                         // dung chen vao luc bia dang bay
+        fcIntroT.push(setTimeout(() => {
+          fcBook.style.opacity = '1';
+          fcFly.style.display = 'none';
+          fcFlyImg.removeAttribute('src');
+          fcFoxSync();
+        }, FC_FLY_MS + 20));
+        return true;
+      };
+
+      /* ---------- muc luc ---------- */
+      const fcCloseToc = () => {
+        fc.toc = false;
+        fcTocBox.style.display = 'none';
+        fcFoxSync();
+        setTimeout(() => fcBook.focus(), 0);
+      };
+
+      const fcOpenToc = () => {
+        const set = fcSet();
+        fcTocImg.src = set.leaves[1] && set.leaves[1].left ? set.leaves[1].left.large : '';
+        fcList.textContent = '';
+        set.labels.forEach((label, i) => {
+          const b = document.createElement('button');
+          const cur = set.tocLeaf[i] === fc.leaf;
+          b.type = 'button';
+          b.style.cssText = 'display:flex;align-items:center;gap:11px;width:100%;min-height:44px;padding:7px 10px;border:0;background:' + (cur ? '#FFE8D6' : 'transparent') + ';clip-path:var(--clipSi);text-align:left;font:inherit;font-size:13.5px;line-height:1.35;color:#4F1F13;cursor:pointer';
+          const num = document.createElement('span');
+          num.style.cssText = 'flex:none;width:24px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77';
+          num.textContent = fcPad(i + 1);
+          const txt = document.createElement('span');
+          txt.style.cssText = 'flex:1;min-width:0';
+          txt.textContent = label;
+          b.appendChild(num);
+          b.appendChild(txt);
+          if (!cur) {
+            b.addEventListener('mouseenter', () => { b.style.background = '#F4ECD6'; });
+            b.addEventListener('mouseleave', () => { b.style.background = 'transparent'; });
+          }
+          b.addEventListener('click', () => { fcGoLeaf(set.tocLeaf[i]); fcCloseToc(); });
+          fcList.appendChild(b);
+        });
+        fc.toc = true;
+        fcFoxSync(false);
+        fcTocBox.style.display = 'flex';
+        setTimeout(() => fcTocPanel.focus(), 0);
+      };
+
+      /* ---------- mo / dong ---------- */
+      const fcDone = () => {
+        fcClearIntro();
+        fcRestChrome();
+        fcDrag = null;
+        fcTo = null;
+        fcBusy = false;
+        fcClosing = false;
+        fc.open = false;
+        fc.toc = false;
+        fcTurn.style.display = 'none';
+        fcTocBox.style.display = 'none';
+        fcReader.style.display = 'none';
+        fcBook.style.transition = 'none';
+        fcBook.style.opacity = '1';
+        document.body.style.overflow = fcPrevOverflow;
+        document.body.style.paddingRight = fcPrevPadRight;
+        if (fcOpener && fcOpener.focus) fcOpener.focus();
+      };
+
+      // Dong lai: cuon sach thu nho va mo dan, nen toi tan ra tra lai trang phia
+      // sau — nguoc lai voi hoat canh mo, chu khong tat dot ngot.
+      const FC_SHUT_MS = 440;                     // gap cuon sach lai
+      const FC_BACK_MS = 340;                     // bia bay tra ve ke
+
+      // Bia dang nam giua bay tra ve dung o cua no tren ke — nguoc lai fcIntro.
+      const fcFlyBack = (after) => {
+        const img = fcOpener && fcOpener.querySelector('[data-lh-fccover]');
+        const wrap = img && img.parentElement;
+        const s = wrap && wrap.getBoundingClientRect();
+        const br = fcBook.getBoundingClientRect();
+        if (!s || !s.width || !br.width || !fcPageW) { after(); return; }
+
+        // to bia dang o nua phai cua khung sach (khung da duoc keo -25%)
+        const fx = br.left + br.width / 2;
+        fcFlyImg.src = fcSrc(fcLeafAt(0).right);
+        fcFlyPos.style.width = fcPageW + 'px';
+        fcFlyPos.style.height = fcPageH + 'px';
+        fcFlyPos.style.transition = 'none';
+        fcFlyPos.style.transform = 'translate(' + fx + 'px,' + br.top + 'px) scale(1)';
+        fcFly.style.display = 'block';
+        fcBook.style.transition = 'none';
+        fcBook.style.opacity = '0';
+
+        void fcFlyPos.offsetWidth;                // chot moc dau truoc khi doi
+        fcFlyPos.style.transition = 'transform ' + FC_BACK_MS + 'ms cubic-bezier(.4,0,.7,.4)';
+        fcFlyPos.style.transform = 'translate(' + s.left + 'px,' + s.top + 'px) scale(' + (s.width / fcPageW) + ')';
+        fcReader.style.transition = 'background-color ' + FC_BACK_MS + 'ms ease';
+        fcReader.style.background = 'rgba(244,236,214,0)';
+        fcChrome.forEach((el) => { el.style.transition = 'opacity 170ms ease'; el.style.opacity = '0'; });
+        fcIntroT.push(setTimeout(after, FC_BACK_MS + 30));
+      };
+
+      // Dong = gap sach lai that: to dang mo queo tu trai sang phai va up lai
+      // thanh bia, roi ca cuon bay tra ve ke. Vi tri dang doc khong bi ghi de.
+      const fcClose = () => {
+        if (!fc.open || fcClosing) return;
+        fcClearIntro();
+        fcDrag = null;
+        fc.toc = false;
+        fcTocBox.style.display = 'none';
+        if (!fcAnimated()) { fcDone(); return; }
+        fcClosing = true;
+        fcBusy = true;
+        fcFoxSync(false);
+
+        if (fc.leaf > 0 && fcArm(-1, 0)) {
+          void fcTurn.offsetWidth;
+          fcTurn.style.transition = 'transform ' + FC_SHUT_MS + 'ms cubic-bezier(.4,.02,.24,1)';
+          fcTurn.style.transform = 'rotateY(' + fcAngle(-1, 1) + 'deg)';
+          fcBook.style.transition = 'transform ' + FC_SHUT_MS + 'ms cubic-bezier(.4,.02,.24,1)';
+          fcBook.style.transform = fcShift(0);
+          fcIntroT.push(setTimeout(() => {
+            // chot ve to bia — co y KHONG goi fcSettle vi no se ghi de vi tri da luu
+            fc.leaf = 0;
+            fcTo = null;
+            fcTurn.style.display = 'none';
+            fcTurn.style.transition = 'none';
+            fcTurn.style.transform = 'rotateY(0deg)';
+            fcPaint(fcPageL, fcImgL, null);
+            fcPaint(fcPageR, fcImgR, fcLeafAt(0).right);
+            fcFlyBack(fcDone);
+          }, FC_SHUT_MS + 20));
+        } else {
+          fcFlyBack(fcDone);
+        }
+      };
+
+      const fcOpen = (si, btn) => {
+        const wasOpen = fc.open;
+        fcOpener = btn || null;
+        fcClearIntro();
+        fcRestChrome();
+        fcBusy = false;
+        fcDrag = null;
+        fc.open = true;
+        fc.set = si;
+        // luon dung o bia truoc; vi tri da luu duoc lat toi bang mot nhip
+        const saved = Math.min(Math.max(0, fcPos[si] || 0), FC[si].leaves.length - 1);
+        fc.leaf = 0;
+        fcTo = null;
+        fc.toc = false;
+        fcTurn.style.display = 'none';
+        fcTocBox.style.display = 'none';
+        fcBook.style.transition = 'none';
+        fcBook.style.opacity = '1';
+        fcReader.style.display = 'flex';
+        // Chi ghi lai va khoa cuon o lan mo dau: mo de len khi dang mo thi gia
+        // tri ghi lai se la chinh gia tri da khoa, dong xong khong tra ve duoc.
+        if (!wasOpen) {
+          fcPrevOverflow = document.body.style.overflow;
+          fcPrevPadRight = document.body.style.paddingRight;
+          // Bu be rong thanh cuon: nen trinh doc hien dan chu khong dac ngay,
+          // neu khong trang phia sau se giat ngang mot cai thay ro.
+          const sbw = window.innerWidth - document.documentElement.clientWidth;
+          document.body.style.overflow = 'hidden';
+          if (sbw > 0) document.body.style.paddingRight = sbw + 'px';
+        }
+        fcMeasure();
+        fcSync();
+        fcPreload(saved);
+        if (fcAnimated() && fcIntro(btn)) {
+          // Co lich su doc thi lat dung mot nhip tu bia toi trang cu, khong
+          // nhay thang — va cung khong tu lat khi dang o bia.
+          if (saved > 0) {
+            fcIntroT.push(setTimeout(() => { if (fc.open) fcStep(1, saved); }, FC_FLY_MS + 210));
+          }
+        } else {
+          fc.leaf = saved;
+          fcBook.style.opacity = '1';
+          fcSync();
+        }
+        setTimeout(() => {
+          fcBook.style.transition = 'opacity 130ms linear,transform 320ms ' + FC_EASE;
+          fcBook.focus();
+        }, 0);
+      };
+
+      /* ---------- noi day su kien ---------- */
+      root.querySelectorAll('[data-lh-fcdeck]').forEach((btn) => {
+        const si = Number(btn.getAttribute('data-lh-fcdeck'));
+        btn.addEventListener('click', () => fcOpen(si, btn));
+      });
+
+      // Man hinh net cao doi sang ban lon cho ca hai mat cua the (bia va trang
+      // cuoi), chi mot request thay the cho moi anh.
+      if ((window.devicePixelRatio || 1) > 1.5) {
+        root.querySelectorAll('[data-lh-fchires]').forEach((img) => {
+          img.src = img.getAttribute('data-lh-fchires');
+        });
+      }
+
+      fcBook.addEventListener('pointerdown', fcDragStart);
+      fcBook.addEventListener('dragstart', (e) => e.preventDefault());
+      fcq('[data-lh-fcclose]').addEventListener('click', fcClose);
+      fcq('[data-lh-fctocopen]').addEventListener('click', fcOpenToc);
+      fcq('[data-lh-fctocclose]').addEventListener('click', fcCloseToc);
+      fcPrev.addEventListener('click', () => fcStep(-1));
+      fcNext.addEventListener('click', () => fcStep(1));
+      fcTocBox.addEventListener('click', (e) => { if (e.target === fcTocBox) fcCloseToc(); });
+
+      let fcResizeT = 0;
+      window.addEventListener('resize', () => {
+        if (!fc.open) return;
+        clearTimeout(fcResizeT);
+        fcResizeT = setTimeout(() => { fcMeasure(); fcSync(); }, 160);
+      });
+
+      window.addEventListener('keydown', (e) => {
+        if (!fc.open) return;
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          if (fc.toc) fcCloseToc(); else fcClose();
+          return;
+        }
+        if (fc.toc) return;
+        if (e.key === 'ArrowRight') { e.preventDefault(); fcStep(1); return; }
+        if (e.key === 'ArrowLeft') { e.preventDefault(); fcStep(-1); return; }
+        if (e.key === ' ' || e.key === 'Enter' || e.key === 'Spacebar') {
+          // nut va link tu xu ly phim nay, dung chan hai lan
+          const t = e.target;
+          if (t && (t.tagName === 'BUTTON' || t.tagName === 'A')) return;
+          e.preventDefault();
+          fcStep(1);
+        }
+      });
+
+      // giu focus trong trinh doc khi dang mo
+      document.addEventListener('focusin', (e) => {
+        if (!fc.open || fcReader.contains(e.target)) return;
+        fcBook.focus();
+      });
+    }
   }
 }
 </script>
