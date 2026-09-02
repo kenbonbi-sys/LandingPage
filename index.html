@@ -114,6 +114,17 @@ summary::-webkit-details-marker{display:none}
    trong di theo nguyen khoi. JS chi ghi --mx/--my (-1..1) len the. */
 [data-lh-oc]{--ocs:var(--ocs0,5px);--flipdur:560ms;--fliphalf:280ms;--flipease:cubic-bezier(.45,0,.55,1)}
 [data-lh-octilt]{min-height:418px;transform:translateY(calc(var(--lift,0) * -1px)) rotateX(calc(var(--my,0) * -5.5deg)) rotateY(calc(var(--mx,0) * 8deg));transition:transform 180ms cubic-bezier(.22,.68,.24,1);will-change:transform}
+/* Khung the nam tren chinh hai mat quay, KHONG tren [data-lh-oc]: the cha
+   khong quay nen nen nau cua no se lo ra hai ben luc thanh quay. Cung vi vay
+   [data-lh-oc] khong duoc co clip-path -- canh gan cua the quay cao hon the cha
+   (364px so voi 317px o 35deg) nen clip se cat cut khung o hai goc phia gan.
+   Vi khong con clip, the quay tran ra ngoai o toi da 46px o moc 90deg trong khi
+   grid gap chi 24px -> phai nang z-index de no khong chui xuong duoi the ke ben.
+   Nang theo :hover/:focus-within chu KHONG theo transition-delay: [data-lh-oc]
+   co transition inline nen moi rule transition trong stylesheet deu bi de. Con
+   tro gan nhu luc nao cung con tren the trong suot ca luot mo lan luot dong. */
+[data-lh-oc]{position:relative;z-index:1}
+[data-lh-oc]:hover,[data-lh-oc]:focus-within,[data-lh-oc][data-lh-ocopen="1"]{z-index:3}
 [data-lh-ocflip]{transition:transform var(--flipdur) var(--flipease);will-change:transform}
 [data-lh-oc][data-lh-ocopen="1"] [data-lh-ocflip]{transform:rotateY(180deg)}
 /* Doi mat bang visibility chu KHONG dung backface-visibility: mat the co ca
@@ -164,7 +175,7 @@ summary::-webkit-details-marker{display:none}
 </style>
 </helmet>
 
-<div data-lh-root="1" style="--ink:#4F1F13;--ink2:#4C3B2A;--ink3:#9A8B77;--cream:#FCF8EC;--cream2:#F4ECD6;--cream3:#EDE3C7;--paper:#FFFFFF;--page:#FDF7E8;--sh:#2A1F17;--org:#FF5D38;--orgd:#97290F;--orgl:#FFE8D6;--blu:#1C66BB;--blud:#123F70;--blul:#DDECF9;--rose:#FF5D38;--rosed:#97290F;--rosel:#FFE8D6;--green:#1C66BB;--greend:#123F70;--greenl:#DDECF9;--violet:#1C66BB;--violetd:#123F70;--violetl:#DDECF9;--amber:#FF5D38;--amberd:#97290F;--amberl:#FFE8D6;--pink:#FF5D38;--pinkd:#97290F;--disp:'MoMo Trusts Display',system-ui,sans-serif;--sans:'MoMo Trusts Sans',system-ui,sans-serif;--px:'Press Start 2P',monospace;--clip:polygon(0 12px,4px 12px,4px 8px,8px 8px,8px 4px,12px 4px,12px 0,calc(100% - 12px) 0,calc(100% - 12px) 4px,calc(100% - 8px) 4px,calc(100% - 8px) 8px,calc(100% - 4px) 8px,calc(100% - 4px) 12px,100% 12px,100% calc(100% - 12px),calc(100% - 4px) calc(100% - 12px),calc(100% - 4px) calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) calc(100% - 4px),calc(100% - 12px) calc(100% - 4px),calc(100% - 12px) 100%,12px 100%,12px calc(100% - 4px),8px calc(100% - 4px),8px calc(100% - 8px),4px calc(100% - 8px),4px calc(100% - 12px),0 calc(100% - 12px));--clipPi:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px));--clipC:polygon(0 6px,2px 6px,2px 4px,4px 4px,4px 2px,6px 2px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 2px,calc(100% - 4px) 2px,calc(100% - 4px) 4px,calc(100% - 2px) 4px,calc(100% - 2px) 6px,100% 6px,100% calc(100% - 6px),calc(100% - 2px) calc(100% - 6px),calc(100% - 2px) calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) calc(100% - 2px),calc(100% - 6px) calc(100% - 2px),calc(100% - 6px) 100%,6px 100%,6px calc(100% - 2px),4px calc(100% - 2px),4px calc(100% - 4px),2px calc(100% - 4px),2px calc(100% - 6px),0 calc(100% - 6px));--clipCi:polygon(0 4px,2px 4px,2px 2px,4px 2px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 2px,calc(100% - 2px) 2px,calc(100% - 2px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 2px) calc(100% - 4px),calc(100% - 2px) calc(100% - 2px),calc(100% - 4px) calc(100% - 2px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 2px),2px calc(100% - 2px),2px calc(100% - 4px),0 calc(100% - 4px));--clipSi:polygon(0 2px,2px 2px,2px 0,calc(100% - 2px) 0,calc(100% - 2px) 2px,100% 2px,100% calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,2px calc(100% - 2px),0 calc(100% - 2px));--bd:drop-shadow(4px 0 0 #4F1F13) drop-shadow(-4px 0 0 #4F1F13) drop-shadow(0 4px 0 #4F1F13) drop-shadow(0 -4px 0 #4F1F13);--btn:drop-shadow(4px 0 0 #4F1F13) drop-shadow(-4px 0 0 #4F1F13) drop-shadow(0 4px 0 #4F1F13) drop-shadow(0 -4px 0 #4F1F13) drop-shadow(4px 4px 0 #2A1F17);--btnsm:drop-shadow(4px 0 0 #4F1F13) drop-shadow(-4px 0 0 #4F1F13) drop-shadow(0 4px 0 #4F1F13) drop-shadow(0 -4px 0 #4F1F13) drop-shadow(3px 3px 0 #2A1F17);background:#FDF7E8;color:#4F1F13;font-family:'MoMo Trusts Sans',system-ui,sans-serif;overflow-x:hidden;overflow-x:clip">
+<div data-lh-root="1" style="--ink:#4F1F13;--ink2:#4C3B2A;--ink3:#786751;--cream:#FCF8EC;--cream2:#F4ECD6;--cream3:#EDE3C7;--paper:#FFFFFF;--page:#FDF7E8;--sh:#2A1F17;--org:#FF5D38;--orgd:#97290F;--orgl:#FFE8D6;--blu:#1C66BB;--blud:#123F70;--blul:#DDECF9;--rose:#FF5D38;--rosed:#97290F;--rosel:#FFE8D6;--green:#1C66BB;--greend:#123F70;--greenl:#DDECF9;--violet:#1C66BB;--violetd:#123F70;--violetl:#DDECF9;--amber:#FF5D38;--amberd:#97290F;--amberl:#FFE8D6;--pink:#FF5D38;--pinkd:#97290F;--disp:'MoMo Trusts Display',system-ui,sans-serif;--sans:'MoMo Trusts Sans',system-ui,sans-serif;--px:'Press Start 2P',monospace;--clip:polygon(0 12px,4px 12px,4px 8px,8px 8px,8px 4px,12px 4px,12px 0,calc(100% - 12px) 0,calc(100% - 12px) 4px,calc(100% - 8px) 4px,calc(100% - 8px) 8px,calc(100% - 4px) 8px,calc(100% - 4px) 12px,100% 12px,100% calc(100% - 12px),calc(100% - 4px) calc(100% - 12px),calc(100% - 4px) calc(100% - 8px),calc(100% - 8px) calc(100% - 8px),calc(100% - 8px) calc(100% - 4px),calc(100% - 12px) calc(100% - 4px),calc(100% - 12px) 100%,12px 100%,12px calc(100% - 4px),8px calc(100% - 4px),8px calc(100% - 8px),4px calc(100% - 8px),4px calc(100% - 12px),0 calc(100% - 12px));--clipPi:polygon(0 8px,4px 8px,4px 4px,8px 4px,8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px));--clipC:polygon(0 6px,2px 6px,2px 4px,4px 4px,4px 2px,6px 2px,6px 0,calc(100% - 6px) 0,calc(100% - 6px) 2px,calc(100% - 4px) 2px,calc(100% - 4px) 4px,calc(100% - 2px) 4px,calc(100% - 2px) 6px,100% 6px,100% calc(100% - 6px),calc(100% - 2px) calc(100% - 6px),calc(100% - 2px) calc(100% - 4px),calc(100% - 4px) calc(100% - 4px),calc(100% - 4px) calc(100% - 2px),calc(100% - 6px) calc(100% - 2px),calc(100% - 6px) 100%,6px 100%,6px calc(100% - 2px),4px calc(100% - 2px),4px calc(100% - 4px),2px calc(100% - 4px),2px calc(100% - 6px),0 calc(100% - 6px));--clipCi:polygon(0 4px,2px 4px,2px 2px,4px 2px,4px 0,calc(100% - 4px) 0,calc(100% - 4px) 2px,calc(100% - 2px) 2px,calc(100% - 2px) 4px,100% 4px,100% calc(100% - 4px),calc(100% - 2px) calc(100% - 4px),calc(100% - 2px) calc(100% - 2px),calc(100% - 4px) calc(100% - 2px),calc(100% - 4px) 100%,4px 100%,4px calc(100% - 2px),2px calc(100% - 2px),2px calc(100% - 4px),0 calc(100% - 4px));--clipSi:polygon(0 2px,2px 2px,2px 0,calc(100% - 2px) 0,calc(100% - 2px) 2px,100% 2px,100% calc(100% - 2px),calc(100% - 2px) calc(100% - 2px),calc(100% - 2px) 100%,2px 100%,2px calc(100% - 2px),0 calc(100% - 2px));--bd:drop-shadow(4px 0 0 #4F1F13) drop-shadow(-4px 0 0 #4F1F13) drop-shadow(0 4px 0 #4F1F13) drop-shadow(0 -4px 0 #4F1F13);--btn:drop-shadow(4px 0 0 #4F1F13) drop-shadow(-4px 0 0 #4F1F13) drop-shadow(0 4px 0 #4F1F13) drop-shadow(0 -4px 0 #4F1F13) drop-shadow(4px 4px 0 #2A1F17);--btnsm:drop-shadow(4px 0 0 #4F1F13) drop-shadow(-4px 0 0 #4F1F13) drop-shadow(0 4px 0 #4F1F13) drop-shadow(0 -4px 0 #4F1F13) drop-shadow(3px 3px 0 #2A1F17);background:#FDF7E8;color:#4F1F13;font-family:'MoMo Trusts Sans',system-ui,sans-serif;overflow-x:hidden;overflow-x:clip">
 
 <a href="#courses" style="position:absolute;left:4px;top:-200px;z-index:90;background:#FF5D38;color:#fff;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;padding:12px 18px;letter-spacing:.1em" style-focus="top:4px">Bỏ qua tới nội dung</a>
 
@@ -215,7 +226,7 @@ summary::-webkit-details-marker{display:none}
 <div style="display:flex;align-items:center;gap:14px;margin-bottom:36px;min-width:0">
   <div style="flex-shrink:0;background:#4F1F13;border-radius:999px;padding:2px">
     <div style="display:flex;align-items:center;gap:9px;background:#FFFFFF;border-radius:999px;padding:0 13px;height:38px">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9A8B77" stroke-width="2.5" stroke-linecap="square" shape-rendering="crispEdges" aria-hidden="true" style="flex-shrink:0;display:block"><circle cx="10" cy="10" r="6"></circle><line x1="14.5" y1="14.5" x2="21" y2="21"></line></svg>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#786751" stroke-width="2.5" stroke-linecap="square" shape-rendering="crispEdges" aria-hidden="true" style="flex-shrink:0;display:block"><circle cx="10" cy="10" r="6"></circle><line x1="14.5" y1="14.5" x2="21" y2="21"></line></svg>
       <input data-lh-search type="search" placeholder="Tìm khóa học..." aria-label="Tìm khóa học" style="border:none;outline:none;background:transparent;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;color:#4F1F13;width:clamp(90px,14vw,170px);padding:0" />
     </div>
   </div>
@@ -233,10 +244,10 @@ summary::-webkit-details-marker{display:none}
 
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px">
 
-      <article data-lh-card="Desk" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Desk" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-1px,-1px);filter:drop-shadow(6px 6px 0 #2A1F17)">
         <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
         <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
-          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px)">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
               <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#EBF8DE;border-bottom:2px solid #4F1F13">
                 <img src="assets/img/land-desk.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
@@ -252,7 +263,7 @@ summary::-webkit-details-marker{display:none}
               </div>
             </div>
           </div>
-          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px)">
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden;padding:16px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px">
               <div style="min-width:0">
@@ -280,10 +291,10 @@ summary::-webkit-details-marker{display:none}
         </div>
       </article>
 
-      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-1px,-1px);filter:drop-shadow(6px 6px 0 #2A1F17)">
         <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
         <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
-          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px)">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
               <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FCDAEA;border-bottom:2px solid #4F1F13">
                 <img src="assets/img/land-quali.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
@@ -299,7 +310,7 @@ summary::-webkit-details-marker{display:none}
               </div>
             </div>
           </div>
-          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px)">
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden;padding:16px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px">
               <div style="min-width:0">
@@ -327,10 +338,10 @@ summary::-webkit-details-marker{display:none}
         </div>
       </article>
 
-      <article data-lh-card="Quanti" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quanti" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-1px,-1px);filter:drop-shadow(6px 6px 0 #2A1F17)">
         <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
         <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
-          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px)">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
               <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#DDECF9;border-bottom:2px solid #4F1F13">
                 <img src="assets/img/land-quanti.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
@@ -346,7 +357,7 @@ summary::-webkit-details-marker{display:none}
               </div>
             </div>
           </div>
-          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px)">
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden;padding:16px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px">
               <div style="min-width:0">
@@ -374,10 +385,10 @@ summary::-webkit-details-marker{display:none}
         </div>
       </article>
 
-      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quali" data-lh-pop="1" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-1px,-1px);filter:drop-shadow(6px 6px 0 #2A1F17)">
         <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
         <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
-          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px)">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
               <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FCDAEA;border-bottom:2px solid #4F1F13">
                 <img src="assets/img/land-quali.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
@@ -393,7 +404,7 @@ summary::-webkit-details-marker{display:none}
               </div>
             </div>
           </div>
-          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px)">
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden;padding:16px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px">
               <div style="min-width:0">
@@ -421,10 +432,10 @@ summary::-webkit-details-marker{display:none}
         </div>
       </article>
 
-      <article data-lh-card="Quanti" data-lh-pop="0" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="Quanti" data-lh-pop="0" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-1px,-1px);filter:drop-shadow(6px 6px 0 #2A1F17)">
         <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
         <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
-          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px)">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
               <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#DDECF9;border-bottom:2px solid #4F1F13">
                 <img src="assets/img/land-quanti.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
@@ -440,7 +451,7 @@ summary::-webkit-details-marker{display:none}
               </div>
             </div>
           </div>
-          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px)">
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden;padding:16px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px">
               <div style="min-width:0">
@@ -468,10 +479,10 @@ summary::-webkit-details-marker{display:none}
         </div>
       </article>
 
-      <article data-lh-card="AI" data-lh-pop="0" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-2px,-2px);filter:drop-shadow(8px 8px 0 #2A1F17)">
+      <article data-lh-card="AI" data-lh-pop="0" data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="filter:drop-shadow(5px 5px 0 #2A1F17);transition:transform 120ms steps(2),filter 120ms steps(2)" style-hover="transform:translate(-1px,-1px);filter:drop-shadow(6px 6px 0 #2A1F17)">
         <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
         <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
-          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px)">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden">
               <div style="height:132px;position:relative;display:grid;place-items:center;overflow:hidden;background:#FFE8D6;border-bottom:2px solid #4F1F13">
                 <img src="assets/img/land-desk.png" alt="" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;image-rendering:auto" />
@@ -487,7 +498,7 @@ summary::-webkit-details-marker{display:none}
               </div>
             </div>
           </div>
-          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px)">
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
             <div style="background:#FFFFFF;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;overflow:hidden;padding:16px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:10px">
               <div style="min-width:0">
@@ -568,47 +579,42 @@ summary::-webkit-details-marker{display:none}
       <div style="min-width:0;position:relative;padding-bottom:104px">
 
         <!-- lop sau: man hinh Scenario -->
-        <div style="position:relative;background:#FCF8EC;background-image:url('assets/bg/bg-main.jpg');background-size:cover;background-position:center bottom;border-radius:18px;overflow:hidden;padding:16px 18px 74px">
+        <div style="position:relative;background:#FCF8EC;background-image:url('assets/bg/bg-main.jpg');background-size:cover;background-position:center bottom;clip-path:var(--clip);overflow:hidden;padding:16px 18px 74px">
 
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
-            <span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;background:#FFFFFF;border:3px solid #4F1F13;border-radius:6px">
+            <span style="width:32px;height:32px;flex-shrink:0;background:#4F1F13;clip-path:var(--clipCi);padding:3px;display:block"><span style="width:100%;height:100%;display:grid;place-items:center;background:#FFFFFF;clip-path:var(--clipSi)">
               <svg viewBox="0 0 10 10" aria-hidden="true" style="width:12px;height:12px;shape-rendering:crispEdges"><path fill="#4F1F13" d="M0,1h2v1h1v1h1v1h2v-1h1v-1h1v-1h2v1h-1v1h-1v1h-1v1h-1v2h1v1h1v1h1v1h1v1h-2v-1h-1v-1h-1v-1h-2v1h-1v1h-1v1h-2v-1h1v-1h1v-1h1v-1h1v-2h-1v-1h-1v-1h-1v-1h-1z"></path></svg>
-            </span>
-            <span style="flex:1;height:12px;background:#FFFFFF;border:3px solid #4F1F13;border-radius:6px;overflow:hidden">
+            </span></span>
+            <span style="flex:1;background:#4F1F13;clip-path:var(--clipSi);padding:3px;display:block"><span style="display:block;height:12px;background:#FFFFFF;clip-path:var(--clipSi);overflow:hidden">
               <span data-lh-bar="34" style="display:block;height:100%;width:0;background:#FF5D38;transition:width 1.4s steps(8)"></span>
-            </span>
-            <span style="width:26px;height:26px;flex-shrink:0;display:grid;place-items:center;background:#FFFFFF;border:3px solid #4F1F13;border-radius:6px">
-              <svg viewBox="0 0 9 9" aria-hidden="true" style="width:13px;height:13px;shape-rendering:crispEdges"><path fill="#4F1F13" d="M4,0h1v1h1v1h1v-1h1v1h-1v1h1v1h1v1h-1v1h-1v1h1v1h-1v1h-1v-1h-1v1h-1v-1h-1v1h-1v-1h1v-1h-1v-1h-1v-1h1v-1h1v-1h-1v-1h1v-1h1v1h1zM4,3h1v1h1v1h-1v1h-1v-1h-1v-1h1z"></path></svg>
-            </span>
+            </span></span>
           </div>
-
-          <span style="display:inline-block;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:9.5px;letter-spacing:.08em;color:#2F6B1E;background:#D9F0C4;border:2px solid #4F1F13;border-radius:5px;padding:3px 7px;line-height:1;margin-bottom:10px">SCENARIO</span>
 
           <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:14px">
             <img src="assets/img/foxy-avatar.png" alt="" style="width:50px;height:45px;flex-shrink:0;object-fit:contain;margin-top:6px" />
             <div style="min-width:0">
-              <div style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;color:#9A8B77;margin-bottom:4px">FOXY</div>
-              <div style="background:#FFFFFF;border:3px solid #4F1F13;border-radius:9px;padding:10px 13px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;line-height:1.45;text-wrap:pretty">Sếp hỏi 'Tính năng Hoàn tiền mua sắm trên điện thoại có tiềm năng triển khai không?' Bạn chọn đối tượng khảo sát nào?</div>
+              <div style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;color:#786751;margin-bottom:4px">FOXY</div>
+              <div style="background:#4F1F13;clip-path:var(--clipC);padding:3px"><div style="background:#FFFFFF;clip-path:var(--clipCi);padding:10px 13px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;line-height:1.45;text-wrap:pretty">Sếp hỏi 'Tính năng Hoàn tiền mua sắm trên điện thoại có tiềm năng triển khai không?' Bạn chọn đối tượng khảo sát nào?</div></div>
             </div>
           </div>
 
-          <div style="display:flex;justify-content:flex-end;margin-bottom:8px">
-            <span style="display:inline-flex;align-items:center;gap:4px;font-family:ui-monospace,monospace;font-size:9.5px;font-weight:700;color:#2F6B1E;background:#D9F0C4;border:2px solid #4F1F13;border-radius:5px;padding:2px 6px;line-height:1"><svg viewBox="0 0 9 9" aria-hidden="true" style="width:9px;height:9px;shape-rendering:crispEdges"><path fill="#2F6B1E" d="M3,0h3v1h-3zM2,1h1v1h-1zM6,1h1v1h-1zM1,2h1v5h-1zM7,2h1v5h-1zM4,2h1v3h1v1h-2zM2,7h1v1h-1zM6,7h1v1h-1zM3,8h3v1h-3z"></path></svg>22S</span>
-          </div>
-
-          <div style="display:flex;flex-direction:column;gap:9px;margin-left:auto;max-width:88%">
-            <div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border:3px solid #4F1F13;border-radius:9px;padding:9px 12px">
-              <span style="width:20px;height:20px;flex-shrink:0;display:grid;place-items:center;background:#FFE8D6;border:2px solid #97290F;border-radius:4px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;color:#97290F">1</span>
+          <div data-lh-quizgroup data-lh-quizcorrect="1" role="group" aria-label="Chọn đối tượng khảo sát" style="display:flex;flex-direction:column;gap:9px;margin-left:auto;max-width:88%">
+            <button data-lh-quiz="1" type="button" style="display:block;background:#4F1F13;clip-path:var(--clipC);padding:3px;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;border:none"><span data-lh-quizface style="display:flex;align-items:center;gap:10px;background:#FFFFFF;clip-path:var(--clipCi);padding:9px 12px;transition:background 120ms">
+              <span data-lh-quizchip style="width:24px;height:24px;flex-shrink:0;background:#97290F;clip-path:var(--clipCi);padding:2px;display:block"><span data-lh-quizchipin style="width:100%;height:100%;display:grid;place-items:center;background:#FFE8D6;clip-path:var(--clipSi);font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;color:#97290F">1</span></span>
               <span style="font-size:12px;line-height:1.45;font-weight:600">Người dùng có nhu cầu mua sắm online trên điện thoại, ví dụ lâu nay dùng MoMo thanh toán trên Lazada, Shopee</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border:3px solid #4F1F13;border-radius:9px;padding:9px 12px">
-              <span style="width:20px;height:20px;flex-shrink:0;display:grid;place-items:center;background:#FFE8D6;border:2px solid #97290F;border-radius:4px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;color:#97290F">2</span>
+              <span data-lh-quizmark aria-hidden="true" style="margin-left:auto;flex-shrink:0;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;line-height:1;opacity:0;transition:opacity 120ms"></span></span>
+            </button>
+            <button data-lh-quiz="2" type="button" style="display:block;background:#4F1F13;clip-path:var(--clipC);padding:3px;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;border:none"><span data-lh-quizface style="display:flex;align-items:center;gap:10px;background:#FFFFFF;clip-path:var(--clipCi);padding:9px 12px;transition:background 120ms">
+              <span data-lh-quizchip style="width:24px;height:24px;flex-shrink:0;background:#97290F;clip-path:var(--clipCi);padding:2px;display:block"><span data-lh-quizchipin style="width:100%;height:100%;display:grid;place-items:center;background:#FFE8D6;clip-path:var(--clipSi);font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;color:#97290F">2</span></span>
               <span style="font-size:12px;line-height:1.45;font-weight:600">Toàn bộ người dùng MoMo, cho chắc chắn bao quát</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:10px;background:#FFFFFF;border:3px solid #4F1F13;border-radius:9px;padding:9px 12px">
-              <span style="width:20px;height:20px;flex-shrink:0;display:grid;place-items:center;background:#FFE8D6;border:2px solid #97290F;border-radius:4px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;color:#97290F">3</span>
+              <span data-lh-quizmark aria-hidden="true" style="margin-left:auto;flex-shrink:0;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;line-height:1;opacity:0;transition:opacity 120ms"></span></span>
+            </button>
+            <button data-lh-quiz="3" type="button" style="display:block;background:#4F1F13;clip-path:var(--clipC);padding:3px;width:100%;text-align:left;font:inherit;color:inherit;cursor:pointer;border:none"><span data-lh-quizface style="display:flex;align-items:center;gap:10px;background:#FFFFFF;clip-path:var(--clipCi);padding:9px 12px;transition:background 120ms">
+              <span data-lh-quizchip style="width:24px;height:24px;flex-shrink:0;background:#97290F;clip-path:var(--clipCi);padding:2px;display:block"><span data-lh-quizchipin style="width:100%;height:100%;display:grid;place-items:center;background:#FFE8D6;clip-path:var(--clipSi);font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;color:#97290F">3</span></span>
               <span style="font-size:12px;line-height:1.45;font-weight:600">Chỉ những người chưa từng mua sắm online trên điện thoại</span>
-            </div>
+              <span data-lh-quizmark aria-hidden="true" style="margin-left:auto;flex-shrink:0;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;line-height:1;opacity:0;transition:opacity 120ms"></span></span>
+            </button>
+            <p data-lh-quizfb role="status" hidden style="margin:1px 0 0;font-size:11.5px;line-height:1.5;font-weight:600;border-left:3px solid #4F1F13;padding:2px 0 2px 9px;text-wrap:pretty"></p>
           </div>
         </div>
 
@@ -637,7 +643,7 @@ summary::-webkit-details-marker{display:none}
 
     <article data-lh-reveal="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(32px,5vw,72px);align-items:center;padding:clamp(32px,4vw,56px) 0">
       <div style="min-width:0;position:relative;padding-bottom:34px">
-        <div style="position:relative;background:#FCF8EC;background-image:url('assets/bg/bg-main.jpg');background-size:cover;background-position:center bottom;border-radius:18px;overflow:hidden;padding:24px 22px 104px;min-height:400px">
+        <div style="position:relative;background:#FCF8EC;background-image:url('assets/bg/bg-main.jpg');background-size:cover;background-position:center bottom;clip-path:var(--clip);overflow:hidden;padding:24px 22px 104px;min-height:400px">
 
           <div data-lh-thread="1" style="display:flex;flex-direction:column;gap:15px;position:relative;z-index:2">
 
@@ -714,7 +720,7 @@ summary::-webkit-details-marker{display:none}
           <div style="background:#F1EFDD;padding:20px 24px 22px">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
               <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;letter-spacing:.06em;color:#FFFFFF;background:#3E8E1F;border:2px solid #4F1F13;border-radius:4px;padding:3px 7px;line-height:1">BÀI ĐỌC</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11.5px;color:#9A8B77">2 phút đọc · +12 KN</span>
+              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11.5px;color:#786751">2 phút đọc · +12 KN</span>
             </div>
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(18px,2vw,23px);line-height:1.25;letter-spacing:-.01em;margin:0;text-wrap:pretty">Sau khi nhận đề bài: Bạn cần xác định điều gì trước khi bắt tay vào làm</h3>
           </div>
@@ -851,8 +857,7 @@ summary::-webkit-details-marker{display:none}
             <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#4C3B2A"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#467317">✓</span>Xếp hạng nguồn theo tier và cross-check số liệu lệch</li>
             <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#4C3B2A"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#467317">✓</span>Chấm độ tin cậy bằng CRAAP và nói rõ giới hạn dữ liệu</li>
           </ul>
-          <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-            <a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#467317" style-hover="color:#FF5D38">Xem khóa học ›</a>
+          <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px;display:flex;align-items:center;justify-content:center;gap:12px">
             <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;color:#fff;background:#467317;border:none;clip-path:var(--clipSi);padding:7px 12px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Xem module ›</button>
           </div>
         </div>
@@ -874,7 +879,6 @@ summary::-webkit-details-marker{display:none}
           </ol>
           <div style="margin-top:12px;border-top:3px solid #EDE3C7;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px">
             <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;color:#467317;background:#EBF8DE;border:none;clip-path:var(--clipSi);padding:7px 12px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
-            <a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#467317" style-hover="color:#FF5D38">Xem khóa học ›</a>
           </div>
         </div>
       </div>
@@ -899,8 +903,7 @@ summary::-webkit-details-marker{display:none}
             <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#4C3B2A"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#C91065">✓</span>Viết Discussion Guide 3 phần chạy được ngay</li>
             <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#4C3B2A"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#C91065">✓</span>Hỏi mở, đào sâu và giữ trung lập để user nói thật</li>
           </ul>
-          <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-            <a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#C91065" style-hover="color:#FF5D38">Xem khóa học ›</a>
+          <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px;display:flex;align-items:center;justify-content:center;gap:12px">
             <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;color:#fff;background:#C91065;border:none;clip-path:var(--clipSi);padding:7px 12px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Xem module ›</button>
           </div>
         </div>
@@ -926,7 +929,6 @@ summary::-webkit-details-marker{display:none}
           </ol>
           <div style="margin-top:12px;border-top:3px solid #EDE3C7;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px">
             <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;color:#C91065;background:#FCDAEA;border:none;clip-path:var(--clipSi);padding:7px 12px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
-            <a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#C91065" style-hover="color:#FF5D38">Xem khóa học ›</a>
           </div>
         </div>
       </div>
@@ -951,8 +953,7 @@ summary::-webkit-details-marker{display:none}
             <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#4C3B2A"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#1C66BB">✓</span>Clean data 3 lớp trước khi phân tích</li>
             <li style="display:flex;gap:10px;font-size:14px;line-height:1.6;color:#4C3B2A"><span aria-hidden="true" style="flex-shrink:0;width:18px;text-align:center;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;color:#1C66BB">✓</span>Chạy sig test và đọc kết quả để ra kết luận</li>
           </ul>
-          <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px">
-            <a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#1C66BB" style-hover="color:#FF5D38">Xem khóa học ›</a>
+          <div style="margin-top:auto;border-top:3px solid #EDE3C7;padding-top:14px;display:flex;align-items:center;justify-content:center;gap:12px">
             <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;color:#fff;background:#1C66BB;border:none;clip-path:var(--clipSi);padding:7px 12px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Xem module ›</button>
           </div>
         </div>
@@ -976,7 +977,6 @@ summary::-webkit-details-marker{display:none}
           </ol>
           <div style="margin-top:12px;border-top:3px solid #EDE3C7;padding-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px">
             <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.02em;color:#1C66BB;background:#DDECF9;border:none;clip-path:var(--clipSi);padding:7px 12px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
-            <a href="#courses" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:14px;color:#1C66BB" style-hover="color:#FF5D38">Xem khóa học ›</a>
           </div>
         </div>
       </div>
@@ -1107,7 +1107,7 @@ summary::-webkit-details-marker{display:none}
       </button>
       <div style="flex:1;min-width:0;text-align:center">
         <div data-lh-fctitle="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:16px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Nền tảng</div>
-        <div data-lh-fcstatus="1" aria-live="polite" style="margin-top:4px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">01 / 05 · Mặt trước</div>
+        <div data-lh-fcstatus="1" aria-live="polite" style="margin-top:4px;font-family:ui-monospace,monospace;font-size:11.5px;color:#786751">01 / 05 · Mặt trước</div>
       </div>
       <button type="button" data-lh-fctocopen="1" style="flex:none;display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
         <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8">Mục lục</span>
@@ -1150,7 +1150,7 @@ summary::-webkit-details-marker{display:none}
       <button type="button" data-lh-fcprev="1" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
         <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8"><b style="font-size:17px;line-height:1">‹</b>Trang trước</span>
       </button>
-      <p style="margin:0;min-width:132px;text-align:center;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">Kéo trang để lật</p>
+      <p style="margin:0;min-width:132px;text-align:center;font-family:ui-monospace,monospace;font-size:11.5px;color:#786751">Kéo trang để lật</p>
       <button type="button" data-lh-fcnext="1" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;border:0;font:inherit;cursor:pointer;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)" style-focus-visible="outline:3px solid #FF5D38;outline-offset:3px">
         <span style="display:inline-flex;align-items:center;gap:7px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;color:#4F1F13;background:#FFFFFF;clip-path:var(--clipCi);padding:12px 15px;white-space:nowrap;transition:background 120ms" style-hover="background:#FDF7E8">Trang sau<b style="font-size:17px;line-height:1">›</b></span>
       </button>
@@ -1190,67 +1190,136 @@ summary::-webkit-details-marker{display:none}
          trong to giua trich dan voi nut. De grid align-items:stretch keo ba the
          bang nhau theo the dai nhat la du. -->
     <div data-lh-stories="1" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,385px));justify-content:center;gap:clamp(18px,2.2vw,26px);align-items:stretch">
-      <article data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
-        <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
-          <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
-            <img src="assets/img/story-1.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+      <article data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
+        <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
+        <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
+            <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
+              <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
+                <img src="assets/img/story-1.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+              </div>
+              <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#4F1F13">Ngọc Trâm</b>
+                  <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFFFFF;background:#4F1F13;padding:2px 6px;clip-path:var(--clipSi)">PAYMENT</span>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;line-height:1.5;color:#786751">
+                  <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;margin-top:3px;shape-rendering:crispEdges"><path fill="#786751" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
+                  <span style="display:flex;flex-direction:column"><span>Product Design</span><span>Squad Payment</span></span>
+                </div>
+                <p style="color:#4C3B2A;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Trước đây có câu hỏi gì về user là mình đi nhờ team Research. Học hết vùng <b>Định tính</b>, mình tự viết Discussion Guide và chạy 5 buổi phỏng vấn cho tính năng mới.</p>
+                <div style="margin-top:auto;padding-top:18px;display:flex;justify-content:center">
+                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="position:relative;display:inline-flex;padding:0 0 4px;background:none;border:none;cursor:pointer;font:inherit" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Đọc chuyện của Trâm <b style="font-size:18px;line-height:1">›</b></span></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#C91065">Ngọc Trâm</b>
-              <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFFFFF;background:#C91065;padding:2px 6px;clip-path:var(--clipSi)">PAYMENT</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">
-              <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#9A8B77" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
-              Product Design · Squad Payment
-            </div>
-            <p style="color:#4C3B2A;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Trước đây có câu hỏi gì về user là mình đi nhờ team Research. Học hết vùng <b>Định tính</b>, mình tự viết Discussion Guide và chạy 5 buổi phỏng vấn cho tính năng mới.</p>
-            <div style="margin-top:auto;padding-top:18px">
-              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#4F1F13;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#F4ECD6">Đọc chuyện của Trâm <b>›</b></span></a>
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
+            <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;padding:20px">
+              <div style="display:flex;gap:16px;flex:1;min-height:0">
+                <div style="width:108px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:9px">
+                  <img src="assets/img/fox-wave.png" alt="" style="width:100px;height:auto;display:block;image-rendering:pixelated" />
+                  <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:15px;line-height:1.2;color:#4F1F13;text-align:center">Ngọc Trâm</b>
+                  <span style="font-family:ui-monospace,monospace;font-size:10.5px;line-height:1.5;color:#786751;text-align:center;display:flex;flex-direction:column"><span>Product Design</span><span>Squad Payment</span></span>
+                </div>
+                <div data-lh-ocscroll style="flex:1;min-width:0;overflow-y:auto;padding-right:6px">
+                  <p style="color:#4C3B2A;font-size:13.5px;line-height:1.75;margin:0;text-wrap:pretty">Trước đây có câu hỏi gì về user là mình đi nhờ team Research. Học hết vùng <b>Định tính</b>, mình tự viết Discussion Guide và chạy 5 buổi phỏng vấn cho tính năng mới.</p>
+                </div>
+              </div>
+              <div style="margin-top:14px;border-top:3px solid #EDE3C7;padding-top:12px;display:flex;justify-content:center">
+                <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#97290F;background:#FFE8D6;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
+              </div>
             </div>
           </div>
         </div>
+        </div>
       </article>
-      <article data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
-        <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
-          <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
-            <img src="assets/img/story-2.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+      <article data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
+        <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
+        <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
+            <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
+              <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
+                <img src="assets/img/story-2.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+              </div>
+              <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#4F1F13">Minh Quân</b>
+                  <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFFFFF;background:#4F1F13;padding:2px 6px;clip-path:var(--clipSi)">MERCHANT</span>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;line-height:1.5;color:#786751">
+                  <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;margin-top:3px;shape-rendering:crispEdges"><path fill="#786751" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
+                  <span style="display:flex;flex-direction:column"><span>Growth</span><span>Squad Merchant</span></span>
+                </div>
+                <p style="color:#4C3B2A;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Bài <b>Desk Research</b> dạy mình tách đề bài theo P-O-S. Giờ nhận brief từ sếp là biết ngay cần tìm gì, tìm cho ai — khỏi mò Google cả buổi rồi vẫn lạc đề.</p>
+                <div style="margin-top:auto;padding-top:18px;display:flex;justify-content:center">
+                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="position:relative;display:inline-flex;padding:0 0 4px;background:none;border:none;cursor:pointer;font:inherit" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Đọc chuyện của Quân <b style="font-size:18px;line-height:1">›</b></span></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#467317">Minh Quân</b>
-              <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFFFFF;background:#467317;padding:2px 6px;clip-path:var(--clipSi)">MERCHANT</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">
-              <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#9A8B77" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
-              Growth · Squad Merchant
-            </div>
-            <p style="color:#4C3B2A;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Bài <b>Desk Research</b> dạy mình tách đề bài theo P-O-S. Giờ nhận brief từ sếp là biết ngay cần tìm gì, tìm cho ai — khỏi mò Google cả buổi rồi vẫn lạc đề.</p>
-            <div style="margin-top:auto;padding-top:18px">
-              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#4F1F13;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#F4ECD6">Đọc chuyện của Quân <b>›</b></span></a>
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
+            <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;padding:20px">
+              <div style="display:flex;gap:16px;flex:1;min-height:0">
+                <div style="width:108px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:9px">
+                  <img src="assets/img/fox-wave.png" alt="" style="width:100px;height:auto;display:block;image-rendering:pixelated" />
+                  <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:15px;line-height:1.2;color:#4F1F13;text-align:center">Minh Quân</b>
+                  <span style="font-family:ui-monospace,monospace;font-size:10.5px;line-height:1.5;color:#786751;text-align:center;display:flex;flex-direction:column"><span>Growth</span><span>Squad Merchant</span></span>
+                </div>
+                <div data-lh-ocscroll style="flex:1;min-width:0;overflow-y:auto;padding-right:6px">
+                  <p style="color:#4C3B2A;font-size:13.5px;line-height:1.75;margin:0;text-wrap:pretty">Bài <b>Desk Research</b> dạy mình tách đề bài theo P-O-S. Giờ nhận brief từ sếp là biết ngay cần tìm gì, tìm cho ai — khỏi mò Google cả buổi rồi vẫn lạc đề.</p>
+                </div>
+              </div>
+              <div style="margin-top:14px;border-top:3px solid #EDE3C7;padding-top:12px;display:flex;justify-content:center">
+                <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#97290F;background:#FFE8D6;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
+              </div>
             </div>
           </div>
         </div>
+        </div>
       </article>
-      <article data-lh-reveal="1" style="background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px;transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
-        <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
-          <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
-            <img src="assets/img/story-3.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+      <article data-lh-reveal="1" data-lh-oc="1" data-lh-ocopen="0" style="transition:transform 120ms steps(2)" style-hover="transform:translateY(-5px)">
+        <div data-lh-ocstage style="perspective:1100px;height:100%;display:grid">
+        <div data-lh-ocflip style="position:relative;height:100%;transform-style:preserve-3d">
+          <div data-lh-ocface="front" style="height:100%;transform:translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
+            <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column">
+              <div style="background:#F4ECD6;display:grid;place-items:center;height:291px;flex-shrink:0;overflow:hidden">
+                <img src="assets/img/story-3.png" alt="" style="width:100%;height:100%;object-fit:cover;display:block" />
+              </div>
+              <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
+                <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                  <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#4F1F13">Thu Hà</b>
+                  <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFFFFF;background:#4F1F13;padding:2px 6px;clip-path:var(--clipSi)">CIO</span>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;line-height:1.5;color:#786751">
+                  <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;margin-top:3px;shape-rendering:crispEdges"><path fill="#786751" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
+                  <span style="display:flex;flex-direction:column"><span>Data Analyst</span><span>Squad CIO</span></span>
+                </div>
+                <p style="color:#4C3B2A;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Phần <b>Định lượng</b> giúp mình chốt sample size có căn cứ chứ không đoán. Lần gần nhất mình bảo vệ được con số trước cả hội đồng mà không bị vặn.</p>
+                <div style="margin-top:auto;padding-top:18px;display:flex;justify-content:center">
+                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="position:relative;display:inline-flex;padding:0 0 4px;background:none;border:none;cursor:pointer;font:inherit" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Đọc chuyện của Hà <b style="font-size:18px;line-height:1">›</b></span></button>
+                </div>
+              </div>
+            </div>
           </div>
-          <div style="padding:20px 20px 22px;display:flex;flex-direction:column;flex:1;gap:9px">
-            <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-              <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:19px;color:#1C66BB">Thu Hà</b>
-              <span style="font-family:ui-monospace,monospace;font-size:10px;font-weight:700;letter-spacing:.04em;color:#FFFFFF;background:#1C66BB;padding:2px 6px;clip-path:var(--clipSi)">CIO</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:7px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77">
-              <svg viewBox="0 0 8 8" aria-hidden="true" style="width:11px;height:11px;flex-shrink:0;shape-rendering:crispEdges"><path fill="#9A8B77" fill-rule="evenodd" d="M0,0h8v8h-8zM1,1v6h6v-6zM2,2h4v1h-4zM2,4h4v1h-4zM2,6h3v1h-3z"></path></svg>
-              Data Analyst · Squad CIO
-            </div>
-            <p style="color:#4C3B2A;font-size:14px;line-height:1.7;margin:4px 0 0;text-wrap:pretty">Phần <b>Định lượng</b> giúp mình chốt sample size có căn cứ chứ không đoán. Lần gần nhất mình bảo vệ được con số trước cả hội đồng mà không bị vặn.</p>
-            <div style="margin-top:auto;padding-top:18px">
-              <a href="#courses" style="display:inline-flex;background:#4F1F13;clip-path:var(--clipC);padding:2px;text-decoration:none;transition:transform 50ms steps(2)" style-active="transform:translate(2px,2px)"><span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#4F1F13;background:#FFFFFF;padding:9px 15px;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms" style-hover="background:#F4ECD6">Đọc chuyện của Hà <b>›</b></span></a>
+          <div data-lh-ocface="back" style="position:absolute;inset:0;transform:rotateY(180deg) translateZ(1px);background:#4F1F13;clip-path:var(--clipC);padding:2px 2px 6px">
+            <div style="background:#FDF7E8;clip-path:var(--clipCi);height:100%;display:flex;flex-direction:column;padding:20px">
+              <div style="display:flex;gap:16px;flex:1;min-height:0">
+                <div style="width:108px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:9px">
+                  <img src="assets/img/fox-wave.png" alt="" style="width:100px;height:auto;display:block;image-rendering:pixelated" />
+                  <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:15px;line-height:1.2;color:#4F1F13;text-align:center">Thu Hà</b>
+                  <span style="font-family:ui-monospace,monospace;font-size:10.5px;line-height:1.5;color:#786751;text-align:center;display:flex;flex-direction:column"><span>Data Analyst</span><span>Squad CIO</span></span>
+                </div>
+                <div data-lh-ocscroll style="flex:1;min-width:0;overflow-y:auto;padding-right:6px">
+                  <p style="color:#4C3B2A;font-size:13.5px;line-height:1.75;margin:0;text-wrap:pretty">Phần <b>Định lượng</b> giúp mình chốt sample size có căn cứ chứ không đoán. Lần gần nhất mình bảo vệ được con số trước cả hội đồng mà không bị vặn.</p>
+                </div>
+              </div>
+              <div style="margin-top:14px;border-top:3px solid #EDE3C7;padding-top:12px;display:flex;justify-content:center">
+                <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#97290F;background:#FFE8D6;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
+              </div>
             </div>
           </div>
+        </div>
         </div>
       </article>
     </div>
@@ -1752,6 +1821,58 @@ class Component extends DCLogic {
       });
     });
     if (search) search.addEventListener('input', apply);
+
+    // Scenario quiz: chon 1 dap an -> to mau dung/sai, lo dap an dung, khoa lai.
+    // Chi doi mau nen + o so + dau tick, KHONG doi border de khung pixel giu nguyen.
+    const quizGroup = root.querySelector('[data-lh-quizgroup]');
+    if (quizGroup) {
+      const quizBtns = [...quizGroup.querySelectorAll('[data-lh-quiz]')];
+      const quizFb = quizGroup.querySelector('[data-lh-quizfb]');
+      const correct = quizGroup.getAttribute('data-lh-quizcorrect');
+      const SKIN = {
+        right: { bg: '#D9F0C4', chipBg: '#2F6B1E', chipBd: '#2F6B1E', ink: '#FFFFFF', mark: '✓', markInk: '#2F6B1E' },
+        wrong: { bg: '#FFE0D8', chipBg: '#97290F', chipBd: '#97290F', ink: '#FFFFFF', mark: '✕', markInk: '#97290F' },
+      };
+      const paintQuiz = (btn, kind) => {
+        const skin = SKIN[kind];
+        // khung pixel gom 2 lop: nut la vien ngoai, [data-lh-quizface] la mat trong
+        btn.querySelector('[data-lh-quizface]').style.background = skin.bg;
+        btn.querySelector('[data-lh-quizchip]').style.background = skin.chipBd;
+        const chipIn = btn.querySelector('[data-lh-quizchipin]');
+        chipIn.style.background = skin.chipBg;
+        chipIn.style.color = skin.ink;
+        const mark = btn.querySelector('[data-lh-quizmark]');
+        mark.textContent = skin.mark;
+        mark.style.color = skin.markInk;
+        mark.style.opacity = '1';
+      };
+      let answered = false;
+      quizBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (answered) return;
+          answered = true;
+          const picked = btn.getAttribute('data-lh-quiz');
+          const ok = picked === correct;
+          // luon to xanh o dap an dung, ke ca khi nguoi hoc chon sai
+          quizBtns.forEach((b) => {
+            const isCorrect = b.getAttribute('data-lh-quiz') === correct;
+            if (isCorrect) paintQuiz(b, 'right');
+            else if (b === btn) paintQuiz(b, 'wrong');
+            else b.style.opacity = '.55';
+            b.disabled = true;
+            b.style.cursor = 'default';
+          });
+          if (quizFb) {
+            quizFb.hidden = false;
+            quizFb.style.borderLeftColor = ok ? '#2F6B1E' : '#97290F';
+            quizFb.style.color = ok ? '#2F6B1E' : '#97290F';
+            quizFb.textContent = ok
+              ? 'Chính xác! Đối tượng khảo sát phải là người đã có hành vi mua sắm online trên điện thoại — họ mới trả lời được câu hỏi về tiềm năng của Hoàn tiền.'
+              : 'Chưa đúng. Đáp án là 1 — chỉ nhóm đã có hành vi mua sắm online trên điện thoại mới cho ra dữ liệu nói lên được tiềm năng của tính năng.';
+          }
+        });
+      });
+    }
 
     // the next-arrow only exists while the pill row actually overflows
     if (scroller && nextBtn) {
@@ -2477,7 +2598,7 @@ class Component extends DCLogic {
           b.type = 'button';
           b.style.cssText = 'display:flex;align-items:center;gap:11px;width:100%;min-height:44px;padding:7px 10px;border:0;background:' + (cur ? '#FFE8D6' : 'transparent') + ';clip-path:var(--clipSi);text-align:left;font:inherit;font-size:13.5px;line-height:1.35;color:#4F1F13;cursor:pointer';
           const num = document.createElement('span');
-          num.style.cssText = 'flex:none;width:24px;font-family:ui-monospace,monospace;font-size:11.5px;color:#9A8B77';
+          num.style.cssText = 'flex:none;width:24px;font-family:ui-monospace,monospace;font-size:11.5px;color:#786751';
           num.textContent = fcPad(i + 1);
           const txt = document.createElement('span');
           txt.style.cssText = 'flex:1;min-width:0';
