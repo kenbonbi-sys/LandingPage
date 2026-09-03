@@ -160,7 +160,10 @@ summary::-webkit-details-marker{display:none}
 /* FAQ: mui ten xoay muot; [open] la duong lui khi khong co JS, con
    data-lh-faqopen do JS dat ngay luc bam nen mui ten khong doi het luot dong.
    Hai rule cung do uu tien nen rule sau thang -- giu nguyen thu tu nay. */
-[data-lh-faq] summary > span{display:inline-block;transition:transform 260ms cubic-bezier(.22,.68,.24,1)}
+/* 190ms phai khop voi FAQ_MS trong script de mui ▾ va khoi noi dung dung lai
+   cung luc. Khong dat will-change o day: 6 mui nay se giu 6 layer vinh vien
+   cho mot cai xoay 190ms. */
+[data-lh-faq] summary > span{display:inline-block;transition:transform 190ms cubic-bezier(.22,.68,.24,1)}
 [data-lh-faq] details[open] > summary > span{transform:rotate(180deg)}
 [data-lh-faq] details[data-lh-faqopen="0"] > summary > span{transform:none}
 [data-lh-faq] details[data-lh-faqopen="1"] > summary > span{transform:rotate(180deg)}
@@ -184,7 +187,7 @@ summary::-webkit-details-marker{display:none}
     <img src="assets/img/nav-logo-full.svg" alt="Learning Hub — Học đúng, làm chuẩn" style="height:46px;width:auto;object-fit:contain" />
   </a>
   <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0">
-    <a href="#courses" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">BẮT ĐẦU <b style="font-size:18px;line-height:1">›</b></span></a>
+    <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">BẮT ĐẦU <b style="font-size:18px;line-height:1">›</b></span></a>
   </div>
 </nav>
 
@@ -210,7 +213,7 @@ summary::-webkit-details-marker{display:none}
     <h1 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38px,5.2vw,68px);line-height:1;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;text-shadow:0 3px 18px rgba(9,33,62,.55)">BẮT ĐẦU HÀNH TRÌNH<br /><span style="background:linear-gradient(180deg,#FFCB9E 0%,#FF9064 40%,#FF5D38 78%,#EA4A24 100%);-webkit-background-clip:text;background-clip:text;color:#FF9064;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 3px 14px rgba(9,33,62,.55))">RESEARCH SPECIALIST</span></h1>
     <p style="font-size:clamp(15px,1.4vw,19px);line-height:1.6;max-width:620px;color:#EAF2FB;margin:0 0 clamp(34px,4vw,54px);text-wrap:pretty;text-shadow:0 2px 12px rgba(9,33,62,.6)">Học từng chặng, luyện từng kỹ năng, tự tin làm research.</p>
 
-    <a href="#courses" style="position:relative;display:inline-flex;padding:0 0 5px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:7px;bottom:0;background:#97290F;clip-path:var(--clipC);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:clamp(15px,1.4vw,19px);letter-spacing:.03em;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:12px 24px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;clip-path:var(--clipC);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(5px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:26px;line-height:1">›</b></span></a>
+    <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;padding:0 0 5px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:7px;bottom:0;background:#97290F;clip-path:var(--clipC);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:clamp(15px,1.4vw,19px);letter-spacing:.03em;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:12px 24px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;clip-path:var(--clipC);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(5px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:26px;line-height:1">›</b></span></a>
   </div>
 
   <div aria-hidden="true" style="position:absolute;z-index:5;left:0;right:0;bottom:0;height:clamp(60px,8vw,110px);pointer-events:none;background:linear-gradient(180deg,rgba(253,247,232,0) 0%,rgba(253,247,232,.5) 60%,#FDF7E8 100%)"></div>
@@ -283,7 +286,7 @@ summary::-webkit-details-marker{display:none}
             </div>
             <div style="margin-top:12px;padding-top:10px;border-top:2px solid #EDE3C7;display:flex;align-items:center;justify-content:space-between;gap:10px">
               <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#467317;background:#EBF8DE;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
-              <a href="#top" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#467317" style-hover="color:#FF5D38">Vào học ›</a>
+              <a href="https://cio.momo.vn/cio-academy/courses/desk-research" target="_blank" rel="noopener" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#467317" style-hover="color:#FF5D38">Vào học ›</a>
             </div>
             </div>
           </div>
@@ -330,7 +333,7 @@ summary::-webkit-details-marker{display:none}
             </div>
             <div style="margin-top:12px;padding-top:10px;border-top:2px solid #EDE3C7;display:flex;align-items:center;justify-content:space-between;gap:10px">
               <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#C91065;background:#FCDAEA;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
-              <a href="#top" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#C91065" style-hover="color:#FF5D38">Vào học ›</a>
+              <a href="https://cio.momo.vn/cio-academy/courses/qualitative" target="_blank" rel="noopener" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#C91065" style-hover="color:#FF5D38">Vào học ›</a>
             </div>
             </div>
           </div>
@@ -377,7 +380,7 @@ summary::-webkit-details-marker{display:none}
             </div>
             <div style="margin-top:12px;padding-top:10px;border-top:2px solid #EDE3C7;display:flex;align-items:center;justify-content:space-between;gap:10px">
               <button data-lh-ocflipbtn type="button" aria-expanded="true" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#1C66BB;background:#DDECF9;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">‹ Quay lại</button>
-              <a href="#top" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#1C66BB" style-hover="color:#FF5D38">Vào học ›</a>
+              <a href="https://cio.momo.vn/cio-academy/courses/quantitative-research" target="_blank" rel="noopener" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12.5px;color:#1C66BB" style-hover="color:#FF5D38">Vào học ›</a>
             </div>
             </div>
           </div>
@@ -529,7 +532,7 @@ summary::-webkit-details-marker{display:none}
     <p data-lh-empty style="display:none;text-align:center;color:#4C3B2A;font-size:15px;margin:28px 0 0">Không tìm thấy khóa học nào khớp với tìm kiếm của bạn.</p>
 
     <div style="display:flex;justify-content:center;margin-top:44px">
-      <a href="#features" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:15px;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:13px 12px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">KHÁM PHÁ KHÓA HỌC</span></a>
+      <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:15px;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:13px 12px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">KHÁM PHÁ KHÓA HỌC</span></a>
     </div>
   </div>
 </section>
@@ -614,7 +617,12 @@ summary::-webkit-details-marker{display:none}
               <span style="font-size:12px;line-height:1.45;font-weight:600">Chỉ những người chưa từng mua sắm online trên điện thoại</span>
               <span data-lh-quizmark aria-hidden="true" style="margin-left:auto;flex-shrink:0;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:14px;line-height:1;opacity:0;transition:opacity 120ms"></span></span>
             </button>
-            <p data-lh-quizfb role="status" hidden style="margin:1px 0 0;font-size:11.5px;line-height:1.5;font-weight:600;border-left:3px solid #4F1F13;padding:2px 0 2px 9px;text-wrap:pretty"></p>
+            <!-- display:none chu khong chi dua vao thuoc tinh `hidden`: bo
+                 render cua trang nay go mat `hidden` luc dung DOM, con lai cai
+                 <p> rong nhung van ve 3px border-left + 2px padding -> hien ra
+                 dung mot dau cham den duoi lua chon cuoi. Script bat len bang
+                 display:block khi co nguoi tra loi. -->
+            <p data-lh-quizfb role="status" hidden style="display:none;margin:1px 0 0;font-size:11.5px;line-height:1.5;font-weight:600;border-left:3px solid #4F1F13;padding:2px 0 2px 9px;text-wrap:pretty"></p>
           </div>
         </div>
 
@@ -720,7 +728,7 @@ summary::-webkit-details-marker{display:none}
           <div style="background:#F1EFDD;padding:20px 24px 22px">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
               <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:10px;letter-spacing:.06em;color:#FFFFFF;background:#3E8E1F;border:2px solid #4F1F13;border-radius:4px;padding:3px 7px;line-height:1">BÀI ĐỌC</span>
-              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11.5px;color:#786751">2 phút đọc · +12 KN</span>
+              <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11.5px;color:#786751">2 phút đọc</span>
             </div>
             <h3 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(18px,2vw,23px);line-height:1.25;letter-spacing:-.01em;margin:0;text-wrap:pretty">Sau khi nhận đề bài: Bạn cần xác định điều gì trước khi bắt tay vào làm</h3>
           </div>
@@ -994,7 +1002,6 @@ summary::-webkit-details-marker{display:none}
     <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Bí kíp Research của CIO</h2>
     <p style="font-size:17px;line-height:1.7;color:#4C3B2A;margin:0;text-wrap:pretty">35 tấm thẻ hai mặt rút gọn cả bốn khóa học. Mặt trước là câu hỏi, mặt sau là cách làm — lật vài phút lúc chờ họp là nhớ.</p>
   </div>
-
   <div data-lh-reveal="1" data-lh-fcshelfwrap="1" style="position:relative;max-width:1060px;margin:0 auto">
     <img data-lh-fcpeek="top" src="assets/img/fox-peek-top.webp" width="424" height="336" alt="" decoding="async" loading="lazy" style="position:absolute;left:clamp(14px,3%,44px);bottom:calc(100% - 35px);width:clamp(150px,19.5%,215px);height:auto;z-index:2;pointer-events:none;image-rendering:pixelated" />
     <img data-lh-fcpeek="right" src="assets/img/fox-peek-right.webp" width="248" height="364" alt="" decoding="async" loading="lazy" style="position:absolute;left:calc(100% - 20px);bottom:9px;width:min(clamp(96px,13%,140px),calc((100vw - 1060px) / 2 + 12px));height:auto;z-index:2;pointer-events:none;image-rendering:pixelated" />
@@ -1368,11 +1375,13 @@ summary::-webkit-details-marker{display:none}
   <!-- CTA cuoi nam luon tren canh sa mac: tieu de co nen cam de doc duoc tren
        nen anh nhieu chi tiet -->
   <div data-lh-faqcta="1" style="position:relative;padding:0 max(20px,calc((100vw - 1240px) / 2)) clamp(56px,7vw,110px);display:flex;align-items:center;justify-content:center;gap:clamp(16px,3vw,44px);flex-wrap:wrap;text-align:center">
-    <img src="assets/img/mascot-cta-2.png" alt="" style="width:clamp(120px,13vw,186px);height:clamp(120px,13vw,186px);object-fit:contain;flex-shrink:0;animation:lh-bob 2.1s ease infinite" />
+    <!-- con cao dung yen tu dau: khong bob, va o hai ben khoi chu da khoa be
+         ngang nen no khong bi day ngang khi may go chu chay -->
+    <img src="assets/img/mascot-cta-2.png" alt="" style="width:clamp(120px,13vw,186px);height:clamp(120px,13vw,186px);object-fit:contain;flex-shrink:0" />
     <div>
       <h2 style="display:inline-block;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(30px,4vw,50px);line-height:1.12;letter-spacing:-.02em;margin:0 0 20px;color:#FFFFFF;background:#FF5D38;clip-path:var(--clipCi);padding:10px 20px;text-wrap:balance"><span data-lh-type="Sẵn sàng cho bài học đầu tiên?">Sẵn sàng cho bài học đầu tiên?</span><span data-lh-typecaret="1" aria-hidden="true" style="display:inline-block;width:.09em;height:.78em;background:#FFFFFF;vertical-align:-.04em;margin-left:.12em;animation:lh-blink 1s steps(1) infinite"></span></h2>
       <div>
-        <a href="#courses" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:15px 28px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:23px;line-height:1">›</b></span></a>
+        <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:17px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:15px 28px;display:inline-flex;align-items:center;gap:10px;white-space:nowrap;clip-path:var(--clipCi);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:23px;line-height:1">›</b></span></a>
       </div>
     </div>
   </div>
@@ -1393,7 +1402,7 @@ summary::-webkit-details-marker{display:none}
             <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:9px;letter-spacing:.1em;color:#FF9064;margin-top:6px">HỌC ĐÚNG · LÀM CHUẨN</span>
           </span>
         </a>
-        <p style="color:#EAF2FB;font-size:13.5px;margin:0;line-height:1.6">Do team CIO Research làm cho người MoMo ♥</p>
+        <p style="color:#EAF2FB;font-size:13.5px;margin:0;line-height:1.6">From CIO with love ♥</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
         <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;color:#fff;margin-bottom:4px">LEARNING HUB</b>
@@ -1515,16 +1524,20 @@ class Component extends DCLogic {
     if (typeEl) {
       const full = typeEl.getAttribute('data-lh-type') || '';
       const band = typeEl.closest('h2');
-      // do san chieu cao dong chu day du roi ghim lai: neu de trong, luc go het
-      // chu xuong hai dong thi ca cai nut ben duoi bi day giat xuong
+      // do san ca chieu cao va be ngang cua dong chu day du roi ghim lai: neu de
+      // trong, luc go het chu xuong hai dong thi cai nut ben duoi bi day giat
+      // xuong, con be ngang phinh dan lam hang flex can lai giua -> con cao
+      // truot ngang theo tung chu
       const lockBand = () => {
         if (!band) return;
         const keep = typeEl.textContent;
         band.style.minHeight = '';
+        band.style.width = '';
         typeEl.textContent = full;
-        const h = band.getBoundingClientRect().height;
+        const r = band.getBoundingClientRect();
         typeEl.textContent = keep;
-        band.style.minHeight = h + 'px';
+        band.style.minHeight = r.height + 'px';
+        band.style.width = r.width + 'px';
       };
       if (band) { typeEl.textContent = full; lockBand(); }
       // do lai khi font tai xong va khi doi be ngang, ly do giong khung chat
@@ -1535,6 +1548,9 @@ class Component extends DCLogic {
         typeEl.textContent = full;
       } else {
         typeEl.textContent = '';
+        // trong luc go thi neo chu ve dau dong: khung da khoa be ngang nen neu
+        // van can giua, moi chu moi lai day phan da go dich sang trai
+        if (band) band.style.textAlign = 'left';
         let started = false;
         const typeRun = () => {
           if (started) return;
@@ -1545,6 +1561,7 @@ class Component extends DCLogic {
             typeEl.textContent = full.slice(0, k);
             // cham lai o dau cach va dau cau cho giong nhip go that
             if (k < full.length) setTimeout(tick, /[ ,.?]/.test(full[k - 1]) ? 90 : 42);
+            else if (band) band.style.textAlign = '';
           };
           setTimeout(tick, 200);
         };
@@ -1864,6 +1881,7 @@ class Component extends DCLogic {
           });
           if (quizFb) {
             quizFb.hidden = false;
+            quizFb.style.display = 'block';
             quizFb.style.borderLeftColor = ok ? '#2F6B1E' : '#97290F';
             quizFb.style.color = ok ? '#2F6B1E' : '#97290F';
             quizFb.textContent = ok
@@ -2930,18 +2948,43 @@ class Component extends DCLogic {
     // luot dong ket thuc de noi dung con duoc ve trong luc thu lai.
     const faqWrap = root.querySelector('[data-lh-faq]');
     if (faqWrap) {
+      // 190ms thay cho 260ms: dut khoat hon khi bam, va it frame hon thi it
+      // cho de tut nhip hon. Doi so nay thi phai doi ca 190ms cua mui ▾ o CSS.
+      const FAQ_MS = 190;
+      const warmers = [];
+
       faqWrap.querySelectorAll('details').forEach((d) => {
         const sum = d.querySelector('summary');
         const body = sum && sum.nextElementSibling;
         if (!sum || !body) return;
         d.setAttribute('data-lh-faqopen', d.open ? '1' : '0');
-
+        // Da thu `contain:layout paint` va `will-change` cho khoi nay: do bang
+        // cach xen ke 4 cau hinh nhieu lan thi ca hai deu lam tut nhieu frame
+        // hon la de nguyen (24 frame tre so voi 30-34). Layer bi thang cap phai
+        // raster lai moi frame, dat hon la de trinh duyet tu quyet dinh.
         let anim = null;
+        let openH = 0;   // chieu cao luc mo het, do san
+        let openPB = ''; // padding-bottom luc mo het
+
+        // <details> dong thi noi dung chua tung duoc dung layout hay ve lan
+        // nao. Neu doi den luc bam moi do thi cu bam dau tien phai tra ca gia
+        // style + layout + paint ngay giua animation -> rot xuong 30fps. Do
+        // truoc mot lan luc trinh duyet ranh, sau do animation chi doc so da co.
+        const warm = () => {
+          if (anim) return;
+          const wasOpen = d.open;
+          if (!wasOpen) d.open = true;
+          openPB = getComputedStyle(body).paddingBottom;
+          openH = body.offsetHeight;
+          if (!wasOpen) d.open = false;
+        };
+        warmers.push(warm);
+
         const play = (frames, done) => {
           if (anim) anim.cancel();
           body.style.overflow = 'hidden';
           anim = body.animate(frames, {
-            duration: reduce ? 0 : 260,
+            duration: reduce ? 0 : FAQ_MS,
             easing: 'cubic-bezier(.22,.68,.24,1)',
           });
           anim.onfinish = () => {
@@ -2957,27 +3000,38 @@ class Component extends DCLogic {
           // huy animation cu se lam noi dung nhay ve chieu cao goc.
           const cur = anim ? body.getBoundingClientRect().height : null;
           const opening = !d.open || d.getAttribute('data-lh-faqopen') === '0';
+          if (!openH) warm(); // du phong: chua kip do san thi do ngay
           if (opening) {
             d.open = true;
             d.setAttribute('data-lh-faqopen', '1');
             if (anim) { anim.cancel(); anim = null; }
-            const pb = getComputedStyle(body).paddingBottom;
-            const h = body.offsetHeight;
             play([
               { height: (cur === null ? 0 : cur) + 'px', paddingBottom: '0px', opacity: 0 },
-              { height: h + 'px', paddingBottom: pb, opacity: 1 },
+              { height: openH + 'px', paddingBottom: openPB, opacity: 1 },
             ]);
           } else {
             d.setAttribute('data-lh-faqopen', '0');
-            const pb = getComputedStyle(body).paddingBottom;
-            const h = cur === null ? body.offsetHeight : cur;
             play([
-              { height: h + 'px', paddingBottom: pb, opacity: 1 },
+              { height: (cur === null ? openH : cur) + 'px', paddingBottom: openPB, opacity: 1 },
               { height: '0px', paddingBottom: '0px', opacity: 0 },
             ], () => { d.open = false; });
           }
         });
       });
+
+      // Mo/dong chop nhoang de do co the lam scroll anchoring keo trang, nen
+      // ghim lai scrollY. Chu tai xong hay doi be ngang thi chu re-wrap, chieu
+      // cao do san lech -> do lai.
+      const warmAll = () => {
+        const y = window.scrollY;
+        warmers.forEach((w) => w());
+        if (window.scrollY !== y) window.scrollTo(0, y);
+      };
+      if (window.requestIdleCallback) requestIdleCallback(warmAll, { timeout: 1200 });
+      else setTimeout(warmAll, 300);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(warmAll).catch(() => {});
+      let faqT = 0;
+      window.addEventListener('resize', () => { clearTimeout(faqT); faqT = setTimeout(warmAll, 200); });
     }
   }
 }
