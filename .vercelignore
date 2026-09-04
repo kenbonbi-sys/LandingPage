@@ -1,15 +1,16 @@
 # Chi deploy nhung gi index.html thuc su dung: index.html + support.js + assets/
 # Nhung thu duoi day khong duoc index.html tham chieu, va neu de nguyen thi
 # Vercel se serve chung thanh URL cong khai (vi du /design-system/... .dc.html).
-.git
-.claude
-tools/
+/.git
+/.claude
+/tools/
 
 # ban nhap + design system noi bo, khong phai phan cua landing page
-design-system/
-landing-pages/
+/design-system/
+/landing-pages/
 
 # 18M anh khong duoc index.html dung den
-image/
+/image/
 # font/ o goc khong duoc dung; trang doc font tu assets/font/
-font/
+# CAN dau / dau dong: khong co no thi pattern khop moi cap va loai luon assets/font/
+/font/
