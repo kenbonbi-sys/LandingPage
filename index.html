@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,12 +63,11 @@ summary::-webkit-details-marker{display:none}
 @keyframes lh-bubblein{0%{transform:translateY(8px) scale(.94)}60%{transform:translateY(0) scale(1.03)}100%{transform:none}}
 /* --- Nav gon lai tren man hinh nho: hang 1 = logo + CTA, hang 2 = cac link --- */
 @media (max-width:760px){
-  nav{min-height:0!important;gap:6px 10px!important;padding-top:8px!important;padding-bottom:8px!important}
-  nav>a[href="#top"] img{width:38px!important;height:38px!important}
-  nav>a[href="#top"] b{font-size:16px!important}
-  nav>div:first-of-type{order:3;width:100%!important;margin-left:0!important;gap:10px!important;justify-content:space-between}
-  nav>div:first-of-type a{font-size:13px!important;padding:4px 0!important;border-bottom-width:3px!important}
-  nav>div:last-of-type{margin-left:auto!important}
+  [data-lh-nav]{min-height:0!important;gap:6px 10px!important;padding-top:8px!important;padding-bottom:8px!important}
+  [data-lh-nav]>a[href="#top"] img{width:142px!important;height:38px!important}
+  [data-lh-navlinks]{order:3;width:100%;margin-left:0!important;gap:10px!important;justify-content:space-between}
+  [data-lh-navlinks] a{font-size:13px!important;padding:9px 0!important}
+  [data-lh-navactions]{margin-left:auto!important}
 }
 /* Hover vao the tren ke: nghieng sang mot ben va flip tron mot vong quanh
    truc doc. Flip khong lam hop bao to ra (chi thu hep ngang) nen khong bi
@@ -261,6 +260,131 @@ summary::-webkit-details-marker{display:none}
   [data-lh-rw],[data-lh-rw] *{animation:none!important}
   .rw-obj{transition:none}
 }
+/* Info Session + Research Lab: extend the existing MoMo pixel system.
+   Preserve brand palette / type / cut corners. Dials: variance 6, motion 4,
+   density 4. Native CSS and supplied artwork; no new UI dependencies.
+   Layering: existing nav 50; native dialog uses the browser top layer. */
+[data-lh-navlinks]{display:flex;align-items:center;gap:clamp(18px,2.5vw,36px);margin-left:auto}
+[data-lh-navlinks] a{font-family:var(--disp);font-size:14px;font-weight:700;color:var(--ink);padding:12px 0;white-space:nowrap;transition:color 140ms}
+[data-lh-navlinks] a:hover{color:#B73519}
+[data-lh-navlinks] a:focus-visible{outline:3px solid var(--org);outline-offset:4px}
+#info-session,#research-lab{scroll-margin-top:88px}
+.lh-session{padding:32px max(20px,calc((100vw - 1240px) / 2)) 54px}
+.lh-session-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.lh-session-heading h2{font:800 clamp(24px,2.5vw,34px)/1.2 var(--disp);letter-spacing:-.02em;margin:0}
+.lh-session-heading::after{content:"";height:2px;flex:1;background:#E3D6B8}
+.lh-session-ticket{position:relative;display:grid;grid-template-columns:180px minmax(0,1fr) 300px;background:var(--ink);padding:3px 3px 7px;clip-path:var(--clip);gap:0}
+.lh-session-art{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:30px 16px;background:#FFE0B9;clip-path:polygon(10px 0,100% 0,100% 100%,10px 100%,0 calc(100% - 10px),0 10px);overflow:hidden}
+.lh-session-art-label{font:800 13px/1 var(--disp);letter-spacing:.04em;transform:rotate(-5deg);background:var(--cream);padding:9px 13px;border:2px solid var(--ink);box-shadow:3px 3px 0 #C78B56}
+.lh-session-art img{width:132px;height:144px;object-fit:contain;filter:drop-shadow(5px 6px 0 rgba(151,41,15,.13))}
+.lh-session-copy{padding:32px clamp(22px,3vw,40px);background:var(--cream);min-width:0}
+.lh-session-status{display:inline-flex;align-items:center;gap:8px;font:800 12px/1.3 var(--disp);color:#9B3219;margin-bottom:13px}
+.lh-session-status::before{content:"";width:7px;height:7px;background:#C43F20;box-shadow:3px 3px 0 #FFC498}
+.lh-session-copy h3{font:800 clamp(26px,2.65vw,36px)/1.15 var(--disp);letter-spacing:-.025em;max-width:18ch;margin:0 0 14px;text-wrap:pretty}
+.lh-session-copy p{font-size:15px;line-height:1.7;max-width:48ch;color:var(--ink2);margin:0}
+.lh-session-host{display:flex;align-items:center;gap:8px;margin-top:23px;font-size:12px;color:var(--ink3)}
+.lh-session-host b{font-weight:700;color:var(--ink)}
+.lh-session-booking{position:relative;padding:30px 27px;background:#F4ECD6;border-left:2px dashed #C9B995;display:flex;flex-direction:column;justify-content:center;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%)}
+.lh-session-booking::before,.lh-session-booking::after{content:"";position:absolute;left:-11px;width:18px;height:18px;background:var(--page);border:2px solid var(--ink);transform:rotate(45deg)}
+.lh-session-booking::before{top:-13px}
+.lh-session-booking::after{bottom:-13px}
+.lh-session-booking dl{margin:0 0 23px;display:grid;gap:15px}
+.lh-session-booking dt{font-size:12px;color:var(--ink3);margin-bottom:4px}
+.lh-session-booking dd{font:700 15px/1.45 var(--disp);margin:0;overflow-wrap:anywhere}
+.lh-pixel-action{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;font:800 14px/1.3 var(--disp);padding:13px 20px;border:2px solid var(--ink);border-bottom-width:5px;background:var(--org);color:#35190F;clip-path:var(--clipC);cursor:pointer;text-decoration:none;transition:transform 140ms,background 140ms}
+.lh-pixel-action:hover{color:#35190F;background:#FF8968;transform:translateY(-2px)}
+.lh-pixel-action:active{transform:translateY(2px)}
+.lh-pixel-action:focus-visible,.lh-film-trigger:focus-visible,.lh-film-close:focus-visible{outline:3px solid #FFAB79;outline-offset:4px}
+.lh-pixel-action:focus-visible{outline:0;box-shadow:inset 0 0 0 2px #35190F,inset 0 0 0 5px #FCF8EC}
+.lh-film-trigger:focus-visible{outline-offset:-5px}
+.lh-pixel-action:disabled{cursor:default;color:#786751;background:#E7DCC3;border-color:#B7A587;transform:none}
+.lh-session-booking .lh-pixel-action{width:100%;padding-left:10px;padding-right:10px}
+.lh-session-note{font-size:11px;line-height:1.6;color:#786751;margin:10px 0 0}
+.lh-research{padding:40px max(20px,calc((100vw - 1240px) / 2)) 62px}
+.lh-research-shell{background:#0E3157;color:#FCF8EC;clip-path:var(--clip);border-bottom:7px solid #082643}
+.lh-research-main{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(26px,4vw,62px);padding:clamp(28px,4vw,54px)}
+.lh-research-copy{min-width:0}
+.lh-research-name{display:flex;align-items:center;gap:10px;margin:0 0 19px;font:700 14px/1.5 var(--disp);color:#BDD6ED}
+.lh-research-name span{color:#FFB18E}
+.lh-research-copy h2{font:900 clamp(36px,4.2vw,58px)/1.08 var(--disp);letter-spacing:-.035em;margin:0 0 20px}
+.lh-research-copy h2 span{color:#FFAD84}
+.lh-research-description{max-width:44ch;font-size:16px;line-height:1.75;color:#DCEAF6;margin:0 0 26px}
+.lh-research-steps{list-style:none;display:flex;flex-wrap:wrap;gap:8px 13px;margin:0 0 30px;padding:0;font:700 12px/1.5 var(--disp);color:#DCEAF6}
+.lh-research-steps li{display:flex;align-items:center;gap:13px}
+.lh-research-steps li+li::before{content:"›";font-size:20px;color:#88B4DC;line-height:1}
+.lh-research-copy .lh-pixel-action:disabled{border-color:#496887;background:#264B71;color:#CBDDEB}
+.lh-research-note{font-size:12px;line-height:1.6;color:#B1C9DE;margin:11px 0 0}
+.lh-portal{margin:0;min-width:0;position:relative}
+.lh-portal-image{display:block;width:100%;height:auto;aspect-ratio:1;clip-path:var(--clip);border:3px solid #5081AA;object-fit:cover}
+.lh-portal figcaption{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px;color:#DCEAF6;font:700 11px/1.4 var(--disp)}
+.lh-portal figcaption span:nth-child(2){height:2px;background:#527FA7;flex:1;margin:0 8px;position:relative}
+.lh-portal figcaption span:nth-child(2)::after{content:"";position:absolute;right:0;top:-3px;width:7px;height:7px;border-top:2px solid #527FA7;border-right:2px solid #527FA7;transform:rotate(45deg)}
+.lh-film-trigger{display:flex;align-items:center;gap:20px;width:100%;text-align:left;padding:20px clamp(28px,4vw,54px);border:0;border-top:1px solid #37618A;background:#123F70;color:#FCF8EC;cursor:pointer;font:inherit;transition:background 160ms}
+.lh-film-trigger:hover{background:#194E85}
+.lh-film-thumb{flex:none;position:relative;width:122px}
+.lh-film-thumb img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;image-rendering:auto;border:2px solid #6B90B2}
+.lh-film-caption{flex:1;min-width:0}
+.lh-film-caption b{display:block;font:800 clamp(16px,1.5vw,20px)/1.3 var(--disp);margin-bottom:5px}
+.lh-film-caption small{font-size:12px;color:#BDD6ED;line-height:1.5}
+.lh-film-play{display:flex;gap:10px;align-items:center;font:800 13px/1.4 var(--disp);white-space:nowrap}
+.lh-film-play-mark{display:grid;place-items:center;width:40px;height:40px;background:#FFAD84;color:#35190F;clip-path:var(--clipC);font-size:17px}
+.lh-film-dialog{width:min(1000px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:0;border:3px solid #547B9D;background:#0E3157;color:#FCF8EC;box-shadow:0 24px 90px #08264380}
+.lh-film-dialog::backdrop{background:rgba(6,22,39,.88)}
+.lh-film-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 20px;border-bottom:1px solid #37618A}
+.lh-film-dialog-head h2{font:800 clamp(17px,2vw,22px)/1.3 var(--disp);margin:0}
+.lh-film-close{flex:none;background:#264B71;border:1px solid #547B9D;color:#FCF8EC;min-width:44px;min-height:44px;font:700 24px/1 var(--sans);cursor:pointer}
+.lh-film-dialog video{display:block;width:100%;height:auto;max-height:calc(100dvh - 230px);aspect-ratio:16/9;background:#09233E}
+.lh-film-dialog p{margin:0;padding:15px 20px;font-size:13px;line-height:1.65;color:#CBDDEB}
+.lh-film-dialog a{color:#FFAD84;text-decoration:underline}
+.lh-film-dialog [hidden]{display:none!important}
+@media(max-width:1023px){
+  .lh-session-ticket{grid-template-columns:140px minmax(0,1fr) 250px}
+  .lh-session-copy{padding:27px 22px}
+  .lh-session-booking{padding:25px 20px}
+  .lh-session-art img{width:110px;height:130px}
+  .lh-research-main{gap:26px;padding:30px}
+  .lh-research-copy h2{font-size:42px}
+  .lh-research-steps{gap:6px 10px;font-size:11px}
+}
+@media(max-width:767px){
+  #info-session,#research-lab{scroll-margin-top:120px}
+  .lh-session{padding-top:24px;padding-bottom:34px}
+  .lh-session-ticket{grid-template-columns:1fr}
+  .lh-session-art{flex-direction:row;justify-content:space-between;padding:12px 23px;min-height:100px;clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 9px,100% 100%,0 100%,0 9px)}
+  .lh-session-art-label{font-size:17px;padding:10px 17px;transform:rotate(-3deg)}
+  .lh-session-art img{width:90px;height:86px;transform:translateY(6px)}
+  .lh-session-copy{padding:25px 23px}
+  .lh-session-copy h3{font-size:30px;max-width:22ch}
+  .lh-session-copy p{font-size:14px}
+  .lh-session-host{margin-top:16px}
+  .lh-session-booking{padding:23px;border-left:0;border-top:2px dashed #C9B995;clip-path:polygon(0 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,9px 100%,0 calc(100% - 9px))}
+  .lh-session-booking::before{top:-12px;left:-13px}
+  .lh-session-booking::after{top:-12px;bottom:auto;left:auto;right:-13px}
+  .lh-session-booking dl{grid-template-columns:1fr 1fr;gap:15px;margin-bottom:20px}
+  .lh-session-note{text-align:center}
+  .lh-research{padding-top:22px;padding-bottom:40px}
+  .lh-research-main{grid-template-columns:1fr;gap:28px;padding:29px 23px}
+  .lh-research-copy h2{font-size:clamp(36px,7.6vw,52px)}
+  .lh-research-description{font-size:15px;max-width:50ch;margin-bottom:20px}
+  .lh-research-name{font-size:12px;margin-bottom:17px}
+  .lh-research-steps{font-size:11px;margin-bottom:24px}
+  .lh-research-copy .lh-pixel-action{width:100%}
+  .lh-research-note{text-align:center}
+  .lh-portal{width:100%;max-width:450px;justify-self:center}
+  .lh-film-trigger{padding:19px 23px;gap:14px;flex-wrap:wrap}
+  .lh-film-thumb{width:87px}
+  .lh-film-caption b{font-size:16px}
+  .lh-film-caption small{font-size:11px}
+  .lh-film-play{width:100%;justify-content:center;font-size:12px;margin-top:2px}
+  .lh-film-play-mark{width:28px;height:28px;font-size:12px}
+  .lh-film-dialog-head{padding:12px 14px;gap:12px}
+  .lh-film-dialog p{padding:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .lh-pixel-action,.lh-film-trigger,[data-lh-navlinks] a{transition:none}
+  .lh-pixel-action:hover,.lh-pixel-action:active{transform:none}
+}
 </style>
 </helmet>
 
@@ -268,11 +392,16 @@ summary::-webkit-details-marker{display:none}
 
 <a href="#courses" style="position:absolute;left:4px;top:-200px;z-index:90;background:#FF5D38;color:#fff;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:13px;padding:12px 18px;letter-spacing:.1em" style-focus="top:4px">Bỏ qua tới nội dung</a>
 
-<nav data-screen-label="Nav" style="position:sticky;top:0;z-index:50;background:#FDF7E8;border-bottom:2px solid #4F1F13;display:flex;align-items:center;gap:clamp(12px,2vw,28px);padding:8px max(20px,calc((100vw - 1240px) / 2));min-height:60px;flex-wrap:wrap">
+<nav data-lh-nav data-screen-label="Nav" aria-label="Điều hướng chính" style="position:sticky;top:0;z-index:50;background:#FDF7E8;border-bottom:2px solid #4F1F13;display:flex;align-items:center;gap:clamp(12px,2vw,28px);padding:8px max(20px,calc((100vw - 1240px) / 2));min-height:60px;flex-wrap:wrap">
   <a href="#top" aria-label="Learning Hub trang chủ" style="display:flex;align-items:center;gap:11px;flex-shrink:0;color:#4F1F13">
     <img src="assets/img/nav-logo-full.svg" alt="Learning Hub — Học đúng, làm chuẩn" style="height:46px;width:auto;object-fit:contain" />
   </a>
-  <div style="display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0">
+  <div data-lh-navlinks>
+    <a href="#courses">Khóa học</a>
+    <a href="#info-session">Info Session</a>
+    <a href="#research-lab">Research Lab</a>
+  </div>
+  <div data-lh-navactions style="display:flex;align-items:center;gap:8px;flex-shrink:0">
     <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">BẮT ĐẦU <b style="font-size:18px;line-height:1">›</b></span></a>
   </div>
 </nav>
@@ -303,6 +432,31 @@ summary::-webkit-details-marker{display:none}
   </div>
 
   <div aria-hidden="true" style="position:absolute;z-index:5;left:0;right:0;bottom:0;height:clamp(60px,8vw,110px);pointer-events:none;background:linear-gradient(180deg,rgba(253,247,232,0) 0%,rgba(253,247,232,.5) 60%,#FDF7E8 100%)"></div>
+</section>
+
+<section id="info-session" class="lh-session" data-screen-label="Info Session" aria-labelledby="lh-session-heading">
+  <div class="lh-session-heading"><h2 id="lh-session-heading">Sắp tới ở Learning Hub</h2></div>
+  <article class="lh-session-ticket" aria-labelledby="lh-session-title">
+    <div class="lh-session-art" aria-hidden="true">
+      <span class="lh-session-art-label">CÓ HẸN NHA!</span>
+      <img src="assets/img/fox-wave.png" alt="" width="132" height="144" loading="lazy" />
+    </div>
+    <div class="lh-session-copy">
+      <span class="lh-session-status">BUỔI GẶP GỠ SẮP TỚI</span>
+      <h3 id="lh-session-title">{{ sessionTitleText }}</h3>
+      <p>{{ sessionDescriptionText }}</p>
+      <div class="lh-session-host">Đồng hành cùng <b>team CIO Research</b></div>
+    </div>
+    <div class="lh-session-booking">
+      <dl>
+        <div><dt>Thời gian</dt><dd>{{ sessionDateText }}</dd></div>
+        <div><dt>Hình thức / Địa điểm</dt><dd>{{ sessionFormatText }}</dd></div>
+      </dl>
+      <sc-if value="{{ canRegister }}"><a class="lh-pixel-action" href="{{ safeSessionUrl }}" target="_blank" rel="noopener noreferrer">Đăng ký tham gia <span aria-hidden="true">↗</span></a></sc-if>
+      <sc-if value="{{ registrationPending }}"><button class="lh-pixel-action" type="button" disabled="disabled" aria-describedby="lh-session-note">Đăng ký sắp mở</button></sc-if>
+      <p class="lh-session-note" id="lh-session-note">{{ sessionNoteText }}</p>
+    </div>
+  </article>
 </section>
 
 <section id="courses" data-screen-label="Khóa học" style="background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%)">
@@ -1119,6 +1273,42 @@ summary::-webkit-details-marker{display:none}
 <!-- Bi kip flashcard: bia va hai mat the deu la WebP raster hoa san tu PDF
      (tools/export-flashcard-webp.js), khong co PDF.js o runtime. Trinh doc chi
      giu dung mot the trong DOM nen mot luc chi mot lop 3D duoc compositing. -->
+<section id="research-lab" class="lh-research" data-screen-label="Research Lab" aria-labelledby="lh-research-heading">
+  <div class="lh-research-shell">
+    <div class="lh-research-main">
+      <div class="lh-research-copy">
+        <p class="lh-research-name">LEARNING HUB <span aria-hidden="true">×</span> RESEARCH LAB</p>
+        <h2 id="lh-research-heading">Từ học đúng<br /><span>đến làm chuẩn.</span></h2>
+        <p class="lh-research-description">Mang điều đã học vào dự án thực tế. Bước qua Research Lab, cùng AI thực hành quy trình nghiên cứu.</p>
+        <ul class="lh-research-steps" aria-label="Quy trình tại Research Lab">
+          <li>Lên kế hoạch</li><li>Tạo bảng câu hỏi</li><li>Báo cáo</li>
+        </ul>
+        <sc-if value="{{ canVisitLab }}"><a class="lh-pixel-action" href="{{ safeResearchUrl }}" target="_blank" rel="noopener noreferrer">Khám phá Research Lab <span aria-hidden="true">↗</span></a></sc-if>
+        <sc-if value="{{ researchPending }}"><button class="lh-pixel-action" type="button" disabled="disabled" aria-describedby="lh-research-note">Research Lab sắp mở <span aria-hidden="true">↗</span></button></sc-if>
+        <p class="lh-research-note" id="lh-research-note">{{ researchNoteText }}</p>
+      </div>
+      <figure class="lh-portal">
+        <img class="lh-portal-image" src="assets/img/research-portal.svg" alt="Foxy bước qua cánh cổng từ sa mạc Learning Hub vào trạm không gian Research Lab." width="502" height="502" loading="lazy" decoding="async" />
+        <figcaption><span>LEARNING HUB</span><span aria-hidden="true"></span><span>RESEARCH LAB</span></figcaption>
+      </figure>
+    </div>
+    <button class="lh-film-trigger" type="button" data-lh-research-play aria-haspopup="dialog" aria-controls="lh-research-film">
+      <span class="lh-film-thumb"><img src="assets/media/research-a-brand-new-day-poster.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></span>
+      <span class="lh-film-caption"><b>Research. A Brand New Day.</b><small>Một hành trình, hai thế giới khám phá.</small></span>
+      <span class="lh-film-play"><span class="lh-film-play-mark" aria-hidden="true">▶</span>Xem phim giới thiệu</span>
+    </button>
+  </div>
+  <dialog id="lh-research-film" class="lh-film-dialog" aria-labelledby="lh-film-title" aria-describedby="lh-film-description">
+    <div class="lh-film-dialog-head"><h2 id="lh-film-title">Research. A Brand New Day.</h2><button class="lh-film-close" type="button" data-lh-research-close aria-label="Đóng video" autoFocus="{{ true }}">×</button></div>
+    <video data-lh-research-video controls="controls" playsInline="{{ true }}" preload="none" poster="assets/media/research-a-brand-new-day-poster.webp" aria-label="Phim giới thiệu hành trình Learning Hub và Research Lab">
+      <source src="assets/media/research-a-brand-new-day.mp4" type="video/mp4" />
+      Trình duyệt chưa hỗ trợ video. <a href="assets/media/research-a-brand-new-day.mp4">Mở video giới thiệu</a>.
+    </video>
+    <p id="lh-film-description">Từ Learning Hub đến Research Lab, cùng Foxy học nghiên cứu và ứng dụng AI vào công việc. Video có âm thanh và phụ đề tiếng Việt hiển thị sẵn.</p>
+    <p data-lh-research-video-error hidden="hidden" role="status">Video chưa phát được. Bạn có thể dùng nút phát trên video hoặc <a href="assets/media/research-a-brand-new-day.mp4" target="_blank" rel="noopener">mở video ở tab mới</a>.</p>
+  </dialog>
+</section>
+
 <section id="flashcards" data-screen-label="Bí kíp flashcard" style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2)) clamp(54px,5.5vw,78px)">
   <div data-lh-fchead="1" style="text-align:center;max-width:800px;margin:0 auto 40px">
     <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">Bí kíp Research của CIO</h2>
@@ -1530,6 +1720,8 @@ summary::-webkit-details-marker{display:none}
         <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;color:#fff;margin-bottom:4px">LEARNING HUB</b>
         <a href="#top" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Giới thiệu</a>
         <a href="#club" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Phần thưởng</a>
+        <a href="#info-session" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Info Session</a>
+        <a href="#research-lab" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Research Lab</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
         <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;color:#fff;margin-bottom:4px">LUYỆN TẬP</b>
@@ -1554,8 +1746,74 @@ summary::-webkit-details-marker{display:none}
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;showLeaderboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;,&quot;off&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;\&quot;full\&quot; | \&quot;subtle\&quot; | \&quot;off\&quot;&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;showLeaderboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;,&quot;off&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;\&quot;full\&quot; | \&quot;subtle\&quot; | \&quot;off\&quot;&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;sessionTitle&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Info Session cùng team Research&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionDescription&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Cùng tìm hiểu Learning Hub và trao đổi những câu hỏi của bạn về hành trình học nghiên cứu.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionDate&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionFormat&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionRegistrationUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;researchLabUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Research Lab&quot;}}">
 class Component extends DCLogic {
+  renderVals() {
+    // Only team-provided facts belong in these props. Empty URLs intentionally
+    // render disabled actions, never a guessed destination or registration.
+    const clean = (value, fallback = '') => typeof value === 'string' && value.trim() ? value.trim() : fallback;
+    const externalUrl = (value) => {
+      try {
+        const url = new URL(clean(value));
+        return /^https?:$/.test(url.protocol) && !url.username && !url.password ? url.href : '';
+      } catch (error) { return ''; }
+    };
+    const safeSessionUrl = externalUrl(this.props.sessionRegistrationUrl);
+    const safeResearchUrl = externalUrl(this.props.researchLabUrl);
+    return {
+      sessionTitleText: clean(this.props.sessionTitle, 'Info Session cùng team Research'),
+      sessionDescriptionText: clean(this.props.sessionDescription, 'Cùng tìm hiểu Learning Hub và trao đổi những câu hỏi của bạn về hành trình học nghiên cứu.'),
+      sessionDateText: clean(this.props.sessionDate, 'Sắp công bố'),
+      sessionFormatText: clean(this.props.sessionFormat, 'Sắp công bố'),
+      safeSessionUrl, canRegister: !!safeSessionUrl, registrationPending: !safeSessionUrl,
+      safeResearchUrl, canVisitLab: !!safeResearchUrl, researchPending: !safeResearchUrl,
+      sessionNoteText: safeSessionUrl ? 'Đăng ký trên trang của chương trình.' : 'Lịch và link đăng ký sẽ được cập nhật tại đây.',
+      researchNoteText: safeResearchUrl ? 'Mở nền tảng Research Lab trong tab mới.' : 'Cánh cổng mới đang được chuẩn bị. Xem trước hành trình bên dưới nhé!'
+    };
+  }
+
+  _setupResearchFilm(root) {
+    if (this._researchFilmCleanup) this._researchFilmCleanup();
+    const dialog = root.querySelector('#lh-research-film');
+    const video = root.querySelector('[data-lh-research-video]');
+    const opener = root.querySelector('[data-lh-research-play]');
+    if (!dialog || !video || !opener) return;
+    const events = new AbortController();
+    const on = (el, name, handler) => el.addEventListener(name, handler, { signal: events.signal });
+    const error = root.querySelector('[data-lh-research-video-error]');
+    let previousOverflow = '';
+    let scrollLocked = false;
+    const restoreScroll = () => {
+      if (scrollLocked) document.body.style.overflow = previousOverflow;
+      scrollLocked = false;
+    };
+    on(opener, 'click', () => {
+      if (dialog.open) return;
+      dialog.showModal();
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      scrollLocked = true;
+      error.hidden = true;
+      const playing = video.play();
+      if (playing) playing.catch(() => { error.hidden = false; });
+    });
+    on(root.querySelector('[data-lh-research-close]'), 'click', () => dialog.close());
+    on(dialog, 'close', () => { video.pause(); restoreScroll(); opener.focus({ preventScroll: true }); });
+    // A backdrop click closes only when the pointer is outside the dialog box.
+    on(dialog, 'click', (event) => {
+      if (event.target !== dialog) return;
+      const r = dialog.getBoundingClientRect();
+      if (event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close();
+    });
+    on(video, 'playing', () => { error.hidden = true; });
+    on(video, 'error', () => { error.hidden = false; });
+    const source = video.querySelector('source');
+    if (source) on(source, 'error', () => { error.hidden = false; });
+    this._researchFilmCleanup = () => { events.abort(); video.pause(); if (dialog.open) dialog.close(); restoreScroll(); };
+  }
+
+  componentWillUnmount() { if (this._researchFilmCleanup) this._researchFilmCleanup(); }
+
   componentDidUpdate() { this._applyMotion(); }
 
   _applyMotion() {
@@ -1583,6 +1841,7 @@ class Component extends DCLogic {
     const root = document.querySelector('[data-lh-root]');
     if (!root) return;
     this._root = root;
+    this._setupResearchFilm(root);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // progress bars fill when scrolled into view
