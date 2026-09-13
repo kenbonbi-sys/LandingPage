@@ -4,13 +4,21 @@
     {
       "name": "landing",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "4321"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4321"
+      ],
       "port": 4321
     },
     {
       "name": "shelf",
       "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "4333"],
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4333"
+      ],
       "port": 4333
     }
   ]

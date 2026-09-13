@@ -68,6 +68,8 @@ summary::-webkit-details-marker{display:none}
   [data-lh-navlinks]{order:3;width:100%;margin-left:0!important;gap:10px!important;justify-content:space-between}
   [data-lh-navlinks] a{font-size:13px!important;padding:9px 0!important}
   [data-lh-navactions]{margin-left:auto!important}
+  /* Man hinh hep: cho cau mo ta hero xuong dong lai, tranh tran mep */
+  [data-lh-herolede]{white-space:normal!important;max-width:620px!important;text-wrap:pretty}
 }
 /* Hover vao the tren ke: nghieng sang mot ben va flip tron mot vong quanh
    truc doc. Flip khong lam hop bao to ra (chi thu hep ngang) nen khong bi
@@ -273,33 +275,74 @@ summary::-webkit-details-marker{display:none}
 .lh-session-heading{display:flex;align-items:center;gap:14px;margin-bottom:22px}
 .lh-session-heading h2{font:800 clamp(24px,2.5vw,34px)/1.2 var(--disp);letter-spacing:-.02em;margin:0}
 .lh-session-heading::after{content:"";height:2px;flex:1;background:#E3D6B8}
-/* Ve Info Session: banner 1240x293 la nen cua ca tam ve. Tieu de va mo ta da
-   nam san trong artwork nen ban DOM chi con doc cho screen reader; phan dat
-   cho noi len bang khoi kinh mo o goc duoi-trai, la vung it chi tiet nhat. */
+/* Ve Info Session, he pixel nhu ca trang: khung ink + clip-path pixel + bong
+   cung. Bo cuc theo mockup - tieu de giua, gach ngan, 3 dong info, Foxy pixel
+   (assets/img/session-fox.webp) lo canh nut. Poster 4:3 ben trai
+   (assets/img/session-poster.webp). Gach ngan ve bang repeating-gradient de
+   dau gach vuong goc, khong bo tron nhu border-dashed. */
 .lh-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 .lh-session-ticket{position:relative;background:var(--ink);padding:3px 3px 7px;clip-path:var(--clip);filter:drop-shadow(5px 5px 0 var(--sh))}
-.lh-session-stage{position:relative;aspect-ratio:1240/293;overflow:hidden;background:#9CC6E8}
+.lh-session-inner{position:relative;display:grid;grid-template-columns:58% 42%;background:var(--cream);clip-path:var(--clipPi);overflow:hidden}
+.lh-session-poster{position:relative;aspect-ratio:4/3;background:#9CC6E8;border-right:3px solid var(--ink)}
 .lh-session-banner{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover;object-position:center}
 .lh-session-art-label{position:absolute;z-index:2;top:clamp(11px,1.4vw,17px);left:clamp(11px,1.4vw,17px);font:800 13px/1 var(--disp);letter-spacing:.04em;transform:rotate(-5deg);background:var(--cream);padding:9px 13px;border:2px solid var(--ink);box-shadow:3px 3px 0 #C78B56}
-.lh-session-panel{position:absolute;z-index:2;left:0;bottom:0;width:min(52%,600px);display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:7px clamp(13px,1.8vw,22px);padding:clamp(11px,1.4vw,16px) clamp(15px,1.9vw,22px);background:rgba(253,247,232,.9);-webkit-backdrop-filter:blur(7px) saturate(1.15);backdrop-filter:blur(7px) saturate(1.15);border-top:2px solid var(--ink);border-right:2px solid var(--ink);clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
-.lh-session-panel dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:5px 16px}
-.lh-session-panel dt{font-size:10.5px;letter-spacing:.03em;color:var(--ink3);margin-bottom:2px}
-.lh-session-panel dd{font:700 14px/1.35 var(--disp);color:var(--ink);margin:0;overflow-wrap:anywhere}
-.lh-session-act{display:flex}
-.lh-session-panel .lh-pixel-action{min-height:42px;padding:10px 18px;font-size:13px;gap:7px;white-space:nowrap}
-.lh-session-panel .lh-session-note{grid-column:1/-1;margin:1px 0 0;font-size:10.5px}
-/* CTA chinh dung chung ngon ngu voi nut "BAT DAU" o hero: chu trang in hoa co
-   vien do, than cam, go do dam ben duoi. Go duoi ve bang drop-shadow vi
-   clip-path se cat mat box-shadow, con drop-shadow bam dung silhouette da cat. */
-.lh-pixel-action{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:46px;font:800 clamp(14px,1.15vw,16px)/1.3 var(--disp);letter-spacing:.03em;text-transform:uppercase;padding:12px 24px;border:0;background:#FF5D38;color:#fff;text-shadow:0 2px 0 #C43F20;clip-path:var(--clipC);filter:drop-shadow(0 5px 0 #97290F);cursor:pointer;text-decoration:none;transition:background 120ms,transform 60ms steps(2),filter 60ms steps(2)}
+/* justify-content quyet dinh khoang trong doc. Panel luon cao bang poster nen
+   con du cho: "center" don het ra tren+duoi (92px moi ben), "flex-start" day
+   noi dung len sat padding-top, "space-evenly" rai deu ra cac khe. */
+.lh-session-panel{position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:clamp(8px,1.1vw,10px);padding:clamp(28px,3.4vw,44px) clamp(22px,3vw,38px)}
+/* Tieu de luon gon mot dong: nowrap + co chu ha xuong vua khung panel.
+   Gioi han an toan ~40 ky tu o desktop; dai hon nua se bi cat boi overflow
+   cua .lh-session-inner. */
+.lh-session-ticket-title{font:900 clamp(13px,1.65vw,21px)/1.2 var(--disp);letter-spacing:-.02em;color:var(--ink);text-align:center;margin:0;white-space:nowrap}
+/* Chu gradient: background-clip:text + text-fill-color trong suot. Thuoc tinh
+   color van phai co - do la mau du phong khi trinh duyet khong ho tro clip. */
+.lh-t-blu{background:linear-gradient(180deg,#A9D8FF 0%,#4A97EC 34%,#1550A0 70%,#08213E 100%);-webkit-background-clip:text;background-clip:text;color:#1C66BB;-webkit-text-fill-color:transparent}
+.lh-t-org{background:linear-gradient(180deg,#FFDCAC 0%,#FF9457 34%,#F2521F 70%,#8E2409 100%);-webkit-background-clip:text;background-clip:text;color:#FF5D38;-webkit-text-fill-color:transparent}
+.lh-session-rule{flex:none;height:3px;width:100%;border:0;margin:clamp(7px,1.2vw,10px) 0;background:repeating-linear-gradient(90deg,rgba(79,31,19,.34) 0 6px,transparent 6px 13px)}
+.lh-session-facts{margin:0;display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.7vw,18px) clamp(16px,2vw,24px)}
+.lh-session-facts .lh-fact-wide{grid-column:1/-1}
+.lh-session-facts dt{font:800 clamp(10px,.95vw,11.5px)/1.3 var(--disp);letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);margin-bottom:4px}
+.lh-session-facts dd{font:900 clamp(14px,1.4vw,18px)/1.3 var(--disp);color:var(--ink);margin:0;overflow-wrap:anywhere}
+.lh-session-act{position:relative;display:flex;align-items:flex-end;gap:0;margin-top:clamp(5px,.9vw,9px)}
+/* .lh-session-act dung align-items:flex-end nen MEP DUOI cua anh bi ghim vao
+   day hang -> margin-top vo tac dung, chi lam hang cao them. Muon nhich cao
+   len/xuong phai sua margin-bottom (so thu 3): duong = len, am = xuong. */
+.lh-session-fox{flex:none;width:clamp(58px,7.6vw,94px);height:auto;margin:0 -35px 0px 0;position:relative;z-index:2;pointer-events:none;image-rendering:pixelated}
+/* Chu CTA to gan bang chieu cao o. padding-bottom luon = padding-top + 5px
+   (--ledge) de than nut khong de len go. */
+.lh-session-panel .lh-pixel-action{flex:1;min-height:58px;padding:14px 18px 19px;font-size:clamp(16px,1.85vw,24px);gap:8px;white-space:nowrap}
+.lh-session-panel .lh-pixel-action:active{padding-top:19px;padding-bottom:14px}
+/* Khoi CTA pixel dung chung cho moi nut hanh dong, sao y nut "BAT DAU" o hero:
+   than cam nam tren mot go do dam. Go BAT BUOC phai la mot lop rieng chu khong
+   phai drop-shadow - CSS ap filter TRUOC roi moi clip, nen clip-path se cat
+   sach phan bong loi ra ngoai hinh. ::before = go, ::after = than; ca hai
+   z-index am de nam duoi chu, isolation:isolate giu chung khong tut xuong duoi
+   nen cua khoi cha. Doi mau chi can doi --face / --ledge-dark. */
+.lh-cta{position:relative;isolation:isolate;--face:#FF5D38;--ledge-dark:#97290F;--ledge:5px;--ledge-top:7px}
+.lh-cta::before,.lh-cta::after{content:"";position:absolute;left:0;right:0;clip-path:var(--clipC)}
+.lh-cta::before{z-index:-2;top:var(--ledge-top);bottom:0;background:var(--ledge-dark)}
+.lh-cta::after{z-index:-1;top:0;bottom:var(--ledge);background:var(--face);transition:background 120ms}
+.lh-pixel-action{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:51px;font:800 clamp(15px,1.2vw,17px)/1.3 var(--disp);letter-spacing:.03em;text-transform:uppercase;padding:12px 24px 17px;border:0;background:none;color:#fff;text-shadow:0 2px 0 #C43F20;cursor:pointer;text-decoration:none}
 .lh-pixel-action b{font-size:1.5em;line-height:1;font-weight:800}
-.lh-pixel-action:hover{color:#fff;background:#FF7A5C}
-.lh-pixel-action:active{background:#E14A28;color:#fff;text-shadow:none;transform:translateY(5px);filter:none}
+.lh-pixel-action:hover{color:#fff;--face:#FF7A5C}
+/* Nhan: than cam va chu cung tut xuong 5px, nuot gon cai go. */
+.lh-pixel-action:active{color:#fff;text-shadow:none;padding-top:17px;padding-bottom:12px;--face:#E14A28}
+.lh-pixel-action:active::after{top:var(--ledge);bottom:0}
 .lh-film-trigger:focus-visible,.lh-film-close:focus-visible{outline:3px solid #FF5D38;outline-offset:4px}
-.lh-pixel-action:focus-visible{outline:0;box-shadow:inset 0 0 0 2px #FFF6F0,inset 0 0 0 5px #97290F}
+.lh-pixel-action:focus-visible{outline:3px solid #97290F;outline-offset:3px}
 .lh-film-trigger:focus-visible{outline-offset:-5px}
-.lh-pixel-action:disabled{cursor:default;background:#E7DCC3;color:#786751;text-shadow:none;filter:drop-shadow(0 5px 0 #B7A587);transform:none}
-.lh-session-note{font-size:11px;line-height:1.6;color:#786751;margin:10px 0 0}
+.lh-pixel-action:disabled{cursor:default;color:#786751;text-shadow:none;padding:12px 24px 17px;--face:#E7DCC3;--ledge-dark:#B7A587}
+.lh-pixel-action:disabled::after{top:0;bottom:var(--ledge)}
+/* Ban thu nho cua .lh-pixel-action cho nut "Chi tiet" tren the khoa hoc: cung
+   co go dam ben duoi, chi khac co chu / padding / go 3px va goc pixel nho hon
+   (--clipSi thay vi --clipC). Mau rieng tung khoa truyen qua --face va
+   --ledge-dark dat inline ngay tren the button. */
+.lh-pixel-mini{--ledge:3px;--ledge-top:4px;display:inline-flex;align-items:center;justify-content:center;gap:5px;font:800 11px/1 var(--disp);letter-spacing:.02em;padding:7px 11px 10px;border:0;background:none;color:#fff;cursor:pointer;white-space:nowrap;text-decoration:none}
+.lh-cta.lh-pixel-mini::before,.lh-cta.lh-pixel-mini::after{clip-path:var(--clipSi)}
+.lh-pixel-mini b{font-size:1.45em;line-height:1;font-weight:800}
+.lh-pixel-mini:active{padding-top:10px;padding-bottom:7px}
+.lh-pixel-mini:active::after{top:var(--ledge);bottom:0}
+.lh-session-note{font-size:11px;line-height:1.6;color:#786751;margin:3px 0 0;text-align:center}
 .lh-research{padding:40px max(20px,calc((100vw - 1240px) / 2)) 62px}
 .lh-research-shell{background:var(--ink);color:var(--ink);clip-path:var(--clip);padding:3px 3px 7px;filter:drop-shadow(5px 5px 0 var(--sh))}
 .lh-research-main{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:clamp(26px,4vw,62px);padding:clamp(28px,4vw,54px);background:var(--cream)}
@@ -317,9 +360,12 @@ summary::-webkit-details-marker{display:none}
 .lh-research-steps{list-style:none;display:flex;flex-wrap:wrap;gap:8px 13px;margin:0 0 30px;padding:0;font:700 12px/1.5 var(--disp);color:var(--ink2)}
 .lh-research-steps li{display:flex;align-items:center;gap:13px}
 .lh-research-steps li+li::before{content:"›";font-size:20px;color:#B7A587;line-height:1}
-/* CTA Research Lab van dang o trang thai cho mo, nhung giu nguyen sac cam day
-   du theo yeu cau design; dong note ngay ben duoi giai thich vi sao chua bam duoc. */
-.lh-research-copy .lh-pixel-action:disabled{background:#FF5D38;color:#fff;text-shadow:0 2px 0 #C43F20;filter:drop-shadow(0 5px 0 #97290F)}
+/* CTA Research Lab + Info Session van dang o trang thai cho mo, nhung giu nguyen
+   sac cam day du theo yeu cau design; dong note ngay ben duoi giai thich vi sao
+   chua bam duoc. Phai khai bao lai padding vi .lh-pixel-action:disabled o tren
+   da reset ve padding mac dinh. */
+.lh-research-copy .lh-pixel-action:disabled{color:#fff;text-shadow:0 2px 0 #C43F20;--face:#FF5D38;--ledge-dark:#97290F}
+.lh-session-panel .lh-pixel-action:disabled{color:#fff;text-shadow:0 2px 0 #C43F20;--face:#FF5D38;--ledge-dark:#97290F;padding:14px 18px 19px}
 .lh-research-note{font-size:12px;line-height:1.6;color:var(--ink3);margin:11px 0 0}
 .lh-portal{margin:0;min-width:0;position:relative}
 .lh-portal-image{display:block;width:100%;height:auto;aspect-ratio:1;clip-path:var(--clip);border:3px solid var(--ink);object-fit:cover}
@@ -334,7 +380,9 @@ summary::-webkit-details-marker{display:none}
 .lh-film-caption b{display:block;font:800 clamp(16px,1.5vw,20px)/1.3 var(--disp);margin-bottom:5px}
 .lh-film-caption small{font-size:12px;color:var(--ink3);line-height:1.5}
 .lh-film-play{display:flex;gap:10px;align-items:center;font:800 13px/1.4 var(--disp);white-space:nowrap}
-.lh-film-play-mark{display:grid;place-items:center;width:40px;height:40px;background:var(--org);color:#FFF6F0;border:2px solid var(--ink);clip-path:var(--clipC);font-size:17px}
+.lh-film-play-mark{flex:none;display:grid;place-items:center;width:42px;height:47px;padding-bottom:5px;color:#FFF6F0;font-size:17px;text-shadow:0 2px 0 #C43F20}
+.lh-film-trigger:hover .lh-film-play-mark{--face:#FF7A5C}
+.lh-film-trigger:active .lh-film-play-mark{--face:#E14A28}
 .lh-film-dialog{width:min(1000px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:0;border:3px solid #547B9D;background:#0E3157;color:#FCF8EC;box-shadow:0 24px 90px #08264380}
 .lh-film-dialog::backdrop{background:rgba(6,22,39,.88)}
 .lh-film-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 20px;border-bottom:1px solid #37618A}
@@ -345,26 +393,21 @@ summary::-webkit-details-marker{display:none}
 .lh-film-dialog a{color:#FFAD84;text-decoration:underline}
 .lh-film-dialog [hidden]{display:none!important}
 @media(max-width:1023px){
-  .lh-session-panel{width:min(58%,470px)}
-  .lh-session-panel dd{font-size:13px}
+  .lh-session-inner{grid-template-columns:50% 50%}
   .lh-research-main{gap:26px;padding:30px}
   .lh-research-copy h2{font-size:42px}
   .lh-research-steps{gap:6px 10px;font-size:11px}
 }
-/* Duoi 768px khung 1240x293 co lai con qua thap de dat khoi kinh mo len tren,
-   nen banner tro ve dong chay binh thuong va phan dat cho xuong duoi anh. */
+/* Duoi 768px: poster nam tren, cuong tin xuong duoi. */
 @media(max-width:767px){
   #info-session,#research-lab{scroll-margin-top:120px}
   .lh-session{padding-top:24px;padding-bottom:34px}
-  .lh-session-stage{aspect-ratio:auto}
-  .lh-session-banner{position:relative;inset:auto;height:auto;aspect-ratio:1240/293}
+  .lh-session-inner{grid-template-columns:1fr}
+  .lh-session-poster{aspect-ratio:16/11;border-right:0;border-bottom:3px solid var(--ink)}
   .lh-session-art-label{top:10px;left:10px;font-size:12px;padding:7px 10px;transform:rotate(-3deg)}
-  .lh-session-panel{position:static;width:100%;grid-template-columns:1fr;gap:14px;padding:18px;background:var(--cream2);-webkit-backdrop-filter:none;backdrop-filter:none;border-right:0;clip-path:none}
-  .lh-session-panel dl{grid-template-columns:1fr 1fr;gap:12px}
-  .lh-session-panel dd{font-size:14px}
-  .lh-session-act{width:100%}
-  .lh-session-panel .lh-pixel-action{width:100%}
-  .lh-session-note{text-align:center}
+  .lh-session-panel{padding:24px 20px;gap:11px}
+  .lh-session-facts{gap:14px 16px}
+  .lh-session-fox{width:70px;margin-right:-8px}
   .lh-research{padding-top:22px;padding-bottom:40px}
   .lh-research-main{grid-template-columns:1fr;gap:28px;padding:29px 23px}
   .lh-research-copy h2{font-size:clamp(36px,7.6vw,52px)}
@@ -379,14 +422,13 @@ summary::-webkit-details-marker{display:none}
   .lh-film-caption b{font-size:16px}
   .lh-film-caption small{font-size:11px}
   .lh-film-play{width:100%;justify-content:center;font-size:12px;margin-top:2px}
-  .lh-film-play-mark{width:28px;height:28px;font-size:12px}
+  .lh-film-play-mark{width:30px;height:34px;font-size:12px;--ledge:4px;--ledge-top:5px}
   .lh-film-dialog-head{padding:12px 14px;gap:12px}
   .lh-film-dialog p{padding:14px}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .lh-pixel-action,.lh-film-trigger,[data-lh-navlinks] a{transition:none}
-  .lh-pixel-action:hover,.lh-pixel-action:active{transform:none}
+  .lh-cta::after,.lh-film-trigger,[data-lh-navlinks] a{transition:none}
 }
 </style>
 </helmet>
@@ -399,13 +441,8 @@ summary::-webkit-details-marker{display:none}
   <a href="#top" aria-label="Learning Hub trang chủ" style="display:flex;align-items:center;gap:11px;flex-shrink:0;color:#4F1F13">
     <img src="assets/img/nav-logo-full.svg" alt="Learning Hub — Học đúng, làm chuẩn" style="height:46px;width:auto;object-fit:contain" />
   </a>
-  <div data-lh-navlinks>
-    <a href="#courses">Khóa học</a>
-    <a href="#info-session">Info Session</a>
-    <a href="#research-lab">Research Lab</a>
-  </div>
-  <div data-lh-navactions style="display:flex;align-items:center;gap:8px;flex-shrink:0">
-    <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">BẮT ĐẦU <b style="font-size:18px;line-height:1">›</b></span></a>
+  <div data-lh-navactions style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-left:auto">
+    <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;flex-shrink:0;padding:0 0 4px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:6px;bottom:0;background:#97290F;clip-path:var(--clipCi);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:700;font-size:13px;letter-spacing:.02em;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:8px 16px;display:inline-flex;align-items:center;gap:7px;clip-path:var(--clipCi);white-space:nowrap;transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(4px);background:#E14A28;text-shadow:none">VÀO LEARNING HUB <b style="font-size:18px;line-height:1">›</b></span></a>
   </div>
 </nav>
 
@@ -425,12 +462,8 @@ summary::-webkit-details-marker{display:none}
   </div>
 
   <div style="position:relative;z-index:4;padding:clamp(60px,7.6vw,104px) max(20px,calc((100vw - 1240px) / 2)) clamp(54px,6.4vw,86px);display:flex;flex-direction:column;align-items:center;text-align:center">
-    <span style="display:inline-block;background:#FF5D38;clip-path:var(--clipCi);padding:2px;margin-bottom:22px">
-      <span style="display:inline-flex;align-items:center;gap:8px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.04em;padding:7px 11px;line-height:1;clip-path:var(--clipSi);background:#0E3157;color:#FFB199">HỌC NGHIÊN CỨU THEO CÁCH VUI HƠN<span style="animation:lh-blink 1s steps(1) infinite">_</span></span>
-    </span>
-    <h1 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38px,5.2vw,68px);line-height:1;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;text-shadow:0 3px 18px rgba(9,33,62,.55)">BẮT ĐẦU HÀNH TRÌNH<br /><span style="background:linear-gradient(180deg,#FFCB9E 0%,#FF9064 40%,#FF5D38 78%,#EA4A24 100%);-webkit-background-clip:text;background-clip:text;color:#FF9064;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 3px 14px rgba(9,33,62,.55))">KHÁM PHÁ NGHIÊN CỨU</span></h1>
-    <p style="font-size:clamp(15px,1.4vw,19px);line-height:1.6;max-width:620px;color:#EAF2FB;margin:0 0 clamp(34px,4vw,54px);text-wrap:pretty;text-shadow:0 2px 12px rgba(9,33,62,.6)">Học từng chặng, luyện từng kỹ năng, tự tin làm research.</p>
-
+    <h1 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38px,5.2vw,68px);line-height:1;letter-spacing:-.03em;margin:0 0 18px;text-wrap:balance;text-shadow:0 3px 18px rgba(9,33,62,.55)">BẮT ĐẦU HÀNH TRÌNH<br /><span style="background:linear-gradient(180deg,#FFCB9E 0%,#FF9064 40%,#FF5D38 78%,#EA4A24 100%);-webkit-background-clip:text;background-clip:text;color:#FF9064;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 3px 14px rgba(9,33,62,.55))">HỌC TẬP NGHIÊN CỨU</span></h1>
+    <p data-lh-herolede style="font-size:clamp(15px,1.4vw,19px);line-height:1.6;max-width:none;white-space:nowrap;color:#EAF2FB;margin:0 0 clamp(18px,2vw,28px);text-shadow:0 2px 12px rgba(9,33,62,.6)">Lộ trình cá nhân hóa, bài học ngắn, dễ tiếp thu, đa dạng hình thức ôn luyện.</p>
     <a href="https://cio.momo.vn/cio-academy/courses" target="_blank" rel="noopener" style="position:relative;display:inline-flex;padding:0 0 5px;text-decoration:none" style-before="content:'';position:absolute;left:0;right:0;top:7px;bottom:0;background:#97290F;clip-path:var(--clipC);z-index:0"><span style="position:relative;z-index:1;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:clamp(15px,1.4vw,19px);letter-spacing:.03em;text-transform:uppercase;color:#fff;text-shadow:0 2px 0 #C43F20;background:#FF5D38;padding:12px 24px;display:inline-flex;align-items:center;gap:9px;white-space:nowrap;clip-path:var(--clipC);transition:background 120ms,transform 60ms steps(2)" style-hover="background:#FF7A5C" style-active="transform:translateY(5px);background:#E14A28;text-shadow:none">Bắt đầu học <b style="font-size:26px;line-height:1">›</b></span></a>
   </div>
 
@@ -440,19 +473,23 @@ summary::-webkit-details-marker{display:none}
 <section id="info-session" class="lh-session" data-screen-label="Info Session" aria-labelledby="lh-session-heading">
   <div class="lh-session-heading"><h2 id="lh-session-heading">Sắp tới ở Learning Hub</h2></div>
   <article class="lh-session-ticket" aria-labelledby="lh-session-title">
-    <div class="lh-session-stage">
-      <img class="lh-session-banner" src="assets/img/session-banner.webp" alt="Info Session — Research: A Brand New Day. Foxy và trợ lý Research Lab cầm cuốn Learning Hub bước qua cánh cổng sáng, phía trên là Evil Fear. Học đúng, làm chuẩn — cùng đánh bại Evil Fear." width="1240" height="293" loading="lazy" decoding="async" />
-      <span class="lh-session-art-label" aria-hidden="true">CÓ HẸN NHA!</span>
-      <h3 id="lh-session-title" class="lh-sr">{{ sessionTitleText }}</h3>
-      <p class="lh-sr">{{ sessionDescriptionText }} Đồng hành cùng team CIO Research.</p>
+    <div class="lh-session-inner">
+      <div class="lh-session-poster">
+        <img class="lh-session-banner" src="assets/img/session-poster.webp" alt="Poster Info Session — Research: A Brand New Day. Foxy ôm cuốn Learning Hub và quả cầu Research Lab, bước qua cánh cổng sáng; phía trên là gương mặt Evil Fear trong khói lửa." width="1448" height="1086" loading="lazy" decoding="async" />
+      </div>
       <div class="lh-session-panel">
-        <dl>
-          <div><dt>Thời gian</dt><dd>{{ sessionDateText }}</dd></div>
-          <div><dt>Hình thức / Địa điểm</dt><dd>{{ sessionFormatText }}</dd></div>
+        <h3 id="lh-session-title" class="lh-session-ticket-title">Info Session | <span class="lh-t-blu">Research:</span> <span class="lh-t-org">A Brand New Day</span></h3>
+        <hr class="lh-session-rule" />
+        <dl class="lh-session-facts">
+          <div><dt>Thời gian</dt><dd>{{ sessionTimeText }}</dd></div>
+          <div><dt>Ngày diễn ra</dt><dd>{{ sessionDateText }}</dd></div>
+          <div class="lh-fact-wide"><dt>Địa điểm</dt><dd>{{ sessionVenueText }}</dd></div>
         </dl>
+        <hr class="lh-session-rule" />
         <div class="lh-session-act">
-          <sc-if value="{{ canRegister }}"><a class="lh-pixel-action" href="{{ safeSessionUrl }}" target="_blank" rel="noopener noreferrer">Đăng ký <b aria-hidden="true">›</b></a></sc-if>
-          <sc-if value="{{ registrationPending }}"><button class="lh-pixel-action" type="button" disabled="disabled" aria-describedby="lh-session-note">Sắp mở <b aria-hidden="true">›</b></button></sc-if>
+          <img class="lh-session-fox" src="assets/img/session-fox.webp" alt="" aria-hidden="true" width="521" height="548" loading="lazy" decoding="async" />
+          <sc-if value="{{ canRegister }}"><a class="lh-cta lh-pixel-action" href="{{ safeSessionUrl }}" target="_blank" rel="noopener noreferrer">Đăng ký ngay <b aria-hidden="true">›</b></a></sc-if>
+          <sc-if value="{{ registrationPending }}"><button class="lh-cta lh-pixel-action" type="button" disabled="disabled" aria-describedby="lh-session-note">ĐĂNG KÝ NGAY <b aria-hidden="true">›</b></button></sc-if>
         </div>
         <p class="lh-session-note" id="lh-session-note">{{ sessionNoteText }}</p>
       </div>
@@ -463,8 +500,8 @@ summary::-webkit-details-marker{display:none}
 <section id="courses" data-screen-label="Khóa học" style="background:linear-gradient(180deg,#FDF7E8 0,#FCF8EC clamp(16px,2.2vw,28px),#FCF8EC calc(100% - clamp(16px,2.2vw,28px)),#FDF7E8 100%)">
   <div style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2))">
     <div style="text-align:center;max-width:780px;margin:0 auto 36px">
-      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance">18 module về nghiên cứu,<br />học ngắn từng bài một</h2>
-      <p style="font-size:17px;line-height:1.7;color:#4C3B2A;margin:0;text-wrap:pretty">Do team CIO Research của MoMo biên soạn, từ người làm nghề thật cho người mới vào nghề.</p>
+      <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(36px,4.32vw,55.2px);line-height:1.08;letter-spacing:-.02em;margin:0 0 14px;white-space:nowrap">Các khóa học của Learning Hub,<br />học ngắn từng bài một</h2>
+      <p style="font-size:17px;line-height:1.7;color:#4C3B2A;margin:0;white-space:nowrap">Do đội ngũ CIO  biên soạn, đúc kết từ gần 10 năm biến insight khách hàng thành chiến lược và sản phẩm thực tế.</p>
     </div>
 
 <div style="display:flex;align-items:center;gap:14px;margin-bottom:36px;min-width:0">
@@ -502,7 +539,7 @@ summary::-webkit-details-marker{display:none}
                 <p style="color:#4C3B2A;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Khai thác dữ liệu sẵn có để trả lời nhanh câu hỏi nghiên cứu đầu tiên: chọn nguồn theo tier, cross-check số liệu, đánh giá độ tin cậy bằng CRAAP.</p>
                 <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
                   <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="rgba(255,255,255,.32)"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>CƠ BẢN</span>
-                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#fff;background:#467317;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Chi tiết ›</button>
+                  <button data-lh-ocflipbtn class="lh-cta lh-pixel-mini" type="button" aria-expanded="false" style="--face:#467317;--ledge-dark:#2A460E">Chi tiết <b aria-hidden="true">›</b></button>
                               </div>
               </div>
             </div>
@@ -549,7 +586,7 @@ summary::-webkit-details-marker{display:none}
                 <p style="color:#4C3B2A;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Hiểu sâu lý do và hành vi người dùng qua phỏng vấn, quan sát thực tế. UT, FGD, IDI hay Ethnography — biết chọn đúng phương pháp cho từng đề bài.</p>
                 <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
                   <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="rgba(255,255,255,.32)"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>CƠ BẢN</span>
-                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#fff;background:#C91065;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Chi tiết ›</button>
+                  <button data-lh-ocflipbtn class="lh-cta lh-pixel-mini" type="button" aria-expanded="false" style="--face:#C91065;--ledge-dark:#7A0A3D">Chi tiết <b aria-hidden="true">›</b></button>
                               </div>
               </div>
             </div>
@@ -596,7 +633,7 @@ summary::-webkit-details-marker{display:none}
                 <p style="color:#4C3B2A;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Đo lường quy mô, xu hướng và kiểm định giả thuyết bằng số liệu — từ chọn mẫu, bảng câu hỏi tới sig test và kết luận.</p>
                 <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
                   <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="#FFFFFF"/></svg>NÂNG CAO</span>
-                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#fff;background:#1C66BB;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Chi tiết ›</button>
+                  <button data-lh-ocflipbtn class="lh-cta lh-pixel-mini" type="button" aria-expanded="false" style="--face:#1C66BB;--ledge-dark:#123F70">Chi tiết <b aria-hidden="true">›</b></button>
                               </div>
               </div>
             </div>
@@ -643,7 +680,7 @@ summary::-webkit-details-marker{display:none}
                 <p style="color:#4C3B2A;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Khi nào bắt buộc UT, chuẩn bị request và segment, soạn Task List, hỏi để user nói thật, viết report với completion rate và SUS.</p>
                 <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
                   <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>TRUNG BÌNH</span>
-                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#fff;background:#C91065;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Chi tiết ›</button>
+                  <button data-lh-ocflipbtn class="lh-cta lh-pixel-mini" type="button" aria-expanded="false" style="--face:#C91065;--ledge-dark:#7A0A3D">Chi tiết <b aria-hidden="true">›</b></button>
                               </div>
               </div>
             </div>
@@ -690,7 +727,7 @@ summary::-webkit-details-marker{display:none}
                 <p style="color:#4C3B2A;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Dựng khung bảng hỏi 3 phần, viết câu hỏi và đáp án đạt 8 quy tắc của CIO, chọn tiêu chí test tên và tagline.</p>
                 <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
                   <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>TRUNG BÌNH</span>
-                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#fff;background:#1C66BB;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Chi tiết ›</button>
+                  <button data-lh-ocflipbtn class="lh-cta lh-pixel-mini" type="button" aria-expanded="false" style="--face:#1C66BB;--ledge-dark:#123F70">Chi tiết <b aria-hidden="true">›</b></button>
                               </div>
               </div>
             </div>
@@ -737,7 +774,7 @@ summary::-webkit-details-marker{display:none}
                 <p style="color:#4C3B2A;font-size:13.5px;line-height:1.55;margin:0 0 12px;text-wrap:pretty;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden">Vì sao GenAI có thể bịa, cách kiểm chứng nguồn và đặt câu hỏi phản biện, chọn đúng AI tool và viết prompt theo 2 style.</p>
                 <div style="margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;font-size:11px">
                   <span style="display:inline-flex;align-items:center;gap:5px;background:#4F1F13;border-radius:999px;padding:5px 10px;font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;letter-spacing:.06em;color:#fff"><svg width="11" height="9" viewBox="0 0 11 9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="0" y="5" width="2" height="4" fill="#FFFFFF"/><rect x="4.5" y="3" width="2" height="6" fill="#FFFFFF"/><rect x="9" y="0" width="2" height="9" fill="rgba(255,255,255,.32)"/></svg>TRUNG BÌNH</span>
-                  <button data-lh-ocflipbtn type="button" aria-expanded="false" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:11px;letter-spacing:.02em;color:#fff;background:#467317;border:none;clip-path:var(--clipSi);padding:6px 11px;cursor:pointer;white-space:nowrap;transition:filter 120ms">Chi tiết ›</button>
+                  <button data-lh-ocflipbtn class="lh-cta lh-pixel-mini" type="button" aria-expanded="false" style="--face:#467317;--ledge-dark:#2A460E">Chi tiết <b aria-hidden="true">›</b></button>
                               </div>
               </div>
             </div>
@@ -779,7 +816,7 @@ summary::-webkit-details-marker{display:none}
 </section>
 
 <section id="video" data-screen-label="Video" style="padding:clamp(47px,calc(3vw + 24px),61px) max(20px,calc((100vw - 1240px) / 2));text-align:center">
-  <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);line-height:1.1;letter-spacing:-.02em;margin:0 auto 30px;max-width:760px;text-wrap:balance">Cùng đồng đội MoMo đi qua ba khóa học của nghề nghiên cứu</h2>
+  <h2 style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(33.6px,3.84vw,48px);line-height:1.1;letter-spacing:-.02em;margin:0 auto 30px;max-width:760px;text-wrap:balance">Có gì vui ở Learning Hub mà nhà nhà đều kéo nhau đi học</h2>
 
   <div style="margin:0 auto;position:relative;background:#123F70;border-radius:18px;overflow:hidden">
       <video data-lh-video="1" poster="assets/img/video-poster.jpg" playsinline="playsinline" preload="metadata" controls="controls" style="display:block;width:100%;height:auto;aspect-ratio:16 / 9;object-fit:cover">
@@ -805,7 +842,7 @@ summary::-webkit-details-marker{display:none}
     </div>
     <div data-lh-reveal="1" style="display:flex;flex-direction:column;align-items:center;gap:7.2px;padding:21.6px 14.4px">
       <b data-lh-count="1" style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:900;font-size:clamp(38.4px,4.08vw,50.4px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;color:#C91065">6</b>
-      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;color:#4C3B2A">BÀI LUYỆN AI</span>
+      <span style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:12px;letter-spacing:.05em;color:#4C3B2A">BÀI LUYỆN PHỎNG VẤN</span>
     </div>
   </div>
 </section>
@@ -1284,8 +1321,8 @@ summary::-webkit-details-marker{display:none}
         <ul class="lh-research-steps" aria-label="Quy trình tại Research Lab">
           <li>Lên kế hoạch</li><li>Tạo bảng câu hỏi</li><li>Báo cáo</li>
         </ul>
-        <sc-if value="{{ canVisitLab }}"><a class="lh-pixel-action" href="{{ safeResearchUrl }}" target="_blank" rel="noopener noreferrer">Khám phá Research Lab <b aria-hidden="true">›</b></a></sc-if>
-        <sc-if value="{{ researchPending }}"><button class="lh-pixel-action" type="button" disabled="disabled" aria-describedby="lh-research-note">Research Lab sắp mở <b aria-hidden="true">›</b></button></sc-if>
+        <sc-if value="{{ canVisitLab }}"><a class="lh-cta lh-pixel-action" href="{{ safeResearchUrl }}" target="_blank" rel="noopener noreferrer">Khám phá Research Lab <b aria-hidden="true">›</b></a></sc-if>
+        <sc-if value="{{ researchPending }}"><button class="lh-cta lh-pixel-action" type="button" disabled="disabled" aria-describedby="lh-research-note">Research Lab sắp mở <b aria-hidden="true">›</b></button></sc-if>
         <p class="lh-research-note" id="lh-research-note">{{ researchNoteText }}</p>
       </div>
       <figure class="lh-portal">
@@ -1296,7 +1333,7 @@ summary::-webkit-details-marker{display:none}
     <button class="lh-film-trigger" type="button" data-lh-research-play aria-haspopup="dialog" aria-controls="lh-research-film">
       <span class="lh-film-thumb"><img src="assets/media/research-a-brand-new-day-poster.webp" alt="" width="1280" height="720" loading="lazy" decoding="async" /></span>
       <span class="lh-film-caption"><b>Research. A Brand New Day.</b><small>Một hành trình, hai thế giới khám phá.</small></span>
-      <span class="lh-film-play"><span class="lh-film-play-mark" aria-hidden="true">▶</span>Xem phim giới thiệu</span>
+      <span class="lh-film-play"><span class="lh-cta lh-film-play-mark" aria-hidden="true">▶</span>Xem phim giới thiệu</span>
     </button>
   </div>
   <dialog id="lh-research-film" class="lh-film-dialog" aria-labelledby="lh-film-title" aria-describedby="lh-film-description">
@@ -1721,7 +1758,6 @@ summary::-webkit-details-marker{display:none}
         <b style="font-family:'MoMo Trusts Display',system-ui,sans-serif;font-weight:800;font-size:10px;letter-spacing:.06em;color:#fff;margin-bottom:4px">LEARNING HUB</b>
         <a href="#top" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Giới thiệu</a>
         <a href="#club" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Phần thưởng</a>
-        <a href="#info-session" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Info Session</a>
         <a href="#research-lab" style="color:#EAF2FB;font-size:13.5px" style-hover="color:#FF9064">Research Lab</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
@@ -1747,7 +1783,7 @@ summary::-webkit-details-marker{display:none}
 </footer>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;showLeaderboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;,&quot;off&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;\&quot;full\&quot; | \&quot;subtle\&quot; | \&quot;off\&quot;&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;sessionTitle&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Info Session cùng team Research&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionDescription&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Cùng tìm hiểu Learning Hub và trao đổi những câu hỏi của bạn về hành trình học nghiên cứu.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionDate&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionFormat&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionRegistrationUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;researchLabUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Research Lab&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;showLeaderboard&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;showFaq&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Sections&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;subtle&quot;,&quot;off&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;\&quot;full\&quot; | \&quot;subtle\&quot; | \&quot;off\&quot;&quot;,&quot;section&quot;:&quot;Motion&quot;},&quot;sessionTitle&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Info Session | Research: A Brand New Day&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionDescription&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;Cùng tìm hiểu Learning Hub và trao đổi những câu hỏi của bạn về hành trình học nghiên cứu.&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionTime&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionDate&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionFormat&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;sessionRegistrationUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;https://chat.google.com/u/0/app/home&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Info Session&quot;},&quot;researchLabUrl&quot;:{&quot;editor&quot;:&quot;string&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Research Lab&quot;}}">
 class Component extends DCLogic {
   renderVals() {
     // Only team-provided facts belong in these props. Empty URLs intentionally
@@ -1764,11 +1800,11 @@ class Component extends DCLogic {
     return {
       sessionTitleText: clean(this.props.sessionTitle, 'Info Session cùng team Research'),
       sessionDescriptionText: clean(this.props.sessionDescription, 'Cùng tìm hiểu Learning Hub và trao đổi những câu hỏi của bạn về hành trình học nghiên cứu.'),
-      sessionDateText: clean(this.props.sessionDate, 'Sắp công bố'),
-      sessionFormatText: clean(this.props.sessionFormat, 'Sắp công bố'),
+      sessionTimeText: clean(this.props.sessionTime, '15:00 ~ 17:00'),
+      sessionDateText: clean(this.props.sessionDate, '23/09/2026'),
+      sessionVenueText: clean(this.props.sessionFormat, 'Tòa nhà Phú Mỹ Hưng, Tầng 12, Pantry'),
       safeSessionUrl, canRegister: !!safeSessionUrl, registrationPending: !safeSessionUrl,
       safeResearchUrl, canVisitLab: !!safeResearchUrl, researchPending: !safeResearchUrl,
-      sessionNoteText: safeSessionUrl ? 'Đăng ký trên trang của chương trình.' : 'Lịch và link đăng ký sẽ được cập nhật tại đây.',
       researchNoteText: safeResearchUrl ? 'Mở nền tảng Research Lab trong tab mới.' : 'Cánh cổng mới đang được chuẩn bị. Xem trước hành trình bên dưới nhé!'
     };
   }
