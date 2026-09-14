@@ -673,19 +673,9 @@ summary::-webkit-details-marker{display:none}
   --inset-sm:inset 3px 3px 6px var(--lo),inset -3px -3px 6px var(--hi);
   background:linear-gradient(180deg,rgba(18,63,112,0) calc(100% - 64px),#123F70 100%),linear-gradient(180deg,#FDF7E8 0,var(--bg) 140px);color:var(--ink);font-family:var(--sans);position:relative;overflow:hidden}
 .rl-wrap{padding:clamp(70px,8vw,120px) var(--gut) clamp(60px,7vw,100px)}
-.rl-hero{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(34px,5vw,80px);align-items:center}
-@media(max-width:960px){.rl-hero{grid-template-columns:1fr}}
 .ring{display:inline-block;width:22px;height:22px;border-radius:50%;border:3px solid var(--blue);box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 6px var(--blue);flex:none}
 .rl-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--bg);box-shadow:var(--raise-sm);font:700 16px/1 var(--disp);margin-bottom:28px}
 .rl-badge small{font:600 12px/1 var(--sans);color:var(--ink3);padding-left:10px;border-left:1px solid #D3D9E4}
-.rl-thought{position:relative;display:inline-block;padding:14px 20px;border-radius:22px;background:var(--bg);box-shadow:var(--inset-sm);font:600 15px/1.4 var(--sans);color:var(--ink2);margin:0 0 20px;max-width:100%}
-.rl-thought::after{content:"";position:absolute;left:28px;bottom:-14px;width:12px;height:12px;border-radius:50%;background:var(--bg);box-shadow:var(--inset-sm)}
-.rl h2{font:800 clamp(34px,3.7vw,52px)/1.08 var(--disp);letter-spacing:-.035em;margin:0 0 20px;text-wrap:balance}
-.rl h2 span{color:var(--blue)}
-.rl-lede{font-size:clamp(16px,1.3vw,18px);line-height:1.7;color:var(--ink2);margin:0 0 34px;max-width:560px;text-wrap:pretty}
-.rl-lede b{color:var(--blue);font-weight:700}
-.rl-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
-
 .console{position:relative;padding:clamp(22px,3vw,34px);border-radius:40px;background:var(--bg);box-shadow:var(--raise)}
 .console-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;font:600 13px/1 var(--sans);color:var(--ink3)}
 .console-top .dots{display:flex;gap:7px}
@@ -732,19 +722,81 @@ summary::-webkit-details-marker{display:none}
 .bars{display:flex;align-items:flex-end;gap:12px;height:110px;padding:6px 4px 0}
 .bars i{flex:1;border-radius:10px 10px 4px 4px;background:var(--bg);box-shadow:var(--raise-sm)}
 .bars i.hl{background:linear-gradient(180deg,var(--blue2),var(--blue));box-shadow:0 6px 14px rgba(47,69,232,.35)}
-.guard{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:22px;font:600 13px/1.3 var(--sans);color:var(--ink2)}
-.guard svg{width:22px;height:22px;color:var(--blue)}
-
-.asks{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,30px);margin-top:clamp(56px,6vw,90px)}
-.ask{border-radius:28px;background:var(--bg);box-shadow:var(--raise);padding:26px 24px}
-.ask .ico{width:56px;height:56px;border-radius:18px;display:grid;place-items:center;box-shadow:var(--inset-sm);color:var(--blue);margin-bottom:18px}
-.ask .ico svg{width:26px;height:26px}
-.ask q{display:block;font:700 18px/1.35 var(--disp);color:var(--ink);margin-bottom:10px;quotes:"“" "”"}
-.ask p{margin:0;font-size:15px;line-height:1.6;color:var(--ink2)}
-.ask p b{color:var(--blue)}
-@media(max-width:900px){.asks{grid-template-columns:1fr}}
-.rl-foot{text-align:center;margin-top:clamp(48px,5vw,70px);font:700 clamp(20px,2vw,26px)/1.3 var(--disp)}
-.rl-foot span{color:var(--blue)}
+/* ---- Research Lab: hero ---- */
+.rl-top{text-align:center;max-width:980px;margin:0 auto clamp(26px,3.4vw,40px)}
+.rl-badge{margin-bottom:22px}
+.rl-eyebrow{margin:0 0 14px;font:800 clamp(12px,1.1vw,14px)/1.2 var(--disp);letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+.rl h2{font:800 clamp(34px,3.9vw,54px)/1.12 var(--disp);letter-spacing:-.03em;margin:0;color:var(--ink)}
+.rl-line{display:block}
+.rl-blue{color:var(--blue)}
+.rl-video{max-width:960px;margin:0 auto;padding:clamp(8px,1vw,12px);border-radius:clamp(22px,2.6vw,34px);background:var(--bg);box-shadow:var(--raise)}
+.rl-video video{display:block;width:100%;aspect-ratio:16/9;border-radius:clamp(16px,2vw,24px);background:#E3E7EF}
+/* ---- 3 loi ich ---- */
+.rl-benefits{display:grid;gap:clamp(48px,6vw,96px);margin-top:clamp(64px,8vw,120px)}
+.rl-benefit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,5vw,72px);align-items:center}
+.rl-rev .rl-benefit-copy{order:2}
+.rl-tag{display:inline-flex;align-items:center;padding:8px 14px;border-radius:999px;background:var(--bg);box-shadow:var(--raise-sm);font:800 12px/1 var(--disp);letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:18px}
+.rl-benefit h3{margin:0;font:800 clamp(24px,2.6vw,36px)/1.22 var(--disp);letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
+.rl-benefit h3 b{color:var(--blue);font-weight:800}
+.rl-flow{list-style:none;margin:22px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
+.rl-flow li{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--sans);color:var(--ink2);padding:10px 14px;border-radius:999px;background:var(--bg);box-shadow:var(--inset-sm)}
+.rl-flow li+li::before{content:"→";margin:0 4px 0 -2px;color:var(--blue);font-weight:800}
+.rl-shot{border-radius:clamp(22px,2.6vw,34px);background:var(--bg);box-shadow:var(--raise);padding:clamp(10px,1.2vw,14px)}
+.rl-shot img{display:block;width:100%;height:auto;border-radius:clamp(16px,2vw,24px);image-rendering:auto;background:#F4F5F8}
+@media(max-width:900px){
+  .rl-benefit{grid-template-columns:minmax(0,1fr)}
+  .rl-rev .rl-benefit-copy{order:0}
+}
+/* ---- Cach tham gia: 6 buoc + trinh chieu anh (bam buoc hoac vuot trai/phai) ---- */
+.rl-join{margin-top:clamp(72px,9vw,130px)}
+.rl-join-head{text-align:center;margin-bottom:clamp(26px,3.4vw,40px)}
+.rl-h{font:800 clamp(30px,3.4vw,46px)/1.1 var(--disp)!important}
+.rl-join-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.rl-viewer{position:sticky;top:24px;border-radius:32px;background:var(--bg);box-shadow:var(--raise);padding:clamp(10px,1.2vw,14px) clamp(10px,1.2vw,14px) 12px}
+.rl-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rl-track::-webkit-scrollbar{display:none}
+.rl-slide{flex:0 0 100%;margin:0;scroll-snap-align:center;scroll-snap-stop:always}
+.rl-slide img,.rl-slide-ph{display:block;width:100%;aspect-ratio:16/10;border-radius:22px}
+.rl-slide-ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:linear-gradient(160deg,#F5F7FB,#E4E8F1);box-shadow:var(--inset)}
+.rl-slide-ico{width:clamp(72px,8vw,104px);height:clamp(72px,8vw,104px);border-radius:50%;display:grid;place-items:center;background:var(--bg);box-shadow:var(--raise-sm),0 0 0 6px rgba(84,103,255,.08);color:var(--blue)}
+.rl-slide-ico svg{width:44%;height:44%}
+.rl-slide-k{font:800 13px/1 var(--disp);letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
+.rl-slide figcaption{padding:14px 6px 2px;font:700 clamp(14px,1.2vw,16px)/1.4 var(--disp);color:var(--ink);text-align:center;min-height:3.2em}
+.rl-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 4px 0}
+.rl .rl-arrow{width:44px;height:44px;border-radius:50%;border:0;display:grid;place-items:center;background:var(--bg);box-shadow:var(--raise-sm);color:var(--ink2);cursor:pointer}
+.rl-arrow svg{width:20px;height:20px}
+.rl .rl-arrow:active{box-shadow:var(--inset-sm)}
+.rl .rl-arrow:disabled{opacity:.35;cursor:default}
+.rl-dots{display:flex;gap:8px}
+.rl-dots i{width:8px;height:8px;border-radius:999px;background:#CDD3DF;transition:width .25s,background .25s}
+.rl-dots i.on{width:22px;background:var(--blue)}
+.rl-steps{list-style:none;margin:0;padding:0;counter-reset:none;display:grid;gap:10px}
+.rl .rl-step-btn{width:100%;display:grid;grid-template-columns:40px minmax(0,1fr);gap:14px;align-items:center;text-align:left;border:0;cursor:pointer;padding:12px 16px 12px 12px;border-radius:20px;background:transparent;color:var(--ink2);transition:box-shadow .2s,color .2s}
+.rl .rl-step-btn:hover{color:var(--ink)}
+.rl .rl-step-btn[aria-selected="true"]{background:var(--bg);box-shadow:var(--raise-sm);color:var(--ink)}
+.rl-step-n{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font:800 15px/1 var(--disp);color:var(--ink3);background:var(--bg);box-shadow:var(--inset-sm)}
+.rl-step-btn[aria-selected="true"] .rl-step-n{color:#fff;background:var(--blue);box-shadow:0 4px 12px rgba(47,69,232,.35)}
+.rl-step-t{font:700 clamp(15px,1.25vw,17px)/1.35 var(--disp)}
+.rl .rl-step-btn:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.rl-step-note{margin:6px 0 4px 66px;font-size:13px;line-height:1.55;color:var(--ink3)}
+.rl-step-note a{color:var(--blue)!important;font-weight:700;text-decoration:underline}
+.rl-cta{display:flex;justify-content:center;margin-top:clamp(36px,4.6vw,56px)}
+.rl-cta .lh-pixel-action{min-width:min(360px,100%);min-height:58px;font-size:clamp(18px,1.6vw,22px)}
+@media(max-width:900px){
+  .rl-join-grid{grid-template-columns:minmax(0,1fr)}
+  .rl-viewer{position:relative;top:auto}
+}
+@media(max-width:640px){
+  .rl h2{font-size:min(54px,5.3vw)}
+  .rl-line{white-space:nowrap}
+  .rl-h{font-size:30px!important}
+  .rl-benefit h3{font-size:22px}
+  .rl-flow li{font-size:12.5px;padding:8px 11px}
+  .rl-step-note{margin-left:54px}
+  .rl .rl-step-btn{grid-template-columns:32px minmax(0,1fr);gap:12px;padding:10px 12px 10px 10px}
+  .rl-step-n{width:32px;height:32px;font-size:13px}
+  .rl-cta .lh-pixel-action{width:100%}
+}
 
 
 /* tablet + mobile: khung thong tin xep 3 dong (3 cot chi dung tu 900px) */
@@ -1885,105 +1937,195 @@ summary::-webkit-details-marker{display:none}
 
 <section class="rl" id="research-lab" aria-labelledby="rl-title">
   <div class="rl-wrap">
-    <div class="rl-hero">
-      <div>
-        <span class="rl-badge"><span class="ring" aria-hidden="true"></span>Research Lab<small>by CIO</small></span>
-        <p class="rl-thought">Dự án nghiên cứu user gần nhất bạn làm trong bao lâu?</p>
-        <h2 id="rl-title">Nghiên cứu nhanh hơn,<br>chiến lược <span>chuẩn hơn.</span></h2>
-        <p class="rl-lede">Học đúng ở Learning Hub, làm chuẩn ở Research Lab. Agent đồng hành cùng bạn thiết kế <b>kế hoạch nghiên cứu</b>, <b>bảng câu hỏi</b> và rút ra <b>insight</b> — theo guardrail của chuyên gia Research CIO.</p>
-        <div class="rl-actions">
-          <a class="lh-cta lh-pixel-action" href="#" data-todo="link-research-lab">Vào Research Lab <b aria-hidden="true">›</b></a>
-        </div>
-      </div>
+    <header class="rl-top">
+      <span class="rl-badge"><span class="ring" aria-hidden="true"></span>Research Lab<small>by CIO</small></span>
+      <p class="rl-eyebrow">Faster Research · Better Standards</p>
+      <h2 id="rl-title"><span class="rl-line">Thực hiện dự án nghiên cứu user</span> <span class="rl-line rl-blue">Nhanh hơn – Dễ hơn – Chuẩn hơn</span> <span class="rl-line">với Research Lab</span></h2>
+    </header>
 
-      <div class="console" data-console>
-        <div class="console-top">
-          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="live">Agent đang làm việc</span>
-        </div>
-        <div class="rail">
-          <div class="rail-track" aria-hidden="true"><div class="rail-fill" data-fill></div></div>
-          <div class="rail-nodes" role="group" aria-label="Quy trình Research Lab">
-            <button class="node" type="button" data-step="0" aria-pressed="true" aria-label="Mục tiêu nghiên cứu">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>
-            </button>
-            <button class="node" type="button" data-step="1" aria-pressed="false" aria-label="Kế hoạch">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>
-            </button>
-            <button class="node" type="button" data-step="2" aria-pressed="false" aria-label="Bảng câu hỏi">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2.8h8l4.5 4.5v13.9H6z"/><path d="M14 2.8v4.5h4.5M9 12h6.5M9 15.5h6.5M9 8.5h3"/></svg>
-            </button>
-            <button class="node" type="button" data-step="3" aria-pressed="false" aria-label="Báo cáo">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20.5h18M6 20v-5M11 20v-8M16 20v-6"/><path d="M4 10.5l6-4 4 2.5 6-5M16.5 4H20v3.5"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="rail-labels" aria-hidden="true"><span class="on">Mục tiêu</span><span>Kế hoạch</span><span>Bảng câu hỏi</span><span>Báo cáo</span></div>
-
-        <div class="screen" aria-live="polite">
-          <div class="pane on" data-pane="0">
-            <div class="pane-label"><span class="ring" style="width:14px;height:14px;border-width:2px;box-shadow:inset 0 0 0 2px var(--bg),inset 0 0 0 4px var(--blue)"></span>Mục tiêu nghiên cứu</div>
-            <div class="card">
-              <h5>Bạn muốn hiểu điều gì?</h5>
-              <div class="field">Vì sao người dùng biết Ví Trả Sau nhưng chưa kích hoạt<span class="caret"></span></div>
-              <div class="chips"><span class="on">Định tính</span><span class="on">Định lượng</span><span>Desk research</span></div>
-            </div>
-          </div>
-          <div class="pane" data-pane="1">
-            <div class="pane-label">Kế hoạch nghiên cứu</div>
-            <div class="card">
-              <h5>Agent đề xuất lộ trình</h5>
-              <div class="plan-row"><span>Desk research</span><i style="width:38%"></i></div>
-              <div class="plan-row"><span>Phỏng vấn sâu</span><i style="width:64%;margin-left:26%"></i></div>
-              <div class="plan-row"><span>Khảo sát</span><i style="width:44%;margin-left:56%"></i></div>
-            </div>
-          </div>
-          <div class="pane" data-pane="2">
-            <div class="pane-label">Bảng câu hỏi · Chọn nhiều đáp án</div>
-            <div class="card">
-              <h5>Q2. Bạn biết đến tính năng nào sau đây của MoMo?</h5>
-              <div class="opt on"><i></i>Ví Trả Sau</div>
-              <div class="opt"><i></i>Túi Thần Tài</div>
-              <div class="opt on"><i></i>Chia tiền nhóm</div>
-            </div>
-            <div class="agent-tip"><span class="ring" style="width:16px;height:16px;border-width:2px;box-shadow:inset 0 0 0 2px #E6EAFA,inset 0 0 0 4px var(--blue);margin-top:1px"></span><span><b>Agent gợi ý:</b> thêm lựa chọn “Không biết tính năng nào” để tránh ép người trả lời.</span></div>
-          </div>
-          <div class="pane" data-pane="3">
-            <div class="pane-label">Báo cáo insight</div>
-            <div class="card">
-              <h5>Rào cản lớn nhất nằm ở bước xác minh</h5>
-              <div class="bars" aria-hidden="true"><i style="height:42%"></i><i style="height:58%"></i><i class="hl" style="height:96%"></i><i style="height:34%"></i><i style="height:50%"></i></div>
-            </div>
-          </div>
-        </div>
-        <p class="guard">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.8l7.5 3v6c0 4.6-3.2 8.2-7.5 9.4-4.3-1.2-7.5-4.8-7.5-9.4v-6z"/><path d="M8.5 12l2.4 2.4 4.6-4.8"/></svg>
-          Cách agent hỏi, viết và đánh giá được guardrail bởi chuyên gia Research CIO
-        </p>
-      </div>
+    <div class="rl-video">
+      <video controls="controls" playsinline="playsinline" preload="metadata" poster="assets/media/research-lab-benefit-poster.webp" aria-label="Video giới thiệu Research Lab">
+        <source src="assets/media/research-lab-benefit.mp4" type="video/mp4" />
+      </video>
     </div>
 
-    <div class="asks">
-      <article class="ask">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2.8h8l4.5 4.5v13.9H6z"/><path d="M14 2.8v4.5h4.5M9.5 12.5a2.5 2.5 0 114 2c-.9.6-1.4 1-1.4 2M12 18.6v.2"/></svg></div>
-        <q>Bắt đầu bảng câu hỏi từ đâu?</q>
-        <p>Nhập mục tiêu nghiên cứu, <b>agent phác khung câu hỏi</b> đầu tiên cho bạn.</p>
+    <div class="rl-benefits">
+      <article class="rl-benefit">
+        <div class="rl-benefit-copy">
+          <span class="rl-tag">01 · Nhanh hơn</span>
+          <h3>Rút ngắn thời gian thực hiện nghiên cứu với <b>all-in-one platform</b></h3>
+          <ol class="rl-flow" aria-label="Quy trình trong Research Lab"><li>Mục tiêu nghiên cứu</li><li>Kế hoạch nghiên cứu</li><li>Bảng câu hỏi</li><li>Báo cáo</li></ol>
+        </div>
+        <div class="rl-benefit-art">
+  <div class="console" data-console>
+          <div class="console-top">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="live">Agent đang làm việc</span>
+          </div>
+          <div class="rail">
+            <div class="rail-track" aria-hidden="true"><div class="rail-fill" data-fill></div></div>
+            <div class="rail-nodes" role="group" aria-label="Quy trình Research Lab">
+              <button class="node" type="button" data-step="0" aria-pressed="true" aria-label="Mục tiêu nghiên cứu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg>
+              </button>
+              <button class="node" type="button" data-step="1" aria-pressed="false" aria-label="Kế hoạch">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="1.6"/></svg>
+              </button>
+              <button class="node" type="button" data-step="2" aria-pressed="false" aria-label="Bảng câu hỏi">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2.8h8l4.5 4.5v13.9H6z"/><path d="M14 2.8v4.5h4.5M9 12h6.5M9 15.5h6.5M9 8.5h3"/></svg>
+              </button>
+              <button class="node" type="button" data-step="3" aria-pressed="false" aria-label="Báo cáo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20.5h18M6 20v-5M11 20v-8M16 20v-6"/><path d="M4 10.5l6-4 4 2.5 6-5M16.5 4H20v3.5"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="rail-labels" aria-hidden="true"><span class="on">Mục tiêu</span><span>Kế hoạch</span><span>Bảng câu hỏi</span><span>Báo cáo</span></div>
+
+          <div class="screen" aria-live="polite">
+            <div class="pane on" data-pane="0">
+              <div class="pane-label"><span class="ring" style="width:14px;height:14px;border-width:2px;box-shadow:inset 0 0 0 2px var(--bg),inset 0 0 0 4px var(--blue)"></span>Mục tiêu nghiên cứu</div>
+              <div class="card">
+                <h5>Bạn muốn hiểu điều gì?</h5>
+                <div class="field">Vì sao người dùng biết Ví Trả Sau nhưng chưa kích hoạt<span class="caret"></span></div>
+                <div class="chips"><span class="on">Định tính</span><span class="on">Định lượng</span><span>Desk research</span></div>
+              </div>
+            </div>
+            <div class="pane" data-pane="1">
+              <div class="pane-label">Kế hoạch nghiên cứu</div>
+              <div class="card">
+                <h5>Agent đề xuất lộ trình</h5>
+                <div class="plan-row"><span>Desk research</span><i style="width:38%"></i></div>
+                <div class="plan-row"><span>Phỏng vấn sâu</span><i style="width:64%;margin-left:26%"></i></div>
+                <div class="plan-row"><span>Khảo sát</span><i style="width:44%;margin-left:56%"></i></div>
+              </div>
+            </div>
+            <div class="pane" data-pane="2">
+              <div class="pane-label">Bảng câu hỏi · Chọn nhiều đáp án</div>
+              <div class="card">
+                <h5>Q2. Bạn biết đến tính năng nào sau đây của MoMo?</h5>
+                <div class="opt on"><i></i>Ví Trả Sau</div>
+                <div class="opt"><i></i>Túi Thần Tài</div>
+                <div class="opt on"><i></i>Chia tiền nhóm</div>
+              </div>
+              <div class="agent-tip"><span class="ring" style="width:16px;height:16px;border-width:2px;box-shadow:inset 0 0 0 2px #E6EAFA,inset 0 0 0 4px var(--blue);margin-top:1px"></span><span><b>Agent gợi ý:</b> thêm lựa chọn “Không biết tính năng nào” để tránh ép người trả lời.</span></div>
+            </div>
+            <div class="pane" data-pane="3">
+              <div class="pane-label">Báo cáo insight</div>
+              <div class="card">
+                <h5>Rào cản lớn nhất nằm ở bước xác minh</h5>
+                <div class="bars" aria-hidden="true"><i style="height:42%"></i><i style="height:58%"></i><i class="hl" style="height:96%"></i><i style="height:34%"></i><i style="height:50%"></i></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
       </article>
-      <article class="ask">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/></svg></div>
-        <q>Hỏi sao để khai thác đúng thông tin cần?</q>
-        <p>Agent <b>đề xuất cách hỏi</b> theo đúng loại thông tin bạn đang tìm.</p>
+      <article class="rl-benefit rl-rev">
+        <div class="rl-benefit-copy">
+          <span class="rl-tag">02 · Dễ hơn</span>
+          <h3>Dễ hơn nhờ <b>Agent đồng hành</b> và hỗ trợ xuyên suốt quá trình thực hiện dự án</h3>
+        </div>
+        <div class="rl-benefit-art"><div class="rl-shot"><img src="assets/img/rl-agent.webp" width="720" height="608" alt="Trợ lý nghiên cứu của Research Lab hỗ trợ lập kế hoạch, bảng câu hỏi và báo cáo" loading="lazy" decoding="async"></div></div>
       </article>
-      <article class="ask">
-        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2.8l7.5 3v6c0 4.6-3.2 8.2-7.5 9.4-4.3-1.2-7.5-4.8-7.5-9.4v-6z"/><path d="M8.5 12l2.4 2.4 4.6-4.8"/></svg></div>
-        <q>Bảng câu hỏi này đã đủ tốt chưa?</q>
-        <p>Agent <b>đánh giá theo chuẩn</b> của chuyên gia Research CIO trước khi bạn gửi đi.</p>
+      <article class="rl-benefit">
+        <div class="rl-benefit-copy">
+          <span class="rl-tag">03 · Chuẩn hơn</span>
+          <h3>Mọi kết quả mà Agent trả ra đều được hướng dẫn và kiểm soát theo <b>chuẩn Research của CIO</b></h3>
+        </div>
+        <div class="rl-benefit-art"><div class="rl-shot"><img src="assets/img/rl-standard.webp" width="720" height="608" alt="Khiên bảo vệ với dấu xác nhận chuẩn CIO" loading="lazy" decoding="async"></div></div>
       </article>
     </div>
 
-    <p class="rl-foot">Tất cả, trong <span>Research Lab</span>.</p>
+    <div class="rl-join" data-rl-join>
+      <div class="rl-join-head">
+        <span class="rl-tag">Bắt đầu</span>
+        <h2 class="rl-h">Cách tham gia</h2>
+      </div>
+      <div class="rl-join-grid">
+        <div class="rl-viewer">
+          <div class="rl-track" data-rl-track>
+            <figure class="rl-slide" id="rl-slide-1" role="tabpanel" aria-labelledby="rl-tab-1">
+              <!-- thay bang anh chup man hinh buoc 1: <img src="assets/img/rl-step-1.webp" alt="..."> -->
+              <div class="rl-slide-ph" aria-hidden="true">
+                <span class="rl-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/><rect x="15" y="14" width="7" height="6" rx="1.2"/><path d="M16.5 14v-1.5a2 2 0 014 0V14"/></svg></span>
+                <span class="rl-slide-k">Bước 1 / 6</span>
+              </div>
+              <figcaption>Đăng nhập với tài khoản Google công ty</figcaption>
+            </figure>
+            <figure class="rl-slide" id="rl-slide-2" role="tabpanel" aria-labelledby="rl-tab-2">
+              <!-- thay bang anh chup man hinh buoc 2: <img src="assets/img/rl-step-2.webp" alt="..."> -->
+              <div class="rl-slide-ph" aria-hidden="true">
+                <span class="rl-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M12 10.5v6M9 13.5h6"/></svg></span>
+                <span class="rl-slide-k">Bước 2 / 6</span>
+              </div>
+              <figcaption>Tạo dự án mới với tên và mục tiêu nghiên cứu</figcaption>
+            </figure>
+            <figure class="rl-slide" id="rl-slide-3" role="tabpanel" aria-labelledby="rl-tab-3">
+              <!-- thay bang anh chup man hinh buoc 3: <img src="assets/img/rl-step-3.webp" alt="..."> -->
+              <div class="rl-slide-ph" aria-hidden="true">
+                <span class="rl-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span>
+                <span class="rl-slide-k">Bước 3 / 6</span>
+              </div>
+              <figcaption>Trò chuyện với Trợ lý nghiên cứu để tạo kế hoạch và bảng câu hỏi</figcaption>
+            </figure>
+            <figure class="rl-slide" id="rl-slide-4" role="tabpanel" aria-labelledby="rl-tab-4">
+              <!-- thay bang anh chup man hinh buoc 4: <img src="assets/img/rl-step-4.webp" alt="..."> -->
+              <div class="rl-slide-ph" aria-hidden="true">
+                <span class="rl-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg></span>
+                <span class="rl-slide-k">Bước 4 / 6</span>
+              </div>
+              <figcaption>Gửi khảo sát tới user thông qua notification / journey campaign trên Athena</figcaption>
+            </figure>
+            <figure class="rl-slide" id="rl-slide-5" role="tabpanel" aria-labelledby="rl-tab-5">
+              <!-- thay bang anh chup man hinh buoc 5: <img src="assets/img/rl-step-5.webp" alt="..."> -->
+              <div class="rl-slide-ph" aria-hidden="true">
+                <span class="rl-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18"/><path d="M4 16l4-5 4 3 5-7 3 4"/><circle cx="20" cy="11" r="1.2" fill="currentColor"/></svg></span>
+                <span class="rl-slide-k">Bước 5 / 6</span>
+              </div>
+              <figcaption>Theo dõi tiến độ thu thập dữ liệu theo thời gian thực</figcaption>
+            </figure>
+            <figure class="rl-slide" id="rl-slide-6" role="tabpanel" aria-labelledby="rl-tab-6">
+              <!-- thay bang anh chup man hinh buoc 6: <img src="assets/img/rl-step-6.webp" alt="..."> -->
+              <div class="rl-slide-ph" aria-hidden="true">
+                <span class="rl-slide-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 00-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0012 3z"/></svg></span>
+                <span class="rl-slide-k">Bước 6 / 6</span>
+              </div>
+              <figcaption>Phân tích &amp; rút ra insight cho báo cáo cùng Trợ lý nghiên cứu</figcaption>
+            </figure>
+          </div>
+          <div class="rl-nav">
+            <button class="rl-arrow" type="button" data-rl-prev aria-label="Bước trước"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <span class="rl-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+            <button class="rl-arrow" type="button" data-rl-next aria-label="Bước tiếp theo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <ol class="rl-steps" role="tablist" aria-label="Các bước tham gia Research Lab">
+          <li class="rl-step">
+            <button class="rl-step-btn" type="button" role="tab" id="rl-tab-1" aria-selected="true" aria-controls="rl-slide-1" tabindex="0" data-slide="0"><span class="rl-step-n">1</span><span class="rl-step-t">Đăng nhập với tài khoản Google công ty</span></button>
+            <p class="rl-step-note">Lưu ý: Chỉ tài khoản có quyền truy cập Athena mới đăng nhập được. Nếu chưa có quyền, <a href="#" data-todo="link-athena-access">gửi yêu cầu tại đây</a>.</p>
+          </li>
+          <li class="rl-step">
+            <button class="rl-step-btn" type="button" role="tab" id="rl-tab-2" aria-selected="false" aria-controls="rl-slide-2" tabindex="-1" data-slide="1"><span class="rl-step-n">2</span><span class="rl-step-t">Tạo dự án mới với tên và mục tiêu nghiên cứu</span></button>
+          </li>
+          <li class="rl-step">
+            <button class="rl-step-btn" type="button" role="tab" id="rl-tab-3" aria-selected="false" aria-controls="rl-slide-3" tabindex="-1" data-slide="2"><span class="rl-step-n">3</span><span class="rl-step-t">Trò chuyện với Trợ lý nghiên cứu để tạo kế hoạch và bảng câu hỏi</span></button>
+          </li>
+          <li class="rl-step">
+            <button class="rl-step-btn" type="button" role="tab" id="rl-tab-4" aria-selected="false" aria-controls="rl-slide-4" tabindex="-1" data-slide="3"><span class="rl-step-n">4</span><span class="rl-step-t">Gửi khảo sát tới user thông qua notification / journey campaign trên Athena</span></button>
+          </li>
+          <li class="rl-step">
+            <button class="rl-step-btn" type="button" role="tab" id="rl-tab-5" aria-selected="false" aria-controls="rl-slide-5" tabindex="-1" data-slide="4"><span class="rl-step-n">5</span><span class="rl-step-t">Theo dõi tiến độ thu thập dữ liệu theo thời gian thực</span></button>
+          </li>
+          <li class="rl-step">
+            <button class="rl-step-btn" type="button" role="tab" id="rl-tab-6" aria-selected="false" aria-controls="rl-slide-6" tabindex="-1" data-slide="5"><span class="rl-step-n">6</span><span class="rl-step-t">Phân tích &amp; rút ra insight cho báo cáo cùng Trợ lý nghiên cứu</span></button>
+          </li>
+        </ol>
+      </div>
+      <div class="rl-cta">
+        <a class="lh-cta lh-pixel-action" href="#" data-todo="link-research-lab">Tạo dự án ngay! <b aria-hidden="true">›</b></a>
+      </div>
+    </div>
   </div>
-
 </section>
 
 
@@ -2283,6 +2425,50 @@ class Component extends DCLogic {
     start();
   }
   setStep(0);
+
+  /* ---------- Research Lab: Cach tham gia (bam buoc / mui ten / vuot) ---------- */
+  const join = root.querySelector('[data-rl-join]');
+  if (join) {
+    const track = join.querySelector('[data-rl-track]');
+    const tabs = [...join.querySelectorAll('[data-slide]')];
+    const dots = [...join.querySelectorAll('.rl-dots i')];
+    const prev = join.querySelector('[data-rl-prev]');
+    const next = join.querySelector('[data-rl-next]');
+    let idx = 0;
+    const mark = (i) => {
+      idx = i;
+      tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
+      dots.forEach((d, k) => d.classList.toggle('on', k === i));
+      prev.disabled = i === 0;
+      next.disabled = i === tabs.length - 1;
+    };
+    const go = (i) => {
+      const j = Math.max(0, Math.min(tabs.length - 1, i));
+      track.scrollTo({ left: j * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+      mark(j);
+    };
+    tabs.forEach((t, k) => {
+      t.addEventListener('click', () => go(k));
+      t.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+        e.preventDefault();
+        const j = Math.max(0, Math.min(tabs.length - 1, k + (e.key === 'ArrowDown' ? 1 : -1)));
+        go(j); tabs[j].focus();
+      });
+    });
+    prev.addEventListener('click', () => go(idx - 1));
+    next.addEventListener('click', () => go(idx + 1));
+    let raf = 0;
+    track.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const i = Math.round(track.scrollLeft / Math.max(1, track.clientWidth));
+        if (i !== idx) mark(i);
+      });
+    }, { passive: true });
+    mark(0);
+  }
 
   root.querySelectorAll('[data-todo]').forEach((a) => a.addEventListener('click', (e) => e.preventDefault()));
 
