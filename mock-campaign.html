@@ -466,11 +466,19 @@ summary::-webkit-details-marker{display:none}
   radial-gradient(50% 14% at 70% 88%,rgba(46,84,170,.08),transparent 70%),
   linear-gradient(112deg,transparent 40%,rgba(160,180,230,.035) 50%,transparent 60%),
   linear-gradient(180deg,#0A0A0D 0%,#0F1014 40%,#17181D 100%)}
-/* sao pixel: sinh bang JS (so hat giong co dinh) de moi lan tai deu giong nhau */
-.is-stars{position:absolute;inset:0;z-index:1;pointer-events:none}
-.is-stars i{position:absolute;display:block;background:#fff;animation:is-twinkle 2.6s steps(1) infinite}
-.is-stars i.x{background:none;width:3px!important;height:3px!important;box-shadow:0 -3px #fff,0 3px #fff,-3px 0 #fff,3px 0 #fff,0 0 #fff}
-@keyframes is-twinkle{0%,62%{opacity:1}63%,100%{opacity:.18}}
+/* Three white star planes: scroll depth on the plane, glimmer on a few stars. */
+.is-stars{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;contain:paint}
+.is-star-layer{position:absolute;inset:-24% -7%;pointer-events:none}
+.is-stars i{position:absolute;display:block;background:#fff;opacity:var(--star-alpha,.6)}
+.is-stars i.x{background:none;width:3px!important;height:3px!important;box-shadow:0 -3px #fff,0 3px #fff,-3px 0 #fff,3px 0 #fff,0 0 #fff;animation:is-twinkle var(--star-period,5s) ease-in-out infinite;animation-delay:var(--star-delay,0s)}
+@keyframes is-twinkle{0%,100%{opacity:var(--star-alpha,.6)}50%{opacity:.2}}
+.is:not([data-is-running="true"]) .is-stars i.x,
+.is:not([data-is-running="true"]) .is-meteor,
+.is:not([data-is-running="true"]) .is-astro{animation-play-state:paused}
+.is[data-is-motion="off"] .is-star-layer{transform:none!important}
+.is[data-is-motion="off"] .is-meteor{display:none}
+.is[data-is-motion="off"] *,.is[data-is-motion="off"] *::before,.is[data-is-motion="off"] *::after{animation:none!important;transition:none!important}
+@media(max-width:640px){.is-star-layer:last-child i:nth-child(even){display:none}}
 .is-meteor{position:absolute;z-index:1;width:140px;height:3px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff);transform:rotate(-24deg);opacity:0;pointer-events:none;animation:is-meteor 7s linear infinite}
 @keyframes is-meteor{0%{opacity:0;translate:0 0}3%{opacity:1}12%{opacity:0;translate:-420px 190px}100%{opacity:0;translate:-420px 190px}}
 .is-wrap{position:relative;z-index:2;padding:0 var(--gut)}
@@ -672,17 +680,30 @@ summary::-webkit-details-marker{display:none}
   --inset:inset 6px 6px 12px var(--lo),inset -6px -6px 12px var(--hi);
   --inset-sm:inset 3px 3px 6px var(--lo),inset -3px -3px 6px var(--hi);
   background:linear-gradient(180deg,rgba(18,63,112,0) calc(100% - 64px),#123F70 100%),linear-gradient(180deg,#FDF7E8 0,var(--bg) 140px);color:var(--ink);font-family:var(--sans);position:relative;overflow:hidden}
-.rl-wrap{padding:clamp(70px,8vw,120px) var(--gut) clamp(60px,7vw,100px)}
+.rl-wrap{position:relative;z-index:1;padding:clamp(70px,8vw,120px) var(--gut) clamp(60px,7vw,100px)}
+/* Broad, sculpted ripples share the panels' upper-left light source. */
+.rl-ambience{position:absolute;inset:0;overflow:hidden;pointer-events:none;user-select:none}
+.rl-wave{position:absolute;width:max(1180px,125%);height:auto;aspect-ratio:1600/700;opacity:.66;transform-origin:center;contain:layout style}
+.rl-wave svg{display:block;width:100%;height:100%;overflow:visible;fill:none;stroke:#E9EDF4;stroke-width:28;stroke-linecap:round;filter:drop-shadow(-3px -4px 3px rgba(255,255,255,.95)) drop-shadow(4px 5px 4px rgba(163,177,201,.25))}
+.rl-wave-a{top:90px;left:-25%;rotate:-9deg}
+.rl-wave-b{top:38%;right:-35%;rotate:162deg;opacity:.5}
+.rl-wave-c{bottom:180px;left:-28%;rotate:-18deg;opacity:.52}
+.rl[data-lab-running="true"] .rl-wave{will-change:transform}
+.rl[data-lab-running="false"] *, .rl[data-lab-running="false"] *::before,.rl[data-lab-running="false"] *::after{animation-play-state:paused!important}
+.rl[data-lab-motion="off"] *, .rl[data-lab-motion="off"] *::before,.rl[data-lab-motion="off"] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(max-width:700px){.rl-wave{width:1100px;opacity:.42}.rl-wave-a{left:-620px}.rl-wave-b{right:-730px}.rl-wave-c{left:-600px}}
+@media(prefers-reduced-motion:reduce){.rl *, .rl *::before,.rl *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 .ring{display:inline-block;width:22px;height:22px;border-radius:50%;border:3px solid var(--blue);box-shadow:inset 0 0 0 3px var(--bg),inset 0 0 0 6px var(--blue);flex:none}
-.rl-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 18px 10px 12px;border-radius:999px;background:var(--bg);box-shadow:var(--raise-sm);font:700 16px/1 var(--disp);margin-bottom:28px}
+.rl-badge{display:inline-flex;align-items:center;gap:10px;padding:9px 18px 9px 16px;border-radius:999px;background:var(--bg);box-shadow:var(--raise-sm);font:700 16px/1 var(--disp);margin-bottom:28px}
+.rl-badge img{height:26px;width:auto;display:block}
 .rl-badge small{font:600 12px/1 var(--sans);color:var(--ink3);padding-left:10px;border-left:1px solid #D3D9E4}
 .console{position:relative;padding:clamp(22px,3vw,34px);border-radius:40px;background:var(--bg);box-shadow:var(--raise)}
 .console-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;font:600 13px/1 var(--sans);color:var(--ink3)}
 .console-top .dots{display:flex;gap:7px}
 .console-top .dots i{width:10px;height:10px;border-radius:50%;box-shadow:var(--inset-sm)}
 .console-top .live{display:inline-flex;align-items:center;gap:8px}
-.console-top .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(47,69,232,.15);animation:rl-pulse 1.6s ease infinite}
-@keyframes rl-pulse{50%{box-shadow:0 0 0 8px rgba(47,69,232,0)}}
+.console-top .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 4px rgba(47,69,232,.12);animation:rl-pulse 3.4s ease-in-out infinite}
+@keyframes rl-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.48;transform:scale(.8)}}
 .rail{position:relative;border-radius:999px;padding:14px 18px;background:var(--bg);box-shadow:var(--inset)}
 .rail-track{position:absolute;left:54px;right:54px;top:50%;height:4px;margin-top:-2px;border-radius:4px;background:#D9DFEA}
 .rail-fill{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:4px;background:var(--blue);box-shadow:0 0 12px rgba(47,69,232,.55);transition:width .6s cubic-bezier(.4,0,.2,1)}
@@ -782,6 +803,25 @@ summary::-webkit-details-marker{display:none}
 .rl-step-note a{color:var(--blue)!important;font-weight:700;text-decoration:underline}
 .rl-cta{display:flex;justify-content:center;margin-top:clamp(36px,4.6vw,56px)}
 .rl-cta .lh-pixel-action{min-width:min(360px,100%);min-height:58px;font-size:clamp(18px,1.6vw,22px)}
+/* Fine bevels and weighted press feedback keep the lab feeling physical. */
+.rl .console,.rl .rl-video,.rl .rl-shot,.rl .rl-viewer{background:linear-gradient(145deg,#F2F5FA,#E8EDF4);box-shadow:inset 1px 1px 0 rgba(255,255,255,.94),inset -1px -1px 0 rgba(181,193,212,.4),var(--raise)}
+.rl .screen{background:linear-gradient(145deg,#E8EDF5,#F2F5FA);box-shadow:var(--inset),inset 0 0 0 1px rgba(206,215,230,.45)}
+.rl .node,.rl .rl-arrow,.rl .rl-step-btn{transition:transform .32s cubic-bezier(.22,1,.36,1),box-shadow .25s ease,color .2s ease,background-color .2s ease}
+.rl .node svg,.rl .rl-arrow svg{transition:transform .32s cubic-bezier(.22,1,.36,1)}
+.rl .node[aria-pressed="true"]{color:var(--blue);background:linear-gradient(145deg,#F8FAFF,#E6EBF7);box-shadow:inset 1px 1px 1px #fff,-5px -5px 12px #fff,6px 7px 14px #C8CFDC,0 0 0 2px rgba(84,103,255,.22)}
+.rl .node.done{color:var(--blue)}
+.rl .rl-step-btn[aria-selected="true"]{box-shadow:inset 1px 1px 0 rgba(255,255,255,.9),var(--raise-sm)}
+.rl .rl-step-btn[aria-selected="true"] .rl-step-n{background:linear-gradient(145deg,#6679FF,#2F45E8);box-shadow:inset 1px 1px 1px rgba(255,255,255,.45),inset -1px -2px 3px rgba(20,38,144,.25),0 4px 10px rgba(47,69,232,.25)}
+.rl .rl-step-n{transition:transform .32s cubic-bezier(.22,1,.36,1),color .2s ease}
+.rl .node:active,.rl .rl-arrow:not(:disabled):active{transform:translateY(1px) scale(.96);box-shadow:var(--inset-sm)}
+.rl .rl-step-btn:active{transform:translateY(1px) scale(.992)}
+.rl .rl-arrow:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+@media(hover:hover) and (pointer:fine){
+  .rl:not([data-lab-motion="off"]) .node:hover:not(:active){transform:translateY(-2px)}
+  .rl:not([data-lab-motion="off"]) .node:hover svg{transform:scale(1.06)}
+  .rl:not([data-lab-motion="off"]) .rl-arrow:not(:disabled):hover:not(:active){transform:translateY(-2px);color:var(--blue)}
+  .rl:not([data-lab-motion="off"]) .rl-step-btn:hover .rl-step-n{transform:translateY(-1px)}
+}
 @media(max-width:900px){
   .rl-join-grid{grid-template-columns:minmax(0,1fr)}
   .rl-viewer{position:relative;top:auto}
@@ -1936,9 +1976,29 @@ summary::-webkit-details-marker{display:none}
 
 
 <section class="rl" id="research-lab" aria-labelledby="rl-title">
+  <div class="rl-ambience" aria-hidden="true">
+    <div class="rl-wave rl-wave-a"><svg viewBox="0 0 1600 700" focusable="false"><g>
+      <path d="M-120 470C180 70 420 750 850 390S1380 0 1740 220"/>
+      <path d="M-120 526C180 126 420 806 850 446S1380 56 1740 276"/>
+      <path d="M-120 582C180 182 420 862 850 502S1380 112 1740 332"/>
+      <path d="M-120 638C180 238 420 918 850 558S1380 168 1740 388"/>
+    </g></svg></div>
+    <div class="rl-wave rl-wave-b"><svg viewBox="0 0 1600 700" focusable="false"><g>
+      <path d="M-120 470C180 70 420 750 850 390S1380 0 1740 220"/>
+      <path d="M-120 526C180 126 420 806 850 446S1380 56 1740 276"/>
+      <path d="M-120 582C180 182 420 862 850 502S1380 112 1740 332"/>
+      <path d="M-120 638C180 238 420 918 850 558S1380 168 1740 388"/>
+    </g></svg></div>
+    <div class="rl-wave rl-wave-c"><svg viewBox="0 0 1600 700" focusable="false"><g>
+      <path d="M-120 470C180 70 420 750 850 390S1380 0 1740 220"/>
+      <path d="M-120 526C180 126 420 806 850 446S1380 56 1740 276"/>
+      <path d="M-120 582C180 182 420 862 850 502S1380 112 1740 332"/>
+      <path d="M-120 638C180 238 420 918 850 558S1380 168 1740 388"/>
+    </g></svg></div>
+  </div>
   <div class="rl-wrap">
     <header class="rl-top">
-      <span class="rl-badge"><span class="ring" aria-hidden="true"></span>Research Lab<small>by CIO</small></span>
+      <span class="rl-badge"><img src="assets/img/logo-research-lab.svg" width="2798" height="536" alt="Research Lab"><small>by CIO</small></span>
       <p class="rl-eyebrow">Faster Research · Better Standards</p>
       <h2 id="rl-title"><span class="rl-line">Thực hiện dự án nghiên cứu user</span> <span class="rl-line rl-blue">Nhanh hơn – Dễ hơn – Chuẩn hơn</span> <span class="rl-line">với Research Lab</span></h2>
     </header>
@@ -2230,6 +2290,219 @@ class Component extends DCLogic {
     this._researchFilmCleanup = () => { events.abort(); video.pause(); if (dialog.open) dialog.close(); restoreScroll(); };
   }
 
+  _setupSessionMotion(root) {
+    if (this._sessionMotionCleanup) this._sessionMotionCleanup();
+    const section = root.querySelector('#info-session');
+    const field = section && section.querySelector('[data-stars]');
+    if (!field) return;
+    const events = new AbortController();
+    const media = matchMedia('(prefers-reduced-motion: reduce)');
+    const on = (el, name, fn) => el.addEventListener(name, fn, { passive: true, signal: events.signal });
+    let seed = 20260923;
+    const random = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+    const depths = [.045, .095, .17];
+    const planes = [170, 100, 46].map((count, depth) => {
+      const plane = document.createElement('div');
+      plane.className = 'is-star-layer';
+      const stars = document.createDocumentFragment();
+      for (let i = 0; i < count; i++) {
+        const star = document.createElement('i');
+        const size = depth === 0 ? 1.5 : depth === 1 ? 2 : 3;
+        const cross = depth > 0 && i % (depth === 1 ? 13 : 5) === 0;
+        if (cross) star.className = 'x';
+        star.style.cssText = `left:${(random() * 100).toFixed(2)}%;top:${(random() * 100).toFixed(2)}%;width:${size}px;height:${size}px;--star-alpha:${(.3 + random() * .6).toFixed(2)};--star-period:${(4 + random() * 4).toFixed(2)}s;--star-delay:${(-random() * 8).toFixed(2)}s`;
+        stars.appendChild(star);
+      }
+      plane.appendChild(stars);
+      return plane;
+    });
+    field.replaceChildren(...planes);
+    let raf = 0, lastTime = 0, time = 0;
+    let target = 0, current = 0, visible = false, enabled = false, gain = 1;
+    const measure = () => {
+      const rect = section.getBoundingClientRect();
+      visible = rect.bottom > 0 && rect.top < innerHeight;
+      target = Math.max(-innerHeight, Math.min(rect.height, -rect.top));
+    };
+    const frame = (now) => {
+      raf = 0;
+      const dt = Math.min(48, lastTime ? now - lastTime : 16.67);
+      lastTime = now;
+      time += dt / 1000;
+      // Time-based damping gives wheel, trackpad and touch the same soft settle.
+      current += (target - current) * (1 - Math.exp(-dt / 150));
+      planes.forEach((plane, i) => {
+        const x = (current * (i - 1) * .012 + Math.sin(time * .2 + i * 2) * (4 + i * 4)) * gain;
+        const y = (current * depths[i] + Math.sin(time * .27 + i) * (3 + i * 4)) * gain;
+        plane.style.transform = `translate3d(${x.toFixed(2)}px,${y.toFixed(2)}px,0)`;
+      });
+      if (enabled && visible && !document.hidden) raf = requestAnimationFrame(frame);
+    };
+    const updateRunning = () => {
+      const running = enabled && visible && !document.hidden;
+      section.dataset.isRunning = String(running);
+      if (running && !raf) {
+        lastTime = 0;
+        current = target;
+        raf = requestAnimationFrame(frame);
+      } else if (!running && raf) {
+        cancelAnimationFrame(raf);
+        raf = 0;
+      }
+    };
+    const sync = () => {
+      const level = media.matches ? 'off' : this.props.motion || 'full';
+      section.dataset.isMotion = level;
+      enabled = level !== 'off';
+      gain = (level === 'subtle' ? .4 : 1) * (innerWidth < 640 ? .65 : 1);
+      measure();
+      updateRunning();
+      if (!enabled) planes.forEach((plane) => { plane.style.transform = ''; });
+    };
+    const onScroll = () => {
+      // Read geometry only on scroll/resize, never in the ambient animation loop.
+      measure();
+      updateRunning();
+    };
+    on(window, 'scroll', onScroll);
+    on(window, 'resize', sync);
+    on(media, 'change', sync);
+    on(document, 'visibilitychange', onScroll);
+    const observer = 'IntersectionObserver' in window ? new IntersectionObserver(onScroll) : null;
+    if (observer) observer.observe(section);
+    const resize = 'ResizeObserver' in window ? new ResizeObserver(onScroll) : null;
+    if (resize) resize.observe(section);
+    this._sessionMotionSync = sync;
+    this._sessionMotionCleanup = () => {
+      events.abort();
+      if (observer) observer.disconnect();
+      if (resize) resize.disconnect();
+      cancelAnimationFrame(raf);
+      section.dataset.isRunning = 'false';
+      planes.forEach((plane) => { plane.style.transform = ''; });
+      this._sessionMotionSync = null;
+    };
+    sync();
+  }
+
+  // Layered relief: a slow ambient drift plus a small, eased scroll response.
+  _setupLabMotion(root) {
+    if (this._labMotionCleanup) this._labMotionCleanup();
+    const lab = root.querySelector('.rl');
+    if (!lab) return;
+    const preference = matchMedia('(prefers-reduced-motion: reduce)');
+    const events = new AbortController();
+    const layers = [...lab.querySelectorAll('.rl-wave')].map((el, i) => ({ el, i, target:0, depth:0, original:el.style.transform }));
+    const surfaces = [...lab.querySelectorAll('.rl-badge, .rl-benefit-art > .rl-shot')].map((el, i) => ({ el, i, target:0, depth:0, y:0, original:el.style.transform }));
+    const revealNodes = [...lab.querySelectorAll('.rl-top, .rl-video, .rl-benefit-copy, .rl-benefit-art, .rl-join-head, .rl-join-grid')];
+    const reveals = new Set();
+    const animations = new Set();
+    let inView = false, running = false, frame = 0, last = 0, elapsed = 0, dirty = true, mode = 'off';
+    const clamp = (n, min, max) => Math.max(min, Math.min(max, n));
+    const stop = () => {
+      running = false;
+      cancelAnimationFrame(frame);
+      frame = 0;
+      last = 0;
+      lab.dataset.labRunning = 'false';
+      animations.forEach((animation) => animation.pause());
+    };
+    const measure = () => {
+      const height = window.innerHeight || document.documentElement.clientHeight;
+      const rect = lab.getBoundingClientRect();
+      layers.forEach((layer) => {
+        const center = rect.top + layer.el.offsetTop + layer.el.offsetHeight * .5;
+        layer.target = clamp((height * .5 - center) / height, -1.5, 1.5) * (layer.i === 1 ? -32 : 32);
+      });
+      surfaces.forEach((surface) => {
+        const bounds = surface.el.getBoundingClientRect();
+        surface.target = clamp((height * .5 - (bounds.top - surface.y + bounds.height * .5)) / height, -1, 1) * 8;
+      });
+      dirty = false;
+    };
+    const tick = (now) => {
+      if (!running) return;
+      const delta = last ? Math.min(now - last, 50) : 16.7;
+      last = now;
+      elapsed += delta * .001;
+      if (dirty) measure();
+      const ease = 1 - Math.exp(-delta / 150);
+      const strength = mode === 'subtle' ? .32 : 1;
+      layers.forEach((layer) => {
+        layer.depth += (layer.target - layer.depth) * ease;
+        const phase = elapsed * .21 + layer.i * 2.1;
+        const x = Math.sin(phase) * 19 * strength;
+        const y = (layer.depth + Math.cos(phase * .83) * 12) * strength;
+        layer.el.style.transform = 'translate3d(' + x.toFixed(2) + 'px,' + y.toFixed(2) + 'px,0)';
+      });
+      surfaces.forEach((surface) => {
+        surface.depth += (surface.target - surface.depth) * ease;
+        surface.y = (surface.depth + Math.sin(elapsed * .6 + surface.i * 1.8) * 2.2) * strength;
+        surface.el.style.transform = 'translate3d(0,' + surface.y.toFixed(2) + 'px,0)';
+      });
+      frame = requestAnimationFrame(tick);
+    };
+    const sync = () => {
+      mode = preference.matches || this.props.motion === 'off' ? 'off' : this.props.motion === 'subtle' ? 'subtle' : 'full';
+      lab.dataset.labMotion = mode;
+      if (mode === 'off') {
+        stop();
+        animations.forEach((animation) => animation.cancel());
+        animations.clear();
+        [...layers, ...surfaces].forEach((item) => { item.el.style.transform = item.original; item.depth = 0; item.y = 0; });
+      } else if (!inView || document.hidden) {
+        stop();
+      } else if (!running) {
+        running = true;
+        dirty = true;
+        lab.dataset.labRunning = 'true';
+        animations.forEach((animation) => animation.play());
+        frame = requestAnimationFrame(tick);
+      }
+    };
+    const sectionObserver = new IntersectionObserver((entries) => {
+      inView = entries[0].isIntersecting;
+      sync();
+    });
+    sectionObserver.observe(lab);
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting || reveals.has(entry.target)) return;
+        reveals.add(entry.target);
+        revealObserver.unobserve(entry.target);
+        if (mode === 'off' || document.hidden || !entry.target.animate) return;
+        const distance = mode === 'subtle' ? 10 : 24;
+        const delay = entry.target.classList.contains('rl-benefit-art') ? 90 : 0;
+        const animation = entry.target.animate([
+          { opacity:0, transform:'translate3d(0,' + distance + 'px,0)' },
+          { opacity:1, transform:'translate3d(0,0,0)' }
+        ], { duration:mode === 'subtle' ? 600 : 900, delay, easing:'cubic-bezier(.22,1,.36,1)', fill:'backwards' });
+        animations.add(animation);
+        animation.onfinish = () => animations.delete(animation);
+      });
+    }, { threshold:.08, rootMargin:'0px 0px -24px 0px' });
+    revealNodes.forEach((el) => revealObserver.observe(el));
+    window.addEventListener('scroll', () => { dirty = true; }, { passive:true, signal:events.signal });
+    window.addEventListener('resize', () => { dirty = true; }, { passive:true, signal:events.signal });
+    document.addEventListener('visibilitychange', sync, { signal:events.signal });
+    preference.addEventListener('change', sync, { signal:events.signal });
+    this._labMotionSync = sync;
+    sync();
+    this._labMotionCleanup = () => {
+      stop();
+      events.abort();
+      sectionObserver.disconnect();
+      revealObserver.disconnect();
+      animations.forEach((animation) => animation.cancel());
+      animations.clear();
+      [...layers, ...surfaces].forEach((item) => { item.el.style.transform = item.original; });
+      delete lab.dataset.labRunning;
+      delete lab.dataset.labMotion;
+      this._labMotionSync = null;
+      this._labMotionCleanup = null;
+    };
+  }
+
   // Info Session (sprite 2.5D, sao, chuoi hoc, dem nguoc) + Research Lab (stepper, phim).
   _setupCampaign(root) {
     (this._campaignTimers || []).forEach(clearInterval);
@@ -2265,18 +2538,6 @@ class Component extends DCLogic {
   SPR.planet = { s:'#6A2A1A', p:{o:'#B53A1B',p:'#FF7A4D',l:'#FFC29E',d:'#D9502A',b:'#FF9464',r:'#FFD89A'}, m: planetMap(24, 16, 6.2, true) };
   SPR.planet2 = { s:'#123F70', p:{o:'#1C66BB',p:'#3A9BFF',l:'#BFE3FF',d:'#2A7FE0',b:'#5BB0FF',r:'#D9CCFF'}, m: planetMap(20, 14, 4.8, true) };
   SPR.moon = { s:'#4A4F78', p:{o:'#8C92B5',p:'#DCE0F0',l:'#FFFFFF',d:'#B4BAD4',b:'#C9CEE2'}, m: planetMap(10, 10, 4.4, false) };
-
-  const stars = root.querySelector('[data-stars]');
-  let seed = 20260923;
-  const rnd = () => { seed = (seed * 1664525 + 1013904223) % 4294967296; return seed / 4294967296; };
-  const tints = ['#FFFFFF', '#FFFFFF', '#FFE8B0', '#BFD6FF', '#FFC9E0'];
-  let starHtml = '';
-  for (let k = 0; k < 230; k++) {
-    const size = rnd() < .7 ? 2 : rnd() < .8 ? 3 : 4;
-    const cross = rnd() < .05;
-    starHtml += `<i class="${cross ? 'x' : ''}" style="left:${(rnd() * 100).toFixed(2)}%;top:${(rnd() * 100).toFixed(2)}%;width:${size}px;height:${size}px;background:${cross ? '' : tints[Math.floor(rnd() * tints.length)]};opacity:${(.45 + rnd() * .55).toFixed(2)};animation-delay:${(rnd() * 2.6).toFixed(2)}s;animation-duration:${(2 + rnd() * 2.5).toFixed(2)}s"></i>`;
-  }
-  stars.innerHTML = starHtml;
 
   SPR.clockLine = { s:'#FF6A3D', p:{o:'#FF6A3D'}, m:[
     '....oooo....','..oo....oo..','.o........o.','.o...o....o.','o....o.....o','o....o.....o',
@@ -2416,14 +2677,39 @@ class Component extends DCLogic {
     labels.forEach((l, k) => l.classList.toggle('on', k === i));
     fill.style.width = (i / (nodes.length - 1) * 100) + '%';
   };
-  nodes.forEach((n, k) => n.addEventListener('click', () => { clearInterval(timer); setStep(k); }));
   const con = root.querySelector('[data-console]');
-  if (!reduce) {
-    const start = () => { clearInterval(timer); timer = setInterval(() => setStep((cur + 1) % nodes.length), 3400); this._campaignTimers.push(timer); };
-    con.addEventListener('pointerenter', () => clearInterval(timer));
-    con.addEventListener('pointerleave', start);
-    start();
-  }
+  if (this._consoleMotionCleanup) this._consoleMotionCleanup();
+  const consoleEvents = new AbortController();
+  const consoleMedia = matchMedia('(prefers-reduced-motion: reduce)');
+  let consoleVisible = false, consoleHovered = false, consoleFocused = false, consoleManual = false;
+  const syncConsole = () => {
+    const rect = con.getBoundingClientRect();
+    consoleVisible = rect.bottom > 0 && rect.top < innerHeight;
+    const running = consoleVisible && !document.hidden && !consoleMedia.matches
+      && (this.props.motion || 'full') === 'full' && !consoleHovered && !consoleFocused && !consoleManual;
+    if (running && !timer) timer = setInterval(() => setStep((cur + 1) % nodes.length), 3400);
+    if (!running && timer) { clearInterval(timer); timer = 0; }
+  };
+  const onConsole = (el, name, handler) => el.addEventListener(name, handler, { signal: consoleEvents.signal, passive: true });
+  nodes.forEach((n, k) => onConsole(n, 'click', () => { consoleManual = true; syncConsole(); setStep(k); }));
+  onConsole(con, 'pointerenter', () => { consoleHovered = true; syncConsole(); });
+  onConsole(con, 'pointerleave', () => { consoleHovered = false; syncConsole(); });
+  onConsole(con, 'focusin', () => { consoleFocused = true; syncConsole(); });
+  onConsole(con, 'focusout', (event) => { consoleFocused = con.contains(event.relatedTarget); syncConsole(); });
+  onConsole(consoleMedia, 'change', syncConsole);
+  onConsole(document, 'visibilitychange', syncConsole);
+  const consoleObserver = 'IntersectionObserver' in window ? new IntersectionObserver(syncConsole) : null;
+  if (consoleObserver) consoleObserver.observe(con);
+  else onConsole(window, 'scroll', syncConsole);
+  this._consoleMotionSync = syncConsole;
+  this._consoleMotionCleanup = () => {
+    clearInterval(timer);
+    timer = 0;
+    consoleEvents.abort();
+    if (consoleObserver) consoleObserver.disconnect();
+    this._consoleMotionSync = null;
+  };
+  syncConsole();
   setStep(0);
 
   /* ---------- Research Lab: Cach tham gia (bam buoc / mui ten / vuot) ---------- */
@@ -2444,7 +2730,8 @@ class Component extends DCLogic {
     };
     const go = (i) => {
       const j = Math.max(0, Math.min(tabs.length - 1, i));
-      track.scrollTo({ left: j * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+      const still = consoleMedia.matches || this.props.motion === 'off';
+      track.scrollTo({ left: j * track.clientWidth, behavior: still ? 'instant' : 'smooth' });
       mark(j);
     };
     tabs.forEach((t, k) => {
@@ -2476,6 +2763,9 @@ class Component extends DCLogic {
 
   componentWillUnmount() {
     if (this._researchFilmCleanup) this._researchFilmCleanup();
+    if (this._sessionMotionCleanup) this._sessionMotionCleanup();
+    if (this._labMotionCleanup) this._labMotionCleanup();
+    if (this._consoleMotionCleanup) this._consoleMotionCleanup();
     (this._campaignTimers || []).forEach(clearInterval);
   }
 
@@ -2484,6 +2774,9 @@ class Component extends DCLogic {
   _applyMotion() {
     const root = this._root;
     if (!root) return;
+    if (this._sessionMotionSync) this._sessionMotionSync();
+    if (this._labMotionSync) this._labMotionSync();
+    if (this._consoleMotionSync) this._consoleMotionSync();
     const level = this.props.motion || 'full';
     const animated = [...root.querySelectorAll('*')].filter((el) => {
       if (el.dataset && el.dataset.lhAnim) return true;
@@ -2508,6 +2801,8 @@ class Component extends DCLogic {
     this._root = root;
     this._setupResearchFilm(root);
     this._setupCampaign(root);
+    this._setupSessionMotion(root);
+    this._setupLabMotion(root);
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     // progress bars fill when scrolled into view
